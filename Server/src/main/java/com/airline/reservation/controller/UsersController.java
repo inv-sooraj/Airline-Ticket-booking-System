@@ -13,13 +13,14 @@ import com.airline.reservation.form.UserForm;
 import com.airline.reservation.json.Json;
 import com.airline.reservation.service.UserService;
 import com.airline.reservation.view.UserView;
-
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 @RestController
 @RequestMapping("/users")
 public class UsersController {
+
     @Autowired
     private UserService userService;
+
     @PostMapping
     public UserView add(@Valid @RequestBody UserForm form) {
         return userService.add(form);

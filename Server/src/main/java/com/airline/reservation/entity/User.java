@@ -1,13 +1,13 @@
 package com.airline.reservation.entity;
 import java.util.Date;
-import org.hibernate.type.descriptor.jdbc.TinyIntJdbcType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import com.airline.reservation.json.Json;
 @Entity
 public class User {
@@ -21,7 +21,7 @@ public class User {
     @Column(nullable = true, columnDefinition = "DATE")
     private   Date dob;
     @Column(nullable = true, length =50)
-    private   String passport_number;
+    private   String passportNumber;
     @Column(nullable = true)
     private   String address;
     @Column(nullable = false, length =20)
@@ -30,7 +30,20 @@ public class User {
     private   String city;
     @Column(nullable = true, length =50)
     private   String country;
-    public Integer getUserId() {
+    @Column(nullable = false)
+    private   String password;
+   
+    @Column(nullable = false,columnDefinition = "TINYINT")
+    private   Integer status;
+    @Column(nullable = false,columnDefinition = "TINYINT")
+    private   Integer role;
+    @Column(nullable = false)
+    @Json.DateTimeFormat
+    private   Date updateDate;
+    @Column(nullable = false)
+    @Json.DateTimeFormat
+    private  Date createDate;
+public Integer getUserId() {
         return userId;
     }
     public void setUserId(Integer userId) {
@@ -54,12 +67,7 @@ public class User {
     public void setDob(Date dob) {
         this.dob = dob;
     }
-    public String getPassport_number() {
-        return passport_number;
-    }
-    public void setPassport_number(String passport_number) {
-        this.passport_number = passport_number;
-    }
+    
     public String getAddress() {
         return address;
     }
@@ -108,14 +116,39 @@ public class User {
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
-    @Column(nullable = false,columnDefinition = "TINYINT")
-    private   Integer status;
-    @Column(nullable = false,columnDefinition = "TINYINT")
-    private   Integer role;
-    @Column(nullable = false)
-    @Json.DateTimeFormat
-    private   Date updateDate;
-    @Column(nullable = false)
-    @Json.DateTimeFormat
-    private  Date createDate;
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    public User() {
+    }
+
+    public User(Integer userId) {
+        this.userId = userId;
+    }
+    public User(String fullName, String email, String phone,String password,Integer role,Integer status,String address,String passportNumber,String city,String country,Date dob) {
+        this.fullName = fullName;
+        this.email = email;
+        this.phone = phone;
+        this.password=password;
+        this.role=role;
+        this.status=status;
+        this.address=address;
+        this.passportNumber=passportNumber;
+       
+        this.country=country;
+        this.city=city;
+        Date dt = new Date();
+        this.createDate = dt;
+        this.updateDate = dt;
+        this.dob=dob;
+    }
+    public String getPassportNumber() {
+        return passportNumber;
+    }
+    public void setPassportNumber(String passportNumber) {
+        this.passportNumber = passportNumber;
+    }
 }

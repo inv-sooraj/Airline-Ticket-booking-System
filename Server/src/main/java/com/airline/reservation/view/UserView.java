@@ -14,7 +14,7 @@ private final String email;
 @Json.DateFormat
 private final Date dob;
 
-private final String passport_number;
+private final String passportNumber;
 private final String address;
 
 private final String phone;
@@ -33,7 +33,7 @@ public UserView(User user) {
    this.fullName=user.getFullName();
    this.email=user.getEmail();
    this.dob=user.getDob();
-   this.passport_number=user.getPassport_number();
+   this.passportNumber=user.getPassportNumber();
    this.address=user.getAddress();
    this.phone=user.getPhone();
    this.city=user.getCity();
@@ -56,8 +56,8 @@ public String getEmail() {
 public Date getDob() {
     return dob;
 }
-public String getPassport_number() {
-    return passport_number;
+public String getPassportNumber() {
+    return passportNumber;
 }
 public String getAddress() {
     return address;
