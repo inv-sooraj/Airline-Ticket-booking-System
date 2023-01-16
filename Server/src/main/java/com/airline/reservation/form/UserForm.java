@@ -21,7 +21,7 @@ public class UserForm {
     @Password
     private String password;
     private Date dob;
-    @Size(min = 12, max = 18)
+    @Size(min = 8, max = 8)
     private String passportNumber;
     private String address;
     @NotBlank
