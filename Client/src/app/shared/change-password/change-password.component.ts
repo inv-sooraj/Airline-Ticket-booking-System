@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControlOptions, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiService } from '../api.service';
-import { ConfirmPasswordValidator } from '../confirm-password.validator';
+import { ApiService } from 'src/app/api.service';
+import { ConfirmPasswordValidator } from 'src/app/confirm-password.validator';
 
 @Component({
   selector: 'app-change-password',
