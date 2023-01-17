@@ -42,7 +42,11 @@ public class UserServiceImpl implements UserService{
     private UserRepository userRepository;
     @Autowired
     private TokenGenerator tokenGenerator;
-
+    
+    public  Boolean emailCheck(String email){
+        return userRepository.existsByEmail(email);
+        
+    }
     @Override
     public LoginView login(LoginForm form, Errors errors) throws BadRequestException {
         if (errors.hasErrors()) {
@@ -115,9 +119,6 @@ public class UserServiceImpl implements UserService{
         return new BadRequestException("Invalid credentials");
     }
     
-    public  Boolean emailCheck(String email){
-        return userRepository.existsByEmail(email);
-        
-    }
+    
     
 }
