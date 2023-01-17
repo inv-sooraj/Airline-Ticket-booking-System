@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiService } from '../api.service';
+import { ApiService } from 'src/app/api.service';
+
+// import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-airplane-reg',
