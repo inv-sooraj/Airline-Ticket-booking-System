@@ -2,18 +2,45 @@ package com.airline.reservation.form;
 
 import java.util.Date;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import com.airline.reservation.form.validation.Password;
+
 public class UserForm {
+    @NotBlank
+    @Size(min = 4, max = 20)
     private String fullName;
+    @NotBlank
+    @Email
+    @Size( max = 30)
     private String email;
+    @Password
     private String password;
     private Date dob;
-    private String passport_number;
+    @Size(min = 8, max = 8)
+    private String passportNumber;
     private String address;
+    @NotBlank
+    @Size(max = 11)
     private String phone;
+    @Size(max = 18)
     private String city;
+    @Size(max = 18)
     private String country;
+    @NotNull
     private Integer status;
+    @NotNull
     private Integer role;
+    public String getPassportNumber() {
+        return passportNumber;
+    }
+    public void setPassportNumber(String passportNumber) {
+        this.passportNumber = passportNumber;
+    }
     public String getFullName() {
         return fullName;
     }
@@ -38,12 +65,7 @@ public class UserForm {
     public void setDob(Date dob) {
         this.dob = dob;
     }
-    public String getPassport_number() {
-        return passport_number;
-    }
-    public void setPassport_number(String passport_number) {
-        this.passport_number = passport_number;
-    }
+    
     public String getAddress() {
         return address;
     }
