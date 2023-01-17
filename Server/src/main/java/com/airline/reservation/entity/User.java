@@ -16,7 +16,7 @@ public class User {
     private   Integer userId;
     @Column(nullable = false, length =50)
     private   String fullName;
-    @Column(nullable = false, length =50)
+    @Column(nullable = false, length =50,unique=true)
     private   String email;
     @Column(nullable = true, columnDefinition = "DATE")
     private   Date dob;
