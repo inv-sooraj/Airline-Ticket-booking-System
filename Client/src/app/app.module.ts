@@ -14,6 +14,8 @@ import { SignupComponent } from './user/signup/signup.component';
 import { AirplaneRegComponent } from './company/airplane-reg/airplane-reg.component';
 import { FlightRegComponent } from './company/flight-reg/flight-reg.component';
 import { ChangePasswordComponent } from './shared/change-password/change-password.component';
+import { AdminNavComponent } from './admin/admin-nav/admin-nav.component';
+import { CompanyListComponent } from './admin/company-list/company-list.component';
 import { HomeComponent } from './user/home/home.component';
 import { HeaderComponent } from './user/header/header.component';
 import { FooterComponent } from './user/footer/footer.component';
@@ -29,6 +31,8 @@ import { FooterComponent } from './user/footer/footer.component';
     FlightRegComponent,
     PlaneListComponent,
     ChangePasswordComponent,
+     AdminNavComponent,
+    CompanyListComponent,
     HomeComponent,
     HeaderComponent,
     FooterComponent

@@ -7,15 +7,19 @@ public class CompanyView {
     private Integer userId;
     private String fullName;
     private String email;
+    private String phone;
     private String address;
     private String password;
+    private Integer role;
      
     public CompanyView(Company company){
         this.userId = company.getUserId();
         this.fullName = company.getFullName();
         this.email = company.getEmail();
+        this.phone = company.getPhone();
         this.address = company.getAddress();
         this.password = company.getPassword();
+        this.role = company.getRole();
     }
 
     public Integer getUserId() {
@@ -56,6 +60,22 @@ public class CompanyView {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Integer getRole() {
+        return role;
+    }
+
+    public void setRole(Integer role) {
+        this.role = role;
     }
     
 

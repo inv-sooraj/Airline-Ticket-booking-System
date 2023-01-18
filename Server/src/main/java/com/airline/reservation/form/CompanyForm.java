@@ -2,25 +2,26 @@ package com.airline.reservation.form;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
-import org.hibernate.validator.constraints.UniqueElements;
+import com.airline.reservation.form.validation.Password;
 
 public class CompanyForm {
-
-    @Size(max = 30) 
     @NotBlank
+    @Size(min = 4, max = 20)
     private String fullName;
-    @Size(max = 30)
+    @NotBlank
     @Email
+    @Size( max = 30)
     private String email;
-    @Size(max = 255)
     @NotBlank
-    @UniqueElements
+    @Size(max = 11)
+    private String phone;
     private String address;
-    @Size(max = 30)
-    @NotBlank
+    @Password
     private String password;
+    @NotNull
+    private Integer role;
 
     
     public String getFullName() {
@@ -46,6 +47,18 @@ public class CompanyForm {
     }
     public void setPassword(String password) {
         this.password = password;
+    }
+    public String getPhone() {
+        return phone;
+    }
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+    public Integer getRole() {
+        return role;
+    }
+    public void setRole(Integer role) {
+        this.role = role;
     }
     
 
