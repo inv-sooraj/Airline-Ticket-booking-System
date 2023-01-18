@@ -39,7 +39,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
+       
+        http.cors()
+        .and()
                 .requestMatcher(new NegatedRequestMatcher(new AntPathRequestMatcher("/error")))
                 .addFilter(accessTokenProcessingFilter())
                 .authenticationProvider(preAuthenticatedAuthenticationProvider())

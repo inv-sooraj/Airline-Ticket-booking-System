@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import com.airline.reservation.entity.Company;
 import com.airline.reservation.form.CompanyForm;
 import com.airline.reservation.repository.CompanyRepository;
-import com.airline.reservation.security.util.SecurityUtil;
 import com.airline.reservation.service.CompanyService;
 import com.airline.reservation.view.CompanyView;
 @Service
