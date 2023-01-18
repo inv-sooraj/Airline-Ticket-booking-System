@@ -14,6 +14,9 @@ import { SignupComponent } from './user/signup/signup.component';
 import { AirplaneRegComponent } from './company/airplane-reg/airplane-reg.component';
 import { FlightRegComponent } from './company/flight-reg/flight-reg.component';
 import { ChangePasswordComponent } from './shared/change-password/change-password.component';
+import { HomeComponent } from './user/home/home.component';
+import { HeaderComponent } from './user/header/header.component';
+import { FooterComponent } from './user/footer/footer.component';
 @NgModule({
   declarations: [
    AdminHomeComponent,
@@ -25,7 +28,10 @@ import { ChangePasswordComponent } from './shared/change-password/change-passwor
     AirplaneRegComponent,
     FlightRegComponent,
     PlaneListComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    HomeComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
