@@ -8,13 +8,6 @@ import java.util.regex.Pattern;
 import org.springframework.security.crypto.encrypt.Encryptors;
 import org.springframework.security.crypto.encrypt.TextEncryptor;
 import org.springframework.util.Assert;
-
-/**
- * Utility class for generating and verifying secure tokens. Uses AES 256 bit
- * encryption.
- *
- * @author nirmal
- */
 public class TokenGenerator {
 
     /**

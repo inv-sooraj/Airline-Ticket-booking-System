@@ -23,7 +23,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/assets/css/user/bootstrap.min.css",
+              "src/styles.css",
+              "src/assets/css/user/font-awesome.css"
+
             ],
             "scripts": []
           },

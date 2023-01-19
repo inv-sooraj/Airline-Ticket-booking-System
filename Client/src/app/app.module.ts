@@ -17,6 +17,8 @@ import { ChangePasswordComponent } from './shared/change-password/change-passwor
 import { HomeComponent } from './user/home/home.component';
 import { HeaderComponent } from './user/header/header.component';
 import { FooterComponent } from './user/footer/footer.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UserBookingListComponent } from './user/user-booking-list/user-booking-list.component';
 @NgModule({
   declarations: [
    AdminHomeComponent,
@@ -31,7 +33,8 @@ import { FooterComponent } from './user/footer/footer.component';
     ChangePasswordComponent,
     HomeComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    UserBookingListComponent
   ],
   imports: [
     BrowserModule,
@@ -41,9 +44,12 @@ import { FooterComponent } from './user/footer/footer.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  
+}

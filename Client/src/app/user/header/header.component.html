@@ -7,11 +7,11 @@
       <meta name="keywords" content="#">
       <meta name="description" content="#">
       <title> Homepage</title>
-      <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/images/favicon.ico">
-      <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/favicon.ico">
-      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/images/favicon.ico">
-      <link rel="apple-touch-icon-precomposed" href="assets/images/favicon.ico">
-      <link rel="shortcut icon" href="assets/images/favicon.ico">
+      <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/user/favicon.ico">
+      <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/img/user/favicon.ico">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/img/user/favicon.ico">
+      <link rel="apple-touch-icon-precomposed" href="/assets/img/user/favicon.ico">
+      <link rel="shortcut icon" href="/assets/img/user/favicon.ico">
       <link href="/assets/css/user/bootstrap.min.css" rel="stylesheet">
       <link href="/assets/css/user/font-awesome.css" rel="stylesheet">
       <link href="/assets/css/user/font/flaticon.css" rel="stylesheet">
@@ -44,6 +44,7 @@
       <script src="/assets/js/user/jquery.magnific-popup.min.js"></script>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnd9JwZvXty-1gHZihMoFhJtCXmHfeRQg"></script>
       <script src="/assets/js/user/custom.js"></script>
+      
    </head>
    <body>
       <header class="header">
@@ -57,7 +58,7 @@
                            <img src="https://respinor.com/wp-content/uploads/2017/04/logo-dummy-300x100.png" class="img-fluid image-fit" alt="img">
                            </a>
                         </div>
-                        <div class="main-menu">
+                        <!-- <div class="main-menu">
                            <div class="logo">
                               <a href="index.html">
                               <img src="https://respinor.com/wp-content/uploads/2017/04/logo-dummy-300x100.png" class="img-fluid image-fit" alt="img">
@@ -76,12 +77,14 @@
                                  </li>
                                  <li></li>
                                  <li class="menu-item ">
-                                    <div class="dropdown pmd-dropdown pmd-user-info ml-auto">
-                                       <a href="javascript:void(0);" class="btn-user dropdown-toggle media align-items-center" data-toggle="dropdown" data-sidebar="true" aria-expanded="false">
+                                    <div class="dropdown pmd-dropdown pmd-user-info ml-auto"  ngbDropdown #myDrop="ngbDropdown">
+                                       <a id="dropdownManual"
+                                       ngbDropdownAnchor
+                                       (focus)="myDrop.open()" class="btn-user dropdown-toggle media align-items-center" data-toggle="dropdown" data-sidebar="true" aria-expanded="false">
                                        <img class="mr-2" src="https://pro.propeller.in/assets/images/avatar-icon-40x40.png" width="40" height="40" alt="avatar">
                                        </a>
-                                       <ul class="dropdown-menu dropdown-menu-left" role="menu">
-                                          <a class="dropdown-item" href="profile.html">Profile</a>
+                                       <ul ngbDropdownMenu aria-labelledby="dropdownManual" class="dropdown-menu dropdown-menu-left" role="menu">
+                                          <a class="dropdown-item" href="profile.html">profile</a>
                                           <a class="dropdown-item" data-toggle="modal" data-target="#changePass">Change Password</a>
                                           <a class="dropdown-item" href="booking.html">Bookings</a>
                                           <a class="dropdown-item" href="login.html">Logout</a>
@@ -90,8 +93,21 @@
                                  </li>
                               </ul>
                            </nav>
-                        </div>
+                        </div> -->
                         <!-- Modal -->
+                        <div ngbDropdown class="dropdown pmd-dropdown pmd-user-info ml-auto">
+                          <a class="btn-user dropdown-toggle media align-items-center" ngbDropdownToggle>
+                        <img class="mr-2" src="https://pro.propeller.in/assets/images/avatar-icon-40x40.png" width="40" height="40" alt="avatar">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-left" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <a class="dropdown-item" ngbDropdownItem>Profile</a>
+                        <a class="dropdown-item" ngbDropdownItem>Change Password</a>
+                        <a class="dropdown-item" ngbDropdownItem>Bookings</a>
+                        <a class="dropdown-item" ngbDropdownItem>Logout</a>
+                        </div>
+                        </div>
+                           
+                           
                         <div class="modal fade" id="changePass" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                            <div class="modal-dialog" role="document">
                               <div class="modal-content">

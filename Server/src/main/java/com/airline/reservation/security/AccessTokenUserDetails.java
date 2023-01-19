@@ -10,11 +10,7 @@ import java.util.List;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
-
-/**
- *
- * @author nirmal
- */
+ 
 public class AccessTokenUserDetails implements UserDetails {
 
     private static final List<GrantedAuthority> ROLES = AuthorityUtils.createAuthorityList("ROLE_USER");

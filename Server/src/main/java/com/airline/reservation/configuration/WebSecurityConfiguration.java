@@ -26,10 +26,7 @@ import org.springframework.security.web.authentication.preauth.PreAuthenticatedA
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.NegatedRequestMatcher;
 
-/**
- *
- * @author nirmal
- */
+ 
 @Configuration
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 

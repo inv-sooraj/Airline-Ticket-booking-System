@@ -5,10 +5,7 @@
  */
 package com.airline.reservation.security.util;
 
-/**
- *
- * @author nirmal
- */
+ 
 public class TokenExpiredException extends IllegalArgumentException {
 
     public TokenExpiredException(String s) {
