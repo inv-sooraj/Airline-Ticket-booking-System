@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./company-list.component.css']
 })
 export class CompanyListComponent implements OnInit {
-
+  searchText:any;
+  parentSelector:any;
+  flight:any;
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  onChangeFlight($event:any){}
 }
