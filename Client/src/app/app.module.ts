@@ -19,6 +19,7 @@ import { CompanyListComponent } from './admin/company-list/company-list.componen
 import { HomeComponent } from './user/home/home.component';
 import { HeaderComponent } from './user/header/header.component';
 import { FooterComponent } from './user/footer/footer.component';
+import { StylesheetComponent } from './admin/stylesheet/stylesheet.component';
 @NgModule({
   declarations: [
    AdminHomeComponent,
@@ -35,7 +36,8 @@ import { FooterComponent } from './user/footer/footer.component';
     CompanyListComponent,
     HomeComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    StylesheetComponent
   ],
   imports: [
     BrowserModule,

@@ -2,25 +2,25 @@ package com.airline.reservation.form;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+
 import javax.validation.constraints.Size;
+
 import com.airline.reservation.form.validation.Password;
+
 
 public class CompanyForm {
     @NotBlank
-    @Size(min = 4, max = 20)
+    @Size(min = 1, max = 50)
     private String fullName;
     @NotBlank
     @Email
     @Size( max = 30)
     private String email;
-    @NotBlank
     @Size(max = 11)
     private String phone;
     private String address;
-    @Password
+    // @Password
     private String password;
-    @NotNull
     private Integer role;
 
     

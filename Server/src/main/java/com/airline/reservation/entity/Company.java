@@ -18,8 +18,8 @@ import javax.persistence.TemporalType;
 public class Company {
 
     public static enum Status{
-        DELETE((byte)1),
-        ACTIVE((byte)0);
+        DELETE((byte)0),
+        ACTIVE((byte)1);
 
         public final byte value; 
             
@@ -61,7 +61,13 @@ public class Company {
     
     }
 
+public Company(){
 
+}
+
+public Company(Integer userId){
+    this.userId = userId;
+}
 
     public Company(CompanyForm form) {
         this.fullName =form.getFullName();
@@ -70,7 +76,10 @@ public class Company {
         this.address =form.getAddress();
         this.password =form.getPassword();
         this.role =form.getRole(); 
-        
+        this.status = Status.ACTIVE.value;
+        Date dt = new Date();
+        this.createDate = dt;
+        this.updateDate = dt;
     }
 
 
