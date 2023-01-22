@@ -8,6 +8,10 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -36,7 +40,7 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public List<CompanyView> list() {
         List<CompanyView> CompanyView = new ArrayList<>();
-         List <Company> company = companyRepository.findAll();
+         List <Company> company = companyRepository.findByrole();
          company.forEach(Company ->{
             CompanyView.add(new CompanyView(Company));
          });
@@ -52,5 +56,20 @@ public class CompanyServiceImpl implements CompanyService {
                         .orElseThrow(NotFoundException::new)
         );
     }
+    @Override
+    public Page<Company>getCompanySearch(String keyword, Integer pageNo,Integer pageSize,String sortBy){
+    Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
+    System.out.println(keyword);
 
+    Page<Company> pagedResult = companyRepository.findByName(keyword, paging);
+    // System.out.println(pagedResult.getTotalElements());
+    return pagedResult;
+    // Long p= pagedResult.getTotalElements();
+    // System.out.println(p);
+    // if (pagedResult.hasContent()){
+    // return pagedResult.getContent();
+    // }else{
+    // return new ArrayList<Book>();
+    // }
+}
 }

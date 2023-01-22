@@ -9,10 +9,10 @@ import com.airline.reservation.form.validation.Password;
 
 
 public class CompanyForm {
-    @NotBlank
+    // @NotBlank
     @Size(min = 1, max = 50)
     private String fullName;
-    @NotBlank
+    // @NotBlank
     @Email
     @Size( max = 30)
     private String email;

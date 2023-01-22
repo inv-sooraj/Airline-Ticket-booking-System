@@ -22,8 +22,10 @@ public class AirlineApplication {
         };
     }
 
-
-	public static void main(String[] args) {
-		SpringApplication.run(AirlineApplication.class, args);
-	}
+    public static void main(String[] args){
+        SpringApplication.run(AirlineApplication.class,args);
+    }
+	// public static void main(String[] args) {
+	// 	SpringApplication.run(AirlineApplication.class, args);
+	// }
 }

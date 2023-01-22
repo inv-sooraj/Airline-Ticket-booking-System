@@ -21,11 +21,7 @@
                   aria-describedby="fullName" placeholder="">
                 <div>
                   <span class="sp" style="color: brown;"
-                    *ngIf="(companyreg.controls['fullName'].touched) && (companyreg.hasError('required','fullName'))"><i>*required*</i></span>
-                  <span class="sp" style="color: brown;"
-                    *ngIf="(companyreg.controls['fullName'].touched) && (companyreg.hasError('pattern','fullName'))"><i>*Invalid
-                      Format*</i></span>
-
+                    *ngIf="(companyreg.controls['fullName'].touched || submitted) && (companyreg.hasError('required','fullName'))"><i>Company name is mandatory*</i></span>
                 </div>
               </div>
               <div class="mb-3">
@@ -34,10 +30,7 @@
                   placeholder="">
                 <div>
                   <span class="sp" style="color: brown;"
-                    *ngIf="(companyreg.controls['phone'].touched) && (companyreg.hasError('required','phone'))"><i>*required*</i></span>
-                  <span class="sp" style="color: brown;"
-                    *ngIf="(companyreg.controls['phone'].touched) && (companyreg.hasError('pattern','phone'))"><i>*Invalid
-                      Format*</i></span>
+                    *ngIf="(companyreg.controls['phone'].touched || submitted) && (companyreg.hasError('required','phone'))"><i>Phone number is mandatory*</i></span>
 
                 </div>
               </div>
@@ -47,10 +40,7 @@
                   placeholder=""></textarea>
                 <div>
                   <span class="sp" style="color: brown;"
-                    *ngIf="(companyreg.controls['address'].touched) && (companyreg.hasError('required','address'))"><i>*required*</i></span>
-                  <span class="sp" style="color: brown;"
-                    *ngIf="(companyreg.controls['address'].touched) && (companyreg.hasError('pattern','address'))"><i>*Invalid
-                      Format*</i></span>
+                    *ngIf="(companyreg.controls['address'].touched || submitted) && (companyreg.hasError('required','address'))"><i>Address field is mondatory*</i></span>
 
                 </div>
               </div>
@@ -60,16 +50,15 @@
                   placeholder="">
                 <div>
                   <span class="sp" style="color: brown;"
-                    *ngIf="(companyreg.controls['email'].touched) && (companyreg.hasError('required','email'))"><i>*required*</i></span>
+                    *ngIf="(companyreg.controls['email'].touched || submitted) && (companyreg.hasError('required','email'))"><i>Email field is mandatory*</i></span>
                   <span class="sp" style="color: brown;"
-                    *ngIf="(companyreg.controls['email'].touched) && (companyreg.hasError('pattern','email'))"><i>*Invalid
+                    *ngIf="(companyreg.controls['email'].touched || submitted) && (companyreg.hasError('pattern','email'))"><i>*Invalid
                       Format*</i></span>
-
                 </div>
               </div>
               <div class="mb-3">
                 <label class="form-label" for="password">Password</label>
-                <input type="password" class="form-control" id="password" formControlName="password" placeholder="">
+                <input type="password" [disabled]="true" class="form-control" id="password" formControlName="password" placeholder="">
               </div>
               <button class="btn btn-secondary" style="position: relative;margin-left: 210px;"
                 (click)="cancel()">Cancel</button>
