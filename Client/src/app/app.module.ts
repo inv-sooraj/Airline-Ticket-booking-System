@@ -19,6 +19,12 @@ import { CompanyListComponent } from './admin/company-list/company-list.componen
 import { HomeComponent } from './user/home/home.component';
 import { HeaderComponent } from './user/header/header.component';
 import { FooterComponent } from './user/footer/footer.component';
+import { StylesheetComponent } from './admin/stylesheet/stylesheet.component';
+import { DatePipe } from '@angular/common';
+import { ToastrModule } from 'ngx-toastr';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
    AdminHomeComponent,
@@ -35,7 +41,8 @@ import { FooterComponent } from './user/footer/footer.component';
     CompanyListComponent,
     HomeComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    StylesheetComponent
   ],
   imports: [
     BrowserModule,
@@ -45,9 +52,12 @@ import { FooterComponent } from './user/footer/footer.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    FontAwesomeModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
