@@ -6,8 +6,9 @@ import { AirplaneRegComponent } from './company/airplane-reg/airplane-reg.compon
 import { FlightRegComponent } from './company/flight-reg/flight-reg.component';
 import { ChangePasswordComponent } from './shared/change-password/change-password.component';
 import { LoginComponent } from './shared/login/login.component';
-import { PlaneListComponent } from './shared/plane-list/plane-list.component';
+import { PlaneListComponent } from './company/plane-list/plane-list.component';
 import { SignupComponent } from './user/signup/signup.component';
+import { PlaneEditComponent } from './company/plane-edit/plane-edit.component';
 
 const routes: Routes = [
  {path:'',component:AdminHomeComponent},
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path:'plane-reg',component:AirplaneRegComponent},
   {path:'flight-reg',component:FlightRegComponent},
   {path:'plane-list',component:PlaneListComponent},
-  {path:'change-pass',component:ChangePasswordComponent}
+  {path:'change-pass',component:ChangePasswordComponent},
+  {path:'plane-edit/:airplaneId',component:PlaneEditComponent},
 
 ];
 

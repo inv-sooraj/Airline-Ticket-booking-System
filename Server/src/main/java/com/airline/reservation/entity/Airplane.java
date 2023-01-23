@@ -43,11 +43,11 @@ public class Airplane {
     private String modelNo;
     @Column(nullable = false)
     private Integer totalSeats;
-      @Json.DateTimeFormat
+    @Json.DateTimeFormat
     private Date createDate;
-      @Json.DateTimeFormat
+    @Json.DateTimeFormat
     private Date updateDate;
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private User user;
     private byte status;
 
@@ -68,6 +68,19 @@ public class Airplane {
          this.updateDate = dt;
          this.status=Status;
     }
+     
+     public Airplane update(AirplaneForm form) {
+        this.airplaneName = form.getAirplaneName();
+        this.modelNo = form.getModelNo();
+        this.totalSeats = form.getTotalSeats();
+        Date dt = new Date();
+        this.updateDate = dt;
+
+        return this;
+    }
+
+     
+     
     public Integer getAirplaneId() {
         return airplaneId;
     }

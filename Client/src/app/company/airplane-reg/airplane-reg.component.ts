@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
@@ -14,11 +15,11 @@ export class AirplaneRegComponent implements OnInit {
 
   planeRegForm!:FormGroup;
   status:any=false;
-  constructor(private formbuilder:FormBuilder,private router:Router,private apiservice:ApiService) { 
+  constructor(private formbuilder:FormBuilder,private router:Router,private apiservice:ApiService,@Inject(DOCUMENT) document: Document) { 
     this.planeRegForm=this.formbuilder.group({
-      name:['',[Validators.required,Validators.pattern("^[a-zA-Z0-9]*$")]],
-      modelno:['',[Validators.required,Validators.pattern("^[a-zA-Z0-9]*$")]],
-      seats:['',[Validators.required,Validators.pattern("^[0-9]*$")]],
+      airplaneName:['',[Validators.required,Validators.pattern("^[a-zA-Z0-9]*$"),Validators.minLength(5),Validators.maxLength(30)]],
+      modelNo:['',[Validators.required,Validators.pattern("^[a-zA-Z0-9]*$"),Validators.minLength(5),Validators.maxLength(30)]],
+      totalSeats:['',[Validators.required,Validators.pattern("^[0-9]*$"),Validators.maxLength(9),Validators.maxLength(9)]],
         });
   }
 
@@ -29,8 +30,8 @@ export class AirplaneRegComponent implements OnInit {
     if(this.planeRegForm.valid){
       this.apiservice.createPlane(this.planeRegForm.value).subscribe({
         next: (result: any) => {
-        alert('Created successfully')
-      //  this.router.navigate(['/login'])   
+          this.planeRegForm.reset();  
+          
     },
     error: (err: any) => {
       alert(err.name);
