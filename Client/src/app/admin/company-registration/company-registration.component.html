@@ -18,10 +18,13 @@
               <div class="mb-3">
                 <label class="form-label" for="fullName">Company Name</label>
                 <input type="text" class="form-control" id="fullName" formControlName="fullName"
-                  aria-describedby="fullName" placeholder="">
+                  aria-describedby="fullName" placeholder="" required="fullName">
                 <div>
                   <span class="sp" style="color: brown;"
-                    *ngIf="(companyreg.controls['fullName'].touched || submitted) && (companyreg.hasError('required','fullName'))"><i>Company name is mandatory*</i></span>
+                    *ngIf="(companyreg.controls['fullName'].touched) && (companyreg.hasError('required','fullName'))"><i>Company name is mandatory*</i></span>
+                    <div *ngIf="companyreg.errors?.['required']">
+                      Name is required.
+                    </div>
                 </div>
               </div>
               <div class="mb-3">
@@ -30,7 +33,7 @@
                   placeholder="">
                 <div>
                   <span class="sp" style="color: brown;"
-                    *ngIf="(companyreg.controls['phone'].touched || submitted) && (companyreg.hasError('required','phone'))"><i>Phone number is mandatory*</i></span>
+                    *ngIf="(companyreg.controls['phone'].touched) && (companyreg.hasError('required','phone'))"><i>Phone number is mandatory*</i></span>
 
                 </div>
               </div>
@@ -40,7 +43,7 @@
                   placeholder=""></textarea>
                 <div>
                   <span class="sp" style="color: brown;"
-                    *ngIf="(companyreg.controls['address'].touched || submitted) && (companyreg.hasError('required','address'))"><i>Address field is mondatory*</i></span>
+                    *ngIf="(companyreg.controls['address'].touched) && (companyreg.hasError('required','address'))"><i>Address field is mondatory*</i></span>
 
                 </div>
               </div>
@@ -50,15 +53,15 @@
                   placeholder="">
                 <div>
                   <span class="sp" style="color: brown;"
-                    *ngIf="(companyreg.controls['email'].touched || submitted) && (companyreg.hasError('required','email'))"><i>Email field is mandatory*</i></span>
+                    *ngIf="(companyreg.controls['email'].touched) && (companyreg.hasError('required','email'))"><i>Email field is mandatory*</i></span>
                   <span class="sp" style="color: brown;"
-                    *ngIf="(companyreg.controls['email'].touched || submitted) && (companyreg.hasError('pattern','email'))"><i>*Invalid
+                    *ngIf="(companyreg.controls['email'].touched) && (companyreg.hasError('pattern','email'))"><i>*Invalid
                       Format*</i></span>
                 </div>
               </div>
               <div class="mb-3">
-                <label class="form-label" for="password">Password</label>
-                <input type="password" [disabled]="true" class="form-control" id="password" formControlName="password" placeholder="">
+                <label hidden class="form-label" for="password">Password</label>
+                <input hidden type="password" [disabled]="true" class="form-control" id="password" formControlName="password" placeholder="">
               </div>
               <button class="btn btn-secondary" style="position: relative;margin-left: 210px;"
                 (click)="cancel()">Cancel</button>

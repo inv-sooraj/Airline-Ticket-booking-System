@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { range } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 import { ServiceService } from 'src/app/service.service';
-
 @Component({
   selector: 'app-company-registration',
   templateUrl: './company-registration.component.html',
@@ -14,8 +13,7 @@ export class CompanyRegistrationComponent implements OnInit {
   status: any = false;
   valid: Boolean = false;
   password = '';
-  submitted:any;
-  constructor(private service: ServiceService, public router: Router) { }
+  constructor(private service: ServiceService, public router: Router,private toaster:ToastrService) { }
 
   ngOnInit(): void {
     this.Initform();
@@ -36,7 +34,6 @@ export class CompanyRegistrationComponent implements OnInit {
   }
 
   CompanyReg() {
-    this.submitted=true;
     if (this.companyreg.valid) {
       this.valid = true;
       let param  = {
@@ -53,11 +50,13 @@ export class CompanyRegistrationComponent implements OnInit {
      
       this.service.addcompany(param).subscribe({
         next: (result: any) => {
-          alert('Created successfully')
+          this.toaster.success('Created successfully','');
+          //alert('success');
+          this.router.navigate(['/companylist']);
 
         },
         error: (err: any) => {
-          alert(err.error.error);
+          this.toaster.error(err.error.error);
           console.log(err);
           this.valid = false;
         }

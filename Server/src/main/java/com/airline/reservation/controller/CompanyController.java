@@ -67,13 +67,13 @@ public class CompanyController {
         java.text.DateFormat datefFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
         String currentDateTime = datefFormat.format(new Date());
         String headerKey = "Content-Disposition";
-        String headerValue = "attachment; filename=users_" + currentDateTime + ".csv";
+        String headerValue = "attachment; filename=DataExport_" + currentDateTime + ".csv";
         httpServletResponse.setHeader(headerKey, headerValue);
         List<CompanyView>companies =CompanyService.list();
 
         ICsvBeanWriter csvWriter = new CsvBeanWriter(httpServletResponse.getWriter(),
                 CsvPreference.STANDARD_PREFERENCE);
-        String[] csvHeader = { "userId", "fullName", "phone", "email", "address" };
+        String[] csvHeader = { "Id", "Company Name", "Company Contact", "email", "address" };
         String[] nameMapping = { "userId", "fullName", "phone", "email", "address" };
         csvWriter.writeHeader(csvHeader);
         for (CompanyView rent : companies) {
