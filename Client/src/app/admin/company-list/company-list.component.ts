@@ -3,6 +3,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { pipe } from 'rxjs';
 import { ServiceService } from 'src/app/service.service';
 import { saveAs } from 'file-saver'
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-company-list',
   templateUrl: './company-list.component.html',
@@ -13,7 +14,7 @@ export class CompanyListComponent implements OnInit {
   parentSelector:any;
   company:any;
   filename: any;
-  constructor(private service:ServiceService,private datepipe:DatePipe) { }
+  constructor(private service:ServiceService,private datepipe:DatePipe,public router:Router) { }
 
   ngOnInit(): void {
     this.getCompany();
@@ -38,4 +39,8 @@ export class CompanyListComponent implements OnInit {
 
   onChangeCompany($event:any){}
 
+  // Company edit ,move to edit page
+  editcar(n:any){
+    this.router.navigate(['companyedit/',n.userId])
+    }
 }

@@ -18,5 +18,9 @@ public interface CompanyService {
     void delete(Integer bookId) throws NotFoundException;
     
     Page<Company>getCompanySearch(String keyword, Integer pageNo,Integer pageSize,String sortBy);
+
+    // detail view
+    CompanyView get(Integer userId) throws NotFoundException;
     
+    CompanyView update(Integer userId, CompanyForm form) throws NotFoundException;
 }

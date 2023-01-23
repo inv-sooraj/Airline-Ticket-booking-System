@@ -24,6 +24,7 @@ import { DatePipe } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CompanyEditComponent } from './admin/company-edit/company-edit.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    StylesheetComponent
+    StylesheetComponent,
+    CompanyEditComponent
   ],
   imports: [
     BrowserModule,

@@ -69,4 +69,22 @@ public class CompanyServiceImpl implements CompanyService {
     Page<Company> pagedResult = companyRepository.findByName(keyword, paging);
     return pagedResult;
     }
+
+    
+    // Detail View
+    @Override
+    public CompanyView get(Integer UserId) throws NotFoundException{
+        return companyRepository.findByUserId(UserId).map((Company)->{
+            return new CompanyView(Company);
+        }).orElseThrow(NotFoundException::new);
+    }
+
+    @Override
+    @Transactional
+    public CompanyView update(Integer userId, CompanyForm form) throws NotFoundException {
+        return companyRepository.findByUserId(userId)
+                .map((company) -> {
+                    return new CompanyView(companyRepository.save(company.update(form)));
+                }).orElseThrow(NotFoundException::new);
+    }
 }

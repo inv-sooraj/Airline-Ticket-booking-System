@@ -81,6 +81,19 @@ public class Company {
         this.updateDate = dt;
     }
 
+    public Company update(CompanyForm form) {
+        this.fullName = form.getFullName();
+        this.email = form.getEmail();
+        this.phone = form.getPhone();
+        this.address = form.getAddress();
+        this.password = form.getPassword();
+        this.role = form.getRole();
+        Date dt = new Date();
+        this.updateDate = dt;
+
+        return this;
+    }
+
     public Integer getUserId() {
         return userId;
     }

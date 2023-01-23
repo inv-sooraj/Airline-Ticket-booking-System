@@ -1,32 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+import { ToastrService} from 'ngx-toastr';
 import { ServiceService } from 'src/app/service.service';
+
 @Component({
-  selector: 'app-company-registration',
-  templateUrl: './company-registration.component.html',
-  styleUrls: ['./company-registration.component.css']
+  selector: 'app-company-edit',
+  templateUrl: './company-edit.component.html',
+  styleUrls: ['./company-edit.component.css']
 })
-export class CompanyRegistrationComponent implements OnInit {
-  companyreg!: FormGroup;
-  status: any = false;
+export class CompanyEditComponent implements OnInit {
+  companyupdate!:FormGroup;
   valid: Boolean = false;
   password = '';
   flag: any;
-  constructor(private service: ServiceService, public router: Router, private toaster: ToastrService) { }
+  constructor(private service:ServiceService,public toaster:ToastrService,public router:Router){ }
 
   ngOnInit(): void {
-    this.Initform();
-    this.CompanyReg();
-    this.generatePassword();
-    this.flag = false;
+
+  this.InitUpdateform() ;
   }
 
-  public get Companys() { return this.companyreg?.controls; }
-
-  Initform() {
-    this.companyreg = new FormGroup({
+  InitUpdateform() {
+    this.companyupdate = new FormGroup({
       fullName: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]),
       phone: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
       address: new FormControl('', [Validators.required]),
@@ -35,28 +31,26 @@ export class CompanyRegistrationComponent implements OnInit {
     });
   }
 
-  CompanyReg() {
-    if (this.companyreg.invalid) {
+  Companyupdate() {
+    if (this.companyupdate.invalid) {
 
       this.flag = true;
     }
     else {
-      (this.companyreg.valid);
+      (this.companyupdate.valid);
       {
         this.valid = true;
         let param = {
-          "fullName": this.companyreg.controls['fullName'].value,
-          "phone": this.companyreg.controls['phone'].value,
-          "address": this.companyreg.controls['address'].value,
-          "email": this.companyreg.controls['email'].value,
-          "password": this.companyreg.controls['password'].value,
+          "fullName": this.companyupdate.controls['fullName'].value,
+          "phone": this.companyupdate.controls['phone'].value,
+          "address": this.companyupdate.controls['address'].value,
+          "email": this.companyupdate.controls['email'].value,
+          "password": this.companyupdate.controls['password'].value,
           "role": 3,
           // "status":1
 
         }
-        this.generatePassword();
-
-        this.service.addcompany(param).subscribe({
+        this.service.updatecompany(param).subscribe({
           next: (result: any) => {
             this.toaster.success('Created successfully', '');
             //alert('success');
@@ -72,15 +66,6 @@ export class CompanyRegistrationComponent implements OnInit {
       }
     }
   }
-  public generatePassword() {
-    this.password = Math.random().toString(22).slice(6);
-    this.companyreg.controls['password'].setValue(this.password);
-  }
-  cancel() {
-    this.companyreg.reset();
-  }
 
+  cancel(){}
 }
-
-
-
