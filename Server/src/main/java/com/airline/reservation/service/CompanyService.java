@@ -16,6 +16,7 @@ public interface CompanyService {
     List<CompanyView>list();
 
     void delete(Integer bookId) throws NotFoundException;
+    
     Page<Company>getCompanySearch(String keyword, Integer pageNo,Integer pageSize,String sortBy);
     
 }

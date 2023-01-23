@@ -30,13 +30,15 @@ public class CompanyServiceImpl implements CompanyService {
     @Autowired
     private CompanyRepository companyRepository;
     @Override
+
+    // Add Company
     public CompanyView add(CompanyForm form) {
         String pas=passwordEncoder.encode( form.getPassword());
         form.setPassword(pas);
         return new CompanyView(companyRepository.save(new Company(form)));
     }
    
-
+    // List Company
     @Override
     public List<CompanyView> list() {
         List<CompanyView> CompanyView = new ArrayList<>();
@@ -47,7 +49,8 @@ public class CompanyServiceImpl implements CompanyService {
          return CompanyView;
     }
     
-    
+
+    // Delete Company
     @Override
     @Transactional
     public void delete(Integer userId) throws NotFoundException {
@@ -56,20 +59,14 @@ public class CompanyServiceImpl implements CompanyService {
                         .orElseThrow(NotFoundException::new)
         );
     }
+
+    // Search and Pagination
     @Override
     public Page<Company>getCompanySearch(String keyword, Integer pageNo,Integer pageSize,String sortBy){
     Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
     System.out.println(keyword);
 
     Page<Company> pagedResult = companyRepository.findByName(keyword, paging);
-    // System.out.println(pagedResult.getTotalElements());
     return pagedResult;
-    // Long p= pagedResult.getTotalElements();
-    // System.out.println(p);
-    // if (pagedResult.hasContent()){
-    // return pagedResult.getContent();
-    // }else{
-    // return new ArrayList<Book>();
-    // }
-}
+    }
 }

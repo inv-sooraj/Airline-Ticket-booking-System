@@ -11,16 +11,21 @@ import java.util.Optional;
 
 public interface CompanyRepository extends Repository<Company,Integer> {
     
+     // Company Add
      Company save(Company company);
 
+     // List All In the Table
      List<Company>findAll();
      
+     // List All Companies
      @Query(value="select * from user where role=3",nativeQuery = true)
      List<Company>findByrole();
+
+     // Search and pagination
      @Query(value="SELECT * FROM `user` WHERE full_name LIKE %?1% AND role=3",nativeQuery = true)
      Page<Company>findByName(String name,Pageable pageable);
 
+     // Deletion One by one
      void delete(Company orElseThrow);
-
      Optional<Company> findByUserId(Integer userId);
 }

@@ -13,12 +13,14 @@ export class CompanyRegistrationComponent implements OnInit {
   status: any = false;
   valid: Boolean = false;
   password = '';
+  flag:any;
   constructor(private service: ServiceService, public router: Router,private toaster:ToastrService) { }
 
   ngOnInit(): void {
     this.Initform();
     this.CompanyReg();
     this.generatePassword();
+    this.flag =false;
   }
 
   public get Companys() { return this.companyreg?.controls; }
@@ -34,6 +36,11 @@ export class CompanyRegistrationComponent implements OnInit {
   }
 
   CompanyReg() {
+if(this.companyreg.invalid){
+ 
+  this.flag =true;
+}
+
     if (this.companyreg.valid) {
       this.valid = true;
       let param  = {
