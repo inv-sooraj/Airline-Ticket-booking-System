@@ -27,5 +27,8 @@ public interface CompanyRepository extends Repository<Company,Integer> {
 
      // Deletion One by one
      void delete(Company orElseThrow);
+     
+
+     // detail View
      Optional<Company> findByUserId(Integer userId);
 }

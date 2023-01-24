@@ -5,12 +5,13 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 
 public class CompanyForm {
-    @Size(min = 1, max = 50)
+    
+    @Size(min = 5, max = 50)
     private String fullName;
     @Email
     @Size(max = 30)
     private String email;
-    @Size(max = 11)
+    @Size(min = 10,max = 11)
     private String phone;
     private String address;
     private String password;

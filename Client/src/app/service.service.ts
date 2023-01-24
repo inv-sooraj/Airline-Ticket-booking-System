@@ -27,4 +27,17 @@ export class ServiceService {
 
     return this.http.get(environment.baseUrl + '/company/export',{headers:head_obj,responseType: 'blob' });
   }
+
+  getcompanyById(userId:any):Observable<any>{
+    let tocken=localStorage.getItem('accesstoken')
+    let  head_obj=new HttpHeaders({"Authorization":"Airline " + tocken})
+    return this.http.get(environment.baseUrl + '/company/'+ userId,{headers:head_obj});
+  }
+
+  updatecompany(n:any,userId:any):Observable<any>{
+    let tocken=localStorage.getItem('accesstoken')
+    let  head_obj=new HttpHeaders({"Authorization":"Airline " + tocken})
+    return this.http.put(environment.baseUrl + '/company/'+ userId,n,{headers:head_obj});
+  }
+  
 }
