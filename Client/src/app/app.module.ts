@@ -19,6 +19,12 @@ import { HeaderComponent } from './user/header/header.component';
 import { FooterComponent } from './user/footer/footer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserBookingListComponent } from './user/user-booking-list/user-booking-list.component';
+import { FlightDetailComponent } from './user/flight-detail/flight-detail.component';
+import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
+import { AdminFooterComponent } from './admin/admin-footer/admin-footer.component';
+import { ReservationListComponent } from './admin/reservation-list/reservation-list.component';
+import { AdminNavComponent } from './admin/admin-nav/admin-nav.component';
+import { UserListComponent } from './admin/user-list/user-list.component';
 @NgModule({
   declarations: [
    AdminHomeComponent,
@@ -34,7 +40,13 @@ import { UserBookingListComponent } from './user/user-booking-list/user-booking-
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    UserBookingListComponent
+    UserBookingListComponent,
+    FlightDetailComponent,
+    AdminHeaderComponent,
+    AdminFooterComponent,
+    ReservationListComponent,
+    AdminNavComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,

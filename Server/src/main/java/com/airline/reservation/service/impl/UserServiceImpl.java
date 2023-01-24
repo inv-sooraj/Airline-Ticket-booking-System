@@ -2,6 +2,8 @@ package com.airline.reservation.service.impl;
 
 import com.airline.reservation.entity.User;
 import com.airline.reservation.exception.BadRequestException;
+import com.airline.reservation.exception.ExceptionHandler;
+import com.airline.reservation.exception.HandledException;
 import com.airline.reservation.exception.NotFoundException;
 import com.airline.reservation.form.LoginForm;
 import com.airline.reservation.form.UserForm;
@@ -11,6 +13,7 @@ import com.airline.reservation.security.util.InvalidTokenException;
 import com.airline.reservation.security.util.SecurityUtil;
 import com.airline.reservation.security.util.TokenExpiredException;
 import com.airline.reservation.security.util.TokenGenerator;
+import com.airline.reservation.security.util.UserAlreadyExistAuthenticationException;
 import com.airline.reservation.security.util.TokenGenerator.Status;
 import com.airline.reservation.security.util.TokenGenerator.Token;
 import com.airline.reservation.service.UserService;
@@ -18,9 +21,11 @@ import com.airline.reservation.view.LoginView;
 import com.airline.reservation.view.UserView;
 
 import ch.qos.logback.core.net.SyslogOutputStream;
+import net.bytebuddy.implementation.bytecode.Throw;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.Errors;
@@ -29,6 +34,9 @@ import org.springframework.web.server.ResponseStatusException;
 import static com.airline.reservation.security.AccessTokenUserDetailsService.PURPOSE_ACCESS_TOKEN;
 
 import java.util.Optional;
+
+import javax.servlet.annotation.HandlesTypes;
+import javax.validation.Valid;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -43,10 +51,13 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private TokenGenerator tokenGenerator;
     
+    //email existing check
+
     public  Boolean emailCheck(String email){
+    
         return userRepository.existsByEmail(email);
-        
-    }
+    } 
+     
     @Override
     public LoginView login(LoginForm form, Errors errors) throws BadRequestException {
         if (errors.hasErrors()) {
@@ -90,35 +101,51 @@ public class UserServiceImpl implements UserService{
                 new LoginView.TokenView(accessToken.value, accessToken.expiry),
                 new LoginView.TokenView(refreshToken, status.expiry)
         );
-    }
-    @Override
-    public UserView add(UserForm form) {
-        
-        Optional<User> usernameEntry = userRepository.findByEmail(form.getEmail());
-        if(usernameEntry.isPresent()){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Username already exists!");
         }
+        
+        @Override
+        public UserView add(@Valid UserForm form)  {
+        Optional<User> usernameEntry = userRepository.findByEmail(form.getEmail());
+        try {
+            if(form.getFullName() == null);
+        }catch (Exception e) {
+            throw new HandledException("Empty Full name"); 
+        }
+        if(usernameEntry.isPresent()){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Email Already Exists");
+        }
+
+    try {
         return new UserView(userRepository.save(new User(
-            
-                form.getFullName(),
-                form.getEmail(),
-                form.getPhone(),
-                passwordEncoder.encode(form.getPassword()),
-                form.getRole(),
-                form.getStatus(),
-                form.getAddress(),
-                form.getPassportNumber(),
-                form.getCity(),
-                form.getCountry(),
-                form.getDob()
-                )));
-                
+          
+        form.getFullName(),
+        form.getEmail(),
+        form.getPhone(),
+        passwordEncoder.encode(form.getPassword()),
+        form.getRole(),
+        form.getStatus(),
+        form.getAddress(),
+        form.getPassportNumber(),
+        form.getCity(),
+        form.getCountry(),
+        form.getDob()
+    
+    )));
+          
+    } catch (Exception e) {
+        // throw new ExceptionHandler("1001"); 
+        return null;
+    }
     }
   
     private static BadRequestException badRequestException() {
         return new BadRequestException("Invalid credentials");
     }
-    
-    
-    
+
+    @Override
+    public boolean changePwd() {
+       System.out.println("current userid");
+       System.out.println(SecurityUtil.getCurrentUserId());
+        return false;
+    }  
 }
