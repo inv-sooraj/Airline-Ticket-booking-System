@@ -2,12 +2,21 @@ package com.airline.reservation.form;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class FlightForm {
+    @NotNull
     private Integer airplaneId;
+    @NotNull @Size(min = 1,max = 30)
     private String flightNumber;
+    @NotNull
     private String departure;
+    @NotNull
     private Date depDateTime;
+    @NotNull
     private String destination;
+    @NotNull
     private Date destDateTime;
 
     public Integer getAirplaneId() {

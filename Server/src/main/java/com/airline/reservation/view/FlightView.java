@@ -17,7 +17,7 @@ public class FlightView {
 
     public FlightView(Flight flight){
         this.flightId = flight.getFlightId();
-        this.airplaneId = flight.getAirplaneId();
+        this.airplaneId = flight.getAirplane().getAirplaneId();
         this.flightNumber = flight.getFlightNumber();
         this.departure = flight.getDeparture();
         this.depDateTime = flight.getDepDateTime();

@@ -3,9 +3,12 @@ package com.airline.reservation.entity;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -28,7 +31,6 @@ public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer flightId;
-    private Integer airplaneId;
     private String  flightNumber;
     private String  departure;
     private Date depDateTime;
@@ -39,6 +41,9 @@ public class Flight {
     private Date createDate;
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateDate;
+    @JoinColumn(name="airplane_id",referencedColumnName = "airplane_id")
+    @ManyToOne(optional = false,fetch = FetchType.LAZY)
+    private Airplane airplane;
     
 
     public Flight() {
@@ -50,10 +55,9 @@ public class Flight {
     }
 
     
-    public Flight(Integer flightId, Integer airplaneId, String flightNumber, String departure, Date depDateTime, String destination,
+    public Flight(Airplane airplane,String flightNumber, String departure, Date depDateTime, String destination,
     Date destDateTime) {
-        this.flightId = flightId;
-        this.airplaneId = airplaneId;
+        this.airplane=airplane;
         this.flightNumber = flightNumber;
         this.departure = departure;
         this.depDateTime = depDateTime;
@@ -70,7 +74,6 @@ public class Flight {
 
 
         public Flight(FlightForm form) {
-            this.airplaneId = form.getAirplaneId();
             this.flightNumber = form.getFlightNumber();
             this.departure = form.getDeparture();
             this.depDateTime = form.getDepDateTime();
@@ -93,15 +96,6 @@ public class Flight {
         this.flightId = flightId;
     }
 
-
-    public Integer getAirplaneId() {
-        return airplaneId;
-    }
-
-
-    public void setAirplaneId(Integer airplaneId) {
-        this.airplaneId = airplaneId;
-    }
 
 
     public String getFlightNumber() {
@@ -181,6 +175,14 @@ public class Flight {
 
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
+    }
+
+    public Airplane getAirplane() {
+        return airplane;
+    }
+
+    public void setAirplane(Airplane airplane) {
+        this.airplane = airplane;
     }
 
 
