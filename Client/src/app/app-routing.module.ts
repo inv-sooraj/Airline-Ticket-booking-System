@@ -16,7 +16,7 @@ const routes: Routes = [
   {path:'',component:AdminHomeComponent},
   {path:'companyreg',component:CompanyRegistrationComponent},
   {path:'companylist',component:CompanyListComponent},
-  {path:'companyedit',component:CompanyEditComponent},
+  {path:'companyedit/:id',component:CompanyEditComponent},
   {path:'signup',component:SignupComponent},
   {path:'login',component:LoginComponent},
   {path:'plane-reg',component:AirplaneRegComponent},
