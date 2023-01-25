@@ -20,7 +20,7 @@ public class AirplaneForm {
     @Size(max = 30)
     private String modelNo;
     @NotNull
-    //@Size(max = 30)
+//    @Size(max = 30)
     private Integer totalSeats;
 
     public String getAirplaneName() {

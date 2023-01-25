@@ -14,17 +14,18 @@ import { SignupComponent } from './user/signup/signup.component';
 import { AirplaneRegComponent } from './company/airplane-reg/airplane-reg.component';
 import { FlightRegComponent } from './company/flight-reg/flight-reg.component';
 import { ChangePasswordComponent } from './shared/change-password/change-password.component';
+import { AdminNavComponent } from './admin/admin-nav/admin-nav.component';
+import { CompanyListComponent } from './admin/company-list/company-list.component';
 import { HomeComponent } from './user/home/home.component';
 import { HeaderComponent } from './user/header/header.component';
 import { FooterComponent } from './user/footer/footer.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { UserBookingListComponent } from './user/user-booking-list/user-booking-list.component';
-import { FlightDetailComponent } from './user/flight-detail/flight-detail.component';
-import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
-import { AdminFooterComponent } from './admin/admin-footer/admin-footer.component';
-import { ReservationListComponent } from './admin/reservation-list/reservation-list.component';
-import { AdminNavComponent } from './admin/admin-nav/admin-nav.component';
-import { UserListComponent } from './admin/user-list/user-list.component';
+import { StylesheetComponent } from './admin/stylesheet/stylesheet.component';
+import { DatePipe } from '@angular/common';
+import { ToastrModule } from 'ngx-toastr';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CompanyEditComponent } from './admin/company-edit/company-edit.component';
+
 @NgModule({
   declarations: [
    AdminHomeComponent,
@@ -37,16 +38,13 @@ import { UserListComponent } from './admin/user-list/user-list.component';
     FlightRegComponent,
     PlaneListComponent,
     ChangePasswordComponent,
+     AdminNavComponent,
+    CompanyListComponent,
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    UserBookingListComponent,
-    FlightDetailComponent,
-    AdminHeaderComponent,
-    AdminFooterComponent,
-    ReservationListComponent,
-    AdminNavComponent,
-    UserListComponent
+    StylesheetComponent,
+    CompanyEditComponent
   ],
   imports: [
     BrowserModule,
@@ -57,11 +55,11 @@ import { UserListComponent } from './admin/user-list/user-list.component';
     ReactiveFormsModule,
     HttpClientModule,
     Ng2SearchPipeModule,
-    NgbModule
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    FontAwesomeModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
-  
-}
+export class AppModule { }

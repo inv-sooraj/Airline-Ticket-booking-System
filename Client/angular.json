@@ -19,56 +19,14 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              "src/assets/img/user/favicon.ico",
+              "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "src/assets/css/user/bootstrap.min.css",
               "src/styles.css",
-              "src/assets/css/user/font-awesome.css",
-              "src/assets/css/user/font/flaticon.css",
-              "src/assets/css/user/slick.css",
-              "src/assets/css/user/ion.rangeSlider.min.css",
-              "src/assets/css/user/datepicker.css",
-              "src/assets/css/user/magnific-popup.css",
-              "src/assets/css/user/nice-select.css",
-              "src/assets/css/user/style.css",
-              "src/assets/css/user/responsive.css",
-              "src/assets/vendors/themefy_icon/themify-icons.css",
-              "src/assets/vendors/scroll/scrollable.css",
-              "src/assets/vendors/font_awesome/css/all.min.css",
-              "src/assets/vendors/datatable/css/jquery.dataTables.min.css",
-              "src/assets/vendors/datatable/css/responsive.dataTables.min.css",
-              "src/assets/vendors/datatable/css/buttons.dataTables.min.css",
-              "src/assets/css/admin/metisMenu.css",
-              "src/assets/css/admin/style1.css" 
+              "node_modules/ngx-toastr/toastr.css"
             ],
-            "scripts": [
-              "src/assets/js/user/jquery.min.js",
-              "src/assets/js/user/popper.min.js",
-              "src/assets/js/user/bootstrap.min.js",
-              "src/assets/js/user/ion.rangeSlider.min.js",
-              "src/assets/js/user/slick.min.js",
-              "src/assets/js/user/datepicker.js",
-              "src/assets/js/user/datepicker.en.js",
-              "src/assets/js/user/isotope.pkgd.min.js",
-              "src/assets/js/user/jquery.nice-select.js",
-              "src/assets/js/user/jquery.magnific-popup.min.js",
-              "src/assets/js/user/custom.js",
-              "src/assets/js/admin/metisMenu.js",
-              "src/assets/vendors/datatable/js/jquery.dataTables.min.js",
-              "src/assets/vendors/datatable/js/dataTables.responsive.min.js",
-              "src/assets/vendors/datatable/js/dataTables.buttons.min.js",
-              "src/assets/vendors/datatable/js/buttons.flash.min.js",
-              "src/assets/vendors/datatable/js/jszip.min.js",
-              "src/assets/vendors/datatable/js/pdfmake.min.js",
-              "src/assets/vendors/datatable/js/vfs_fonts.js",
-              "src/assets/vendors/datatable/js/buttons.html5.min.js",
-              "src/assets/vendors/datatable/js/buttons.print.min.js",
-              "src/assets/vendors/scroll/perfect-scrollbar.min.js",
-              "src/assets/js/admin/custom.js",
-              "src/assets/js/admin/jquery1-3.4.1.min.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {

@@ -19,7 +19,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
 
-
+/**
+ *
+ * @author nirmal
+ */
 public class AccessTokenUserDetailsService implements AuthenticationUserDetailsService<PreAuthenticatedAuthenticationToken> {
 
     public static final String PURPOSE_ACCESS_TOKEN = "ACCESS_TOKEN";
@@ -41,6 +44,7 @@ public class AccessTokenUserDetailsService implements AuthenticationUserDetailsS
         } catch (TokenExpiredException e) {
             throw new UsernameNotFoundException("Access token expired", e);
         }
+
         return new AccessTokenUserDetails(Integer.parseInt(status.data));
     }
 }

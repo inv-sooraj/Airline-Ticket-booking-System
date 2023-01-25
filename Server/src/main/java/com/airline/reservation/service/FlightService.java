@@ -1,11 +1,10 @@
 package com.airline.reservation.service;
 
-import java.util.Collection;
-
-import com.airline.reservation.entity.Flight;
+import com.airline.reservation.form.FlightForm;
+import com.airline.reservation.view.FlightView;
 
 public interface FlightService {
-    
-    Collection<Flight> findRandom();
+
+    FlightView add(FlightForm form);
     
 }

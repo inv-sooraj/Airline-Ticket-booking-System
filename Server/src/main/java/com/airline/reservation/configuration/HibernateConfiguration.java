@@ -18,7 +18,10 @@ import org.hibernate.internal.util.StringHelper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
- 
+/**
+ *
+ * @author nirmal
+ */
 @Configuration
 public class HibernateConfiguration {
 

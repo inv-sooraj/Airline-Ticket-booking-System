@@ -5,7 +5,10 @@
  */
 package com.airline.reservation.security.util;
 
- 
+/**
+ *
+ * @author nirmal
+ */
 public class InvalidTokenException extends IllegalArgumentException {
 
     public InvalidTokenException(String s) {

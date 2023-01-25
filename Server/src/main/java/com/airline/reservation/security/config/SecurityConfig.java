@@ -30,13 +30,13 @@ public class SecurityConfig {
      * Duration for access token expiry
      */
     @NotNull
-    private Duration accessTokenExpiry = Duration.ofMinutes(60);
+    private Duration accessTokenExpiry = Duration.ofMinutes(30);
 
     /**
      * Duration for refresh token expiry
      */
     @NotNull
-    private Duration refreshTokenExpiry = Duration.ofDays(1);
+    private Duration refreshTokenExpiry = Duration.ofDays(7);
 
     public String getTokenGeneratorPassword() {
         return tokenGeneratorPassword;

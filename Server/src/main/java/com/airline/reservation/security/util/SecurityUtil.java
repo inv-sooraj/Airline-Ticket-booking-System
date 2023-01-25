@@ -8,7 +8,11 @@ package com.airline.reservation.security.util;
 import com.airline.reservation.security.AccessTokenUserDetails;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
- 
+
+/**
+ *
+ * @author nirmal
+ */
 public final class SecurityUtil {
 
     private SecurityUtil() {
