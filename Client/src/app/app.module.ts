@@ -24,7 +24,11 @@ import { AdminHeaderComponent } from './admin/admin-header/admin-header.componen
 import { AdminFooterComponent } from './admin/admin-footer/admin-footer.component';
 import { ReservationListComponent } from './admin/reservation-list/reservation-list.component';
 import { AdminNavComponent } from './admin/admin-nav/admin-nav.component';
-import { UserListComponent } from './admin/user-list/user-list.component';
+import { UserDetailComponent } from './admin/user-detail/user-detail.component';
+import { FlightDetailsAdminComponent } from './company/flight-details-admin/flight-details-admin.component';
+// import { HeaderCompanyComponent } from './company/header-company/header-company.component';
+import { FlightListCompanyComponent } from './company/flight-list-company/flight-list-company.component';
+import { CompanyNavComponent } from './company/company-nav/company-nav.component';
 @NgModule({
   declarations: [
    AdminHomeComponent,
@@ -46,7 +50,11 @@ import { UserListComponent } from './admin/user-list/user-list.component';
     AdminFooterComponent,
     ReservationListComponent,
     AdminNavComponent,
-    UserListComponent
+    UserDetailComponent,
+    FlightDetailsAdminComponent,
+    // HeaderCompanyComponent,
+    FlightListCompanyComponent,
+    CompanyNavComponent
   ],
   imports: [
     BrowserModule,
