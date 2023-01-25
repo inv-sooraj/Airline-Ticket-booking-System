@@ -12,6 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.Where;
+
 @Entity
 @Table(name = "user")
 public class Company {
@@ -173,5 +175,7 @@ public class Company {
     public void setRole(Integer role) {
         this.role = role;
     }
+
+
 
 }

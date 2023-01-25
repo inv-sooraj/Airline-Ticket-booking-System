@@ -23,4 +23,6 @@ public interface CompanyService {
     CompanyView get(Integer userId) throws NotFoundException;
     
     CompanyView update(Integer userId, CompanyForm form) throws NotFoundException;
+
+    
 }
