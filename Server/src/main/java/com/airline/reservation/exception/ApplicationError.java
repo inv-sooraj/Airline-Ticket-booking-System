@@ -1,36 +1,26 @@
 package com.airline.reservation.exception;
 
 public class ApplicationError {
-    private String code;
+    private int code;
     private String message;
     public ApplicationError()
     {
 
     }
-
-    public ApplicationError(String code, String message)
-    {
-        this.code = code;
-        this.message = message;
+    public ApplicationError(int code,String message){
+        this.code=code;
+        this.message=message;
     }
-
-    public String getCode()
-    {
+    public int getCode() {
         return code;
     }
-
-    public void setCode(String code)
-    {
+    public void setCode(int code) {
         this.code = code;
     }
-
-    public String getMessage()
-    {
+    public String getMessage() {
         return message;
     }
-
-    public void setMessage(String message)
-    {
+    public void setMessage(String message) {
         this.message = message;
     }
 }

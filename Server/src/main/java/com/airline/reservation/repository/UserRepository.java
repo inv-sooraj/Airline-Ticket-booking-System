@@ -11,6 +11,4 @@ public interface UserRepository  extends Repository<User, Integer> {
     Optional<User> findByEmail(String email);
     Optional<User> findByUserIdAndPassword(Integer userId, String password);
     boolean existsByEmail(String email);
-    Optional<User> findById(Integer userId);
-    Optional<User> findByUserId(Integer userid);
 }

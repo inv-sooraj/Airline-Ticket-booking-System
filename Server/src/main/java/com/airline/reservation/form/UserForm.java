@@ -9,20 +9,20 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import com.airline.reservation.exception.BadRequestException;
-// import com.airline.reservation.exception.HandledException;
+import com.airline.reservation.exception.HandledException;
 import com.airline.reservation.form.validation.Password;
 
 import javassist.bytecode.stackmap.BasicBlock.Catch;
 
 public class UserForm {
     @NotBlank
-    @Size(min = 4, max = 20,message = "101")
+    @Size(min = 4, max = 20)
     private String fullName;
     @NotBlank
     @Email
-    @Size( max = 30,message="102")
+    @Size( max = 30)
     private String email;
-    @Password(message="103")
+    @Password
     private String password;
     private Date dob;
     @Size(min = 8, max = 8)
@@ -46,13 +46,13 @@ public class UserForm {
         this.passportNumber = passportNumber;
     }
    
-    public String getFullName(){
+    public String getFullName()throws HandledException{
 
        
         return fullName;
    
     }
-    public void setFullName(String fullName)  {
+    public void setFullName(String fullName) throws HandledException {
    
         this.fullName=fullName;
    
@@ -80,7 +80,7 @@ public class UserForm {
     public String getAddress() {
         return address;
     }
-    public void setAddress(String address)  {
+    public void setAddress(String address) throws HandledException {
         // if(address==""||address==null){
         //   throw new HandledException( "Address is Empty");
           
