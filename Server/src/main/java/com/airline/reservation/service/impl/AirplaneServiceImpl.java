@@ -35,7 +35,9 @@ public class AirplaneServiceImpl implements AirplaneService {
     @Override
     public Collection<Airplane> list() {
         
-            return airplaneRepository.findAllByStatusAndUserUserId(Airplane.Status.ACTIVE.value,SecurityUtil.getCurrentUserId());
+//            return airplaneRepository.findAllByStatusAndUserUserId(Airplane.Status.ACTIVE.value,SecurityUtil.getCurrentUserId());
+              return airplaneRepository.findAllByStatus(Airplane.Status.ACTIVE.value);
+
 
     }
     
@@ -60,6 +62,13 @@ public class AirplaneServiceImpl implements AirplaneService {
     @Transactional
     public void deleteAllBYIds(List<Integer> integers) {
         airplaneRepository.softDeleteAllIds(integers);
+    }
+
+    @Override
+    public Collection<Airplane> getDataByUser(Integer userId) {
+        
+        return airplaneRepository.findAllByUserUserIdAndStatus(userId,Airplane.Status.ACTIVE.value);
+
     }
 
 

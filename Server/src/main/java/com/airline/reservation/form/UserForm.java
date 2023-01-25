@@ -103,4 +103,5 @@ public class UserForm {
     public void setRole(Integer role) {
         this.role = role;
     }
+    
 }

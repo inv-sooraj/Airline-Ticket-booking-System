@@ -19,13 +19,12 @@ import org.springframework.data.repository.Repository;
  * @author lakshmimohan
  */
 public interface AirplaneRepository extends Repository<Airplane,Integer>  {
+    
     Airplane save(Airplane airplane);
-//    @Modifying
-//    @Query("SELECT * FROM Airplane WHERE status = ? AND userId = ?")
-    Collection<Airplane> findAllByStatusAndUserUserId(byte Status,Integer userId);
+    Collection<Airplane> findAllByStatus(byte Status);
     
     Optional<Airplane> findByAirplaneIdAndUserUserId(Integer airplaneId, Integer userId);
-
+    Collection<Airplane> findAllByUserUserIdAndStatus(Integer userId,byte status);
     @Modifying
     @Transactional
     @Query("update  Airplane p set p.status = 0 where p.airplaneId in(:integers)")

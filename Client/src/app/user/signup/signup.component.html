@@ -86,6 +86,9 @@
                                     <span class="sp"
                                        *ngIf="(signupForm.controls['password'].touched) && (signupForm.hasError('maxlength','password'))"><i>*password
                                           is too long*</i></span>
+                                          <span class="sp"
+                                          *ngIf="(signupForm.controls['password'].touched) && (signupForm.hasError('pattern','password'))"><i>*password
+                                             is invalid*</i></span>
                                  </div>
                               </div>
                               <div class="mb-4 pb-2">

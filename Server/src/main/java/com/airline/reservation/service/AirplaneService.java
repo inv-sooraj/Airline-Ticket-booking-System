@@ -23,5 +23,7 @@ public interface AirplaneService {
     public AirplaneListView update(Integer airplaneId, AirplaneForm form);
     public void deleteAllBYIds(List<Integer> integers);
 
+    public Collection<Airplane> getDataByUser(Integer userId);
+
 
 }

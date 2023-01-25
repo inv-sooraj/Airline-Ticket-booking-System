@@ -59,11 +59,21 @@
                       <div class="box_right d-flex lms_block">
                         <div class="serach_field_2">
                           <div class="search_inner">
-                            <form>
+                            <form [formGroup]="planeListForm">
                               <div class="search-hero">
-                                <input type="text" name="search" placeholder="Search content here..."
-                                  [(ngModel)]="searchText" autocomplete="off">
+                                <input type="text" formControlName="search" placeholder="Search content here..."
+                                  [(ngModel)]="searchText" autocomplete="off" >
                               </div>
+                              <ng-container *ngIf="status">
+                                <select class="form-control" (change)="changeCompany($event)"
+                                            formControlName="company" id="Companydropdown"
+                                            >
+                                            <option value="">Select Company</option>
+                                            <option *ngFor="let name of Company" [value]="name.userId">{{name.fullName}}
+                                            </option>
+                                        </select>
+                              </ng-container>
+                              
                               <!-- [(ngModel)]="searchText" autocomplete="off"-->
                             </form>
                           </div>
@@ -80,10 +90,12 @@
                       <table class="table">
                         <thead>
                           <tr>
-                            <th scope="col">
+                            <!-- <th scope="col">
                               <input class="form-check-input" type="checkbox" [(ngModel)]="parentSelector" [value]="-1"
                                 (change)="onChange($event)" />
-                            </th>
+                            </th> -->
+                            <th></th>
+                            <th scope="col">Airplane Id</th>
                             <th scope="col">Name</th>
                             <th scope="col">Model Number</th>
                             <th scope="col">Total seats</th>
@@ -93,13 +105,15 @@
                         <tbody>
                           <tr *ngFor="let n of items | filter:searchText let i = index">
                             <th scope="row">
-                              <input class="form-check-input" type="checkbox" [value]="n.airplaneId"
-                                [checked]="n.select" (change)="onChange($event)" />
+                              <!-- <input class="form-check-input" type="checkbox" [value]="n.airplaneId"
+                                [checked]="n.select" (change)="onChange($event)" /> -->
+                                <label for="sel"></label>
+                                <input type="checkbox" [value]="n.airplaneId" (change)="onCheckboxChange($event)" />
                             </th>
+                            <td>{{ n.airplaneId }}</td>
                             <td>{{ n.airplaneName }}</td>
                             <td>{{ n.modelNo }}</td>
                             <td>{{ n.totalSeats }}</td>
-                            <!-- <td>{{ n.seats }}</td> -->
                             <td><a class="btn btn-info mr-2" class='fas fa-edit'
                                 [routerLink]="['/plane-edit',n.airplaneId]"></a></td>
                           </tr>

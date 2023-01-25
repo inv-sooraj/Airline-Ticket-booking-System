@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -63,5 +64,9 @@ public class AirplaneController {
         System.out.println("deleting");
         airplaneService.deleteAllBYIds(ids);
         return String.join(",", ids.stream().map(value ->  Integer.toString(value)).collect(Collectors.toList()));
+    }
+    @RequestMapping(value="/getbyCompany/{userId}", method=RequestMethod.GET)
+    public Collection<Airplane> getByCompany(@PathVariable("userId") Integer userId) {
+        return airplaneService.getDataByUser(userId);
     }
 }

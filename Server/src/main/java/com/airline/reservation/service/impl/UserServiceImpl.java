@@ -18,6 +18,7 @@ import com.airline.reservation.view.LoginView;
 import com.airline.reservation.view.UserView;
 
 import ch.qos.logback.core.net.SyslogOutputStream;
+import com.airline.reservation.form.ChangePasswordForm;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,8 +28,10 @@ import org.springframework.validation.Errors;
 import org.springframework.web.server.ResponseStatusException;
 
 import static com.airline.reservation.security.AccessTokenUserDetailsService.PURPOSE_ACCESS_TOKEN;
+import java.util.Collection;
 
 import java.util.Optional;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -118,7 +121,36 @@ public class UserServiceImpl implements UserService{
     private static BadRequestException badRequestException() {
         return new BadRequestException("Invalid credentials");
     }
+    @Override
+    public Collection<User> list() {
+        
+            return userRepository.findAll();
+
+    }
+
+    @Override
+    public Collection<User> Search(String userName) {
+        
+        return userRepository.findByFullNameContaining(userName);
+
+    }
+
+//    @Override
+//    @Transactional
+//    public User update(ChangePasswordForm form) throws NotFoundException {
+//        return userRepository.findByUserId(SecurityUtil.getCurrentUserId())
+//                .map((NewPassword) -> {
+//                    return new User(userRepository.save(User.update(form)));
+//                }).orElseThrow(NotFoundException::new);
+//    }
+
+    @Override
+    public Collection<User> getCompany() {
+        
+         return userRepository.findAllByRole(2);
+    }
+
+   
+    }
     
     
-    
-}

@@ -22,7 +22,7 @@ export class SignupComponent implements OnInit {
       fullname:['',[Validators.required,Validators.pattern("^[a-zA-Z][a-zA-Z ]+$"),Validators.minLength(8),Validators.maxLength(18)]],
       dob:['',Validators.required],
       email:['',[Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"),Validators.maxLength(30)]],
-      password:['',[Validators.required,Validators.minLength(8),Validators.maxLength(25)]],
+      password:['',[Validators.required,Validators.minLength(8),Validators.maxLength(25),Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9 \\!\"#\\$%&'\\(\\)\\*\\+,\\-\\.\\/\\:;\\<\\=\\>\\?@\\[\\\\\\]\\^_`\\{\\|\\}~]+$")]],
       cPassword:['',[Validators.required,Validators.minLength(8),Validators.maxLength(25)]],
       passportNo:['',[Validators.required,Validators.pattern("^[A-PR-WYa-pr-wy][1-9]\\d\\s?\\d{4}[1-9]$"),Validators.minLength(8),Validators.maxLength(8)]],
       phone:['',[Validators.required, Validators.pattern("^[0-9]*$"),Validators.minLength(10), Validators.maxLength(10)]],
@@ -56,7 +56,7 @@ export class SignupComponent implements OnInit {
         "phone":this.signupForm.value.phone,
         "country":this.signupForm.value.country,
         "status":1,
-        "role":2
+        "role":3
       }
       // if(this.apiservice.isEmailUnique(this.signupForm.value.email)){
                 this.apiservice.createUser(param).subscribe({
