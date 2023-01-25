@@ -39,5 +39,12 @@ export class ServiceService {
     let  head_obj=new HttpHeaders({"Authorization":"Airline " + tocken})
     return this.http.put(environment.baseUrl + '/company/'+ userId,n,{headers:head_obj});
   }
+
+  paginate(pageNo:any,pageSize:any,sort:any){
+    let tocken=localStorage.getItem('accesstoken');
+    let  head_obj=new HttpHeaders({"Authorization":"Airline " + tocken})
+    return this.http.get(environment.baseUrl +'/company/pagenated?pageNo='+pageNo+'&pageSize='+pageSize+'&sortBy='+sort,{headers:head_obj})
+
+  }
   
 }

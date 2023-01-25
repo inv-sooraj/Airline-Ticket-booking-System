@@ -1,5 +1,6 @@
 package com.airline.reservation.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -7,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import com.airline.reservation.form.CompanyForm;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Temporal;
@@ -15,6 +17,7 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.Where;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "user")
 public class Company {
 

@@ -25,6 +25,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CompanyEditComponent } from './admin/company-edit/company-edit.component';
+import { FlightListComponent } from './admin/flight-list/flight-list.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { CompanyEditComponent } from './admin/company-edit/company-edit.componen
     HeaderComponent,
     FooterComponent,
     StylesheetComponent,
-    CompanyEditComponent
+    CompanyEditComponent,
+    FlightListComponent
   ],
   imports: [
     BrowserModule,

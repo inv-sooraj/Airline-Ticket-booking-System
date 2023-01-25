@@ -6,6 +6,9 @@ package com.airline.reservation.entity;
 
 import com.airline.reservation.form.AirplaneForm;
 import com.airline.reservation.json.Json;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,6 +25,7 @@ import javax.persistence.TemporalType;
  * @author lakshmimohan
  */
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Airplane {
     
    public static enum Status {

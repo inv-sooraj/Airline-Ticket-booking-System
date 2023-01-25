@@ -1,5 +1,8 @@
 package com.airline.reservation.entity;
 
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -12,9 +15,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+
 import com.airline.reservation.form.FlightForm;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Flight {
     
     public static enum DeleteFlag {
@@ -196,6 +202,7 @@ public class Flight {
     public void setUser(User user) {
         this.user = user;
     }
+
 
 
 }

@@ -1,15 +1,19 @@
 package com.airline.reservation.controller;
 
+import java.util.Collection;
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.airline.reservation.entity.Flight;
-import com.airline.reservation.form.FlightForm;
 import com.airline.reservation.service.FlightService;
 import com.airline.reservation.view.FlightView;
 
@@ -27,5 +31,9 @@ public class FlightController {
     }
 
     // List in company vise
-    
+    @GetMapping("/companyname/{userId}")
+    public Collection<Flight>get(@PathVariable("userId") Integer userId){
+        return flightservice.getcompany(userId);
+    }
+   
 }
