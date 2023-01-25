@@ -119,6 +119,12 @@ public class UserServiceImpl implements UserService{
         return new BadRequestException("Invalid credentials");
     }
     
-    
+    // user Details
+    @Override
+    public UserView get(Integer UserId) throws NotFoundException{
+        return userRepository.findByUserId(UserId).map((User)->{
+            return new UserView(User);
+        }).orElseThrow(NotFoundException::new);
+    }
     
 }

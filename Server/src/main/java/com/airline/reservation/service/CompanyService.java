@@ -24,5 +24,6 @@ public interface CompanyService {
     
     CompanyView update(Integer userId, CompanyForm form) throws NotFoundException;
 
-    
+    // delete multiple
+    public void deleteAllById(List<Integer> integers);
 }

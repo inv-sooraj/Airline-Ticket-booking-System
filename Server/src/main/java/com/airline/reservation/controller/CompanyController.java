@@ -60,6 +60,7 @@ public class CompanyController {
         CompanyService.delete(userId);
     }
 
+    
 
     // CSV Export 
 
@@ -115,4 +116,10 @@ public class CompanyController {
         return CompanyService.update(userId, form);
     }
     
+    // multiple delete
+    @DeleteMapping
+    public void delete(@RequestParam("delete")List<Integer>delete){
+        CompanyService.deleteAllById(delete);
+    }
+   
 }

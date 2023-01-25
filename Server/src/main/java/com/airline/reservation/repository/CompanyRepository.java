@@ -2,12 +2,15 @@ package com.airline.reservation.repository;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import com.airline.reservation.entity.Company;
 
 import java.util.List;
 import java.util.Optional;
+
+import javax.transaction.Transactional;
 
 public interface CompanyRepository extends Repository<Company,Integer> {
     
@@ -31,4 +34,11 @@ public interface CompanyRepository extends Repository<Company,Integer> {
 
      // detail View
      Optional<Company> findByUserId(Integer userId);
+
+     // multiple delete
+     @Modifying
+     @Transactional
+     @Query("update  User p set p.status = 0 where p.userId in(:deletes)")
+     void softdelete(List<Integer> deletes);
+ 
 }

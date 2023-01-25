@@ -3,6 +3,7 @@ package com.airline.reservation.controller;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,5 +30,10 @@ public class UsersController {
     @PostMapping("/{email}")
     public Boolean emailCheck(@PathVariable String email){
         return userService.emailCheck(email);
+    }
+
+    @GetMapping("/{userId}")
+    public UserView get(@PathVariable("userId") Integer userId){
+        return userService.get(userId);
     }
 }

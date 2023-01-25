@@ -86,4 +86,11 @@ public class CompanyServiceImpl implements CompanyService {
                     return new CompanyView(companyRepository.save(company.update(form)));
                 }).orElseThrow(NotFoundException::new);
     }
+
+    // Multiple delete
+    @Override
+    @Transactional
+    public void deleteAllById(List<Integer>deletes) {
+        companyRepository.softdelete(deletes);
+    }
 }

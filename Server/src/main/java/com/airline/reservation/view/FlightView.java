@@ -7,6 +7,7 @@ import com.airline.reservation.entity.Flight;
 public class FlightView {
     
     private Integer flightId;
+    private Integer userId;
     private Integer airplaneId;
     private String flightNumber;
     private String departure;
@@ -17,6 +18,7 @@ public class FlightView {
 
     public FlightView(Flight flight){
         this.flightId = flight.getFlightId();
+        this.userId = flight.getUser().getUserId();
         this.airplaneId = flight.getAirplane().getAirplaneId();
         this.flightNumber = flight.getFlightNumber();
         this.departure = flight.getDeparture();
@@ -93,6 +95,16 @@ public class FlightView {
 
     public void setDestDateTime(Date destDateTime) {
         this.destDateTime = destDateTime;
+    }
+
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     

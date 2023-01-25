@@ -44,6 +44,9 @@ public class Flight {
     @JoinColumn(name="airplane_id",referencedColumnName = "airplane_id")
     @ManyToOne(optional = false,fetch = FetchType.LAZY)
     private Airplane airplane;
+   @JoinColumn(name="user_id",referencedColumnName="user_id")
+   @ManyToOne(optional = false,fetch = FetchType.LAZY)
+   private User user;
     
 
     public Flight() {
@@ -56,8 +59,9 @@ public class Flight {
 
     
     public Flight(Airplane airplane,String flightNumber, String departure, Date depDateTime, String destination,
-    Date destDateTime) {
+    Date destDateTime,Integer userId) {
         this.airplane=airplane;
+        this.user = new User(userId);
         this.flightNumber = flightNumber;
         this.departure = departure;
         this.depDateTime = depDateTime;
@@ -183,6 +187,14 @@ public class Flight {
 
     public void setAirplane(Airplane airplane) {
         this.airplane = airplane;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
 

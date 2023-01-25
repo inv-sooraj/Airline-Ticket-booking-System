@@ -3,6 +3,7 @@ package com.airline.reservation.service;
 import org.springframework.validation.Errors;
 
 import com.airline.reservation.exception.BadRequestException;
+import com.airline.reservation.exception.NotFoundException;
 import com.airline.reservation.form.LoginForm;
 import com.airline.reservation.form.UserForm;
 import com.airline.reservation.view.LoginView;
@@ -13,4 +14,7 @@ public interface UserService {
     LoginView login(LoginForm form, Errors errors) throws BadRequestException;
     LoginView refresh(String refreshToken) throws BadRequestException;
     Boolean emailCheck(String email);
+
+    // user details
+    UserView get(Integer userId) throws NotFoundException;
 }

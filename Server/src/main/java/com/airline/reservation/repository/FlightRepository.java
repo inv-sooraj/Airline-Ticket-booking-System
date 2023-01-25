@@ -7,5 +7,6 @@ import com.airline.reservation.entity.Flight;
 public interface FlightRepository extends Repository<Flight,Integer> {
 
    Flight save(Flight flight);
+   
     
 }
