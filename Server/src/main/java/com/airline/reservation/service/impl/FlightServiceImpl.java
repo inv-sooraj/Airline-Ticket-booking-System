@@ -5,6 +5,10 @@ import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.airline.reservation.entity.Flight;
@@ -33,6 +37,15 @@ public class FlightServiceImpl implements FlightService {
     @Override
     public Collection<Flight> getcompany(Integer userId) {
         return flightRepository.findAllByUserUserId(userId);
-
     } 
+
+    // Search 
+    @Override
+    public Page<Flight>getFlightSearch(String keyword, Integer pageNo,Integer pageSize,String sortBy){
+    Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
+    System.out.println(keyword);
+
+    Page<Flight> pagedResult = flightRepository.findByName(keyword, paging);
+    return pagedResult;
+    }
 }
