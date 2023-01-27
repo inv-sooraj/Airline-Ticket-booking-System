@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -33,12 +35,12 @@ public class BookingsController {
     public List<Bookings> list(){
     return bookingService.list();
     }
-    @GetMapping("/list2")
-    public List<BookingListView> bookingList()
-    {
-       return bookingService.bookingList();
+    // @GetMapping("/list2")
+    // public List<BookingListView> bookingList()
+    // {
+    //    return bookingService.bookingList();
         
-    }
+    // }
     @PostMapping("/addBooking")
     public void addJob(@RequestBody BookingForm form)
     {
@@ -52,7 +54,7 @@ public class BookingsController {
     }
     @GetMapping("/download")
     public ResponseEntity<Resource> getFile() {
-      String filename = "tutorials.csv";
+      String filename = "bookings.csv";
       InputStreamResource file = new InputStreamResource(fileService.load());
   
       return ResponseEntity.ok()
@@ -60,4 +62,32 @@ public class BookingsController {
           .contentType(MediaType.parseMediaType("application/csv"))
           .body(file);
     }
+    //list flights
+    @GetMapping
+    public ResponseEntity<List<Bookings>> getAllBookings(
+    @RequestParam(defaultValue = "0") Integer pageNo, 
+    @RequestParam(defaultValue = "5") Integer pageSize,
+    @RequestParam String flightNumber,
+    @RequestParam(defaultValue = "bookingId") String sortBy,
+    @RequestParam(defaultValue = "ASC")String sortDir) 
+    {
+     
+    List<Bookings> list = bookingService.getAllBookings(pageNo, pageSize, sortBy,sortDir,flightNumber);
+    return new ResponseEntity<List<Bookings>>(list, new HttpHeaders(), HttpStatus.OK); 
+    }
+
+    //Search Results
+    // @GetMapping
+    // public ResponseEntity<List<Bookings>> getByFlightNumber(
+    // @RequestParam(defaultValue = "0") Integer pageNo, 
+    // @RequestParam(defaultValue = "5") Integer pageSize,
+    // @RequestParam String flightNumber,
+    // @RequestParam(defaultValue = "bookingId") String sortBy,
+    // @RequestParam(defaultValue = "ASC")String sortDir) 
+    // {
+    // List<Bookings> list = bookingService.getByFlightNumber(pageNo, pageSize, sortBy,sortDir,flightNumber);
+    // return new ResponseEntity<List<Bookings>>(list, new HttpHeaders(), HttpStatus.OK); 
+    // }
 }
+   
+

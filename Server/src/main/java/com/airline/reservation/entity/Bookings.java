@@ -26,6 +26,7 @@ public class Bookings {
             this.value = value;
         }
     }
+    @Column(name="booking_id")
     @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY)
     private Integer bookingId;
@@ -107,4 +108,5 @@ public class Bookings {
 
     }
  
+    
 }
