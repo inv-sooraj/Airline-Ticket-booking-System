@@ -14,7 +14,7 @@
             <div class="white_card_body" style="position: relative; margin-left: 269px;">
               <div class="QA_section">
                 <div class="white_box_tittle list_header">
-                  <h4>Company List</h4>
+                  <h4>User List</h4>
                   <div class="box_right d-flex lms_block">
                     <div class="serach_field_2">
                       <div class="search_inner">
@@ -35,35 +35,30 @@
                   </div>
                 </div>
                 <div class="QA_table mb_30"><br><br>
-                  <a class="delete" title="Delete" (click)="delete()" data-toggle="tooltip"
+                  <a class="delete" href="" title="Delete" (click)="delete()" data-toggle="tooltip"
                     style="padding-left: 1060px;"><i class="fa fa-trash"></i></a>
                   <table class="table">
                     <thead>
                       <tr>
                         <th scope="col">
                           <input class="form-check-input" type="checkbox" [(ngModel)]="parentSelector" [value]="-1"
-                            (change)="onChangeCompanys($event)" />
+                            (change)="onChangeUser($event)" />
                         </th>
                         <th scope="col">Id</th>
                         <th scope="col">Name</th>
-                        <th scope="col">phone Number</th>
-                        <th scope="col">Company Adress</th>
-                        <th scope="col">Company email</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">Email Id</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let n of company | filter:searchText let i = index">
+                      <tr *ngFor="let n of user | filter:searchText let i = index">
                         <th scope="row">
                           <input class="form-check-input" type="checkbox" [value]="n.id" [checked]="n.select"
-                            (change)="onChangeCompany($event,n)" />
+                            (change)="onChangeUser($event)" />
                         </th>
                         <td>{{ n.userId }}</td>
                         <td>{{ n.fullName }}</td>
-                        <td>{{ n.phone }}</td>
-                        <td>{{ n.address }}</td>
                         <td>{{ n.email }}</td>
-                        <td><a class="btn btn-info mr-2" (click)="editcompany(n)" class='fas fa-edit'></a>
+                        <td><a class="btn btn-info mr-2" (click)="editUser(n)" class='fas fa-edit'></a>
                         </td>
                       </tr>
                     </tbody>

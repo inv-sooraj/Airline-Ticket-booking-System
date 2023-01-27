@@ -40,18 +40,18 @@ export class ServiceService {
     let  head_obj=new HttpHeaders({"Authorization":"Airline " + tocken})
     return this.http.put(environment.baseUrl + '/company/'+ userId,n,{headers:head_obj});
   }
-
-  // paginate(pageNo:any,pageSize:any,sort:any){
-  //   let tocken=localStorage.getItem('accesstoken');
-  //   let  head_obj=new HttpHeaders({"Authorization":"Airline " + tocken})
-  //   return this.http.get(environment.baseUrl +'/company/pagenated?pageNo='+pageNo+'&pageSize='+pageSize+'&sortBy='+sort,{headers:head_obj})
-
-  // }
-  
   //flight list company base
-  getFlightList(userId:any):Observable<any>{
+  getFlightList(companyId:any):Observable<any>{
+    console.log("asadasd",companyId);
+    
     let tocken=localStorage.getItem('accesstoken')
     let  head_obj=new HttpHeaders({"Authorization":"Airline " + tocken})
-    return this.http.get(environment.baseUrl + '/companyname/'+userId,{headers:head_obj});
+    return this.http.get(environment.baseUrl + '/flight/companyname/'+ companyId,{headers:head_obj});
+  }
+  // delete
+  delete(a:any[]):Observable<any>{
+    let tocken=localStorage.getItem('accesstoken')
+    let  head_obj=new HttpHeaders({"Authorization":"Airline " + tocken})
+    return this.http.delete(environment.baseUrl + '/company/'+a,{headers:head_obj});
   }
 }

@@ -26,6 +26,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CompanyEditComponent } from './admin/company-edit/company-edit.component';
 import { FlightListComponent } from './admin/flight-list/flight-list.component';
+import { UserListComponent } from './admin/user-list/user-list.component';
+import { CancelResListComponent } from './admin/cancel-res-list/cancel-res-list.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { FlightListComponent } from './admin/flight-list/flight-list.component';
     FooterComponent,
     StylesheetComponent,
     CompanyEditComponent,
-    FlightListComponent
+    FlightListComponent,
+    UserListComponent,
+    CancelResListComponent
   ],
   imports: [
     BrowserModule,

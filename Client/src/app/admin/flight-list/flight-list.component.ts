@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ServiceService } from 'src/app/service.service';
 
 @Component({
@@ -8,44 +8,46 @@ import { ServiceService } from 'src/app/service.service';
   styleUrls: ['./flight-list.component.css']
 })
 export class FlightListComponent implements OnInit {
-  flightlist!:FormGroup
-  searchText:any;
-  parentSelector:any;
-  flight:any;
-  userId:any;
-  company:any;
-  constructor(private service:ServiceService) { }
+  flightlist: FormGroup = new FormGroup(
+    {
+      userId: new FormControl('', Validators.required),
+
+    })
+
+  searchText: any;
+  parentSelector: any;
+  flight: any;
+  userId: any;
+  company: any;
+  companyId: any;
+
+  constructor(private service: ServiceService,private formbuilder:FormBuilder ) {}
 
   ngOnInit(): void {
+    console.log(this.flightlist.controls['userId'].value);
+    this.getCompany();
     this.getFlight();
   }
+  // To takes company 
+  getCompany() {
+    this.service.getCompanyList().subscribe((result: any) => {
+      this.company = result;
+      console.log(result);
 
-  // value get fuction
+    })
+  }
+  // Id pass to api to load flights
   getFlight() {
-    this.service.getFlightList(this.userId).subscribe((result: any) => {
+    this.service.getFlightList(this.companyId).subscribe((result: any) => {
       this.flight = result;
     })
   }
-
-  changecompany(e: any) {
-    this.flightlist?.get('company')?.setValue(e.target.value, {
-      onlySelf: true
-    });
-    // this.onSubmit();
+  // To Load id
+  changeCompany(event: any) {
+    this.companyId = this.flightlist.controls['userId'].value;
+    console.log(this.companyId);
+    this.getFlight();
   }
 
-  // onSubmit() {
-  //   // this.status = true;
-  //   this.service.getPlaneByCompany(this.flightlist.value.company).subscribe({
-  //     next: (response: any) => {
-  //       this.items = response;
-  //     },
-  //     error: (err: any) => { alert("Failed") },
-  //     complete: () => { }
-  //   });
-
-  
-
-  onChangeCompany($event:any){}
-  editcompany(f:any){}
+  onChangeCompany(event: any) { }
 }

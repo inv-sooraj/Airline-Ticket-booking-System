@@ -18,7 +18,7 @@
                   <div class="box_right d-flex lms_block">
                     <div class="serach_field_2">
                       <div class="search_inner">
-                        <form [formGroup]="flightlist">
+                        <form>
                           <div class="search-hero">
                             <input type="text" name="search" placeholder="Search content here..."
                               [(ngModel)]="searchText" autocomplete="off">
@@ -29,16 +29,19 @@
                   </div>
                 </div>
                 <!-- dropdown for company selection start -->
-                <div align="center" >
-                  <select class="form-control" (change)="changecompany($event)"formControlName="company"id="companydropdown" style="position: relative;width:274px; height:47px;"
-                   name="cars" id="cars">
-                    <option value=""disabled selected>Select Company</option>
-                    <option *ngFor="let f of flight" value={{f.userId}>{{f.fullName}}</option> 
-                  </select>
-                </div>
-                end
+                <form [formGroup]="flightlist" (click)="changeCompany($event)">
+                  <div class="form-group" align="center"> <label for="exampleInputEmail1">Select company : </label>
+                    <select style="position: relative;width:274px; height:47px;" type="input" formControlName="userId">
+                      <option value="" hidden disabled selected>Choose Company</option>
+                      <option *ngFor="let org of company" value={{org.userId}}>
+                        {{org.fullName}}
+                      </option>
+                    </select>
+                  </div>
+                </form>
                 <div class="QA_table mb_30"><br><br>
-                  <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                  <a class="delete" href="" title="Delete" data-toggle="tooltip" style="padding-left: 1150px;"><i
+                      class="fa fa-trash"></i></a>
                   <table class="table">
                     <thead>
                       <tr>
@@ -47,10 +50,12 @@
                             (change)="onChangeCompany($event)" />
                         </th>
                         <th scope="col">Id</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Model Number</th>
-                        <th scope="col">Total seats</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">Flight Name</th>
+                        <th scope="col">Airplane Name</th>
+                        <th scope="col">Departing From</th>
+                        <th scope="col">Departing DateTime</th>
+                        <th scope="col">Destination</th>
+                        <th scope="col">Destination DateTime</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -59,13 +64,13 @@
                           <input class="form-check-input" type="checkbox" [value]="f.id" [checked]="f.select"
                             (change)="onChangeCompany($event)" />
                         </th>
-                        <td>{{ f.userId }}</td>
-                        <td>{{ f.fullName }}</td>
-                        <td>{{ f.phone }}</td>
-                        <td>{{ f.address }}</td>
-                        <td>{{ f.email }}</td>
-                        <td><a class="btn btn-info mr-2" (click)="editcompany(f)" class='fas fa-edit'></a>
-                        </td>
+                        <td>{{ f.flightId }}</td>
+                        <td>{{ f.flightNumber }}</td>
+                        <td>{{ f.airplane.airplaneName }}</td>
+                        <td>{{ f.departure }}</td>
+                        <td>{{ f.depDateTime }}</td>
+                        <td>{{ f.destination }}</td>
+                        <td>{{ f.destDateTime }}</td>
                       </tr>
                     </tbody>
                   </table>

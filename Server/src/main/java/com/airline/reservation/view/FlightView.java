@@ -9,6 +9,7 @@ public class FlightView {
     private Integer flightId;
     private Integer userId;
     private Integer airplaneId;
+    private String  airplanename;
     private String flightNumber;
     private String departure;
     private Date depDateTime;
@@ -20,11 +21,22 @@ public class FlightView {
         this.flightId = flight.getFlightId();
         this.userId = flight.getUser().getUserId();
         this.airplaneId = flight.getAirplane().getAirplaneId();
+        this.airplanename = flight.getAirplane().getAirplaneName();
         this.flightNumber = flight.getFlightNumber();
         this.departure = flight.getDeparture();
         this.depDateTime = flight.getDepDateTime();
         this.destination = flight.getDestination();
         this.destDateTime = flight.getDestDateTime();
+    }
+
+
+    public String getAirplanename() {
+        return airplanename;
+    }
+
+
+    public void setAirplanename(String airplanename) {
+        this.airplanename = airplanename;
     }
 
 

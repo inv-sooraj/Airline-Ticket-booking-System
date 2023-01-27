@@ -15,17 +15,16 @@ export class CompanyEditComponent implements OnInit {
   password = '';
   flag: any;
   userId: any;
-  constructor(private service: ServiceService, public toaster: ToastrService, public router: Router,public activerouter:ActivatedRoute) { }
+  constructor(private service: ServiceService, public toaster: ToastrService, public router: Router, public activerouter: ActivatedRoute) { }
 
   ngOnInit(): void {
 
     this.InitUpdateform();
 
-    this.activerouter.params.subscribe((param:any)=>
-    {
-      this.userId=param['id'];
+    this.activerouter.params.subscribe((param: any) => {
+      this.userId = param['id'];
       this.getcompanyById();
-      
+
     })
 
   }
@@ -64,23 +63,23 @@ export class CompanyEditComponent implements OnInit {
     else {
       (this.companyupdate.valid)
       this.valid = true;
-        this.service.updatecompany(this.companyupdate.value,this.userId).subscribe({
-          next: (result: any) => {
-            this.toaster.success('Created successfully', '');
-            //alert('success');
-            this.router.navigate(['/companylist']);
-           
-            console.log(result);
-          },
-          error: (err: any) => {
-            this.toaster.error(err.error.error);
-            console.log(err);
-            this.valid = false;
-          }
-        });
-      }
+      this.service.updatecompany(this.companyupdate.value, this.userId).subscribe({
+        next: (result: any) => {
+          this.toaster.success('Created successfully', '');
+          //alert('success');
+          this.router.navigate(['/companylist']);
+
+          console.log(result);
+        },
+        error: (err: any) => {
+          this.toaster.error(err.error.error);
+          console.log(err);
+          this.valid = false;
+        }
+      });
     }
-  
+  }
+
 
   cancel() { }
 }

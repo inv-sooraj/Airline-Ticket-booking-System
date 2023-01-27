@@ -48,10 +48,10 @@ public class Flight {
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateDate;
     @JoinColumn(name="airplane_id",referencedColumnName = "airplane_id")
-    @ManyToOne(optional = false,fetch = FetchType.LAZY)
+    @ManyToOne(optional = false,fetch = FetchType.EAGER)
     private Airplane airplane;
    @JoinColumn(name="user_id",referencedColumnName="user_id")
-   @ManyToOne(optional = false,fetch = FetchType.LAZY)
+   @ManyToOne(optional = false,fetch = FetchType.EAGER)
    private User user;
     
 

@@ -12,12 +12,14 @@ import { LoginComponent } from './shared/login/login.component';
 import { PlaneListComponent } from './shared/plane-list/plane-list.component';
 import { HomeComponent } from './user/home/home.component';
 import { SignupComponent } from './user/signup/signup.component';
+import { UserListComponent } from './admin/user-list/user-list.component';
 
 const routes: Routes = [
   {path:'',component:AdminHomeComponent},
   {path:'companyreg',component:CompanyRegistrationComponent},
   {path:'companylist',component:CompanyListComponent},
   {path:'companyedit/:id',component:CompanyEditComponent},
+  {path:'userlist',component:UserListComponent},
   {path:'signup',component:SignupComponent},
   {path:'flightlist',component:FlightListComponent},
   {path:'login',component:LoginComponent},
