@@ -14,18 +14,21 @@ import { SignupComponent } from './user/signup/signup.component';
 import { AirplaneRegComponent } from './company/airplane-reg/airplane-reg.component';
 import { FlightRegComponent } from './company/flight-reg/flight-reg.component';
 import { ChangePasswordComponent } from './shared/change-password/change-password.component';
-import { AdminNavComponent } from './admin/admin-nav/admin-nav.component';
-import { CompanyListComponent } from './admin/company-list/company-list.component';
 import { HomeComponent } from './user/home/home.component';
 import { HeaderComponent } from './user/header/header.component';
 import { FooterComponent } from './user/footer/footer.component';
-import { StylesheetComponent } from './admin/stylesheet/stylesheet.component';
-import { DatePipe } from '@angular/common';
-import { ToastrModule } from 'ngx-toastr';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CompanyEditComponent } from './admin/company-edit/company-edit.component';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UserBookingListComponent } from './user/user-booking-list/user-booking-list.component';
+import { FlightDetailComponent } from './user/flight-detail/flight-detail.component';
+import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
+import { AdminFooterComponent } from './admin/admin-footer/admin-footer.component';
+import { ReservationListComponent } from './admin/reservation-list/reservation-list.component';
+import { AdminNavComponent } from './admin/admin-nav/admin-nav.component';
+import { UserDetailComponent } from './admin/user-detail/user-detail.component';
+import { FlightDetailsAdminComponent } from './company/flight-details-admin/flight-details-admin.component';
+// import { HeaderCompanyComponent } from './company/header-company/header-company.component';
+import { FlightListCompanyComponent } from './company/flight-list-company/flight-list-company.component';
+import { CompanyNavComponent } from './company/company-nav/company-nav.component';
 @NgModule({
   declarations: [
    AdminHomeComponent,
@@ -38,13 +41,20 @@ import { CompanyEditComponent } from './admin/company-edit/company-edit.componen
     FlightRegComponent,
     PlaneListComponent,
     ChangePasswordComponent,
-     AdminNavComponent,
-    CompanyListComponent,
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    StylesheetComponent,
-    CompanyEditComponent
+    UserBookingListComponent,
+    FlightDetailComponent,
+    AdminHeaderComponent,
+    AdminFooterComponent,
+    ReservationListComponent,
+    AdminNavComponent,
+    UserDetailComponent,
+    FlightDetailsAdminComponent,
+    // HeaderCompanyComponent,
+    FlightListCompanyComponent,
+    CompanyNavComponent
   ],
   imports: [
     BrowserModule,
@@ -55,11 +65,11 @@ import { CompanyEditComponent } from './admin/company-edit/company-edit.componen
     ReactiveFormsModule,
     HttpClientModule,
     Ng2SearchPipeModule,
-    BrowserAnimationsModule,
-    ToastrModule.forRoot(),
-    FontAwesomeModule
+    NgbModule
   ],
-  providers: [DatePipe],
+  providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  
+}

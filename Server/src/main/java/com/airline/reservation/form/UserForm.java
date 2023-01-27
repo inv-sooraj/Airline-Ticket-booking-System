@@ -39,6 +39,7 @@ public class UserForm {
     private Integer status;
     @NotNull
     private Integer role;
+    
     public String getPassportNumber() {
       return passportNumber;
     }

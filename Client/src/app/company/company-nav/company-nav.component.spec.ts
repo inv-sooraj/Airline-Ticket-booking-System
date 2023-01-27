@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StylesheetComponent } from './stylesheet.component';
+import { CompanyNavComponent } from './company-nav.component';
 
-describe('StylesheetComponent', () => {
-  let component: StylesheetComponent;
-  let fixture: ComponentFixture<StylesheetComponent>;
+describe('CompanyNavComponent', () => {
+  let component: CompanyNavComponent;
+  let fixture: ComponentFixture<CompanyNavComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ StylesheetComponent ]
+      declarations: [ CompanyNavComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(StylesheetComponent);
+    fixture = TestBed.createComponent(CompanyNavComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

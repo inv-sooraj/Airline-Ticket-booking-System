@@ -30,7 +30,6 @@ public class CompanyServiceImpl implements CompanyService {
     @Autowired
     private CompanyRepository companyRepository;
     @Override
-
     // Add Company
     public CompanyView add(CompanyForm form) {
         String pas=passwordEncoder.encode( form.getPassword());
