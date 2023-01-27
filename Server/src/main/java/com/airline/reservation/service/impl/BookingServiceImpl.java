@@ -9,6 +9,7 @@ import com.airline.reservation.entity.Bookings;
 import com.airline.reservation.form.BookingForm;
 import com.airline.reservation.repository.BookingRepository;
 import com.airline.reservation.service.BookingService;
+import com.airline.reservation.view.BookingListView;
 @Service
 public class BookingServiceImpl implements BookingService{
    @Autowired
@@ -26,5 +27,13 @@ public class BookingServiceImpl implements BookingService{
     public List<Bookings> findByStatus(Byte status) {
         return bookingRepository.findByStatus(status);
     }
+
+    @Override
+    public List<BookingListView> bookingList() {
+        // TODO Auto-generated method stub
+        return (List<BookingListView>) new BookingListView(bookingRepository.findAll());
+    }
+
+ 
     
 }
