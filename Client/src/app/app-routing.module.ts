@@ -11,12 +11,19 @@ import { FlightListCompanyComponent } from './company/flight-list-company/flight
 import { FlightRegComponent } from './company/flight-reg/flight-reg.component';
 import { ChangePasswordComponent } from './shared/change-password/change-password.component';
 import { LoginComponent } from './shared/login/login.component';
+<<<<<<< HEAD
+import { PlaneListComponent } from './company/plane-list/plane-list.component';
+import { SignupComponent } from './user/signup/signup.component';
+import { PlaneEditComponent } from './company/plane-edit/plane-edit.component';
+
+=======
 import { PlaneListComponent } from './shared/plane-list/plane-list.component';
 import { FlightDetailComponent } from './user/flight-detail/flight-detail.component';
 import { HeaderComponent } from './user/header/header.component';
 import { HomeComponent } from './user/home/home.component';
 import { SignupComponent } from './user/signup/signup.component';
 import { UserBookingListComponent } from './user/user-booking-list/user-booking-list.component';
+>>>>>>> origin/develop
 const routes: Routes = [
  {path:'',component:HomeComponent},
   {path:'companyreg',component:CompanyRegistrationComponent},
@@ -26,6 +33,10 @@ const routes: Routes = [
   {path:'flight-reg',component:FlightRegComponent},
   {path:'plane-list',component:PlaneListComponent},
   {path:'change-pass',component:ChangePasswordComponent},
+<<<<<<< HEAD
+  {path:'plane-edit/:airplaneId',component:PlaneEditComponent},
+
+=======
   {path:'home',component:HomeComponent},
   {path:'header',component:HeaderComponent},
   {path:'user-booking-list',component:UserBookingListComponent},
@@ -34,6 +45,7 @@ const routes: Routes = [
   {path:'user-detail',component:UserDetailComponent},
   {path:'flight-details',component:FlightDetailsAdminComponent},
   {path:'flight-list',component:FlightListCompanyComponent}
+>>>>>>> origin/develop
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

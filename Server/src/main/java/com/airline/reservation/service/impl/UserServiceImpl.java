@@ -36,8 +36,10 @@ import org.springframework.validation.Errors;
 import org.springframework.web.server.ResponseStatusException;
 
 import static com.airline.reservation.security.AccessTokenUserDetailsService.PURPOSE_ACCESS_TOKEN;
+import java.util.Collection;
 
 import java.util.Optional;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.annotation.HandlesTypes;
 import javax.validation.Valid;
@@ -137,6 +139,40 @@ public class UserServiceImpl implements UserService{
     private static BadRequestException badRequestException() {
         return new BadRequestException("Invalid credentials");
     }
+    @Override
+    public Collection<User> list() {
+        
+            return userRepository.findAll();
+
+    }
+
+    @Override
+    public Collection<User> Search(String userName) {
+        
+        return userRepository.findByFullNameContaining(userName);
+
+    }
+
+    
+
+    @Override
+    public Collection<User> getCompany() {
+        
+         return userRepository.findAllByRole(2);
+    }
+
+   @Override
+    @Transactional
+    public UserView update(UserForm form) throws NotFoundException {
+        return userRepository.findByUserId(SecurityUtil.getCurrentUserId())
+                .map((contact) -> {
+                    return new UserView(userRepository.save(contact.update(form)));
+                }).orElseThrow(NotFoundException::new);
+    }
+   
+
+    
+    
 
     @Override
     public UserView currentUser() {

@@ -13,8 +13,8 @@ export class ChangePasswordComponent implements OnInit {
   changePasswordForm!:FormGroup
   constructor(private formbuilder:FormBuilder,private router:Router,private apiservice:ApiService) { 
     this.changePasswordForm=this.formbuilder.group({
-      currentPass:['',Validators.required],
-      newPass:['',Validators.required],
+      currentPass:['',[Validators.required,Validators.minLength(8),Validators.maxLength(25),Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9 \\!\"#\\$%&'\\(\\)\\*\\+,\\-\\.\\/\\:;\\<\\=\\>\\?@\\[\\\\\\]\\^_`\\{\\|\\}~]+$")]],
+      newPass:['',[Validators.required,Validators.minLength(8),Validators.maxLength(25),Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9 \\!\"#\\$%&'\\(\\)\\*\\+,\\-\\.\\/\\:;\\<\\=\\>\\?@\\[\\\\\\]\\^_`\\{\\|\\}~]+$")]],
       newPass2:['',Validators.required]
         },
         {

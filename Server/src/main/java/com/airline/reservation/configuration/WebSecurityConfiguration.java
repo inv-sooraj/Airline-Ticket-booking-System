@@ -12,6 +12,7 @@ import com.airline.reservation.security.util.TokenGenerator;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import static org.springframework.http.HttpMethod.GET;
 import org.springframework.http.HttpMethod;
 
 import static org.springframework.http.HttpMethod.OPTIONS;
@@ -50,11 +51,16 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .securityContext().and()
                 .anonymous().and()
                 .authorizeRequests()
+
+                // .antMatchers(POST, "/users").anonymous()
+
                 .antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
                 .antMatchers("/users/**").permitAll()
+
                 .antMatchers(OPTIONS, "/login").anonymous()
                 .antMatchers("/bookings/**").anonymous()
                 .antMatchers(PUT, "/login").anonymous()
+                .antMatchers(OPTIONS, "/**").anonymous()  
                 .anyRequest().authenticated();
     }
 
