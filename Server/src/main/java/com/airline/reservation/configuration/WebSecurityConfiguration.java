@@ -13,6 +13,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import static org.springframework.http.HttpMethod.GET;
+import org.springframework.http.HttpMethod;
+
 import static org.springframework.http.HttpMethod.OPTIONS;
 import static org.springframework.http.HttpMethod.POST;
 import static org.springframework.http.HttpMethod.PUT;
@@ -27,10 +29,7 @@ import org.springframework.security.web.authentication.preauth.PreAuthenticatedA
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.NegatedRequestMatcher;
 
-/**
- *
- * @author nirmal
- */
+ 
 @Configuration
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
@@ -40,7 +39,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
+       
+        http.cors()
+        .and()
                 .requestMatcher(new NegatedRequestMatcher(new AntPathRequestMatcher("/error")))
                 .addFilter(accessTokenProcessingFilter())
                 .authenticationProvider(preAuthenticatedAuthenticationProvider())
@@ -50,9 +51,14 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .securityContext().and()
                 .anonymous().and()
                 .authorizeRequests()
-                .antMatchers(POST, "/users").anonymous()
+
+                // .antMatchers(POST, "/users").anonymous()
+
+                .antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
+                .antMatchers("/users/**").permitAll()
+
                 .antMatchers(OPTIONS, "/login").anonymous()
-                .antMatchers(POST, "/login").anonymous()
+                .antMatchers("/bookings/**").anonymous()
                 .antMatchers(PUT, "/login").anonymous()
                 .antMatchers(OPTIONS, "/**").anonymous()  
                 .anyRequest().authenticated();

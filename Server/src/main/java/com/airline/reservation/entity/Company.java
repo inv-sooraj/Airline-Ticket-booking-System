@@ -6,25 +6,22 @@ import javax.persistence.Entity;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
-
 import com.airline.reservation.form.CompanyForm;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-
 @Entity
-@Table(name= "user")
+@Table(name = "user")
 public class Company {
 
-    public static enum Status{
-        DELETE((byte)0),
-        ACTIVE((byte)0);
+    public static enum Status {
+        DELETE((byte) 0),
+        ACTIVE((byte) 1);
 
-        public final byte value; 
-            
+        public final byte value;
+
         private Status(byte value) {
             this.value = value;
         }
@@ -33,40 +30,69 @@ public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
-    @NotBlank 
     private String fullName;
+    private String phone;
     private String email;
     private String address;
     private String password;
+    private Integer role;
     private byte status;
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDate;
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateDate;
 
-    public Company(Integer userId,String fullName,String email,String address,String password){
-    this.userId = userId;
-    this.fullName = fullName;
-    this.email = email;
-    this.address = address;
-    this.password = password;
+    public Company(Integer userId, String fullName, String email, String address, String password, String phone,
+            Integer role) {
+        this.userId = userId;
+        this.fullName = fullName;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
+        this.password = password;
+        this.role = role;
 
-    this.status = Status.ACTIVE.value;
+        this.status = Status.ACTIVE.value;
 
+        Date dt = new Date();
+        this.createDate = dt;
+        this.updateDate = dt;
 
-    Date dt = new Date();
-    this.createDate = dt;
-    this.updateDate = dt;
-    
     }
 
+    public Company() {
 
+    }
+
+    public Company(Integer userId) {
+        this.userId = userId;
+    }
 
     public Company(CompanyForm form) {
-        
+        this.fullName = form.getFullName();
+        this.email = form.getEmail();
+        this.phone = form.getPhone();
+        this.address = form.getAddress();
+        this.password = form.getPassword();
+        this.role = form.getRole();
+        this.status = Status.ACTIVE.value;
+        Date dt = new Date();
+        this.createDate = dt;
+        this.updateDate = dt;
     }
 
+    public Company update(CompanyForm form) {
+        this.fullName = form.getFullName();
+        this.email = form.getEmail();
+        this.phone = form.getPhone();
+        this.address = form.getAddress();
+        this.password = form.getPassword();
+        this.role = form.getRole();
+        Date dt = new Date();
+        this.updateDate = dt;
 
+        return this;
+    }
 
     public Integer getUserId() {
         return userId;
@@ -131,5 +157,21 @@ public class Company {
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
     }
- 
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Integer getRole() {
+        return role;
+    }
+
+    public void setRole(Integer role) {
+        this.role = role;
+    }
+
 }

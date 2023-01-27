@@ -8,17 +8,21 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import com.airline.reservation.exception.BadRequestException;
+// import com.airline.reservation.exception.HandledException;
 import com.airline.reservation.form.validation.Password;
+
+import javassist.bytecode.stackmap.BasicBlock.Catch;
 
 public class UserForm {
     @NotBlank
-    @Size(min = 4, max = 20)
+    @Size(min = 4, max = 20,message = "101")
     private String fullName;
     @NotBlank
     @Email
-    @Size( max = 30)
+    @Size( max = 30,message="102")
     private String email;
-    @Password
+    @Password(message="103")
     private String password;
     private Date dob;
     @Size(min = 8, max = 8)
@@ -35,18 +39,26 @@ public class UserForm {
     private Integer status;
     @NotNull
     private Integer role;
+    
     public String getPassportNumber() {
-        return passportNumber;
+      return passportNumber;
     }
     public void setPassportNumber(String passportNumber) {
         this.passportNumber = passportNumber;
     }
-    public String getFullName() {
+   
+    public String getFullName(){
+
+       
         return fullName;
+   
     }
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setFullName(String fullName)  {
+   
+        this.fullName=fullName;
+   
     }
+    
     public String getEmail() {
         return email;
     }
@@ -69,8 +81,15 @@ public class UserForm {
     public String getAddress() {
         return address;
     }
-    public void setAddress(String address) {
-        this.address = address;
+    public void setAddress(String address)  {
+        // if(address==""||address==null){
+        //   throw new HandledException( "Address is Empty");
+          
+        //    }else
+        //    {
+            this.address=address;
+        //    }
+           
     }
     public String getPhone() {
         return phone;
