@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 
 import com.airline.reservation.form.BookingForm;
 import com.airline.reservation.json.Json;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 public class Bookings {
     public static enum Status {

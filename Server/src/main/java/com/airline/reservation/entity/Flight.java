@@ -10,7 +10,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.airline.reservation.form.FlightForm;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 public class Flight {
     

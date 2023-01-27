@@ -19,8 +19,12 @@ public class BookingServiceImpl implements BookingService{
      
     public void addJob(BookingForm form) {
         System.out.println("status = "+form.getStatus());
-        
-         bookingRepository.save(new Bookings(form, form.getCancellation(), form.getStatus()));
+        bookingRepository.save(new Bookings(form, form.getCancellation(), form.getStatus()));
+    }
+
+    
+    public List<Bookings> findByStatus(Byte status) {
+        return bookingRepository.findByStatus(status);
     }
     
 }

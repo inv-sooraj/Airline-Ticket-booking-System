@@ -10,4 +10,5 @@ import com.airline.reservation.form.BookingForm;
 public interface BookingService {
    List<Bookings>list();
    void addJob(BookingForm form);
+   List<Bookings> findByStatus(Byte status);
 }
