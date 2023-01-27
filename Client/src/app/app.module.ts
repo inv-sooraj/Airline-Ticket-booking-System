@@ -16,7 +16,6 @@ import { FlightRegComponent } from './company/flight-reg/flight-reg.component';
 import { ChangePasswordComponent } from './shared/change-password/change-password.component';
 import { PlaneEditComponent } from './company/plane-edit/plane-edit.component';
 import { ToastrModule } from 'ngx-toastr';
-// import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
@@ -37,7 +36,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    // NgbModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
@@ -45,7 +43,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     Ng2SearchPipeModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule
-    // ToastNoAnimationModule.forRoot()
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

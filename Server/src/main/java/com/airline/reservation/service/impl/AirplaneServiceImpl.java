@@ -45,7 +45,7 @@ public class AirplaneServiceImpl implements AirplaneService {
     @Override
     public AirplaneListView get(Integer airplaneId)throws NotFoundException {
         
-        return airplaneRepository.findByAirplaneIdAndUserUserId(airplaneId,SecurityUtil.getCurrentUserId())
+        return airplaneRepository.findByAirplaneId(airplaneId)
                 .map((Airplane) -> {
                     return new AirplaneListView(Airplane);
                 }).orElseThrow(NotFoundException::new);
@@ -53,7 +53,7 @@ public class AirplaneServiceImpl implements AirplaneService {
     @Override
     @Transactional
     public AirplaneListView update(Integer airplaneId, AirplaneForm form) throws NotFoundException {
-        return airplaneRepository.findByAirplaneIdAndUserUserId(airplaneId,SecurityUtil.getCurrentUserId())
+        return airplaneRepository.findByAirplaneId(airplaneId)
                 .map((Airplane) -> {
                     return new AirplaneListView(airplaneRepository.save(Airplane.update(form)));
                 }).orElseThrow(NotFoundException::new);

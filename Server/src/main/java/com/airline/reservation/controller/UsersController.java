@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.security.Principal;
 import com.airline.reservation.entity.User;
-import com.airline.reservation.form.ChangePasswordForm;
 import com.airline.reservation.form.UserForm;
 import com.airline.reservation.json.Json;
 import com.airline.reservation.service.UserService;
@@ -42,14 +41,14 @@ public class UsersController {
         public Collection<User> get(@PathVariable String userName){
         return userService.Search(userName);
     }
-//    @PutMapping("/changePass")
-//    public User update(
-//            @Valid @RequestBody ChangePasswordForm form
-//    ) {
-//        return userService.update(form);
-//    }
     @GetMapping("/GetCompany")
     public Collection<User> getByRole(Principal p) {
         return userService.getCompany();
+    }
+    @PutMapping
+    public UserView update(
+            @Valid @RequestBody UserForm form
+    ) {
+        return userService.update(form);
     }
 }

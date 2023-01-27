@@ -18,7 +18,7 @@ export class AlertService {
   
   showSuccess(message: string | undefined, title: string | undefined) {
     
-    this.toastr.success(message, title ,{timeOut:1000});
+    this.toastr.success(message, title ,{timeOut:1000,positionClass: 'toast-top-center'});
   }
 
   /**
@@ -27,7 +27,7 @@ export class AlertService {
    * @param title
    */
   showError(message: string | undefined, title: string | undefined) {
-    this.toastr.error(message, title,{timeOut:1000});
+    this.toastr.error(message, title,{timeOut:1000,positionClass: 'toast-top-center'});
   }
 
   /**
@@ -36,7 +36,7 @@ export class AlertService {
    * @param title
    */
   showInfo(message: string | undefined, title: string | undefined) {
-    this.toastr.info(message, title,{timeOut:1000});
+    this.toastr.info(message, title,{timeOut:1000,positionClass: 'toast-top-center'});
   }
 
   /**
@@ -45,6 +45,6 @@ export class AlertService {
    * @param title
    */
   showWarning(message: string | undefined, title: string | undefined) {
-    this.toastr.warning(message, title);
+    this.toastr.warning(message, title,{timeOut:1000,positionClass: 'toast-top-center'});
   }
 }

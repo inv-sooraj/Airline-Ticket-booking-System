@@ -1,7 +1,6 @@
 package com.airline.reservation.entity;
-import com.airline.reservation.form.ChangePasswordForm;
+import com.airline.reservation.form.UserForm;
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -152,8 +151,15 @@ public Integer getUserId() {
     public void setPassportNumber(String passportNumber) {
         this.passportNumber = passportNumber;
     }
-    public User update(ChangePasswordForm form) {
-        this.password=form.getNewPassword();
+    public User update(UserForm form) {
+        this.fullName=form.getFullName();
+        this.email=form.getEmail();
+        this.dob=form.getDob();
+        this.passportNumber=form.getPassportNumber();
+        this.address=form.getAddress();
+        this.phone=form.getPhone();
+        this.city=form.getCity();
+        this.country=form.getCountry();
         Date dt = new Date();
         this.updateDate = dt;
 

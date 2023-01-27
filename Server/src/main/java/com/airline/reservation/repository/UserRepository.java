@@ -15,5 +15,6 @@ public interface UserRepository  extends Repository<User, Integer> {
     boolean existsByEmail(String email);
     Collection<User> findAll();
     Collection<User>findByFullNameContaining(String userName);
+    Optional<User> findByUserId(Integer userId);
 
 }

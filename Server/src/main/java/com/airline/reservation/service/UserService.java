@@ -4,7 +4,7 @@ import com.airline.reservation.entity.User;
 import org.springframework.validation.Errors;
 
 import com.airline.reservation.exception.BadRequestException;
-import com.airline.reservation.form.ChangePasswordForm;
+import com.airline.reservation.exception.NotFoundException;
 import com.airline.reservation.form.LoginForm;
 import com.airline.reservation.form.UserForm;
 import com.airline.reservation.view.LoginView;
@@ -21,5 +21,5 @@ public interface UserService {
     public Collection<User> Search(String userName);
     
 
-//    public User update(ChangePasswordForm form);
+     UserView update(UserForm form) throws NotFoundException;
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { AlertService } from 'src/app/alert.service';
 import { ApiService } from 'src/app/api.service';
 
 @Component({
@@ -12,8 +13,8 @@ export class PlaneEditComponent implements OnInit {
   airplaneId = -1;
   public dataarray: any;
   planeEditForm!:FormGroup
-   data : any
-  constructor(private formbuilder:FormBuilder,private apiservice:ApiService,private router:Router,private route :ActivatedRoute) { }
+   data : any;
+  constructor(private formbuilder:FormBuilder,private apiservice:ApiService,private router:Router,private route :ActivatedRoute,private alertservice:AlertService) { }
 
   ngOnInit(): void {
     this.route.params.forEach((params: Params) => {
@@ -25,18 +26,34 @@ export class PlaneEditComponent implements OnInit {
         modelNo:['',[Validators.required,Validators.pattern("^[a-zA-Z0-9]*$"),Validators.minLength(5),Validators.maxLength(30)]],
         totalSeats:['',[Validators.required,Validators.pattern("^[0-9]*$"),Validators.maxLength(9),Validators.maxLength(9)]],
            });
-    
-      this.apiservice.getAirPlaneById(this.airplaneId).subscribe((response: any) => {
-      this.data=response;
-    
-      });
+    this.getEditigData();
+      
   }
+
+  /**To fetch the data of the spacific id from db */
+
+  getEditigData(){
+    this.apiservice.getAirPlaneById(this.airplaneId).subscribe({
+      next: (response: any) => {
+        this.data = response;
+        console.log("Editing details",response);
+      },
+      error: (err: any) => { 
+
+        this.alertservice.showError("Failed to load airplane details","Error")
+      },
+      complete: () => { }
+    });
+  }
+
+  /**Method to save the updated data into db */
+
   onEditSubmit() {
     this.apiservice.sendUpdatePlane(this.planeEditForm.value,this.airplaneId).subscribe((confirmation: any) => {console.log(confirmation);
       if (confirmation.alert === "Sucess") {
       location.reload();
       }
-      alert("Value updated")
+      this.alertservice.showSuccess("Updated successfully!!!","Success")
       this.router.navigate(['/plane-list'])
       });
     }

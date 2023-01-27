@@ -18,7 +18,6 @@ import com.airline.reservation.view.LoginView;
 import com.airline.reservation.view.UserView;
 
 import ch.qos.logback.core.net.SyslogOutputStream;
-import com.airline.reservation.form.ChangePasswordForm;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -135,14 +134,7 @@ public class UserServiceImpl implements UserService{
 
     }
 
-//    @Override
-//    @Transactional
-//    public User update(ChangePasswordForm form) throws NotFoundException {
-//        return userRepository.findByUserId(SecurityUtil.getCurrentUserId())
-//                .map((NewPassword) -> {
-//                    return new User(userRepository.save(User.update(form)));
-//                }).orElseThrow(NotFoundException::new);
-//    }
+    
 
     @Override
     public Collection<User> getCompany() {
@@ -150,6 +142,14 @@ public class UserServiceImpl implements UserService{
          return userRepository.findAllByRole(2);
     }
 
+   @Override
+    @Transactional
+    public UserView update(UserForm form) throws NotFoundException {
+        return userRepository.findByUserId(SecurityUtil.getCurrentUserId())
+                .map((contact) -> {
+                    return new UserView(userRepository.save(contact.update(form)));
+                }).orElseThrow(NotFoundException::new);
+    }
    
     }
     

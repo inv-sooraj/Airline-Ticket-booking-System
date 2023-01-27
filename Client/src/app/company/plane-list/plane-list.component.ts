@@ -19,21 +19,21 @@ export class PlaneListComponent implements OnInit {
   public searchData: any[] = [];
   parentSelector: boolean = false;
   status: any = false;
-  role:any;
-  userid:any;
-  constructor(private formbuilder: FormBuilder, private apiservice: ApiService,private alertservice:AlertService) {
+  role: any;
+  userid: any;
+  constructor(private formbuilder: FormBuilder, private apiservice: ApiService, private alertservice: AlertService) {
     this.planeListForm = this.formbuilder.group({
-      search:[''],
+      search: [''],
       company: [''],
       sel: this.formbuilder.array([])
     });
-    this.role=localStorage.getItem('Role');
-    this.userid=localStorage.getItem('userid');
-    if(this.role == '1'){
-      this.status=true;
+    this.role = localStorage.getItem('Role');
+    this.userid = localStorage.getItem('userid');
+    if (this.role == '1') {
+      this.status = true;
     }
   }
-  
+
   /**For storing the id of selected airplanes in formarray */
 
   onCheckboxChange(e: any) {
@@ -57,22 +57,21 @@ export class PlaneListComponent implements OnInit {
     this.planeListForm?.get('company')?.setValue(e.target.value, {
       onlySelf: true
     });
-    this.onSubmit();
+    // this.onSubmit();
   }
 
   /**For fetching airplane details based on  a spacific company id */
 
-  onSubmit() {
-    // this.status = true;
-    this.apiservice.getPlaneByCompany(this.planeListForm.value.company).subscribe({
-      next: (response: any) => {
-        this.items = response;
-      },
-      error: (err: any) => { alert("Failed") },
-      complete: () => { }
-    });
+  // onSubmit() {
+  //   this.apiservice.getPlaneByCompany(this.planeListForm.value.company).subscribe({
+  //     next: (response: any) => {
+  //       this.items = response;
+  //     },
+  //     error: (err: any) => { alert("Failed") },
+  //     complete: () => { }
+  //   });
 
-  }
+  // }
 
   /**For searching an airplane */
 
@@ -102,7 +101,9 @@ export class PlaneListComponent implements OnInit {
       next: (response: any) => {
         this.Company = response;
       },
-      error: (err: any) => { alert("Error") },
+      error: (err: any) => {
+        this.alertservice.showError("Couldnt fetch company details", "error")
+      },
       complete: () => { }
     });
   }
@@ -110,71 +111,52 @@ export class PlaneListComponent implements OnInit {
   /**To get all airplane details(only for  admin) */
 
   getPlane() {
-    if(this.role == '1'){
+    if (this.role == '1') {
       this.apiservice.getAirPlane().subscribe({
         next: (response: any) => {
           this.items = response;
           console.log(this.items);
         },
-        error: (err: any) => { 
-          this.alertservice.showError("Failed to load airplane data","Error")
+        error: (err: any) => {
+          this.alertservice.showError("Failed to load airplane data", "Error")
         },
         complete: () => { }
       });
     }
-    else if(this.role == '2'){
+    else if (this.role == '2') {
       this.apiservice.getPlaneByCompany(this.userid).subscribe({
         next: (response: any) => {
           this.items = response;
-          console.log("airplane by  company",this.items);
+          console.log("airplane by  company", this.items);
         },
-        error: (err: any) => { 
-          this.alertservice.showError("Failed to load airplane data","Error")
+        error: (err: any) => {
+          this.alertservice.showError("Failed to load airplane data", "Error")
 
         },
         complete: () => { }
       });
     }
-    else{
-      this.alertservice.showError("Access Denied","Error")
+    else {
+      this.alertservice.showError("Access Denied", "Error")
     }
-    
+
   }
 
   /**To delete the selected airplanes */
 
   deleteData() {
     this.apiservice.deletePlane(this.planeListForm.value.sel).subscribe
-    ({
-      next: (response: any) => {
-        alert("Deleted")
-        location.reload();
-      },
-      error: (err: any) => {
-        location.reload();
-      },
-      complete: () => { }
-    });
-  } 
+      ({
+        next: (response: any) => {
+          this.alertservice.showSuccess("Deleted Successfully!!!", "success")
+          location.reload();
+        },
+        error: (err: any) => {
+          this.alertservice.showSuccess("Failed to delete!!!", "error")
+          location.reload();
+        },
+        complete: () => { }
+      });
+  }
 }
 
- // onChange($event: any) {
-  //   const id = $event.target.value;
-  //   const isChecked = $event.target.checked;
-  //   this.items = this.items.map((d: any) => {
-  //     if (d.airplaneId == id) {
-  //       d.select = isChecked;
-  //       this.parentSelector = false;
-  //       this.dataarray.push(id);
-  //       return d;
-  //     }
-  //     if (id == -1) {
-  //       d.select = this.parentSelector;
-  //       console.log("2nd",this.dataarray);
-
-  //       return d;
-  //     }
-  //     console.log("3rd ",this.dataarray);
-  //     return d;
-  //   });
-  // }

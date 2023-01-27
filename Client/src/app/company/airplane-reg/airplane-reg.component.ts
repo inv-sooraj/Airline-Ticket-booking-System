@@ -2,6 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlertService } from 'src/app/alert.service';
 import { ApiService } from 'src/app/api.service';
 
 // import { ApiService } from '../api.service';
@@ -15,7 +16,7 @@ export class AirplaneRegComponent implements OnInit {
 
   planeRegForm!:FormGroup;
   status:any=false;
-  constructor(private formbuilder:FormBuilder,private router:Router,private apiservice:ApiService,@Inject(DOCUMENT) document: Document) { 
+  constructor(private formbuilder:FormBuilder,private router:Router,private apiservice:ApiService,@Inject(DOCUMENT) document: Document,private alertservice:AlertService) { 
     this.planeRegForm=this.formbuilder.group({
       airplaneName:['',[Validators.required,Validators.pattern("^[a-zA-Z0-9]*$"),Validators.minLength(5),Validators.maxLength(30)]],
       modelNo:['',[Validators.required,Validators.pattern("^[a-zA-Z0-9]*$"),Validators.minLength(5),Validators.maxLength(30)]],
@@ -25,22 +26,27 @@ export class AirplaneRegComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  /**Method to add plane details to db */
+  
   addPlane()
   {
     if(this.planeRegForm.valid){
       this.apiservice.createPlane(this.planeRegForm.value).subscribe({
         next: (result: any) => {
+          this.alertservice.showSuccess("Airplane details added successfully","success");
+          this.status=true;
           this.planeRegForm.reset();  
           
     },
     error: (err: any) => {
-      alert(err.name);
+      this.alertservice.showError("Failed to add airplane details","Failed");
+      this.status=false;
       console.log(err);
     }  
     });
     }
     else{
-        this.status=true;
+      this.alertservice.showError("Please fill the details correctly!!","Invalid form")
     }
   }
   cancel()

@@ -37,15 +37,13 @@ export class LoginComponent implements OnInit {
       this.apiservice.login(param).subscribe({
         next: (result: any) => {
           this.listData = result.accessToken.value;
-          //  this.EmpEmail = response.email;
           this.role = result.role;
           this.userid=result.userId;
-          // localStorage.setItem('email', this.EmpEmail)
           localStorage.setItem('accessToken', this.listData)
           localStorage.setItem('Role', this.role)
           localStorage.setItem('userid',this.userid)
           console.log("Role login",this.role);
-          
+          this.status=true;
           switch (result.role) {
             /**For admin */
             case 1:
@@ -68,6 +66,7 @@ export class LoginComponent implements OnInit {
           }
         },
         error: (err: any) => {
+          this.status=false;
           this.alertservice.showError("Login Failed", "Error");
           console.log(err);
         }

@@ -23,7 +23,8 @@ public interface AirplaneRepository extends Repository<Airplane,Integer>  {
     Airplane save(Airplane airplane);
     Collection<Airplane> findAllByStatus(byte Status);
     
-    Optional<Airplane> findByAirplaneIdAndUserUserId(Integer airplaneId, Integer userId);
+//    Optional<Airplane> findByAirplaneIdAndUserUserId(Integer airplaneId, Integer userId);
+    Optional<Airplane> findByAirplaneId(Integer airplaneId);
     Collection<Airplane> findAllByUserUserIdAndStatus(Integer userId,byte status);
     @Modifying
     @Transactional
