@@ -52,6 +52,6 @@ export class ServiceService {
   delete(a:any[]):Observable<any>{
     let tocken=localStorage.getItem('accesstoken')
     let  head_obj=new HttpHeaders({"Authorization":"Airline " + tocken})
-    return this.http.delete(environment.baseUrl + '/company/'+a,{headers:head_obj});
+    return this.http.delete(environment.baseUrl + '/company?delete='+a,{headers:head_obj});
   }
 }

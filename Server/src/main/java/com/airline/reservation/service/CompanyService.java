@@ -31,4 +31,5 @@ public interface CompanyService {
 
     // delete multiple
     public void deleteAllById(List<Integer> integers);
+
 }

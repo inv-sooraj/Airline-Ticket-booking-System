@@ -90,7 +90,8 @@ public class CompanyServiceImpl implements CompanyService {
     // Multiple delete
     @Override
     @Transactional
-    public void deleteAllById(List<Integer>deletes) {
-        companyRepository.softdelete(deletes);
+    public void deleteAllById(List<Integer>integers) {
+        companyRepository.softdelete(integers);
+        System.out.println("delete successfull");
     }
 }
