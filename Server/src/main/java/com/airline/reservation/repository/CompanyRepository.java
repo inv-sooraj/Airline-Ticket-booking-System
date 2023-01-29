@@ -21,7 +21,7 @@ public interface CompanyRepository extends Repository<Company,Integer> {
      List<Company>findAll();
      
      // List All Companies
-     @Query(value="select * from user where role=3",nativeQuery = true)
+     @Query(value="select * from user where role=3 and status=1",nativeQuery = true)
      List<Company>findByrole();
 
      // Search and pagination
@@ -38,7 +38,7 @@ public interface CompanyRepository extends Repository<Company,Integer> {
      // multiple delete
      @Modifying
      @Transactional
-     @Query("update  User p set p.status = 0 where p.userId in(:deletes)")
-     void softdelete(List<Integer> deletes);
+     @Query("update  User c set c.status = 0 where c.userId in(:integers)")
+     void softdelete(List<Integer> integers);
  
 }
