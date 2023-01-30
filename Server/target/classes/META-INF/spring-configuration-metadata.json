@@ -22,7 +22,37 @@
     {
       "name": "app.security.access-token-expiry",
       "type": "java.time.Duration",
+      "sourceType": "com.airline.reservation.security.config.SecurityConfig"
+    },
+    {
+      "name": "app.security.access-token-expiry",
+      "type": "java.time.Duration",
+      "sourceType": "com.airline.reservation.security.config.SecurityConfig"
+    },
+    {
+      "name": "app.security.access-token-expiry",
+      "type": "java.time.Duration",
+      "sourceType": "com.airline.reservation.security.config.SecurityConfig"
+    },
+    {
+      "name": "app.security.access-token-expiry",
+      "type": "java.time.Duration",
       "description": "Duration for access token expiry",
+      "sourceType": "com.airline.reservation.security.config.SecurityConfig"
+    },
+    {
+      "name": "app.security.refresh-token-expiry",
+      "type": "java.time.Duration",
+      "sourceType": "com.airline.reservation.security.config.SecurityConfig"
+    },
+    {
+      "name": "app.security.refresh-token-expiry",
+      "type": "java.time.Duration",
+      "sourceType": "com.airline.reservation.security.config.SecurityConfig"
+    },
+    {
+      "name": "app.security.refresh-token-expiry",
+      "type": "java.time.Duration",
       "sourceType": "com.airline.reservation.security.config.SecurityConfig"
     },
     {
@@ -44,7 +74,37 @@
     {
       "name": "app.security.token-generator-password",
       "type": "java.lang.String",
+      "sourceType": "com.airline.reservation.security.config.SecurityConfig"
+    },
+    {
+      "name": "app.security.token-generator-password",
+      "type": "java.lang.String",
+      "sourceType": "com.airline.reservation.security.config.SecurityConfig"
+    },
+    {
+      "name": "app.security.token-generator-password",
+      "type": "java.lang.String",
+      "sourceType": "com.airline.reservation.security.config.SecurityConfig"
+    },
+    {
+      "name": "app.security.token-generator-password",
+      "type": "java.lang.String",
       "description": "Password for the token generator - cannot be null and must be exactly 16 ASCII characters",
+      "sourceType": "com.airline.reservation.security.config.SecurityConfig"
+    },
+    {
+      "name": "app.security.token-generator-salt",
+      "type": "java.lang.String",
+      "sourceType": "com.airline.reservation.security.config.SecurityConfig"
+    },
+    {
+      "name": "app.security.token-generator-salt",
+      "type": "java.lang.String",
+      "sourceType": "com.airline.reservation.security.config.SecurityConfig"
+    },
+    {
+      "name": "app.security.token-generator-salt",
+      "type": "java.lang.String",
       "sourceType": "com.airline.reservation.security.config.SecurityConfig"
     },
     {
