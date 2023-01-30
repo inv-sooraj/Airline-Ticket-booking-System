@@ -15,8 +15,9 @@ public class CSVService {
   BookingRepository repository;
   
   public ByteArrayInputStream load() {
+    
     List<Bookings> bookings = repository.findAll();
-    String[] entries = {"eid","name","vid","emp_id","balance_amt","handover_to","entry_date"};
+   
     
     ByteArrayInputStream in = CSVHelper.bookingsToCSV(bookings);
     return in;
