@@ -15,9 +15,11 @@ public class CSVService {
   BookingRepository repository;
   
   public ByteArrayInputStream load() {
-    List<Bookings> tutorials = repository.findAll();
-
-    ByteArrayInputStream in = CSVHelper.tutorialsToCSV(tutorials);
+    
+    List<Bookings> bookings = repository.findAll();
+   
+    
+    ByteArrayInputStream in = CSVHelper.bookingsToCSV(bookings);
     return in;
   }
 }

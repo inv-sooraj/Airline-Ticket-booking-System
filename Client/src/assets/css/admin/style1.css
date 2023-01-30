@@ -6132,7 +6132,7 @@ canvas#highlights {
 .weatcher_update_wrapper .weather_img_2 {
     background-color: #e5fffe;
     border-radius: 15px;
-    background-image: url(../img/weather_1.png);
+    background-image: url(/assets/img/weather_1.png);
     background-repeat: no-repeat;
     background-size: 100% auto;
     width: 100%;
@@ -6613,17 +6613,17 @@ canvas#highlights {
 }
 
 .custom_striped_progressbar .progress-bar.green_bar {
-    background-image: url(../img/progress/progress-bg.html);
+    background-image: url(/assets/img/progress/progress-bg.html);
     background-size: cover
 }
 
 .custom_striped_progressbar .progress-bar.yellow_bar {
-    background-image: url(../img/progress/design-progress-yellow.html);
+    background-image: url(/assets/img/progress/design-progress-yellow.html);
     background-size: cover
 }
 
 .custom_striped_progressbar .progress-bar.red_bar {
-    background-image: url(../img/progress/design-progress-red.html);
+    background-image: url(/assets/img/progress/design-progress-red.html);
     background-size: cover
 }
 
@@ -8531,7 +8531,7 @@ canvas#highlights {
 
 .social_media_card {
     background-color: #eee5ff;
-    background-image: url(../img/shape_2.svg);
+    background-image: url(/assets/img/shape_2.svg);
     background-size: cover;
     background-position: top right;
     background-repeat: no-repeat
@@ -8625,7 +8625,7 @@ canvas#highlights {
 .sales_card_wrapper {
     background-color: #f65365;
     position: relative;
-    background-image: url(../img/plane_thumb.svg);
+    background-image: url(/assets/img/plane_thumb.svg);
     background-repeat: no-repeat;
     background-size: cover;
     background-size: 100% 58%;
@@ -9268,7 +9268,7 @@ canvas#highlights {
 .pswp__button,
 .pswp__button--arrow--left:before,
 .pswp__button--arrow--right:before {
-    background: url(../img/default-skin/default-skin.png) 0 0 no-repeat;
+    background: url(/assets/img/default-skin/default-skin.png) 0 0 no-repeat;
     background-size: 264px 88px;
     width: 44px;
     height: 44px
@@ -9282,7 +9282,7 @@ canvas#highlights {
     .pswp--svg .pswp__button,
     .pswp--svg .pswp__button--arrow--left:before,
     .pswp--svg .pswp__button--arrow--right:before {
-        background-image: url(../img/default-skin/default-skin.svg)
+        background-image: url(/assets/img/default-skin/default-skin.svg)
     }
 
     .pswp--svg .pswp__button--arrow--left,
@@ -11784,7 +11784,7 @@ table.lms_table_active3.dataTable thead .sorting_desc::after {
 
 .project_complete {
     background: #e2fff6;
-    background-image: url(../img/pro_complete.png);
+    background-image: url(/assets/img/pro_complete.png);
     height: 100%;
     background-size: cover;
     background-repeat: no-repeat;
@@ -12296,7 +12296,7 @@ table.lms_table_active3.dataTable thead .sorting_desc::after {
 }
 
 .user_crm_wrapper .crm_reports_bnner {
-    background-image: url(../img/crm/bg.svg);
+    background-image: url(/assets/img/crm/bg.svg);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -12552,7 +12552,7 @@ table.lms_table_active3.dataTable thead .sorting_desc::after {
 }
 
 .engage_bg {
-    background-image: url(../img/engage_bg.svg);
+    background-image: url(/assets/img/engage_bg.svg);
     background-repeat: no-repeat;
     background-position: center right
 }

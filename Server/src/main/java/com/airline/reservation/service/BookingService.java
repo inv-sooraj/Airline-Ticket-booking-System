@@ -12,6 +12,9 @@ public interface BookingService {
    List<Bookings>list();
    void addJob(BookingForm form);
    List<Bookings> findByStatus(Byte status);
-   List<BookingListView> bookingList();
-   
+   // List<BookingListView> bookingList();
+   List<Bookings> getAllBookings(Integer pageNo, Integer pageSize, String sortBy,String sortDir,String flightNumber);
+   // List<BookingListView> bookingList();  
+   // List<Bookings> getByFlightNumber(Integer pageNo, Integer pageSize, String sortBy, String sortDir,
+   //       String flightNumber);
 }
