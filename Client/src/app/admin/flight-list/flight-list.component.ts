@@ -50,4 +50,8 @@ export class FlightListComponent implements OnInit {
   }
 
   onChangeCompany(event: any) { }
+
+  delete(){
+    
+  }
 }

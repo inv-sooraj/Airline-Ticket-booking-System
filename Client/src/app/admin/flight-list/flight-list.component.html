@@ -40,15 +40,10 @@
                   </div>
                 </form>
                 <div class="QA_table mb_30"><br><br>
-                  <a class="delete" href="" title="Delete" data-toggle="tooltip" style="padding-left: 1150px;"><i
-                      class="fa fa-trash"></i></a>
                   <table class="table">
                     <thead>
                       <tr>
-                        <th scope="col">
-                          <input class="form-check-input" type="checkbox" [(ngModel)]="parentSelector" [value]="-1"
-                            (change)="onChangeCompany($event)" />
-                        </th>
+                        <th></th>
                         <th scope="col">Id</th>
                         <th scope="col">Flight Name</th>
                         <th scope="col">Airplane Name</th>
@@ -56,6 +51,9 @@
                         <th scope="col">Departing DateTime</th>
                         <th scope="col">Destination</th>
                         <th scope="col">Destination DateTime</th>
+                        <th scope="col">
+                          <a title="delete"><i class="fa fa-trash"></i></a>
+                        </th>
                       </tr>
                     </thead>
                     <tbody>

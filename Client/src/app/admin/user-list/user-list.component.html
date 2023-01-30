@@ -27,26 +27,22 @@
                       </div>
                     </div>
                     <div class="add_button ms-2">
-                      <a [routerLink]="['/companyreg']" data-bs-toggle="modal" data-bs-target="#addcategory"
-                        class="btn_1">Add New</a>
                       <button class=" btn-link btn-sm mb-1" style="margin-top: 2%; border: none;" (click)="dwn()">CSV
                         Export</button>
                     </div>
                   </div>
                 </div>
                 <div class="QA_table mb_30"><br><br>
-                  <a class="delete" href="" title="Delete" (click)="delete()" data-toggle="tooltip"
-                    style="padding-left: 1060px;"><i class="fa fa-trash"></i></a>
                   <table class="table">
                     <thead>
                       <tr>
-                        <th scope="col">
-                          <input class="form-check-input" type="checkbox" [(ngModel)]="parentSelector" [value]="-1"
-                            (change)="onChangeUser($event)" />
-                        </th>
+                        
                         <th scope="col">Id</th>
                         <th scope="col">Name</th>
                         <th scope="col">Email Id</th>
+                        <th scope="col">
+                          <a title="delete" (click)="delete()"><i class="fa fa-trash"></i></a>
+                        </th>
                       </tr>
                     </thead>
                     <tbody>

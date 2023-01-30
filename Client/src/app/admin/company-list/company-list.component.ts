@@ -44,7 +44,7 @@ export class CompanyListComponent implements OnInit {
 
     } else {
       let el = this.newArray.filter((itm: any) => data.userId !== data.userId);
-
+    
       if (el)
         this.newArray.splice(this.newArray.indexOf(el), 1);
       // console.log(this.newArray)

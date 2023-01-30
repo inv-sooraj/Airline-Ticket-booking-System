@@ -43,10 +43,9 @@ export class ServiceService {
   //flight list company base
   getFlightList(companyId:any):Observable<any>{
     console.log("asadasd",companyId);
-    
     let tocken=localStorage.getItem('accesstoken')
     let  head_obj=new HttpHeaders({"Authorization":"Airline " + tocken})
-    return this.http.get(environment.baseUrl + '/flight/companyname/'+ companyId,{headers:head_obj});
+    return this.http.get(environment.baseUrl + '/flight/companyname/'+companyId,{headers:head_obj});
   }
   // delete
   delete(a:any[]):Observable<any>{
