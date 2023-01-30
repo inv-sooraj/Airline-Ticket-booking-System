@@ -13,18 +13,12 @@ public class AirlineApplication {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                // registry.addMapping("/**").allowedMethods("*");
-                registry.addMapping("/**").allowedMethods("*").allowedOrigins("*");
-
-
+                registry.addMapping("/**").allowedMethods("*");
             }
         };
     }
 
-    public static void main(String[] args){
-        SpringApplication.run(AirlineApplication.class,args);
-    }
-	// public static void main(String[] args) {
-	// 	SpringApplication.run(AirlineApplication.class, args);
-	// }
+	public static void main(String[] args) {
+		SpringApplication.run(AirlineApplication.class, args);
+	}
 }

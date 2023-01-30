@@ -22,24 +22,21 @@ export class SignupComponent implements OnInit {
       fullname:['',[Validators.required,Validators.pattern("^[a-zA-Z][a-zA-Z ]+$"),Validators.minLength(8),Validators.maxLength(18)]],
       dob:['',Validators.required],
       email:['',[Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"),Validators.maxLength(30)]],
-      password:['',[Validators.required,Validators.minLength(18),Validators.maxLength(25)]],
-      cPassword:['',[Validators.required,Validators.minLength(18),Validators.maxLength(25)]],
+      password:['',[Validators.required,Validators.minLength(8),Validators.maxLength(25),Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9 \\!\"#\\$%&'\\(\\)\\*\\+,\\-\\.\\/\\:;\\<\\=\\>\\?@\\[\\\\\\]\\^_`\\{\\|\\}~]+$")]],
+      cPassword:['',[Validators.required,Validators.minLength(8),Validators.maxLength(25)]],
       passportNo:['',[Validators.required,Validators.pattern("^[A-PR-WYa-pr-wy][1-9]\\d\\s?\\d{4}[1-9]$"),Validators.minLength(8),Validators.maxLength(8)]],
       phone:['',[Validators.required, Validators.pattern("^[0-9]*$"),Validators.minLength(10), Validators.maxLength(10)]],
       address:['',Validators.required],
       city:['',Validators.required],
       zipcode:['',Validators.required],
-      country:['',Validators.required]
-    // },
-    // { validator: [ConfirmedValidator('password', 'cPassword')]
-    //   // validator: ConfirmedValidator('password', 'cPassword')
-    //     }as AbstractControlOptions
-   
+      country:['',Validators.required],
      },
      {
       validator: ConfirmPasswordValidator("password", "cPassword")
     }as AbstractControlOptions );
+   
   }
+ 
   changeCountry(e:any) {
     console.log(e.value)
     this.country.setValue(e.target.value, {
@@ -48,59 +45,42 @@ export class SignupComponent implements OnInit {
   }
   register(){
     if(this.signupForm.valid){
-      if(this.apiservice.isEmailUnique(this.signupForm.value.email)){
-                this.apiservice.createUser(this.signupForm.value).subscribe({
-                  next: (result: any) => {
-                  alert('Created successfully')
-                this.router.navigate(['/login'])  
+      let param ={
+        "fullName":this.signupForm.value.fullname,
+        "email":this.signupForm.value.email,
+        "password":this.signupForm.value.password,
+        "dob":this.signupForm.value.dob,
+        "passportNumber":this.signupForm.value.passportNo,
+        "address":this.signupForm.value.address,
+        "city":this.signupForm.value.city,
+        "phone":this.signupForm.value.phone,
+        "country":this.signupForm.value.country,
+        "status":1,
+        "role":3
+      }
+      // if(this.apiservice.isEmailUnique(this.signupForm.value.email)){
+                this.apiservice.createUser(param).subscribe({
+                next: (result: any) => {
+                this.status=true;
+                alert("Success");
+                this.router.navigate(['/login']);  
        
     },
     error: (err: any) => {
-      alert(err.name);
+      // alert(err.name);
+      this.status=false;
       console.log(err);
     }  
     });
-    }
+    
+    // }
   }
     else{
-        this.status=true;
+      alert("Invalid credentials");
     }
   }
   ngOnInit(): void {
   }
-  // get f(){
-
-  //   return this.signupForm.controls;
-
-  // }
 
 }
-
-// function ConfirmedValidator(controlName: string, matchingControlName: string){
-  
-
-//     return (formGroup: FormGroup) => {
-
-//         const control = formGroup.controls[controlName];
-
-//         const matchingControl = formGroup.controls[matchingControlName];
-
-//         if (matchingControl.errors && !matchingControl.errors['confirmedValidator']) {
-
-//             return;
-
-//         }
-
-//         if (control.value !== matchingControl.value) {
-
-//             matchingControl.setErrors({ confirmedValidator: true });
-
-//         } else {
-
-//             matchingControl.setErrors(null);
-
-//         }
-
-//     }
-// }
 

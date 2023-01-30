@@ -24,18 +24,55 @@ public class AirplaneListView {
     private final Date createDate;
       @Json.DateTimeFormat
     private final Date updateDate;
-    private User user;
-//    private final byte status;
+//    private User user;
+    private final byte status;
 
     public AirplaneListView(Airplane airplane) {
         
-        this.user=airplane.getUser();
+//        this.user=airplane.getUser();
         this.airplaneId=airplane.getAirplaneId();
         this.airplaneName=airplane.getAirplaneName();
         this.modelNo=airplane.getModelNo();
         this.totalSeats=airplane.getTotalSeats();
         this.createDate=airplane.getCreateDate();
         this.updateDate=airplane.getUpdateDate();
+        this.status=airplane.getStatus();
     }
+
+    public Integer getAirplaneId() {
+        return airplaneId;
+    }
+
+    public String getAirplaneName() {
+        return airplaneName;
+    }
+
+    public String getModelNo() {
+        return modelNo;
+    }
+
+    public Integer getTotalSeats() {
+        return totalSeats;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public Date getUpdateDate() {
+        return updateDate;
+    }
+
+//    public User getUser() {
+//        return user;
+//    }
+
+    public byte getStatus() {
+        return status;
+    }
+    
+    
+
+ 
     
 }
