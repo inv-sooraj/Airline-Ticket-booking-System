@@ -1,7 +1,6 @@
 package com.airline.reservation.controller;
 
 import java.util.Collection;
-import java.util.List;
 
 import javax.validation.Valid;
 

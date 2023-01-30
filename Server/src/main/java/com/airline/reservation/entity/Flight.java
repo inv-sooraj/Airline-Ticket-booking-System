@@ -1,8 +1,5 @@
 package com.airline.reservation.entity;
 
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
