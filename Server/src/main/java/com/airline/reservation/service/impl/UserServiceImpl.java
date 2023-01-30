@@ -119,6 +119,7 @@ public class UserServiceImpl implements UserService{
                 body.getErrors().add(new ApplicationError("200","User already exist"));
                 return new ResponseEntity<>(body,HttpStatus.BAD_REQUEST);
             }
+           
             UserView uview =  new UserView(userRepository.save(new User(
 
                     form.getFullName(),
@@ -134,8 +135,9 @@ public class UserServiceImpl implements UserService{
                     form.getDob())));
             body.getValues().put("user",uview);
             return new ResponseEntity<ResBody>(body,HttpStatus.OK);
-        }
-  
+        } 
+        
+    
     private static BadRequestException badRequestException() {
         return new BadRequestException("Invalid credentials");
     }

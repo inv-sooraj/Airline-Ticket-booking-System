@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +21,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import com.airline.reservation.entity.Bookings;
 import com.airline.reservation.form.BookingForm;
+import com.airline.reservation.json.ResBody;
 import com.airline.reservation.service.BookingService;
 import com.airline.reservation.service.CSVService;
 import com.airline.reservation.view.BookingListView;
@@ -76,18 +78,15 @@ public class BookingsController {
     return new ResponseEntity<List<Bookings>>(list, new HttpHeaders(), HttpStatus.OK); 
     }
 
-    //Search Results
-    // @GetMapping
-    // public ResponseEntity<List<Bookings>> getByFlightNumber(
-    // @RequestParam(defaultValue = "0") Integer pageNo, 
-    // @RequestParam(defaultValue = "5") Integer pageSize,
-    // @RequestParam String flightNumber,
-    // @RequestParam(defaultValue = "bookingId") String sortBy,
-    // @RequestParam(defaultValue = "ASC")String sortDir) 
-    // {
-    // List<Bookings> list = bookingService.getByFlightNumber(pageNo, pageSize, sortBy,sortDir,flightNumber);
-    // return new ResponseEntity<List<Bookings>>(list, new HttpHeaders(), HttpStatus.OK); 
-    // }
+   
+    @PutMapping("/changeStatus/{bookingId}/{status}")
+    public  ResponseEntity<ResBody> changeStatus(@PathVariable Integer bookingId, @PathVariable Byte status)
+    {
+        System.out.println("status="+status);
+        System.out.println("booking id="+bookingId);
+    return bookingService.changeStatus(bookingId,status);
+
+    }
 }
    
 

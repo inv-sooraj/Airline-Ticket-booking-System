@@ -35,11 +35,13 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler{
                 .collect(Collectors.toList());
 
         List<ApplicationError> err = new ArrayList<>();
+    
         for(String s : exceptionalErrors)
         {
-            body.getErrors().add(new ApplicationError("102","Invalid email"));
-            body.getErrors().add(new ApplicationError("101","Invalid fullname"));
-
+            body.getErrors().add(new ApplicationError("1002","Invalid email"));
+            body.getErrors().add(new ApplicationError("1001","Invalid fullname"));
+            body.getErrors().add(new ApplicationError("1004","Invalid phone"));
+          
         }
 
         objectBody.put("Errors", body);

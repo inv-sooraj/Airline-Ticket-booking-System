@@ -16,4 +16,5 @@ public interface BookingRepository extends  JpaRepository<Bookings,Integer>
     // List<Bookings> findByStatus();
     // List<Bookings> findAll();
     Page<Bookings> findByFlightFlightNumber(Pageable paging,String flightNumber);
+    Bookings findByBookingId(Integer bookingId);
 }

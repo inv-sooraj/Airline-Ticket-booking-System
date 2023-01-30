@@ -18,8 +18,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Bookings {
     public static enum Status {
         DELETE((byte) 0),
-        ACTIVE((byte) 1);
-
+        ACTIVE((byte) 1),
+        NOACTION((byte)2);
         public final byte value;
 
         private Status(byte value) {
