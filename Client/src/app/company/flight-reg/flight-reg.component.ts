@@ -13,7 +13,7 @@ import { ApiService } from 'src/app/api.service';
 export class FlightRegComponent implements OnInit {
 
   FlightRegForm!:FormGroup;
-  seats: any = ['Economy', 'Business','First Class'];
+  seats: any = [{name:'Economy'},{name: 'Business'},{name:'First Class'}];
   status:any=false;
   AirplaneDetails:any;
   constructor(private formbuilder:FormBuilder,private router:Router,private apiservice:ApiService,private alertservice:AlertService) {

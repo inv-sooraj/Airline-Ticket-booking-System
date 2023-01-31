@@ -40,7 +40,7 @@
                                 </div>
                             </div>
                             <div class="white_card_body">
-
+                                <!--Dropdown for selecting airplane names-->
                                 <label class="form-label" for="exampleInputEmail1">Airplane Name</label>
                                 <div class="dropdown">
                                     
@@ -118,6 +118,7 @@
                             <div class="white_card_body">
                                 <button class="btn btn-dark" (click)="addCreds()" id="btnadd">Click here to add seat
                                     details</button><br>
+                                <!--Formarray to store seat details-->
                                 <div class="mb-4">
                                     <div formArrayName="seatDetails"
                                         *ngFor="let seatDetail of seatDetails().controls; let i=index"
@@ -131,7 +132,7 @@
                                                 </select> -->
                                                 <select class="form-control" (change)="changeSeat($event)" formControlName="seatType" id="dropdownMenuButton1">
                                                     <option value="">Seat type</option>
-                                                    <option *ngFor="let type of seats" [value]=" ">{{type}}</option>
+                                                    <option *ngFor="let type of seats" [value]="type.name">{{type.name}}</option>
                                                   </select>
                                                 <input class="form-control" placeholder="No of seats"
                                                     formControlName="seatNo" id="exampleInputPassword1">
@@ -142,9 +143,6 @@
                                             </div>
                                         </ng-container>
                                     </div><br>
-                                    <div>
-                                        <span class="sp1" *ngIf="status"><i>*Please fill the form correctly*</i></span>
-                                    </div>
                                     <div>
                                         <br> <button type="submit" class="btn btn-secondary" id="btn1"
                                             (click)="cancel()">Cancel</button>

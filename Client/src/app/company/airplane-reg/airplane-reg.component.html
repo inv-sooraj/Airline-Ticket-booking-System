@@ -53,6 +53,8 @@
                   <label class="form-label" for="exampleInputEmail1">Name</label>
                   <input type="text" class="form-control" id="exampleInputEmail" formControlName="airplaneName"
                     aria-describedby="emailHelp" placeholder="">
+
+                  <!--Validations-->
                   <div>
                     <span class="sp"
                       *ngIf="(planeRegForm.controls['airplaneName'].touched) &&  (planeRegForm.hasError('required','airplaneName'))"><i>*required*</i></span>
@@ -70,7 +72,9 @@
                 <div class="mb-3">
                   <label class="form-label" for="exampleInputEmail">Model Number</label>
                   <input type="text" class="form-control" id="exampleInputEmail" formControlName="modelNo"
-                    aria-describedby="emailHelp" placeholder="">
+                    aria-describedby="emailHelp" placeholder=""> 
+
+                  <!--Validations-->
                   <div>
                     <span class="sp"
                       *ngIf="(planeRegForm.controls['modelNo'].touched) &&  (planeRegForm.hasError('required','modelNo'))"><i>*required*</i></span>
@@ -89,6 +93,8 @@
                   <label class="form-label" for="exampleInputPassword">Total Seats</label>
                   <input type="text" class="form-control" id="exampleInputPassword" formControlName="totalSeats"
                     placeholder="">
+
+                  <!--Validations-->
                   <div>
                     <span class="sp"
                       *ngIf="(planeRegForm.controls['totalSeats'].touched) &&  (planeRegForm.hasError('required','totalSeats'))"><i>*required*</i></span>
