@@ -1476,9 +1476,9 @@ label.custom-checkbox .checkmark:after {
     width: 100%;
 }
 /*our-team*/
-.our-team{
-    background-image: url(../images/team-bg.jpg);
-}
+/* .our-team{
+    /* background-image: url(../images/team-bg.jpg); */
+
 .our-team .overlay-bg-black{
     opacity: 0.5;
 }
@@ -1830,7 +1830,7 @@ label.custom-checkbox .checkmark:after {
 ========================*/
 /*sub header*/
 .subheader{
-    background-image: url(../images/breadcrumb-banner.jpg);
+    /* background-image: url(../images/breadcrumb-banner.jpg); */
     text-align: center;
 }
 .subheader:before{
@@ -2268,7 +2268,7 @@ label.custom-checkbox .checkmark:after {
 8. About Us
 ========================*/
 .about-counter{
-    background-image: url(../images/counter-bg.jpg);
+    /* background-image: url(../images/counter-bg.jpg); */
 }
 .about-counter .counter-box .counter-box-inner{
     width: 100%;
@@ -2296,7 +2296,7 @@ label.custom-checkbox .checkmark:after {
 9. 404
 ========================*/
 .page-404{
-    background-image: url(../images/404.jpg);
+    /* background-image: url(../images/404.jpg); */
     height: 100vh;
     display: flex;
     align-items: center;
@@ -2328,7 +2328,7 @@ label.custom-checkbox .checkmark:after {
 10. Coming Soon
 ========================*/
 .coming-soon{
-    background-image: url(../images/404.jpg);
+    /* background-image: url(../images/404.jpg); */
     height: 100vh;
     display: flex;
     align-items: center;
