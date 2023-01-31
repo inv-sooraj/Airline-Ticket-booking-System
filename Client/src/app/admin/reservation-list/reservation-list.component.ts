@@ -1,7 +1,5 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { BookingServiceService } from 'src/app/services/booking-service.service';
+import { BookingServiceService } from '../services/booking-service.service';
 
 @Component({
   selector: 'app-reservation-list',
@@ -9,7 +7,8 @@ import { BookingServiceService } from 'src/app/services/booking-service.service'
   styleUrls: ['./reservation-list.component.css']
 })
 export class ReservationListComponent implements OnInit {
-  
+
+ 
   constructor(private bookingService:BookingServiceService) { 
     
   }

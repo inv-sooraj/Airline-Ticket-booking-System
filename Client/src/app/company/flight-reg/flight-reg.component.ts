@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlertService } from 'src/app/alert.service';
 import { ApiService } from 'src/app/api.service';
 // import { ApiService } from '../api.service';
 
@@ -12,10 +13,10 @@ import { ApiService } from 'src/app/api.service';
 export class FlightRegComponent implements OnInit {
 
   FlightRegForm!:FormGroup;
-  plane: any = ['ABCD', 'EFGH','JKLM','NOPQ','RST','GHD','AQS','XSER'];
   seats: any = ['Economy', 'Business','First Class'];
   status:any=false;
-  constructor(private formbuilder:FormBuilder,private router:Router,private apiservice:ApiService) {
+  AirplaneDetails:any;
+  constructor(private formbuilder:FormBuilder,private router:Router,private apiservice:ApiService,private alertservice:AlertService) {
     this.FlightRegForm=this.formbuilder.group({
       airplane:['',Validators.required],
       flightno:['',[Validators.required,Validators.pattern("^[a-zA-Z0-9]*$")]],
@@ -28,10 +29,10 @@ export class FlightRegComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.getPlaneName() ;
   }
   changePlane(e:any) {
-    console.log(e.value)
-    this.plane.setValue(e.target.value, {
+    this.FlightRegForm?.get('airplane')?.setValue(e.target.value, {
       onlySelf: true
     });
   }
@@ -53,7 +54,7 @@ newData(): FormGroup {
 
   return this.formbuilder.group({
 
-    seat: ['',Validators.required],
+    seatType: ['',Validators.required],
 
     seatNo: ['',Validators.required],
 
@@ -81,6 +82,17 @@ addFlight()
   cancel()
   {
     this.FlightRegForm.reset();
+  }
+  getPlaneName() {
+    this.apiservice.getAirPlane().subscribe({
+      next: (response: any) => {
+        this.AirplaneDetails = response;
+      },
+      error: (err: any) => {
+        this.alertservice.showError("Couldnt fetch airplane details", "error")
+      },
+      complete: () => { }
+    });
   }
 }
 

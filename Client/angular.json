@@ -41,7 +41,8 @@
               "src/assets/vendors/datatable/css/responsive.dataTables.min.css",
               "src/assets/vendors/datatable/css/buttons.dataTables.min.css",
               "src/assets/css/admin/metisMenu.css",
-              "src/assets/css/admin/style1.css" 
+              "src/assets/css/admin/style1.css",
+              "./node_modules/ngx-toastr/toastr.css" 
             ],
             "scripts": [
               "src/assets/js/user/jquery.min.js",

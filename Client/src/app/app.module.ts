@@ -14,13 +14,9 @@ import { SignupComponent } from './user/signup/signup.component';
 import { AirplaneRegComponent } from './company/airplane-reg/airplane-reg.component';
 import { FlightRegComponent } from './company/flight-reg/flight-reg.component';
 import { ChangePasswordComponent } from './shared/change-password/change-password.component';
-<<<<<<< HEAD
 import { PlaneEditComponent } from './company/plane-edit/plane-edit.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
-=======
 import { HomeComponent } from './user/home/home.component';
 import { HeaderComponent } from './user/header/header.component';
 import { FooterComponent } from './user/footer/footer.component';
@@ -36,7 +32,8 @@ import { FlightDetailsAdminComponent } from './company/flight-details-admin/flig
 // import { HeaderCompanyComponent } from './company/header-company/header-company.component';
 import { FlightListCompanyComponent } from './company/flight-list-company/flight-list-company.component';
 import { CompanyNavComponent } from './company/company-nav/company-nav.component';
->>>>>>> origin/develop
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { UserProfileEditComponent } from './user/user-profile-edit/user-profile-edit.component';
 @NgModule({
   declarations: [
    AdminHomeComponent,
@@ -49,9 +46,7 @@ import { CompanyNavComponent } from './company/company-nav/company-nav.component
     FlightRegComponent,
     PlaneListComponent,
     ChangePasswordComponent,
-<<<<<<< HEAD
-    PlaneEditComponent
-=======
+    PlaneEditComponent,
     HomeComponent,
     HeaderComponent,
     FooterComponent,
@@ -65,8 +60,8 @@ import { CompanyNavComponent } from './company/company-nav/company-nav.component
     FlightDetailsAdminComponent,
     // HeaderCompanyComponent,
     FlightListCompanyComponent,
-    CompanyNavComponent
->>>>>>> origin/develop
+    CompanyNavComponent,
+    UserProfileEditComponent
   ],
   imports: [
     BrowserModule,
@@ -76,13 +71,10 @@ import { CompanyNavComponent } from './company/company-nav/company-nav.component
     ReactiveFormsModule,
     HttpClientModule,
     Ng2SearchPipeModule,
-<<<<<<< HEAD
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
-  
-=======
-    NgbModule
->>>>>>> origin/develop
+    BrowserAnimationsModule,
+    NgbModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

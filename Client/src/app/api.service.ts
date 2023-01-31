@@ -9,17 +9,19 @@ export class ApiService {
 
   baseUrl = environment.baseUrl;
   constructor(private httpClient: HttpClient) { }
+
   /** Method to get the accesstocken stored in the local storage */
+
   getAccessToken(): any {
     return localStorage.getItem('accessToken');
   }
+
   /** Method to create new user(signup a new user) */
 
   createUser(userForm: any) {
     return this.httpClient.post(this.baseUrl + '/' + 'users', userForm);
 
   }
-
 
   /** Method to login users */
 
@@ -37,20 +39,17 @@ export class ApiService {
 
   /** Method to create flight */
 
-
   createFlight(userForm: any) {
     return this.httpClient.post(this.baseUrl + '/' + 'flight', userForm);
   }
 
   /** Method to check whether the email id entered by the user is unique or not */
 
-
   isEmailUnique(userForm: any) {
     return this.httpClient.get(this.baseUrl + '/' + 'email', userForm);
   }
 
   /** Method to get header details */
-
 
   getHeader(): any {
     return {
@@ -63,7 +62,6 @@ export class ApiService {
 
   /** Method to get the airplane details */
 
-
   getAirPlane() {
     return this.httpClient.get(this.baseUrl + '/' + 'airplane', this.getHeader());
 
@@ -71,16 +69,13 @@ export class ApiService {
 
   /** Method to get the airplane details of a spacific id */
 
-
   getAirPlaneById(id: any) {
     
     return this.httpClient.get(this.baseUrl + '/' + 'airplane' + '/' + id, this.getHeader());
 
-
   }
 
   /** Method to call the putmapping api for aiplane edit */
-
 
   sendUpdatePlane(responseBody: any, airplaneId: any) {
 
@@ -89,7 +84,6 @@ export class ApiService {
   }
 
   /** Method to delete(soft delete) the plane */
-
 
   deletePlane(ids: any) {
     let params = new HttpParams()
@@ -103,9 +97,28 @@ export class ApiService {
     return this.httpClient.get(this.baseUrl + '/' + 'users' + '/' + 'GetCompany', this.getHeader());
 
   }
+  
+  /**Method to get the plane details by spacific companyid */
+
   getPlaneByCompany(id:any){
     return this.httpClient.get(this.baseUrl + '/' + 'airplane' + '/' + 'getbyCompany'+'/'+ id, this.getHeader());
 
   }
+
+  /**Method to get user details by id */
+
+  getUserById(id:any){
+
+    return this.httpClient.get(this.baseUrl + '/' + 'users' +'/'+ id, this.getHeader());
+  }
+
+  /**method to edit the user form */
+
+  editUserData(requestbody:any){
+
+  return this.httpClient.put(this.baseUrl + '/' + 'users',requestbody, this.getHeader());
+
+  }
+
 }
 
