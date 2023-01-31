@@ -4,9 +4,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertService } from 'src/app/alert.service';
 import { ApiService } from 'src/app/api.service';
-
-// import { ApiService } from '../api.service';
-
 @Component({
   selector: 'app-airplane-reg',
   templateUrl: './airplane-reg.component.html',
