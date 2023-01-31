@@ -1,0 +1,292 @@
+<!-- <app-header></app-header> -->
+
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width,initial-scale=1">
+   <meta name="keywords" content="#">
+   <meta name="description" content="#">
+   <title> Booking List</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ </head> 
+<div class="container bg-light p-4">
+   <form class="form-inline my-2 my-lg-2">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+      Search
+      </button>
+   </form>
+   <table class=" p-2">
+      <thead>
+         <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Flight No</th>
+            <th scope="col">Departing</th>
+            <th scope="col">Destination</th>
+            <th scope="col">Departing Date</th>
+            <th scope="col">Status</th>
+            <th scope="col">View</th>
+         </tr>
+      </thead>
+      <tbody>
+         <tr>
+          <td>1</td>
+            <td>Indigo</td>
+            <td>Kochi</td>
+            <td>Chennai</td>
+            <td>08/12/2001</td>
+            <td>Pending</td>
+            <td>
+               <a href="#" class="status_btn" data-toggle="modal" data-target="#exampleModal">View</a>
+            </td>
+         </tr>
+         <tr>
+          <td>1</td>
+            <td>Indigo</td>
+            <td>Kochi</td>
+            <td>Chennai</td>
+            <td>08/12/2001</td>
+            <td>Pending</td>
+            <td>
+               <a href="#" class="status_btn" data-toggle="modal" data-target="#exampleModal">View</a>
+            </td>
+         </tr>
+         <tr>
+          <td>1</td>
+          <td>Indigo</td>
+            <td>Kochi</td>
+            <td>Chennai</td>
+            <td>08/12/2001</td>
+            <td>Pending</td>
+            <td>
+               <a href="#" class="status_btn" data-toggle="modal" data-target="#exampleModal">View</a>
+            </td>
+         </tr>
+         <tr>
+          <td>1</td>
+            <td>Indigo</td>
+            <td>Kochi</td>
+            <td>Chennai</td>
+            <td>08/12/2001</td>
+            <td>Pending</td>
+            <td>
+               <a href="#" class="status_btn" data-toggle="modal" data-target="#exampleModal">View</a>
+            </td>
+         </tr>
+         <tr>
+          <td>1</td>
+            <td>Indigo</td>
+            <td>Kochi</td>
+            <td>Chennai</td>
+            <td>08/12/2001</td>
+            <td>Pending</td>
+            <td>
+               <a href="#" class="status_btn" data-toggle="modal" data-target="#exampleModal">View</a>
+            </td>
+         </tr>
+         <tr>
+          <td>1</td>
+            <td>Indigo</td>
+            <td>Kochi</td>
+            <td>Chennai</td>
+            <td>08/12/2001</td>
+            <td>Pending</td>
+            <td>
+               <a href="#" class="status_btn" data-toggle="modal" data-target="#exampleModal">View</a>
+            </td>
+         </tr>
+         <tr>
+          <td>1</td>
+            <td>Indigo</td>
+            <td>Kochi</td>
+            <td>Chennai</td>
+            <td>08/12/2001</td>
+            <td>Pending</td>
+            <td>
+               <a href="#" class="status_btn" data-toggle="modal" data-target="#exampleModal">View</a>
+            </td>
+         </tr>
+         <tr>
+          <td>1</td>
+            <td>Indigo</td>
+            <td>Kochi</td>
+            <td>Chennai</td>
+            <td>08/12/2001</td>
+            <td>Pending</td>
+            <td>
+               <a href="#" class="status_btn" data-toggle="modal" data-target="#exampleModal">View</a>
+            </td>
+         </tr>
+      </tbody>
+   </table>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+   aria-hidden="true">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Booking Status</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <div class="container">
+               <div class="row">
+                  <div class="col-12">
+                     <div class="listing-details-inner bx-wrapper bg-custom-white padding-20">
+                        <div class="row">
+                           <div class="col-lg-12">
+                              <div class="listing-meta-sec">
+                                 <div class="tabs">
+                                    <div class="tab-content">
+                                       <div class="tab-pane fade active show" id="overview">
+                                          <div class="tab-inner">
+                                             <div class="row">
+                                                <div class="col-12">
+                                                   <div class="flights-grid ">
+                                                      <div
+                                                         class="flights-grid-wrapper bx-wrapper">
+                                                         <div class="image-sec animate-img">
+                                                            <a href="#">
+                                                            <img src="/assets/img/user/flights/1.jpg"
+                                                               class="full-width"
+                                                               alt="img">
+                                                            </a>
+                                                         </div>
+                                                         <div
+                                                            class="flights-grid-caption padding-20 bg-custom-white p-relative">
+                                                            <div class="heading-sec">
+                                                               <div class="title">
+                                                                  <h4 class="fs-16">
+                                                                     <a href="#"
+                                                                        class="text-custom-black">London
+                                                                     <i
+                                                                        class='fa fa-plane'></i>
+                                                                     Paris</a>
+                                                                     <br><span
+                                                                        class="text-light-dark">Total
+                                                                     : 6000 </span>
+                                                                  </h4>
+                                                               </div>
+                                                               <div class="right-side">
+                                                                  <span
+                                                                     class="price"><small>Status</small>Confirmed</span>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                                <div class="col-12">
+                                                   <div
+                                                      class="hotel-type mb-xl-20 bg-light-white padding-10">
+                                                      <ul class="custom">
+                                                         <li class="text-light-dark">
+                                                            <label
+                                                               class="no-margin text-custom-blue">
+                                                            Flight Name :
+                                                            </label>Delta
+                                                         </li>
+                                                         <li class="text-light-dark">
+                                                            <label
+                                                               class="no-margin text-custom-blue">
+                                                            Company:
+                                                            </label>Indigo
+                                                         </li>
+                                                         <li class="text-light-dark">
+                                                            <label
+                                                               class="no-margin text-custom-blue">
+                                                            Flight Number:
+                                                            </label>7232
+                                                         </li>
+                                                         <li class="text-light-dark">
+                                                            <label
+                                                               class="no-margin text-custom-blue">
+                                                            Model Number:
+                                                            </label>ME312
+                                                         </li>
+                                                         <li class="text-light-dark">
+                                                            <label
+                                                               class="no-margin text-custom-blue">
+                                                            Departing From :
+                                                            </label>Kochi
+                                                         </li>
+                                                         <li class="text-light-dark">
+                                                            <label
+                                                               class="no-margin text-custom-blue">
+                                                            Destination:
+                                                            </label>Chennai
+                                                         </li>
+                                                         <li class="text-light-dark">
+                                                            <label
+                                                               class="no-margin text-custom-blue">
+                                                            Date of Departing:
+                                                            </label>1994-11-05
+                                                         </li>
+                                                         <li class="text-light-dark">
+                                                            <label
+                                                               class="no-margin text-custom-blue">
+                                                            Time of Departing:
+                                                            </label>12:50
+                                                         </li>
+                                                         <li class="text-light-dark">
+                                                            <label
+                                                               class="no-margin text-custom-blue">
+                                                            Dateof Arrival:
+                                                            </label>1994-11-05
+                                                         </li>
+                                                         <li class="text-light-dark">
+                                                            <label
+                                                               class="no-margin text-custom-blue">
+                                                            Time of Arrival:
+                                                            </label>12:50
+                                                         </li>
+                                                      </ul>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-dismiss="modal">Back1</button>
+                  <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#cancellation" >Cancel booking</button>
+                  <div class="modal fade bd-example-modal-lg" id="cancellation" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-lg">
+                         <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="text-center">Reason For Cancellation</h5>
+                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                               <span aria-hidden="true">&times;</span>
+                               </button>
+                            </div>        
+                            <div class="modal-body">
+                              
+                              <div class="form-outline form-white">
+                                  <textarea rows="6" placeholder=" Reason for Cancellation"
+                                     class="form-control form-control-lg"></textarea>
+                               </div>
+                            </div>
+                            <div class="modal-footer">
+                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                               <button type="button" class="btn btn-primary" data-dismiss="modal">Submit changes</button>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- <app-footer></app-footer> -->

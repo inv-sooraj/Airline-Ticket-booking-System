@@ -1,0 +1,150 @@
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/user/favicon.ico">
+      <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/img/user/favicon.ico">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/img/user/favicon.ico">
+      <link rel="apple-touch-icon-precomposed" href="/assets/images/favicon.ico">
+      <link rel="shortcut icon" href="/assets/images/favicon.ico">
+      <link href="/assets/css/user/bootstrap.min.css" rel="stylesheet">
+      <link href="/assets/css/user/font-awesome.css" rel="stylesheet">
+      <link href="/assets/css/user/font/flaticon.css" rel="stylesheet">
+      <link href="/assets/css/user/slick.css" rel="stylesheet">
+      <link href="/assets/css/user/ion.rangeSlider.min.css" rel="stylesheet">
+      <link href="/assets/css/user/datepicker.css" rel="stylesheet">
+      <link href="/assets/css/user/magnific-popup.css" rel="stylesheet">
+      <link href="/assets/css/user/nice-select.css" rel="stylesheet">
+      <link href="/assets/css/user/style.css" rel="stylesheet">
+      <link href="/assets/css/user/responsive.css" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&amp;display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap" rel="stylesheet">
+<body>
+ <br><br>
+    <section class="h-100 h-custom gradient-custom-2">
+        <form [formGroup]="profileEditForm">
+       <div class="container  h-100">
+          <h3 class="text-center">My Profile</h3>
+          <div class="row d-flex justify-content-center align-items-center h-100 border">
+             <div class="col-12">
+                <div class="card-body p-0">
+                   <div class="row g-0">
+                      <div class="col-lg-6 bg-light">
+                         <div class="p-5">
+                            <div class="mb-4 pb-2">
+                               <div class="form-outline">
+                                  <input formControlName="fullname" type="text" id="form3Examplev4" class="form-control form-control-lg"[(ngModel)]="items.fullName" />
+                               </div>
+                            </div>
+                            <div class="mb-4 pb-2">
+                               <div class="form-outline">
+                                  <input formControlName="dob" type="date" id="form3Examplev4" class="form-control form-control-lg" [(ngModel)]="items.dob"/>
+                               </div>
+                            </div>
+                            <div class="mb-4 pb-2">
+                               <div class="form-outline">
+                                  <input formControlName="email" type="text" id="form3Examplev4" class="form-control form-control-lg" [(ngModel)]="items.email" />
+                               </div>
+                            </div>
+                            <div class="mb-4 pb-2">
+                               <div class="form-outline">
+                                  <input formControlName="passportNo" type="text" id="form3Examplev4" class="form-control form-control-lg" [(ngModel)]="items.passportNumber"/>
+                               </div>
+                            </div>
+                            <div class="mb-4 pb-2">
+                               <div class="form-outline">
+                                  <input formControlName="phone" type="text" id="form3Examplev4" class="form-control form-control-lg" [(ngModel)]="items.phone"/>
+                               </div>
+                            </div>
+                            <div class="mb-4 pb-2">
+                               <select  class="form-control form-control-lg" formControlName="country"  id="exampleFormControlSelect1"(change)="changeCountry($event)">
+                                  <option selected>{{items.country}}</option>
+                                  <option *ngFor="let country of country">{{country}}</option>
+                               </select>
+                            </div>
+                         </div>
+                      </div>
+                      <div class="col-lg-6 bg-indigo text-white">
+                         <div class="p-5">
+                            <div class="mb-4 pb-2">
+                               <div class="form-outline form-white">
+                                  <textarea rows="4"formControlName="address" class="form-control form-control-lg" [(ngModel)]="items.address" ></textarea>
+                               </div>
+                            </div>
+                            <div class="mb-4 pb-2">
+                               <div class="form-outline form-white">
+                                  <input  formControlName="city" type="text" id="form3Examplea9" class="form-control form-control-lg" [(ngModel)]="items.city" />
+                               </div>
+                            </div>
+                            <button type="button" class="btn2" (click)="editUser()">Update</button>
+                             <!-- <p class="text-center" data-toggle="modal" data-target="#changePass">Change Password?</p> -->
+                            <!-- Modal -->
+                             <!-- <div class="modal fade" id="changePass" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                               <div class="modal-dialog" role="document">
+                                  <div class="modal-content">
+                                     <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                     </div>
+                                     <div class="modal-body">
+                                        <div class="mb-4 pb-2">
+                                           <div class="form-outline">
+                                              <input  placeholder="Enter current Password" type="password" id="form3Examplev4" class="form-control form-control-lg" formControlName="password"/>
+                                           </div>
+                                        </div>
+                                        <div class="mb-4 pb-2">
+                                           <div class="form-outline">
+                                              <input  placeholder="Enter New Password" type="password" id="form3Examplev4" class="form-control form-control-lg" formControlName="newpassword"/>
+                                           </div>
+                                        </div>
+                                        <div class="mb-4 pb-2">
+                                           <div class="form-outline">
+                                              <input  placeholder="Confirm Password" type="password" id="form3Examplev4" class="form-control form-control-lg" formControlName="confirmPassword"/>
+                                           </div>
+                                        </div>
+                                     </div>
+                                     <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>  -->
+                            <button type="button" onclick="window.location.href='index.html';"class="btn btn-outline-light btn-lg btn-block">Cancel</button>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </form>
+    </section>
+    <footer class="footer">
+       <div class="copyright">
+          <div class="container">
+             <div class="row">
+                <div class="col-12">
+                   <p class="text-custom-white">Airline Ticket booking System</p>
+                </div>
+             </div>
+          </div>
+       </div>
+       <div id="back-top" class="back-top">
+          <a href="#top"><i class="flaticon-arrows"></i></a>
+       </div>
+       <div id="back-top" class="back-top">
+          <a href="#top"><i class="flaticon-arrows"></i></a>
+       </div>
+    </footer>
+    <script src="/assets/js/user/jquery.min.js"></script>
+    <script src="/assets/js/user/popper.min.js"></script>
+    <script src="/assets/js/user/bootstrap.min.js"></script>
+    <script src="/assets/js/user/ion.rangeSlider.min.js"></script>
+    <script src="/assets/js/user/slick.min.js"></script>
+    <script src="/assets/js/user/datepicker.js"></script>
+    <script src="/assets/js/user/datepicker.en.js"></script>
+    <script src="/assets/js/user/isotope.pkgd.min.js"></script>
+    <script src="/assets/js/user/jquery.nice-select.js"></script>
+    <script src="/assets/js/user/jquery.magnific-popup.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnd9JwZvXty-1gHZihMoFhJtCXmHfeRQg"></script>
+    <script src="/assets/js/user/custom.js"></script>
+ </body>

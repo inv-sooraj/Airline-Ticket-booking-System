@@ -1,0 +1,76 @@
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/user/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/img/user/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/img/user/favicon.ico">
+<link rel="apple-touch-icon-precomposed" href="/assets/img/user/favicon.ico">
+<link rel="shortcut icon" href="/assets/img/user/favicon.ico">
+<link href="/assets/css/user/bootstrap.min.css" rel="stylesheet">
+<link href="/assets/css/user/font-awesome.css" rel="stylesheet">
+<!-- <link href="/assets/css/user/flaticon.css" rel="stylesheet"> -->
+<link href="/assets/css/user/slick.css" rel="stylesheet">
+<link href="/assets/css/user/ion.rangeSlider.min.css" rel="stylesheet">
+<link href="/assets/css/user/datepicker.css" rel="stylesheet">
+<link href="/assets/css/user/magnific-popup.css" rel="stylesheet">
+<link href="/assets/css/user/nice-select.css" rel="stylesheet">
+<link href="/assets/css/user/style.css" rel="stylesheet">
+<link href="/assets/css/user/responsive.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap" rel="stylesheet">
+
+<body>
+   <section class="h-100 h-custom gradient-custom-2">
+      <div class="container py-5 h-100">
+         <h3 class="text-center">Login</h3>
+         <form [formGroup]="loginForm">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+               <div class="col-6">
+                  <div class="card-body p-0">
+                     <div class="row g-0">
+                        <div class="col-12 bg-indigo text-white">
+                           <div class="p-5">
+                              <div class="mb-4 pb-2">
+                                 <div class="form-outline">
+                                    <input placeholder="Enter Email" type="text" id="form3Examplev4"
+                                       class="form-control form-control-lg" formControlName="email" />
+                                 </div>
+                                 <div>
+                                    <span class="sp"
+                                       *ngIf="(loginForm.controls['email'].touched) && (loginForm.hasError('required','email'))"><i>*required*</i></span>
+                                    <span class="sp"
+                                       *ngIf="(loginForm.controls['email'].touched) && (loginForm.hasError('pattern','email'))"><i>*Invalid
+                                          Format*</i></span>
+                                 </div>
+                              </div>
+                              <div class="mb-4 pb-2">
+                                 <div class="form-outline">
+                                    <input placeholder="Enter Password" type="password" id="form3Examplev4"
+                                       formControlName="password" class="form-control form-control-lg" />
+                                 </div>
+                                 <div>
+                                    <span class="sp"
+                                       *ngIf="(loginForm.controls['password'].touched) && (loginForm.hasError('required','password'))"><i>*required*</i></span>
+                                    <span class="sp"
+                                       *ngIf="(loginForm.controls['password'].touched) && (loginForm.hasError('minlength','password'))"><i>*password
+                                          should be atleast 8 characters*</i></span>
+                                    <span class="sp"
+                                       *ngIf="(loginForm.controls['password'].touched) && (loginForm.hasError('maxlength','password'))"><i>*password
+                                          should be atmost 25 characters*</i></span>
+                                    <span class="sp"
+                                       *ngIf="(loginForm.controls['email'].touched) && (loginForm.hasError('pattern','password'))"><i>*Invalid
+                                          Format*</i></span>
+                                 </div>
+                              </div>
+                              <!-- <div>
+                                <span  class="sp" *ngIf="status"><i>*Please fill the form correctly*</i></span>
+                            </div> -->
+                              <button type="button" (click)="onSubmit()" class="btn2" [disabled]="status">Login</button>
+                              <p class="text-center">Not yet Registered ? <a [routerLink]="['/signup']">Signup</a> </p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </form>
+      </div>
+   </section>
+</body>
