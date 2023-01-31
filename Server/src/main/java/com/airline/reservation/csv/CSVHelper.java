@@ -12,30 +12,28 @@ import org.apache.commons.csv.QuoteMode;
 
 import com.airline.reservation.entity.Bookings;
 public class CSVHelper {
-    public static ByteArrayInputStream bookingsToCSV(List<Bookings> bookings) {
+    public static ByteArrayInputStream tutorialsToCSV(List<Bookings> tutorials) {
         final CSVFormat format = CSVFormat.DEFAULT.withQuoteMode(QuoteMode.MINIMAL);
     
         try (ByteArrayOutputStream out = new ByteArrayOutputStream();
             CSVPrinter csvPrinter = new CSVPrinter(new PrintWriter(out), format);) {
-              List<String> head = Arrays.asList("user id ","flight number","departure","destination","status");
-              
-              csvPrinter.printRecord(head);
-          for (Bookings booking : bookings) {
+          for (Bookings tutorial : tutorials) {
             List<String> data = Arrays.asList(
                
-                  String.valueOf(booking.getUser().getUserId()),
-                  booking.getFlight().getFlightNumber(),
-                  booking.getFlight().getDeparture(),
-                  booking.getFlight().getDestination(),
-                  String.valueOf(booking.getStatus())
+                  String.valueOf(tutorial.getUser().getUserId()),
+                  tutorial.getFlight().getFlightNumber(),
+                  tutorial.getFlight().getDeparture(),
+                  tutorial.getFlight().getDestination(),
+                  String.valueOf(tutorial.getStatus())
                 );
-                csvPrinter.printRecord(data);
+    
+            csvPrinter.printRecord(data);
           }
     
           csvPrinter.flush();
           return new ByteArrayInputStream(out.toByteArray());
         } catch (IOException e) {
-          throw new RuntimeException("failed to import data to CSV file: " + e.getMessage());
+          throw new RuntimeException("fail to import data to CSV file: " + e.getMessage());
         }
       }
 }

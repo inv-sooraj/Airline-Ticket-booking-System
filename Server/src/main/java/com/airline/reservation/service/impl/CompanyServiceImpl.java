@@ -68,6 +68,8 @@ public class CompanyServiceImpl implements CompanyService {
     Page<Company> pagedResult = companyRepository.findByName(keyword, paging);
     return pagedResult;
     }
+
+    
     // Detail View
     @Override
     public CompanyView get(Integer UserId) throws NotFoundException{
