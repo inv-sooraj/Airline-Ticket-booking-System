@@ -3,6 +3,7 @@ package com.airline.reservation.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,15 +30,17 @@ public class BookingServiceImpl implements BookingService{
         return bookingRepository.findAll();
      }
      
-    public void addJob(BookingForm form) {
+    public void addBooking(BookingForm form) {
         System.out.println("status = "+form.getStatus());
-        bookingRepository.save(new Bookings(form, form.getCancellation(), form.getStatus()));
+        bookingRepository.save(new Bookings(form, form.getCancellation()));
     }
 
     
-    public List<Bookings> findByStatus(Byte status) {
-        return bookingRepository.findByStatus(status);
+    @Override
+    public List<Bookings> findByDeleteFlag(Byte flag) {
+        return bookingRepository.findByDeleteFlag(flag);
     }
+ 
 
     // @Override
     // public List<BookingListView> bookingList() {
@@ -100,6 +103,13 @@ public class BookingServiceImpl implements BookingService{
     //     }  
     // }
 
- 
+   
+    @Override
+    @Transactional
+    public void deleteAllBYIds(List<Integer> integers) {
+        bookingRepository.softDeleteAllIds(integers);
+    }
+
+    
     
 }

@@ -56,11 +56,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
                 .antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
                 .antMatchers("/users/**").permitAll()
-
                 .antMatchers("/company/**").permitAll()
                 .antMatchers(OPTIONS, "/login").anonymous()
                 .antMatchers("/bookings/**").permitAll()
-                .antMatchers(PUT, "/login").anonymous()
+                .antMatchers(POST, "/login").anonymous()
+                .antMatchers(POST, "/airplane").permitAll()
                 .antMatchers(OPTIONS, "/**").anonymous()  
                 .anyRequest().authenticated();
     }

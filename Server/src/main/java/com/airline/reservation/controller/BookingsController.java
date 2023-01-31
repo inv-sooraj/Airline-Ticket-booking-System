@@ -1,6 +1,7 @@
 package com.airline.reservation.controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+
 import com.airline.reservation.entity.Bookings;
 import com.airline.reservation.form.BookingForm;
 import com.airline.reservation.json.ResBody;
@@ -33,10 +36,10 @@ public class BookingsController {
 
     @Autowired
     CSVService fileService;
-    @GetMapping("/list")
-    public List<Bookings> list(){
-    return bookingService.list();
-    }
+    // @GetMapping("/list")
+    // public List<Bookings> list(){
+    // return bookingService.list();
+    // }
     // @GetMapping("/list2")
     // public List<BookingListView> bookingList()
     // {
@@ -44,25 +47,31 @@ public class BookingsController {
         
     // }
     @PostMapping("/addBooking")
-    public void addJob(@RequestBody BookingForm form)
+    public void addBooking(@RequestBody BookingForm form)
     {
-        bookingService.addJob(form);
+        bookingService.addBooking(form);
     }
-    @GetMapping("/status/{status}")
-    public List<Bookings> list(@RequestBody @PathVariable Byte status)
+    @GetMapping("/status/{flag}")
+    public List<Bookings> list(@RequestBody @PathVariable Byte flag)
     {
        
-        return  bookingService.findByStatus(status);
+        return  bookingService.findByDeleteFlag(flag);
     }
     @GetMapping("/download")
     public ResponseEntity<Resource> getFile() {
       String filename = "bookings.csv";
       InputStreamResource file = new InputStreamResource(fileService.load());
-  
       return ResponseEntity.ok()
           .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + filename)
           .contentType(MediaType.parseMediaType("application/csv"))
           .body(file);
+    }
+    //delete Bookings
+    @DeleteMapping
+    public String delete(@RequestParam("ids") List<Integer> ids) {
+        System.out.println("deleting");
+        bookingService.deleteAllBYIds(ids);
+        return String.join(",", ids.stream().map(value ->  Integer.toString(value)).collect(Collectors.toList()));
     }
     //list flights
     @GetMapping

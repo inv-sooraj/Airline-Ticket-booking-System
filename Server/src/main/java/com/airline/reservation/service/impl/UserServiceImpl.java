@@ -25,7 +25,6 @@ import com.airline.reservation.view.UserView;
 
 import ch.qos.logback.core.net.SyslogOutputStream;
 import net.bytebuddy.implementation.bytecode.Throw;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

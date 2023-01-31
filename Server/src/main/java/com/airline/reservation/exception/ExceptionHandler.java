@@ -33,14 +33,26 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler{
                 .stream()
                 .map(x -> x.getDefaultMessage())
                 .collect(Collectors.toList());
+                // System.out.println(exceptionalErrors);
 
         List<ApplicationError> err = new ArrayList<>();
     
         for(String s : exceptionalErrors)
         {
-            body.getErrors().add(new ApplicationError("1002","Invalid email"));
-            body.getErrors().add(new ApplicationError("1001","Invalid fullname"));
-            body.getErrors().add(new ApplicationError("1004","Invalid phone"));
+            System.out.println("s="+s);
+            if((s.equals("1001"))){
+                body.getErrors().add(new ApplicationError("1001","Invalid Fullname"));
+                  }
+                  if((s.equals("1002"))){
+                    body.getErrors().add(new ApplicationError("1002","Invalid Email"));
+                      }
+                      if((s.equals("1004"))){
+                        body.getErrors().add(new ApplicationError("1004","Invalid Phone Number"));
+                          }
+            //body.getErrors().add(new ApplicationError("1002","Invalid email"));
+          
+            //
+            // body.getErrors().add(new ApplicationError("1004","Invalid phone"));
           
         }
 

@@ -21,29 +21,37 @@ import com.airline.reservation.json.ResBody;
 import javassist.bytecode.stackmap.BasicBlock.Catch;
 
 public class UserForm {
-    @NotBlank
-    @Size(min = 4, max = 20,message = "1001")
+    @NotBlank(message="1001")
+    @Size(min = 4, max = 20)
     private String fullName;
-    @NotBlank
-    @Email
-    @Size( max = 30,message="1002")
+
+    @NotBlank(message="1002")
+    @Email(message="1002")
     private String email;
+
     @Password(message="1003")
     private String password;
     private Date dob;
+
     @Size(min = 8, max = 8)
     private String passportNumber;
+    
     private String address;
-    @Pattern(regexp="(^$|[0-9]{10})")
-    @NotBlank
+
+    @NotBlank(message="1004")
+    @Pattern(regexp="(^$|[0-9]{10})", message="1004")
     @Size(max = 11,message = "1004")
     private String phone;
+
     @Size(max = 18)
     private String city;
+
     @Size(max = 18)
     private String country;
+
     @NotNull
     private Integer status;
+    
     @NotNull
     private Integer role;
     

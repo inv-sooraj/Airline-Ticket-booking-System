@@ -39,7 +39,9 @@ public class Bookings {
     @Column(nullable=true)
     private String cancellation;
     @Column(nullable=false)
-    private byte status;
+    private byte status=2;
+    @Column(nullable=false)
+    private Byte deleteFlag=1;
     @Column(nullable = false)
     @Json.DateTimeFormat
     private   Date updateDate;
@@ -85,6 +87,12 @@ public class Bookings {
     public Date getUpdateDate() {
         return updateDate;
     }
+    public Byte getDeleteFlag() {
+        return deleteFlag;
+    }
+    public void setDeleteFlag(Byte deleteFlag) {
+        this.deleteFlag = deleteFlag;
+    }
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
     }
@@ -94,12 +102,12 @@ public class Bookings {
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
-    public Bookings(BookingForm form,String cancellation,Byte status) {
+    public Bookings(BookingForm form,String cancellation) {
         this.user = new User(form.getUserId());
         this.seat = new Seat(form.getSeatId());
         this.flight=new Flight(form.getFlightId());
         this.cancellation=cancellation;
-        this.status=status;
+        
         Date dt = new Date();
         this.createDate = dt;
         this.updateDate = dt;
