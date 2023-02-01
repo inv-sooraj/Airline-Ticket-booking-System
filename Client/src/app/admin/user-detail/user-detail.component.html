@@ -11,32 +11,31 @@
                             <h5 class="modal-title text_white">Registered User Details</h5>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form [formGroup]="userEditForm">
                                 <div class="">
-                                    <input type="text" class="form-control" placeholder="Full Name">
+                                    <input type="text" class="form-control" id="exampleInputEmail" formControlName="fullName" aria-describedby="emailHelp" [(ngModel)]="data.fullName" >
                                 </div>
                                 <div class="">
-                                    <input type="date" class="form-control" placeholder="DOB">
+                                    <input type="date" class="form-control" formControlName="dob" [(ngModel)]="data.dob">
                                 </div>
                                 <div class="">
-                                    <input type="text" class="form-control" placeholder="Address">
+                                    <input type="text" class="form-control" id="exampleInputEmail" formControlName="address" aria-describedby="emailHelp" [(ngModel)]="data.address" >
                                 </div>
                                 <div class="">
-                                    <input type="text" class="form-control"
-                                        placeholder="Passport Number">
+                                    <input type="text" class="form-control" id="exampleInputEmail" formControlName="passportNumber" aria-describedby="emailHelp" [(ngModel)]="data.passportNumber" >
+                                       
                                 </div>
                                 <div class="">
-                                    <input type="text" class="form-control" placeholder="city">
+                                    <input type="text" class="form-control" id="exampleInputEmail" formControlName="city" aria-describedby="emailHelp" [(ngModel)]="data.city" >
                                 </div>
                                 <div class="">
-                                    <input type="text" class="form-control" placeholder="Country">
+                                    <input type="text" class="form-control" id="exampleInputEmail" formControlName="country" aria-describedby="emailHelp" [(ngModel)]="data.country" >
                                 </div>
                                 <div class="">
-                                    <input type="number" class="form-control" maxlength="10"
-                                        placeholder="Phone Number">
+                                    <input type="text" class="form-control" id="exampleInputEmail" formControlName="phone" aria-describedby="emailHelp" [(ngModel)]="data.phone" >
                                 </div>
                                 <div class="">
-                                    <input type="Email" class="form-control" placeholder="Email-Id">
+                                    <input type="text" class="form-control" id="exampleInputEmail" formControlName="email" aria-describedby="emailHelp" [(ngModel)]="data.email" >
                                 </div>
                                 <div class=" cs_check_box">
                                     <input type="checkbox" id="check_box" class="common_checkbox">
@@ -45,10 +44,10 @@
                                     </label>
                                 </div>
                                 <div align="center">
-                                    <a href="#" class="btn_3 full_width text-center">Cancell</a>
+                                    <a href="#" class="btn_3 full_width text-center">Cancel</a>
                                     <a href="#" class="btn_3 full_width text-center"
                                         style="background-color:red;">Delete</a>
-                                    <a href="#" class="btn_3 full_width text-center"
+                                    <a (click)="onEditSubmit()" class="btn_3 full_width text-center"
                                         style="background-color:green;">Update</a>
                                 </div>
                                 <p>Need an account? <a data-bs-toggle="modal" data-bs-target="#sing_up"

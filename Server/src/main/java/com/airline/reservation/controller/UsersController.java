@@ -52,10 +52,19 @@ public class UsersController {
         return userService.getCompany();
     }
     @PutMapping
-    public UserView update(
-            @Valid @RequestBody UserForm form
+    public UserView update( @Valid @RequestBody UserForm form
     ) {
         return userService.update(form);
+    }
+    @PutMapping("/{userId}")
+    public UserView updateById(@PathVariable("userId") Integer userId, @RequestBody UserForm form){
+
+        return userService.updateById(userId,form);
+    }
+
+    @PutMapping("/changeStatus/{userId}")
+    public ResponseEntity<ResBody>changeStatus(@PathVariable("userId") Integer userId){
+        return userService.changeStatus(userId);
     }
     @PostMapping("/signup")
     public  ResponseEntity<ResBody> add(@Valid @RequestBody UserForm form) {
@@ -65,5 +74,10 @@ public class UsersController {
     @PutMapping("/changePwd")
     public ResponseEntity<ResBody>changePwd(@Valid @RequestBody ChangePwdForm pwdForm){
         return userService.changePwd(pwdForm);
+    }
+//get by id
+    @GetMapping("/{userId}")
+    public UserView get(@PathVariable("userId") Integer userId){
+        return userService.get(userId);
     }
 }

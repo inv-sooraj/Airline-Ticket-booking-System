@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class ApiService {
-
+  
   baseUrl = environment.baseUrl;
   constructor(private httpClient: HttpClient) { }
 
@@ -22,6 +22,11 @@ export class ApiService {
     return this.httpClient.post(this.baseUrl + '/' + 'users', userForm);
 
   }
+  updateUser(userid: any, updateForm: any) {
+    alert(this.baseUrl + '/' + 'users/'+userid);
+    return this.httpClient.put(this.baseUrl + '/' + 'users/'+userid, updateForm, this.getHeader());
+  }
+
 
   /** Method to login users */
 
@@ -109,7 +114,7 @@ export class ApiService {
   /**Method to get user details by id */
 
   getUserById(id:any){
-
+alert(this.baseUrl + '/' + 'users' +'/'+ id)
     return this.httpClient.get(this.baseUrl + '/' + 'users' +'/'+ id, this.getHeader());
   }
 

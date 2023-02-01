@@ -211,4 +211,39 @@ public class UserServiceImpl implements UserService{
         }
         
     }
+      // user Details
+      @Override
+      public UserView get(Integer UserId) throws NotFoundException{
+          return userRepository.findByUserId(UserId).map((User)->{
+              return new UserView(User);
+          }).orElseThrow(NotFoundException::new);
+      }
+
+    @Override
+    public UserView updateById(Integer userId, UserForm form) {
+        // TODO Auto-generated method stub
+        User user = userRepository.findByUserId(userId).orElseThrow(UserServiceImpl::badRequestException);
+        user.setFullName(form.getFullName());
+        user.setEmail(form.getEmail());
+        user.setAddress(form.getAddress());
+        user.setCity(form.getCity());
+        user.setCountry(form.getCountry());
+        user.setDob(form.getDob());;
+        user.setPassportNumber(form.getPassportNumber());
+        user.setPhone(form.getPhone());
+        return new UserView(userRepository.save(user));
+    }
+
+    @Override
+    public ResponseEntity<ResBody> changeStatus(Integer userId) {
+        // TODO Auto-generated method stub
+        ResBody body = new ResBody();
+        // TODO Auto-generated method stub
+       
+        User user = userRepository.findByUserId(userId).orElseThrow(UserServiceImpl::badRequestException);
+        user.setStatus(0);
+            userRepository.save(user);
+            body.getValues().put("108","Deleted  user Successfully");
+            return new ResponseEntity<>(body,HttpStatus.OK);
+    }
 }
