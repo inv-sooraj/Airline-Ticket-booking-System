@@ -36,6 +36,7 @@ public class BookingsController {
 
     @Autowired
     CSVService fileService;
+
     // @GetMapping("/list")
     // public List<Bookings> list(){
     // return bookingService.list();
@@ -44,8 +45,8 @@ public class BookingsController {
     // public List<BookingListView> bookingList()
     // {
     //    return bookingService.bookingList();
-        
-    // }
+
+   
     @PostMapping("/addBooking")
     public void addBooking(@RequestBody BookingForm form)
     {
@@ -59,13 +60,14 @@ public class BookingsController {
     }
     @GetMapping("/download")
     public ResponseEntity<Resource> getFile() {
-      String filename = "bookings.csv";
+      String filename = "tutorials.csv";
       InputStreamResource file = new InputStreamResource(fileService.load());
       return ResponseEntity.ok()
           .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + filename)
           .contentType(MediaType.parseMediaType("application/csv"))
           .body(file);
     }
+
     //delete Bookings
     @DeleteMapping
     public String delete(@RequestParam("ids") List<Integer> ids) {
@@ -96,6 +98,5 @@ public class BookingsController {
     return bookingService.changeStatus(bookingId,status);
 
     }
-}
-   
 
+}

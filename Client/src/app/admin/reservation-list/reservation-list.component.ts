@@ -2,14 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { AlertService } from 'src/app/alert.service';
 import { BookingServiceService } from '../services/booking-service.service';
-
 @Component({
   selector: 'app-reservation-list',
   templateUrl: './reservation-list.component.html',
   styleUrls: ['./reservation-list.component.css']
 })
 export class ReservationListComponent implements OnInit {
-
   items: any[] = [];
 
   bookingListForm!: FormGroup;
@@ -26,7 +24,6 @@ export class ReservationListComponent implements OnInit {
       // sel: this.formbuilder.array([])
     });
   }
-
   ngOnInit(): void {
     this.getBookings();
   }

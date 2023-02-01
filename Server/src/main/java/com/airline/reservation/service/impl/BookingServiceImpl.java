@@ -42,34 +42,10 @@ public class BookingServiceImpl implements BookingService{
     }
  
 
-    // @Override
-    // public List<BookingListView> bookingList() {
-    //     // TODO Auto-generated method stub
-    //     return (List<BookingListView>) new BookingListView(bookingRepository.findAll());
-    // }
-//list all Flights
     
-    public List<Bookings> getAllBookings(Integer pageNo, Integer pageSize, String sortBy, String sortDir,String flightNumber) {
+    public List<BookingListView> bookingList() {
         // TODO Auto-generated method stub
-        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortBy).ascending(): Sort.by(sortBy).descending();
-        Pageable paging = PageRequest.of(pageNo, pageSize, sort);
-        Page<Bookings> pagedResult = bookingRepository.findByFlightFlightNumber(paging,flightNumber);
-        if(flightNumber=="")
-        {
-           Page<Bookings> AllpagedResult = bookingRepository.findAll(paging);
-           if(AllpagedResult.hasContent()) {
-            return AllpagedResult.getContent();
-            } 
-            else {
-                return new ArrayList<Bookings>();
-            }
-        }
-        if(pagedResult.hasContent()) {
-        return pagedResult.getContent();
-        } 
-        else {
-            return new ArrayList<Bookings>();
-        }
+        return (List<BookingListView>) new BookingListView(bookingRepository.findAll());
     }
     //Booking Status Change - Booking id and Status are passed as parameters
     public ResponseEntity<ResBody> changeStatus(Integer bookingId,Byte status ) {
@@ -110,6 +86,29 @@ public class BookingServiceImpl implements BookingService{
         bookingRepository.softDeleteAllIds(integers);
     }
 
+    @Override
+    public List<Bookings> getAllBookings(Integer pageNo, Integer pageSize, String sortBy, String sortDir,String flightNumber) {
+        // TODO Auto-generated method stub
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortBy).ascending(): Sort.by(sortBy).descending();
+        Pageable paging = PageRequest.of(pageNo, pageSize, sort);
+        Page<Bookings> pagedResult = bookingRepository.findByFlightFlightNumber(paging,flightNumber);
+        if(flightNumber=="")
+        {
+           Page<Bookings> AllpagedResult = bookingRepository.findAll(paging);
+           if(AllpagedResult.hasContent()) {
+            return AllpagedResult.getContent();
+            } 
+            else {
+                return new ArrayList<Bookings>();
+            }
+        }
+        if(pagedResult.hasContent()) {
+        return pagedResult.getContent();
+        } 
+        else {
+            return new ArrayList<Bookings>();
+        }
+    }
     
     
 }
