@@ -8,35 +8,50 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
+import com.airline.reservation.exception.ApplicationError;
 import com.airline.reservation.exception.BadRequestException;
 // import com.airline.reservation.exception.HandledException;
 import com.airline.reservation.form.validation.Password;
+import com.airline.reservation.form.validation.phone;
+import com.airline.reservation.json.ResBody;
 
 import javassist.bytecode.stackmap.BasicBlock.Catch;
 
 public class UserForm {
-    @NotBlank
-    @Size(min = 4, max = 20,message = "101")
+    @NotBlank(message="1001")
+    @Size(min = 4, max = 20)
     private String fullName;
-    @NotBlank
-    @Email
-    @Size( max = 30,message="102")
+
+    @NotBlank(message="1002")
+    @Email(message="1002")
     private String email;
-    @Password(message="103")
+
+    @Password(message="1003")
     private String password;
     private Date dob;
+
     @Size(min = 8, max = 8)
     private String passportNumber;
+    
     private String address;
-    @NotBlank
-    @Size(max = 11)
+
+    @NotBlank(message="1004")
+    @Pattern(regexp="(^$|[0-9]{10})", message="1004")
+    @Size(max = 11,message = "1004")
     private String phone;
+
     @Size(max = 18)
     private String city;
+
     @Size(max = 18)
     private String country;
+
     @NotNull
     private Integer status;
+    
     @NotNull
     private Integer role;
     
@@ -96,6 +111,7 @@ public class UserForm {
     }
     public void setPhone(String phone) {
         this.phone = phone;
+      
     }
     public String getCity() {
         return city;

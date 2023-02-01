@@ -25,7 +25,6 @@ import com.airline.reservation.view.UserView;
 
 import ch.qos.logback.core.net.SyslogOutputStream;
 import net.bytebuddy.implementation.bytecode.Throw;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -119,6 +118,7 @@ public class UserServiceImpl implements UserService{
                 body.getErrors().add(new ApplicationError("200","User already exist"));
                 return new ResponseEntity<>(body,HttpStatus.BAD_REQUEST);
             }
+           
             UserView uview =  new UserView(userRepository.save(new User(
 
                     form.getFullName(),
@@ -134,8 +134,9 @@ public class UserServiceImpl implements UserService{
                     form.getDob())));
             body.getValues().put("user",uview);
             return new ResponseEntity<ResBody>(body,HttpStatus.OK);
-        }
-  
+        } 
+        
+    
     private static BadRequestException badRequestException() {
         return new BadRequestException("Invalid credentials");
     }
