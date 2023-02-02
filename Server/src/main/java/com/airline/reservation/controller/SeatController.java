@@ -20,7 +20,7 @@ public class SeatController {
     private SeatService seatService;
 
     @PostMapping("/addSeat")
-    public void addJob(@RequestBody SeatForm form)
+    public void addBooking(@RequestBody SeatForm form)
     {
         seatService.addSeat(form);
     }

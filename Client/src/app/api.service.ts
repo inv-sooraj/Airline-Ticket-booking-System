@@ -88,6 +88,7 @@ export class ApiService {
   deletePlane(ids: any) {
     let params = new HttpParams()
       .set('ids', ids);
+      alert(this.baseUrl + '/' + 'airplane' + '?' + 'ids' + '=' + ids);
     return this.httpClient.delete(this.baseUrl + '/' + 'airplane' + '?' + 'ids' + '=' + ids, this.getHeader())
   };
 

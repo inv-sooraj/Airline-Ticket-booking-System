@@ -87,11 +87,8 @@ export class PlaneListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-
     this.getPlane();
     this.getCompanyName();
-
   }
 
   /**To get company name from the user table */
@@ -159,4 +156,6 @@ export class PlaneListComponent implements OnInit {
       });
   }
 }
+
+
 

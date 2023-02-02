@@ -21,9 +21,10 @@
                                         <div class="box_right d-flex lms_block">
                                             <div class="serach_field_2">
                                                 <div class="search_inner">
-                                                    <form Active="#">
+                                                    <form [formGroup]="bookingListForm">
                                                         <div class="search_field">
-                                                            <input type="text" placeholder="Search content here...">
+                                                            <input type="text" formControlName="search" placeholder="Search plane details here..."
+                                                            [(ngModel)]="searchText" autocomplete="off">
                                                         </div>
                                                         <button type="submit"> <i class="ti-search"></i> </button>
                                                     </form>
@@ -43,13 +44,14 @@
                                         <table class="table lms_table_active3 ">
                                             <thead>
                                                 <tr>
-                                                    <a class="delete" href="" title="Delete" data-toggle="tooltip"
+                                                      <a class="delete" (click)="deleteData()" title="Delete" data-toggle="tooltip"
                                                     style="padding-left: 10px;"><i class="fa fa-trash"></i></a>
                                                     <th scope="col">UserId ID</th>
                                                     <th scope="col">Flight Number</th>
                                                     <th scope="col">Departing From</th>
                                                     <th scope="col">Destination</th>
                                                     <th scope="col">Status</th>
+                                                    <th scope="col">Action</th>
                                                     <!-- <th scope="col">Lesson</th>
 <th scope="col">Enrolled</th>
 <th scope="col">Price</th>
@@ -57,94 +59,25 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <th scope="row"><input type="checkbox"> 1</th>
-
-                                                    <td>adbc123</td>
-                                                    <td>Kochi</td>
-                                                    <td>Delhi</td>
-                                                    <td><a href="#" class="status_btn">Active</a></td> 
+                                                <tr *ngFor="let n of items | filter:searchText let i = index">
+                                                    <th scope="row">
+                                                        <!-- <input class="form-check-input" type="checkbox" [value]="n.airplaneId"
+                                                          [checked]="n.select" (change)="onChange($event)" /> -->
+                                                        <label for="sel"></label>
+                                                        <input type="checkbox" [value]="n.bookingId" (change)="onCheckboxChange($event)" />
+                                                      </th>
+                                                    <td>{{n.bookingId}}</td>
+                                                    <td>{{n.flight.flightNumber}}</td>
+                                                    <td>{{n.flight.departure}}</td>
+                                                    <td>{{n.flight.destination}}</td>
+                                                    <td  *ngIf="n.status ==2">No Action</td>
+                                                    <td  *ngIf="n.status ==0">Rejected</td>
+                                                    <td  *ngIf="n.status ==1">Approved</td>
+                                                    <td><a class="status_btn" (click)="approve(n.bookingId,1)">Approve</a>
+                                                  <a class="status_btn_rejected"  (click)="approve(n.bookingId,0)">Reject</a></td>
                                                 </tr>
-                                                <tr>
-                                                    <th scope="row"><input type="checkbox"> 1</th>
-
-                                                    <td>adbc123</td>
-                                                    <td>Kochi</td>
-                                                    <td>Delhi</td>
-                                                    <td><a href="#" class="status_btn">Active</a></td> 
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row"><input type="checkbox"> 1</th>
-
-                                                    <td>adbc123</td>
-                                                    <td>Kochi</td>
-                                                    <td>Delhi</td>
-                                                    <td><a href="#" class="status_btn">Active</a></td> 
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row"><input type="checkbox"> 1</th>
-
-                                                    <td>adbc123</td>
-                                                    <td>Kochi</td>
-                                                    <td>Delhi</td>
-                                                    <td><a href="#" class="status_btn">Active</a></td> 
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row"><input type="checkbox"> 1</th>
-
-                                                    <td>adbc123</td>
-                                                    <td>Kochi</td>
-                                                    <td>Delhi</td>
-                                                    <td><a href="#" class="status_btn">Active</a></td> 
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row"><input type="checkbox"> 1</th>
-
-                                                    <td>adbc123</td>
-                                                    <td>Kochi</td>
-                                                    <td>Delhi</td>
-                                                    <td><a href="#" class="status_btn">Active</a></td> 
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row"><input type="checkbox"> 1</th>
-
-                                                    <td>adbc123</td>
-                                                    <td>Kochi</td>
-                                                    <td>Delhi</td>
-                                                    <td><a href="#" class="status_btn">Active</a></td> 
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row"><input type="checkbox"> 1</th>
-
-                                                    <td>adbc123</td>
-                                                    <td>Kochi</td>
-                                                    <td>Delhi</td>
-                                                    <td><a href="#" class="status_btn">Active</a></td> 
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row"><input type="checkbox"> 1</th>
-
-                                                    <td>adbc123</td>
-                                                    <td>Kochi</td>
-                                                    <td>Delhi</td>
-                                                    <td><a href="#" class="status_btn">Active</a></td> 
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row"><input type="checkbox"> 1</th>
-
-                                                    <td>adbc123</td>
-                                                    <td>Kochi</td>
-                                                    <td>Delhi</td>
-                                                    <td><a href="#" class="status_btn">Active</a></td> 
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row"><input type="checkbox"> 1</th>
-
-                                                    <td>adbc123</td>
-                                                    <td>Kochi</td>
-                                                    <td>Delhi</td>
-                                                    <td><a href="#" class="status_btn">Active</a></td> 
-                                                </tr>
+                            
+                                             
                                             </tbody>
                                         </table>
                                     </div>
