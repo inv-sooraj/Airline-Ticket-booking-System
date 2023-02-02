@@ -149,7 +149,7 @@ export class PlaneListComponent implements OnInit {
           location.reload();
         },
         error: (err: any) => {
-          this.alertservice.showSuccess("Failed to delete!!!", "error")
+          this.alertservice.showError("Failed to delete!!!", "error")
           location.reload();
         },
         complete: () => { }

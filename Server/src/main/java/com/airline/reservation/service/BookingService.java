@@ -21,4 +21,5 @@ public interface BookingService {
    //       String flightNumber);
 ResponseEntity<ResBody> changeStatus(Integer bookingId,Byte status);
 void deleteAllBYIds(List<Integer> ids);
+List<Bookings> findByUserUserId();
 }

@@ -37,18 +37,13 @@
                                 <div class="">
                                     <input type="text" class="form-control" id="exampleInputEmail" formControlName="email" aria-describedby="emailHelp" [(ngModel)]="data.email" >
                                 </div>
-                                <div class=" cs_check_box">
-                                    <input type="checkbox" id="check_box" class="common_checkbox">
-                                    <label class="form-label" for="check_box">
-                                        Keep me up to date
-                                    </label>
-                                </div>
+                               
                                 <div align="center">
-                                    <a href="#" class="btn_3 full_width text-center">Cancel</a>
-                                    <a href="#" class="btn_3 full_width text-center"
-                                        style="background-color:red;">Delete</a>
-                                    <a (click)="onEditSubmit()" class="btn_3 full_width text-center"
-                                        style="background-color:green;">Update</a>
+                                    <a href="#" class="btn_3 full_width text-center m-2">Cancel</a>
+                                    <a (click)="deleteAccount()" class="m-2 btn_3 full_width text-center"
+                                        style="background-color:rgb(61, 173, 224);">Delete</a>
+                                    <a (click)="onEditSubmit()" class="m-2 btn_3 full_width text-center"
+                                        style="background-color:rgb(61, 173, 224);">Update</a>
                                 </div>
                                 <p>Need an account? <a data-bs-toggle="modal" data-bs-target="#sing_up"
                                         data-bs-dismiss="modal" href="#">Log in</a></p>

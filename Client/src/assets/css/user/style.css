@@ -2489,6 +2489,7 @@ label.custom-checkbox .checkmark:after {
     }
     body{
         background-color: #f5f5f5;
+      
     }
     
     .btn2 {
@@ -2522,6 +2523,7 @@ label.custom-checkbox .checkmark:after {
     font-family: 'Poppins', 'sans-serif';
     box-sizing: border-box;
     margin: 0;
+  color:black;
     padding: 0;
 
 }
@@ -2681,7 +2683,16 @@ input[type='submit']:active {
     opacity: 0.8;
 }
 .border{
-    box-shadow: 0px 40px 45px #161616;
+    box-shadow: 0px 20px 30px #575757;
+}
+.searchFieldCustom{
+    width: 30%;
+    padding: 2px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 /* .booking-status{
     text-transform: uppercase;

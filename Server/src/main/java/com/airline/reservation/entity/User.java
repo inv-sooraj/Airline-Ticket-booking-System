@@ -34,7 +34,6 @@ public class User {
     private   String country;
     @Column(nullable = false)
     private   String password;
-   
     @Column(nullable = false,columnDefinition = "TINYINT")
     private   Integer status;
     @Column(nullable = false,columnDefinition = "TINYINT")

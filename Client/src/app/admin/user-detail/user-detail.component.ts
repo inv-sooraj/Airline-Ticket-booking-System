@@ -56,4 +56,18 @@ data : any;
       complete: () => { }
     });
     }
+
+    deleteAccount() {
+      this.apiservice.deleteUser(1).subscribe({
+        next: (response: any) => {
+          this.data = response;
+       this.alertservice.showSuccess("Deletion Success","success")
+        },
+        error: (err: any) => { 
+  
+          this.alertservice.showError("Failed to delete user","Error")
+        },
+        complete: () => { }
+      });
+      }
 }

@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ApiService {
   
+  
   baseUrl = environment.baseUrl;
   constructor(private httpClient: HttpClient) { }
 
@@ -22,12 +23,18 @@ export class ApiService {
     return this.httpClient.post(this.baseUrl + '/' + 'users', userForm);
 
   }
+  getUserBookingList() {
+    return this.httpClient.get(this.baseUrl + '/bookings/getById', this.getHeader());
+  }
+  
   updateUser(userid: any, updateForm: any) {
-    alert(this.baseUrl + '/' + 'users/'+userid);
+ 
     return this.httpClient.put(this.baseUrl + '/' + 'users/'+userid, updateForm, this.getHeader());
   }
 
-
+  deleteUser(id:any) {
+    return this.httpClient.put(this.baseUrl + '/' + 'users/changeStatus/'+id, this.getHeader());
+  }
   /** Method to login users */
 
   login(userForm: any) {
@@ -93,7 +100,7 @@ export class ApiService {
   deletePlane(ids: any) {
     let params = new HttpParams()
       .set('ids', ids);
-      alert(this.baseUrl + '/' + 'airplane' + '?' + 'ids' + '=' + ids);
+      
     return this.httpClient.delete(this.baseUrl + '/' + 'airplane' + '?' + 'ids' + '=' + ids, this.getHeader())
   };
 
@@ -114,7 +121,7 @@ export class ApiService {
   /**Method to get user details by id */
 
   getUserById(id:any){
-alert(this.baseUrl + '/' + 'users' +'/'+ id)
+
     return this.httpClient.get(this.baseUrl + '/' + 'users' +'/'+ id, this.getHeader());
   }
 

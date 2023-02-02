@@ -1,5 +1,6 @@
 package com.airline.reservation.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -70,10 +71,9 @@ public class BookingsController {
 
     //delete Bookings
     @DeleteMapping
-    public String delete(@RequestParam("ids") List<Integer> ids) {
+    public void delete(@RequestParam("ids") ArrayList<Integer> ids) {
         System.out.println("deleting");
-        bookingService.deleteAllBYIds(ids);
-        return String.join(",", ids.stream().map(value ->  Integer.toString(value)).collect(Collectors.toList()));
+        bookingService.deleteAllBYIds(ids);  
     }
     //list flights
     @GetMapping
@@ -98,5 +98,9 @@ public class BookingsController {
     return bookingService.changeStatus(bookingId,status);
 
     }
-
+    //get bookings done by individual user
+    @GetMapping("/getById")
+    public List<Bookings> userBookings(){
+        return  bookingService.findByUserUserId();
+    }
 }
