@@ -57,21 +57,21 @@ export class PlaneListComponent implements OnInit {
     this.planeListForm?.get('company')?.setValue(e.target.value, {
       onlySelf: true
     });
-    // this.onSubmit();
+    this.onSubmit();
   }
 
   /**For fetching airplane details based on  a spacific company id */
 
-  // onSubmit() {
-  //   this.apiservice.getPlaneByCompany(this.planeListForm.value.company).subscribe({
-  //     next: (response: any) => {
-  //       this.items = response;
-  //     },
-  //     error: (err: any) => { alert("Failed") },
-  //     complete: () => { }
-  //   });
+  onSubmit() {
+    this.apiservice.getPlaneByCompany(this.planeListForm.value.company).subscribe({
+      next: (response: any) => {
+        this.items = response;
+      },
+      error: (err: any) => { alert("Failed") },
+      complete: () => { }
+    });
 
-  // }
+  }
 
   /**For searching an airplane */
 

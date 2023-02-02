@@ -211,4 +211,12 @@ public class UserServiceImpl implements UserService{
         }
         
     }
+
+    @Override
+    public UserView get(Integer userId) {
+        return userRepository.findByUserId(userId)
+                .map((User) -> {
+                    return new UserView(User);
+                }).orElseThrow(NotFoundException::new);
+    }
 }

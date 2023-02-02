@@ -66,4 +66,8 @@ public class UsersController {
     public ResponseEntity<ResBody>changePwd(@Valid @RequestBody ChangePwdForm pwdForm){
         return userService.changePwd(pwdForm);
     }
+    @GetMapping("/{userId}")
+    public UserView get(@PathVariable("userId") Integer userId) {
+        return userService.get(userId);
+    }
 }
