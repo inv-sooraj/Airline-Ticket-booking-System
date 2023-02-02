@@ -38,4 +38,6 @@ public interface UserService {
     ResponseEntity<ResBody> changePwd(ChangePwdForm form);
     UserView currentUser();
 
+    public UserView get(Integer userId);
+
 }
