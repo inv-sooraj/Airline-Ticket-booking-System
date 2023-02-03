@@ -70,18 +70,6 @@ export class PlaneListComponent implements OnInit {
   }
 
   /**For searching an airplane */
-
-  Search() {
-    if (this.itemName == "") {
-      this.ngOnInit();
-    }
-    else {
-      this.searchData = this.searchData.filter(res => {
-        return res.itemName.toLocaleLowerCase().match(this.itemName.toLocaleLowerCase());
-      });
-    }
-  }
-
   ngOnInit(): void {
     this.getPlane();
     this.getCompanyName();

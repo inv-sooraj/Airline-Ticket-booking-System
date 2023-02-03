@@ -3,6 +3,8 @@ package com.airline.reservation.view;
 import java.util.List;
 
 import com.airline.reservation.entity.Bookings;
+import com.airline.reservation.entity.Flight;
+import com.airline.reservation.entity.User;
 
 public class BookingListView {
    
@@ -10,6 +12,8 @@ public class BookingListView {
     private String flightNumber;
     private String departure;;
     private String destination;
+    private User user;
+      private Flight flight;
     public Integer getUserId() {
         return userId;
     }
@@ -43,6 +47,8 @@ public class BookingListView {
     private Byte status;
     public BookingListView(Bookings bookings){
         this.userId=bookings.getUser().getUserId();
+         this.user=bookings.getUser();
+        this.flight=bookings.getFlight();
         this.flightNumber=bookings.getFlight().getFlightNumber();
         this.departure=bookings.getFlight().getDeparture();
         this.destination=bookings.getFlight().getDestination();
@@ -51,4 +57,13 @@ public class BookingListView {
     public BookingListView(List<Bookings> findAll) {
         
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Flight getFlight() {
+        return flight;
+    }
+    
 }
