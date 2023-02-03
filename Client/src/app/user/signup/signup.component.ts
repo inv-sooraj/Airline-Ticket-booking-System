@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControlOptions, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlertService } from 'src/app/alert.service';
 import { ApiService } from 'src/app/api.service';
 import { ConfirmPasswordValidator } from 'src/app/confirm-password.validator';
 @Component({
@@ -16,7 +17,7 @@ export class SignupComponent implements OnInit {
   roledata:any;
   country: any = ['USA', 'INDIA','CHINA','AUSTRALIA','DUBAI','JAPAN','SAUDI','CANADA'];
   status:any=false;
-  constructor(private formbuilder:FormBuilder,private router:Router,private apiservice:ApiService) {
+  constructor(private formbuilder:FormBuilder,private router:Router,private apiservice:ApiService,private alertservice:AlertService) {
     this.listData = [];
     this.signupForm=this.formbuilder.group({
       fullname:['',[Validators.required,Validators.pattern("^[a-zA-Z][a-zA-Z ]+$"),Validators.minLength(8),Validators.maxLength(18)]],
@@ -61,25 +62,24 @@ export class SignupComponent implements OnInit {
         "status":1,
         "role":3
       }
-      // if(this.apiservice.isEmailUnique(this.signupForm.value.email)){
                 this.apiservice.createUser(param).subscribe({
                 next: (result: any) => {
                 this.status=true;
-               
+                console.log(result);
+  
+                this.alertservice.showSuccess("Signed up successfully","Success")
                 this.router.navigate(['/login']);  
        
     },
     error: (err: any) => {
-      // alert(err.name);
       this.status=false;
       console.log(err);
+      this.alertservice.showError("Failed to signup","Error")
     }  
     });
-    
-    // }
   }
-    else{
-      alert("Invalid credentials");
+  else{
+      this.alertservice.showError("Please fill the form correctly","Invalid form")
     }
   }
   ngOnInit(): void {

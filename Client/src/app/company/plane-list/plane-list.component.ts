@@ -49,10 +49,8 @@ export class PlaneListComponent implements OnInit {
 
   /**For selecting company from dropdown list(for admin only) */
 
-  changeCompany(e: any) {
-    this.planeListForm?.get('company')?.setValue(e.target.value, {
-      onlySelf: true
-    });
+  changeCompany() {
+   
     this.onSubmit();
   }
 
@@ -68,20 +66,6 @@ export class PlaneListComponent implements OnInit {
     });
 
   }
-
-  /**For searching an airplane */
-
-  Search() {
-    if (this.itemName == "") {
-      this.ngOnInit();
-    }
-    else {
-      this.searchData = this.searchData.filter(res => {
-        return res.itemName.toLocaleLowerCase().match(this.itemName.toLocaleLowerCase());
-      });
-    }
-  }
-
   ngOnInit(): void {
     this.getPlane();
     this.getCompanyName();
@@ -154,6 +138,4 @@ export class PlaneListComponent implements OnInit {
       });
   }
 }
-
-
 

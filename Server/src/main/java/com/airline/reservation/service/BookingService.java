@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import com.airline.reservation.entity.Bookings;
 import com.airline.reservation.form.BookingForm;
 import com.airline.reservation.json.ResBody;
+import com.airline.reservation.view.BookingListView;
 @Service
 public interface BookingService {
    List<Bookings>list();
@@ -14,4 +15,5 @@ public interface BookingService {
    ResponseEntity<ResBody> changeStatus(Integer bookingId,Byte status);
    void deleteAllBYIds(List<Integer> ids);
    List<Bookings> findByUserUserId();
+    public BookingListView getBooking(Integer bookingId, Byte flag);
 }

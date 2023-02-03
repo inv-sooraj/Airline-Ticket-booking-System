@@ -14,7 +14,9 @@ export class ApiService {
   }
   /** Method to create new user(signup a new user) */
   createUser(userForm: any) {
+
     console.log(userForm);
+
     return this.httpClient.post(this.baseUrl + "/" + "users/signup", userForm);
   }
   getUserBookingList() {

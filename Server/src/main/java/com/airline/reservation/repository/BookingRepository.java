@@ -16,4 +16,5 @@ public interface BookingRepository extends  JpaRepository<Bookings,Integer>
     void softDeleteAllIds(List<Integer> integers);
     List<Bookings> findByStatus(Byte status);
     List<Bookings> findByUserUserId(Integer integer);   
+     Bookings findByBookingIdAndDeleteFlag(Integer bookingId,Byte flag);
 }
