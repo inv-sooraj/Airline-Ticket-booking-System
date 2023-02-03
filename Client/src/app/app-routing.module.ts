@@ -38,7 +38,7 @@ const routes: Routes = [
   {path:'flight-details',component:FlightDetailsAdminComponent},
   {path:'flight-list',component:FlightListCompanyComponent},
   {path:'profile-edit',component:UserProfileEditComponent},
-  {path:'admin-profile',component:AdminProfileComponent}
+  {path:'profile',component:AdminProfileComponent}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
