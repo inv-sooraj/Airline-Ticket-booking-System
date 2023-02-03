@@ -19,10 +19,10 @@ public interface UserService {
     public Collection<User> list();
     public Collection<User> getCompany();
     public Collection<User> Search(String userName);
-    UserView get(Integer userId) throws NotFoundException;
     UserView update(UserForm form) throws NotFoundException;
     ResponseEntity<ResBody> changePwd(ChangePwdForm form);
     UserView currentUser();
     UserView updateById(Integer userId, UserForm form);
     ResponseEntity<ResBody> changeStatus(Integer userId);
+    public UserView get(Integer userId);
 }

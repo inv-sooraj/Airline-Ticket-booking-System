@@ -66,7 +66,7 @@ public class UsersController {
     }
     //get by id
     @GetMapping("/{userId}")
-    public UserView get(@PathVariable("userId") Integer userId){
+    public UserView get(@PathVariable("userId") Integer userId) {
         return userService.get(userId);
     }
 }

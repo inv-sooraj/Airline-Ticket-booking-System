@@ -1,10 +1,7 @@
 package com.airline.reservation.service.impl;
-
 import com.airline.reservation.entity.User;
 import com.airline.reservation.exception.ApplicationError;
 import com.airline.reservation.exception.BadRequestException;
-import com.airline.reservation.exception.ExceptionHandler;
-// import com.airline.reservation.exception.HandledException;
 import com.airline.reservation.exception.NotFoundException;
 import com.airline.reservation.form.LoginForm;
 import com.airline.reservation.form.UserForm;
@@ -16,33 +13,22 @@ import com.airline.reservation.security.util.InvalidTokenException;
 import com.airline.reservation.security.util.SecurityUtil;
 import com.airline.reservation.security.util.TokenExpiredException;
 import com.airline.reservation.security.util.TokenGenerator;
-// import com.airline.reservation.security.util.UserAlreadyExistAuthenticationException;
 import com.airline.reservation.security.util.TokenGenerator.Status;
 import com.airline.reservation.security.util.TokenGenerator.Token;
 import com.airline.reservation.service.UserService;
 import com.airline.reservation.view.LoginView;
 import com.airline.reservation.view.UserView;
-
-import ch.qos.logback.core.net.SyslogOutputStream;
-import net.bytebuddy.implementation.bytecode.Throw;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.Errors;
-import org.springframework.web.server.ResponseStatusException;
-
 import static com.airline.reservation.security.AccessTokenUserDetailsService.PURPOSE_ACCESS_TOKEN;
 import java.util.Collection;
-
 import java.util.Optional;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.servlet.annotation.HandlesTypes;
 import javax.validation.Valid;
-
 @Service
 public class UserServiceImpl implements UserService{
     private static final String PURPOSE_REFRESH_TOKEN = "REFRESH_TOKEN";
@@ -50,19 +36,15 @@ public class UserServiceImpl implements UserService{
     private PasswordEncoder passwordEncoder;
     @Autowired
     private SecurityConfig securityConfig;
-
     @Autowired
     private UserRepository userRepository;
     @Autowired
     private TokenGenerator tokenGenerator;
-    
     //email existing check
-
     public  Boolean emailCheck(String email){
     
         return userRepository.existsByEmail(email);
     } 
-     
     @Override
     public LoginView login(LoginForm form, Errors errors) throws BadRequestException {
         if (errors.hasErrors()) {
@@ -72,7 +54,6 @@ public class UserServiceImpl implements UserService{
         if (!passwordEncoder.matches(form.getPassword(), user.getPassword())) {
             throw badRequestException();
         }
-
         String id = String.format("%010d", user.getUserId());
         Token accessToken = tokenGenerator.create(PURPOSE_ACCESS_TOKEN, id, securityConfig.getAccessTokenExpiry());
         Token refreshToken = tokenGenerator.create(PURPOSE_REFRESH_TOKEN, id + user.getPassword(), securityConfig.getRefreshTokenExpiry());
@@ -94,11 +75,8 @@ public class UserServiceImpl implements UserService{
         } catch (NumberFormatException e) {
             throw new BadRequestException("Invalid token", e);
         }
-
         String password = status.data.substring(10);
-
         User user = userRepository.findByUserIdAndPassword(userId, password).orElseThrow(UserServiceImpl::badRequestException);
-
         String id = String.format("%010d", user.getUserId());
         Token accessToken = tokenGenerator.create(PURPOSE_ACCESS_TOKEN, id, securityConfig.getAccessTokenExpiry());
         return new LoginView(
@@ -107,20 +85,16 @@ public class UserServiceImpl implements UserService{
                 new LoginView.TokenView(refreshToken, status.expiry)
         );
         }
-        
         @Override
         public ResponseEntity<ResBody> add(@Valid UserForm form)  {
             ResBody body = new ResBody();
-
             Optional<User> usernameEntry = userRepository.findByEmail(form.getEmail());
             if(!usernameEntry.isEmpty())
             {
                 body.getErrors().add(new ApplicationError("200","User already exist"));
                 return new ResponseEntity<>(body,HttpStatus.BAD_REQUEST);
             }
-           
             UserView uview =  new UserView(userRepository.save(new User(
-
                     form.getFullName(),
                     form.getEmail(),
                     form.getPhone(),
@@ -135,33 +109,22 @@ public class UserServiceImpl implements UserService{
             body.getValues().put("user",uview);
             return new ResponseEntity<ResBody>(body,HttpStatus.OK);
         } 
-        
-    
     private static BadRequestException badRequestException() {
         return new BadRequestException("Invalid credentials");
     }
     @Override
-    public Collection<User> list() {
-        
+    public Collection<User> list() { 
             return userRepository.findAll();
-
     }
-
     @Override
-    public Collection<User> Search(String userName) {
-        
+    public Collection<User> Search(String userName) {   
         return userRepository.findByFullNameContaining(userName);
-
     }
-
-    
-
     @Override
     public Collection<User> getCompany() {
         
          return userRepository.findAllByRole(2);
     }
-
    @Override
     @Transactional
     public UserView update(UserForm form) throws NotFoundException {
@@ -170,11 +133,6 @@ public class UserServiceImpl implements UserService{
                     return new UserView(userRepository.save(contact.update(form)));
                 }).orElseThrow(NotFoundException::new);
     }
-   
-
-    
-    
-
     @Override
     public UserView currentUser() {
         // System.out.println(SecurityUtil.getCurrentUserId());
@@ -186,7 +144,6 @@ public class UserServiceImpl implements UserService{
     @Override
     public ResponseEntity<ResBody> changePwd(ChangePwdForm form) {
         ResBody body = new ResBody();
-        // TODO Auto-generated method stub
         System.out.println("change PWd");
         Integer userid = SecurityUtil.getCurrentUserId();
         System.out.println(SecurityUtil.getCurrentUserId());
@@ -211,6 +168,7 @@ public class UserServiceImpl implements UserService{
         }
         
     }
+
       // user Details
       @Override
       public UserView get(Integer UserId) throws NotFoundException{
@@ -218,7 +176,8 @@ public class UserServiceImpl implements UserService{
               return new UserView(User);
           }).orElseThrow(NotFoundException::new);
       }
-
+      
+      
     @Override
     public UserView updateById(Integer userId, UserForm form) {
         // TODO Auto-generated method stub
@@ -236,14 +195,12 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public ResponseEntity<ResBody> changeStatus(Integer userId) {
-        // TODO Auto-generated method stub
+        
         ResBody body = new ResBody();
-        // TODO Auto-generated method stub
-       
         User user = userRepository.findByUserId(userId).orElseThrow(UserServiceImpl::badRequestException);
         user.setStatus(0);
             userRepository.save(user);
             body.getValues().put("108","Deleted  user Successfully");
             return new ResponseEntity<>(body,HttpStatus.OK);
-    }
+}
 }
