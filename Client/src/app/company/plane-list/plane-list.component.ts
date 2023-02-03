@@ -13,6 +13,7 @@ export class PlaneListComponent implements OnInit {
   planeListForm!: FormGroup;
   searchText: any;
   itemName: any;
+  website:any[]=[];
   items: any[] = [];
   Company: any;
   public data: any;
@@ -37,18 +38,13 @@ export class PlaneListComponent implements OnInit {
   /**For storing the id of selected airplanes in formarray */
 
   onCheckboxChange(e: any) {
-    const website: FormArray = this.planeListForm.get('sel') as FormArray;
+    // const website: FormArray = this.planeListForm.get('sel') as FormArray;
 
+    
     if (e.target.checked) {
-      website.push(new FormControl(e.target.value));
-      console.log(website);
-
-    } else {
-      const index = website.controls.findIndex(x => x.value === e.target.value);
-      website.removeAt(index);
-      console.log(website);
-
-    }
+      this.website.push(e.target.value);
+      console.log("ids are : "+this.website);
+}
   }
 
   /**For selecting company from dropdown list(for admin only) */
@@ -142,17 +138,19 @@ export class PlaneListComponent implements OnInit {
   /**To delete the selected airplanes */
 
   deleteData() {
-    this.apiservice.deletePlane(this.planeListForm.value.sel).subscribe
+    this.apiservice.deletePlane(this.website).subscribe
       ({
         next: (response: any) => {
           this.alertservice.showSuccess("Deleted Successfully!!!", "success")
-          location.reload();
+        
         },
         error: (err: any) => {
           this.alertservice.showError("Failed to delete!!!", "error")
-          location.reload();
+         
         },
-        complete: () => { }
+        complete: () => { 
+          this.getPlane();
+        }
       });
   }
 }

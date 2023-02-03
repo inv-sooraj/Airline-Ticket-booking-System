@@ -51,9 +51,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .securityContext().and()
                 .anonymous().and()
                 .authorizeRequests()
-
-                // .antMatchers(POST, "/users").anonymous()
-
                 .antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
                 .antMatchers("/users/**").permitAll()
                 .antMatchers("/company/**").permitAll()
@@ -64,37 +61,31 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(OPTIONS, "/**").anonymous()  
                 .anyRequest().authenticated();
     }
-
     @Bean
     protected AccessTokenUserDetailsService accessTokenUserDetailsService() {
         return new AccessTokenUserDetailsService();
     }
-
     @Bean
     protected PreAuthenticatedAuthenticationProvider preAuthenticatedAuthenticationProvider() {
         PreAuthenticatedAuthenticationProvider authProvider = new PreAuthenticatedAuthenticationProvider();
         authProvider.setPreAuthenticatedUserDetailsService(accessTokenUserDetailsService());
         return authProvider;
     }
-
     @Bean
     protected AccessTokenProcessingFilter accessTokenProcessingFilter() throws Exception {
         AccessTokenProcessingFilter filter = new AccessTokenProcessingFilter();
         filter.setAuthenticationManager(authenticationManager());
         return filter;
     }
-
     @Bean
     public PasswordEncoder passwordEncoder() {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
-
     @Bean
     @ConfigurationProperties("app.security")
     public SecurityConfig securityConfig() {
         return new SecurityConfig();
     }
-
     @Bean
     @ConfigurationProperties("app.security.configuration")
     public TokenGenerator tokenGenerator(SecurityConfig securityConfig) {

@@ -1,7 +1,5 @@
 package com.airline.reservation.form;
-
 import com.airline.reservation.form.validation.Password;
-
 public class ChangePwdForm {
     @Password
     private String CurrentPwd;
@@ -19,5 +17,4 @@ public class ChangePwdForm {
     public void setNewPwd(String newPwd) {
         NewPwd = newPwd;
     }
-    
 }

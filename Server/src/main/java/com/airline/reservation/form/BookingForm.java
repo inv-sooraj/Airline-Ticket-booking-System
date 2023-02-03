@@ -1,9 +1,5 @@
 package com.airline.reservation.form;
-
-import com.airline.reservation.entity.User;
-
 public class BookingForm {
-    
     private Integer bookingId;
     
     private Integer userId;
@@ -15,7 +11,6 @@ public class BookingForm {
     private String cancellation;
    
     private byte status=0;
-    
 
     public Integer getBookingId() {
         return bookingId;

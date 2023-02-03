@@ -1,7 +1,5 @@
 package com.airline.reservation.form;
-
 import java.util.Date;
-
 public class FlightForm {
     private Integer airplaneId;
     private String flightNumber;

@@ -1,25 +1,11 @@
 package com.airline.reservation.form;
-
 import java.util.Date;
-
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-
-import com.airline.reservation.exception.ApplicationError;
-import com.airline.reservation.exception.BadRequestException;
-// import com.airline.reservation.exception.HandledException;
 import com.airline.reservation.form.validation.Password;
-import com.airline.reservation.form.validation.phone;
-import com.airline.reservation.json.ResBody;
-
-import javassist.bytecode.stackmap.BasicBlock.Catch;
-
 public class UserForm {
     @NotBlank(message="1001")
     @Size(min = 4, max = 20)
@@ -62,18 +48,12 @@ public class UserForm {
         this.passportNumber = passportNumber;
     }
    
-    public String getFullName(){
-
-       
+    public String getFullName(){ 
         return fullName;
-   
     }
     public void setFullName(String fullName)  {
-   
         this.fullName=fullName;
-   
     }
-    
     public String getEmail() {
         return email;
     }
@@ -97,14 +77,7 @@ public class UserForm {
         return address;
     }
     public void setAddress(String address)  {
-        // if(address==""||address==null){
-        //   throw new HandledException( "Address is Empty");
-          
-        //    }else
-        //    {
-            this.address=address;
-        //    }
-           
+        this.address=address;    
     }
     public String getPhone() {
         return phone;

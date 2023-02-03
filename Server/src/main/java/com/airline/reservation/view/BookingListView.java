@@ -10,6 +10,36 @@ public class BookingListView {
     private String flightNumber;
     private String departure;;
     private String destination;
+    public Integer getUserId() {
+        return userId;
+    }
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+    public String getFlightNumber() {
+        return flightNumber;
+    }
+    public void setFlightNumber(String flightNumber) {
+        this.flightNumber = flightNumber;
+    }
+    public String getDeparture() {
+        return departure;
+    }
+    public void setDeparture(String departure) {
+        this.departure = departure;
+    }
+    public String getDestination() {
+        return destination;
+    }
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+    public Byte getStatus() {
+        return status;
+    }
+    public void setStatus(Byte status) {
+        this.status = status;
+    }
     private Byte status;
     public BookingListView(Bookings bookings){
         this.userId=bookings.getUser().getUserId();
