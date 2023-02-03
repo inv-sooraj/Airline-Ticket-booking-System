@@ -22,6 +22,7 @@ export class ApiService {
   updateUser(userid: any, updateForm: any) {
  
     return this.httpClient.put(this.baseUrl + '/' + 'users/'+userid, updateForm, this.getHeader());
+
   }
 
   deleteUser(id:any) {

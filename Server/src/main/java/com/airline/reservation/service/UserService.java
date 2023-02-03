@@ -22,7 +22,6 @@ public interface UserService {
     UserView update(UserForm form) throws NotFoundException;
     ResponseEntity<ResBody> changePwd(ChangePwdForm form);
     UserView currentUser();
-    UserView updateById(Integer userId, UserForm form);
-    ResponseEntity<ResBody> changeStatus(Integer userId);
-    public UserView get(Integer userId);
+    UserView get(Integer userId);
+
 }

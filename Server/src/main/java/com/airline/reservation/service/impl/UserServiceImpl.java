@@ -168,7 +168,7 @@ public class UserServiceImpl implements UserService{
         }
         
     }
-
+    
       // user Details
       @Override
       public UserView get(Integer UserId) throws NotFoundException{
@@ -177,8 +177,6 @@ public class UserServiceImpl implements UserService{
           }).orElseThrow(NotFoundException::new);
       }
       
-      
-    @Override
     public UserView updateById(Integer userId, UserForm form) {
         // TODO Auto-generated method stub
         User user = userRepository.findByUserId(userId).orElseThrow(UserServiceImpl::badRequestException);
@@ -192,9 +190,7 @@ public class UserServiceImpl implements UserService{
         user.setPhone(form.getPhone());
         return new UserView(userRepository.save(user));
     }
-
-    @Override
-    public ResponseEntity<ResBody> changeStatus(Integer userId) {
+     public ResponseEntity<ResBody> changeStatus(Integer userId) {
         
         ResBody body = new ResBody();
         User user = userRepository.findByUserId(userId).orElseThrow(UserServiceImpl::badRequestException);
