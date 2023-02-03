@@ -22,6 +22,7 @@ import com.airline.reservation.form.BookingForm;
 import com.airline.reservation.json.ResBody;
 import com.airline.reservation.service.BookingService;
 import com.airline.reservation.service.CSVService;
+import com.airline.reservation.view.BookingListView;
 @RestController
 @RequestMapping("/bookings")
 public class BookingsController {
@@ -79,5 +80,10 @@ public class BookingsController {
     @GetMapping("/getById")
     public List<Bookings> userBookings(){
         return  bookingService.findByUserUserId();
+    }
+    
+     @GetMapping("/{bookingId}/{flag}")
+    public BookingListView get(@PathVariable("bookingId") Integer bookingId,@PathVariable("flag") Byte flag) {
+        return bookingService.getBooking(bookingId,flag);
     }
 }

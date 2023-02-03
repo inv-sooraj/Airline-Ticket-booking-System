@@ -118,6 +118,14 @@ public class BookingServiceImpl implements BookingService{
        
         return bookingRepository.findByUserUserId((SecurityUtil.getCurrentUserId()));
     }
+     @Override
+    public BookingListView getBooking(Integer bookingId, Byte flag){
+        
+        
+               
+        return new BookingListView(bookingRepository.findByBookingIdAndDeleteFlag(bookingId,flag));
+                
+    }    
     
     
 }
