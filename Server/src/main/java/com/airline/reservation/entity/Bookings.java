@@ -1,7 +1,5 @@
 package com.airline.reservation.entity;
-
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-
 import com.airline.reservation.form.BookingForm;
 import com.airline.reservation.json.Json;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -114,5 +111,4 @@ public class Bookings {
     public Bookings(){
 
     }
- 
 }

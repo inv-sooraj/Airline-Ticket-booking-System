@@ -1,5 +1,4 @@
 <!-- <app-header></app-header> -->
-
 <head>
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,12 +9,12 @@
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  </head> 
 <div class="container bg-light p-4">
-   <form class="form-inline my-2 my-lg-2">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-      Search
-      </button>
-   </form>
+      <form [formGroup]="bookingListForm">
+         <div class="search-hero">
+            <input type="text" placeholder="Search Here " formControlName="search" class="searchFieldCustom" [(ngModel)]="searchText" autocomplete="off">
+         </div>
+      </form>
+
    <table class=" p-2">
       <thead>
          <tr>
@@ -29,94 +28,20 @@
          </tr>
       </thead>
       <tbody>
-         <tr>
-          <td>1</td>
-            <td>Indigo</td>
-            <td>Kochi</td>
-            <td>Chennai</td>
-            <td>08/12/2001</td>
-            <td>Pending</td>
+         <tr *ngFor="let booking of items | filter:searchText let i = index" >
+          <td>{{booking.bookingId}}</td>
+            <td>{{booking.flight.flightNumber}}</td>
+            <td>{{booking.flight.departure}}</td>
+            <td>{{booking.flight.destination}}</td>
+            <td>{{booking.flight.depDateTime| date}}</td>
+            <td  *ngIf="booking.status ==0">Rejected</td>
+            <td  *ngIf="booking.status ==1">Approved</td>
+            <td  *ngIf="booking.status ==2">Pending</td>
             <td>
                <a href="#" class="status_btn" data-toggle="modal" data-target="#exampleModal">View</a>
             </td>
          </tr>
-         <tr>
-          <td>1</td>
-            <td>Indigo</td>
-            <td>Kochi</td>
-            <td>Chennai</td>
-            <td>08/12/2001</td>
-            <td>Pending</td>
-            <td>
-               <a href="#" class="status_btn" data-toggle="modal" data-target="#exampleModal">View</a>
-            </td>
-         </tr>
-         <tr>
-          <td>1</td>
-          <td>Indigo</td>
-            <td>Kochi</td>
-            <td>Chennai</td>
-            <td>08/12/2001</td>
-            <td>Pending</td>
-            <td>
-               <a href="#" class="status_btn" data-toggle="modal" data-target="#exampleModal">View</a>
-            </td>
-         </tr>
-         <tr>
-          <td>1</td>
-            <td>Indigo</td>
-            <td>Kochi</td>
-            <td>Chennai</td>
-            <td>08/12/2001</td>
-            <td>Pending</td>
-            <td>
-               <a href="#" class="status_btn" data-toggle="modal" data-target="#exampleModal">View</a>
-            </td>
-         </tr>
-         <tr>
-          <td>1</td>
-            <td>Indigo</td>
-            <td>Kochi</td>
-            <td>Chennai</td>
-            <td>08/12/2001</td>
-            <td>Pending</td>
-            <td>
-               <a href="#" class="status_btn" data-toggle="modal" data-target="#exampleModal">View</a>
-            </td>
-         </tr>
-         <tr>
-          <td>1</td>
-            <td>Indigo</td>
-            <td>Kochi</td>
-            <td>Chennai</td>
-            <td>08/12/2001</td>
-            <td>Pending</td>
-            <td>
-               <a href="#" class="status_btn" data-toggle="modal" data-target="#exampleModal">View</a>
-            </td>
-         </tr>
-         <tr>
-          <td>1</td>
-            <td>Indigo</td>
-            <td>Kochi</td>
-            <td>Chennai</td>
-            <td>08/12/2001</td>
-            <td>Pending</td>
-            <td>
-               <a href="#" class="status_btn" data-toggle="modal" data-target="#exampleModal">View</a>
-            </td>
-         </tr>
-         <tr>
-          <td>1</td>
-            <td>Indigo</td>
-            <td>Kochi</td>
-            <td>Chennai</td>
-            <td>08/12/2001</td>
-            <td>Pending</td>
-            <td>
-               <a href="#" class="status_btn" data-toggle="modal" data-target="#exampleModal">View</a>
-            </td>
-         </tr>
+         
       </tbody>
    </table>
 </div>

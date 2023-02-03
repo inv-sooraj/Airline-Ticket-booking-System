@@ -15,9 +15,9 @@
       <link href="/assets/css/user/responsive.css" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&amp;display=swap" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap" rel="stylesheet">
-<body>
+
  <br><br>
-    <section class="h-100 h-custom gradient-custom-2">
+    <section class="h-100 h-custom gradient-custom-2 pb-5">
         <form [formGroup]="profileEditForm">
        <div class="container  h-100">
           <h3 class="text-center">My Profile</h3>
@@ -73,42 +73,7 @@
                                </div>
                             </div>
                             <button type="button" class="btn2" (click)="editUser()">Update</button>
-                             <!-- <p class="text-center" data-toggle="modal" data-target="#changePass">Change Password?</p> -->
-                            <!-- Modal -->
-                             <!-- <div class="modal fade" id="changePass" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                               <div class="modal-dialog" role="document">
-                                  <div class="modal-content">
-                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                        </button>
-                                     </div>
-                                     <div class="modal-body">
-                                        <div class="mb-4 pb-2">
-                                           <div class="form-outline">
-                                              <input  placeholder="Enter current Password" type="password" id="form3Examplev4" class="form-control form-control-lg" formControlName="password"/>
-                                           </div>
-                                        </div>
-                                        <div class="mb-4 pb-2">
-                                           <div class="form-outline">
-                                              <input  placeholder="Enter New Password" type="password" id="form3Examplev4" class="form-control form-control-lg" formControlName="newpassword"/>
-                                           </div>
-                                        </div>
-                                        <div class="mb-4 pb-2">
-                                           <div class="form-outline">
-                                              <input  placeholder="Confirm Password" type="password" id="form3Examplev4" class="form-control form-control-lg" formControlName="confirmPassword"/>
-                                           </div>
-                                        </div>
-                                     </div>
-                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
-                                     </div>
-                                  </div>
-                               </div>
-                            </div>  -->
-                            <button type="button" onclick="window.location.href='index.html';"class="btn btn-outline-light btn-lg btn-block">Cancel</button>
+                         <button type="button" onclick="window.location.href='index.html';"class="btn btn-outline-light btn-lg btn-block">Cancel</button>
                          </div>
                       </div>
                    </div>
@@ -118,23 +83,7 @@
        </div>
     </form>
     </section>
-    <footer class="footer">
-       <div class="copyright">
-          <div class="container">
-             <div class="row">
-                <div class="col-12">
-                   <p class="text-custom-white">Airline Ticket booking System</p>
-                </div>
-             </div>
-          </div>
-       </div>
-       <div id="back-top" class="back-top">
-          <a href="#top"><i class="flaticon-arrows"></i></a>
-       </div>
-       <div id="back-top" class="back-top">
-          <a href="#top"><i class="flaticon-arrows"></i></a>
-       </div>
-    </footer>
+    <app-footer></app-footer>
     <script src="/assets/js/user/jquery.min.js"></script>
     <script src="/assets/js/user/popper.min.js"></script>
     <script src="/assets/js/user/bootstrap.min.js"></script>
@@ -147,4 +96,4 @@
     <script src="/assets/js/user/jquery.magnific-popup.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnd9JwZvXty-1gHZihMoFhJtCXmHfeRQg"></script>
     <script src="/assets/js/user/custom.js"></script>
- </body>
+ 

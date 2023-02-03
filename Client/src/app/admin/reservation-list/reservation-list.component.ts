@@ -9,7 +9,7 @@ import { BookingServiceService } from '../services/booking-service.service';
 })
 export class ReservationListComponent implements OnInit {
   items: any[] = [];
-
+site:any[]=[];
   bookingListForm!: FormGroup;
   role: any;
   searchText:any;
@@ -34,30 +34,32 @@ approve(id:any,status:any){
       next: (response: any) => {
       
         this.alertservice.showSuccess("Status changed Successfully!!!", "success")
-        location.reload();
+        
       },
       error: (err: any) => {
-        this.alertservice.showSuccess("Failed to change status!!!", "error")
-        location.reload();
+        this.alertservice.showError("Failed to Change Status!!!", "error")
+        console.log("error message"+err)
       },
-      complete: () => { }
+      complete: () => { this.getBookings();}
     });
-
 }
+
   deleteData() {
-    this.bookingService.deletebooking(this.bookingListForm.value.sel).subscribe
+    this.bookingService.deletebooking(this.site).subscribe
       ({
       
         next: (response: any) => {
-        
           this.alertservice.showSuccess("Deleted Successfully!!!", "success")
-          location.reload();
+          console.log("response = "+response)
+          this.getBookings() 
         },
         error: (err: any) => {
-          this.alertservice.showSuccess("Failed to delete!!!", "error")
-          location.reload();
+          this.alertservice.showError("Failed to delete!!!", "error")
+          console.log("error message"+err)
         },
-        complete: () => { }
+        complete: () => { 
+          this.getBookings() 
+        }
       });
   }
   export(){
@@ -66,18 +68,12 @@ approve(id:any,status:any){
     window.open("http://localhost:9091/bookings/download");
   }
   onCheckboxChange(e: any) {
-    const site: FormArray = this.bookingListForm.get('sel') as FormArray;
+    // const site: FormArray = this.bookingListForm.get('sel') as FormArray;
 
     if (e.target.checked) {
-      site.push(new FormControl(e.target.value));
-      console.log(site);
-
-    } else {
-      const index = site.controls.findIndex(x => x.value === e.target.value);
-      site.removeAt(index);
-      console.log(site);
-
-    }
+      this.site.push(e.target.value);
+      console.log("ids are : "+this.site);
+}
   }
   getBookings() {
     // if (this.role == '1') {
@@ -112,6 +108,7 @@ approve(id:any,status:any){
     // }
 }
 Search() {
+  console.log(this.itemName)
   if (this.itemName == "") {
     this.ngOnInit();
   }

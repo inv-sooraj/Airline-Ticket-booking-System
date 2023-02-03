@@ -14,6 +14,7 @@ import com.airline.reservation.exception.ApplicationError;
 import com.airline.reservation.form.BookingForm;
 import com.airline.reservation.json.ResBody;
 import com.airline.reservation.repository.BookingRepository;
+import com.airline.reservation.security.util.SecurityUtil;
 import com.airline.reservation.service.BookingService;
 import com.airline.reservation.view.BookingListView;
 import org.springframework.data.domain.Page;
@@ -83,6 +84,7 @@ public class BookingServiceImpl implements BookingService{
     @Override
     @Transactional
     public void deleteAllBYIds(List<Integer> integers) {
+        System.out.println("ids  are :"+integers);
         bookingRepository.softDeleteAllIds(integers);
     }
 
@@ -108,6 +110,13 @@ public class BookingServiceImpl implements BookingService{
         else {
             return new ArrayList<Bookings>();
         }
+    }
+  
+
+    @Override
+    public List<Bookings> findByUserUserId() {
+       
+        return bookingRepository.findByUserUserId((SecurityUtil.getCurrentUserId()));
     }
     
     

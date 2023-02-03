@@ -1,26 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.airline.reservation.security;
-
 import static com.airline.reservation.security.AccessTokenUserDetailsService.PURPOSE_ACCESS_TOKEN;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import org.springframework.security.web.authentication.preauth.AbstractPreAuthenticatedProcessingFilter;
-
 import javax.servlet.http.HttpServletRequest;
-
-/**
- *
- * @author nirmal
- */
 public class AccessTokenProcessingFilter extends AbstractPreAuthenticatedProcessingFilter {
-
     private static final Pattern AUTH_PATTERN = Pattern.compile("Airline ([0-9a-f]+)");
-
     @Override
     protected Object getPreAuthenticatedPrincipal(HttpServletRequest request) {
         String authHeader = request.getHeader("authorization");
@@ -35,7 +20,6 @@ public class AccessTokenProcessingFilter extends AbstractPreAuthenticatedProcess
 
         return matcher.group(1);
     }
-
     @Override
     protected Object getPreAuthenticatedCredentials(HttpServletRequest request) {
         return PURPOSE_ACCESS_TOKEN;
