@@ -23,5 +23,6 @@ public interface UserService {
     ResponseEntity<ResBody> changePwd(ChangePwdForm form);
     UserView currentUser();
     UserView get(Integer userId);
-
+    UserView updateById(Integer userId, UserForm form);
+    ResponseEntity<ResBody> changeStatus(Integer userId);
 }
