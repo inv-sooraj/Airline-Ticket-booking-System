@@ -32,7 +32,7 @@ export class AirplaneRegComponent implements OnInit {
         next: (result: any) => {
           this.alertservice.showSuccess("Airplane details added successfully","success");
           this.status=true;
-          this.planeRegForm.reset();  
+          this.router.navigate(['/plane-list']);  
           
     },
     error: (err: any) => {

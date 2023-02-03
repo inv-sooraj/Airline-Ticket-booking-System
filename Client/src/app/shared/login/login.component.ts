@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
             /**For Company */
             case 2:
               this.alertservice.showSuccess("Login Successful", "Success");
-              this.router.navigate(['/profile-edit']);
+              this.router.navigate(['/plane-list']);
               break;
             /**For passenger */
             case 3:
