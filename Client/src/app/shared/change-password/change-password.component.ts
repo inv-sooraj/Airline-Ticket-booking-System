@@ -62,6 +62,8 @@ export class ChangePasswordComponent implements OnInit {
         next: (response: any) => {
             this.status=true;
             this.alertservice.showSuccess("Password is changed!!!", "Success");
+            localStorage.clear();
+            this.router.navigate(['/login']);
         },
         error: (err: any) => {
           this.status=false;
