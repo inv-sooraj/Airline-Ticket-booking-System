@@ -1,4 +1,3 @@
-
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/user/favicon.ico">
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/img/user/favicon.ico">
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/img/user/favicon.ico">
@@ -120,14 +119,16 @@
                                     <span class="sp"
                                        *ngIf="(signupForm.controls['passportNo'].touched) && (signupForm.hasError('required','passportNo'))"><i>*required*</i></span>
                                     <span class="sp"
-                                       *ngIf="(signupForm.controls['phone'].touched) && (signupForm.hasError('pattern','passportNo'))"><i>*Invalid
-                                          Format*</i></span>
+
+                                       *ngIf="(signupForm.controls['passportNo'].touched) && (signupForm.hasError('pattern','passportNo'))">*Invalid
+                                          Format</span>
                                     <span class="sp"
-                                       *ngIf="(signupForm.controls['phone'].touched) && (signupForm.hasError('minlength','passportNo'))"><i>*Passport
-                                          number should be 8 characters*</i></span>
+                                       *ngIf="(signupForm.controls['passportNo'].touched) && (signupForm.hasError('minlength','passportNo'))">*Passport
+                                          number should be 8 characters</span>
                                     <span class="sp"
-                                       *ngIf="(signupForm.controls['phone'].touched) && (signupForm.hasError('maxlength','passportNo'))"><i>*Passport
-                                          number should be 8 characters*</i></span>
+                                       *ngIf="(signupForm.controls['passportNo'].touched) && (signupForm.hasError('maxlength','passportNo'))">*Passport
+                                          number should be 8 characters*</span>
+
                                  </div>
                               </div>
                               <div class="mb-4 pb-2">
@@ -173,16 +174,7 @@
                                        *ngIf="(signupForm.controls['city'].touched) && (signupForm.hasError('required','city'))"><i>*required*</i></span>
                                  </div>
                               </div>
-                              <!-- <div class="mb-4 pb-2">
-                                 <div class="form-outline form-white">
-                                    <input placeholder="Enter Zipcode " type="text" id="form3Examplea9"
-                                       formControlName="zipcode" class="form-control form-control-lg" />
-                                 </div>
-                                 <div>
-                                    <span class="sp"
-                                       *ngIf="(signupForm.controls['zipcode'].touched) && (signupForm.hasError('required','zipcode'))"><i>*required*</i></span>
-                                 </div>
-                              </div> -->
+                              
                               <div class="mb-4 pb-2">
                                  <select class="form-control" (change)="changeCountry($event)"
                                     formControlName="country">
@@ -194,12 +186,12 @@
                                        *ngIf="(signupForm.controls['country'].touched) && (signupForm.hasError('required','country'))"><i>*required*</i></span>
                                  </div>
                               </div>
-                              <!-- <div>
-                                <span  class="sp" *ngIf="status"><i>*Please fill the form correctly*</i></span>
-                            </div> -->
+                            
                               <button type="button" class="btn2" (click)="register()"
-                                 [disabled]="status">Register</button>
-                              <p class="text-center">Already Registered?<a class="login" [routerLink]="['/login']">Login</a> </p>
+
+                              [disabled]="signupForm.invalid">Register</button>
+                              <p class="text-center text-light">Already Registered?<a [routerLink]="['/login']">Login</a> </p>
+
                            </div>
                         </div>
                      </div>

@@ -50,7 +50,7 @@ public class BookingsController {
           .contentType(MediaType.parseMediaType("application/csv"))
           .body(file);
     }
-    //delete Bookings
+    //delete Bookings 
     @DeleteMapping
     public void delete(@RequestParam("ids") ArrayList<Integer> ids) {
         System.out.println("deleting");
