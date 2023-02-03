@@ -13,6 +13,7 @@ import java.security.Principal;
 import com.airline.reservation.entity.User;
 import com.airline.reservation.form.ChangePwdForm;
 import com.airline.reservation.form.UserForm;
+import com.airline.reservation.form.UserUpdateForm;
 import com.airline.reservation.json.ResBody;
 import com.airline.reservation.service.UserService;
 import com.airline.reservation.view.UserView;
@@ -41,7 +42,7 @@ public class UsersController {
         return userService.getCompany();
     }
     @PutMapping
-    public UserView update( @Valid @RequestBody UserForm form
+    public UserView update( @Valid @RequestBody UserUpdateForm form
     ) {
         return userService.update(form);
     }
