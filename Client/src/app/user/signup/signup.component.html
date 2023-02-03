@@ -1,4 +1,3 @@
-
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/user/favicon.ico">
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/img/user/favicon.ico">
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/img/user/favicon.ico">
@@ -119,13 +118,13 @@
                                     <span class="sp"
                                        *ngIf="(signupForm.controls['passportNo'].touched) && (signupForm.hasError('required','passportNo'))">*required</span>
                                     <span class="sp"
-                                       *ngIf="(signupForm.controls['phone'].touched) && (signupForm.hasError('pattern','passportNo'))">*Invalid
-                                          Format*</span>
+                                       *ngIf="(signupForm.controls['passportNo'].touched) && (signupForm.hasError('pattern','passportNo'))">*Invalid
+                                          Format</span>
                                     <span class="sp"
-                                       *ngIf="(signupForm.controls['phone'].touched) && (signupForm.hasError('minlength','passportNo'))">*Passport
-                                          number should be 8 characters*</span>
+                                       *ngIf="(signupForm.controls['passportNo'].touched) && (signupForm.hasError('minlength','passportNo'))">*Passport
+                                          number should be 8 characters</span>
                                     <span class="sp"
-                                       *ngIf="(signupForm.controls['phone'].touched) && (signupForm.hasError('maxlength','passportNo'))">*Passport
+                                       *ngIf="(signupForm.controls['passportNo'].touched) && (signupForm.hasError('maxlength','passportNo'))">*Passport
                                           number should be 8 characters*</span>
                                  </div>
                               </div>
@@ -185,7 +184,7 @@
                               </div>
                               <button type="button" class="btn2" (click)="register()"
                               [disabled]="signupForm.invalid">Register</button>
-                              <p class="text-center">Already Registered?<a [routerLink]="['/login']">Login</a> </p>
+                              <p class="text-center text-light">Already Registered?<a [routerLink]="['/login']">Login</a> </p>
                            </div>
                         </div>
                      </div>

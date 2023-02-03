@@ -51,7 +51,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .securityContext().and()
                 .anonymous().and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
+                .antMatchers("/**").permitAll()
                 .antMatchers("/users/**").permitAll()
                 .antMatchers("/company/**").permitAll()
                 .antMatchers(OPTIONS, "/login").anonymous()
