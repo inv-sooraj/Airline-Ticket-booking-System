@@ -7,6 +7,7 @@ import com.airline.reservation.form.LoginForm;
 import com.airline.reservation.form.UserForm;
 import com.airline.reservation.json.ResBody;
 import com.airline.reservation.form.ChangePwdForm;
+import com.airline.reservation.form.UserUpdateForm;
 import com.airline.reservation.repository.UserRepository;
 import com.airline.reservation.security.config.SecurityConfig;
 import com.airline.reservation.security.util.InvalidTokenException;
@@ -127,10 +128,10 @@ public class UserServiceImpl implements UserService{
     }
    @Override
     @Transactional
-    public UserView update(UserForm form) throws NotFoundException {
+    public UserView update(UserUpdateForm form) throws NotFoundException {
         return userRepository.findByUserId(SecurityUtil.getCurrentUserId())
-                .map((contact) -> {
-                    return new UserView(userRepository.save(contact.update(form)));
+                .map((User) -> {
+                    return new UserView(userRepository.save(User.update(form)));
                 }).orElseThrow(NotFoundException::new);
     }
     @Override

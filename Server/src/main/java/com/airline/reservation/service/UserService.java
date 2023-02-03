@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import com.airline.reservation.form.ChangePwdForm;
 import com.airline.reservation.form.LoginForm;
 import com.airline.reservation.form.UserForm;
+import com.airline.reservation.form.UserUpdateForm;
 import com.airline.reservation.json.ResBody;
 import com.airline.reservation.view.LoginView;
 import com.airline.reservation.view.UserView;
@@ -19,7 +20,7 @@ public interface UserService {
     public Collection<User> list();
     public Collection<User> getCompany();
     public Collection<User> Search(String userName);
-    UserView update(UserForm form) throws NotFoundException;
+    UserView update(UserUpdateForm form) throws NotFoundException;
     ResponseEntity<ResBody> changePwd(ChangePwdForm form);
     UserView currentUser();
     UserView get(Integer userId);
