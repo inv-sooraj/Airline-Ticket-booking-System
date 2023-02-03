@@ -6,8 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import com.airline.reservation.json.Json;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -34,7 +32,6 @@ public class User {
     private   String country;
     @Column(nullable = false)
     private   String password;
-   
     @Column(nullable = false,columnDefinition = "TINYINT")
     private   Integer status;
     @Column(nullable = false,columnDefinition = "TINYINT")
@@ -164,7 +161,6 @@ public Integer getUserId() {
         this.country=form.getCountry();
         Date dt = new Date();
         this.updateDate = dt;
-
         return this;
     }
 }

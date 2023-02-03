@@ -1,13 +1,10 @@
 package com.airline.reservation.form;
-
 public class SeatForm {
     private Integer seatId;
-    
-    
     private Integer flightId;
     private String seatType;
-   private Integer number;
-   private Integer price;
+    private Integer number;
+    private Integer price;
     private byte deleteFlag=0;
     public Integer getSeatId() {
         return seatId;

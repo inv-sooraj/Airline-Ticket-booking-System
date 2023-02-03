@@ -1,27 +1,16 @@
 package com.airline.reservation.security.util;
-
 import java.security.SecureRandom;
 import java.time.Duration;
 import java.util.Base64;
 import java.util.regex.Pattern;
-
 import org.springframework.security.crypto.encrypt.Encryptors;
 import org.springframework.security.crypto.encrypt.TextEncryptor;
 import org.springframework.util.Assert;
-
-/**
- * Utility class for generating and verifying secure tokens. Uses AES 256 bit
- * encryption.
- *
- * @author nirmal
- */
 public class TokenGenerator {
-
     /**
      * Class used for returning the generated token.
      */
     public static final class Token {
-
         /**
          * The generated token.
          */
@@ -66,14 +55,10 @@ public class TokenGenerator {
             this.expiry = expiry;
         }
     }
-
     private static final String SEPARATOR = "#";
-
     private static final Pattern PURPOSE_PATTERN = Pattern.compile("[a-zA-Z0-9_]+");
-
     private static final Base64.Encoder ENCODER = Base64.getEncoder();
     private static final Base64.Decoder DECODER = Base64.getDecoder();
-
     private static String encode(String input) {
         return ENCODER.encodeToString(input.getBytes());
     }

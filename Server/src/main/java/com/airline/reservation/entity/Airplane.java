@@ -1,9 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.airline.reservation.entity;
-
 import com.airline.reservation.form.AirplaneForm;
 import com.airline.reservation.json.Json;
 import java.util.Date;
@@ -14,16 +9,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
 /**
  *
  * @author lakshmimohan
  */
 @Entity
 public class Airplane {
-    
    public static enum Status {
         DELETED((byte) 0),
         ACTIVE((byte) 1);
@@ -50,11 +41,8 @@ public class Airplane {
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private User user;
     private byte status;
-
-
     public Airplane() {
     }
-
     public Airplane(Integer airplaneId) {
         this.airplaneId = airplaneId;
     }
@@ -68,81 +56,60 @@ public class Airplane {
          this.updateDate = dt;
          this.status=Status;
     }
-     
-     public Airplane update(AirplaneForm form) {
+    public Airplane update(AirplaneForm form) {
         this.airplaneName = form.getAirplaneName();
         this.modelNo = form.getModelNo();
         this.totalSeats = form.getTotalSeats();
         Date dt = new Date();
         this.updateDate = dt;
-
         return this;
     }
-
-     
-     
     public Integer getAirplaneId() {
         return airplaneId;
     }
-
     public void setAirplaneId(Integer airplaneId) {
         this.airplaneId = airplaneId;
     }
-
     public String getAirplaneName() {
         return airplaneName;
     }
-
     public void setAirplaneName(String airplaneName) {
         this.airplaneName = airplaneName;
     }
-
     public String getModelNo() {
         return modelNo;
     }
-
     public void setModelNo(String modelNo) {
         this.modelNo = modelNo;
     }
     public Integer getTotalSeats() {
         return totalSeats;
     }
-
     public void setTotalSeats(Integer totalSeats) {
         this.totalSeats = totalSeats;
     }
-
     public Date getCreateDate() {
         return createDate;
     }
-
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
-
     public Date getUpdateDate() {
         return updateDate;
     }
-
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
     }
-
     public User getUser() {
         return user;
     }
-
     public void setUser(User user) {
         this.user = user;
     }
-
     public byte getStatus() {
         return status;
     }
-
     public void setStatus(byte status) {
         this.status = status;
     }
-    
-    
 }

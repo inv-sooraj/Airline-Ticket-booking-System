@@ -8,19 +8,26 @@ import { environment } from "src/environments/environment";
 export class ApiService {
   baseUrl = environment.baseUrl;
   constructor(private httpClient: HttpClient) {}
-
   /** Method to get the accesstocken stored in the local storage */
-
   getAccessToken(): any {
     return localStorage.getItem("accessToken");
   }
-
   /** Method to create new user(signup a new user) */
-
   createUser(userForm: any) {
     return this.httpClient.post(this.baseUrl + "/" + "users", userForm);
   }
+  getUserBookingList() {
+    return this.httpClient.get(this.baseUrl + '/bookings/getById', this.getHeader());
+  }
+  updateUser(userid: any, updateForm: any) {
+ 
+    return this.httpClient.put(this.baseUrl + '/' + 'users/'+userid, updateForm, this.getHeader());
 
+  }
+
+  deleteUser(id:any) {
+    return this.httpClient.put(this.baseUrl + '/' + 'users/changeStatus/'+id, this.getHeader());
+  }
   /** Method to login users */
 
   login(userForm: any) {
@@ -90,13 +97,11 @@ export class ApiService {
   /** Method to delete(soft delete) the plane */
 
   deletePlane(ids: any) {
-    let params = new HttpParams().set("ids", ids);
-    return this.httpClient.delete(
-      this.baseUrl + "/" + "airplane" + "?" + "ids" + "=" + ids,
-      this.getHeader()
-    );
-  }
-
+    let params = new HttpParams()
+      .set('ids', ids);
+      
+    return this.httpClient.delete(this.baseUrl + '/' + 'airplane' + '?' + 'ids' + '=' + ids, this.getHeader())
+  };
   /** Method to get the users of role 2(company users) */
 
   getCompany() {

@@ -34,26 +34,25 @@
                                  </div>
                                  <div>
                                     <span class="sp"
-                                       *ngIf="(signupForm.controls['fullname'].touched) && (signupForm.hasError('required','fullname'))"><i>*required*</i></span>
+                                       *ngIf="(signupForm.controls['fullname'].touched) && (signupForm.hasError('required','fullname'))">*required</span>
                                     <span class="sp"
-                                       *ngIf="(signupForm.controls['fullname'].touched) && (signupForm.hasError('pattern','fullname'))"><i>*Invalid
-                                          Format*</i></span>
+                                       *ngIf="(signupForm.controls['fullname'].touched) && (signupForm.hasError('pattern','fullname'))"> *Invalid
+                                          Format</span>
                                     <span class="sp"
-                                       *ngIf="(signupForm.controls['fullname'].touched) && (signupForm.hasError('minlength','fullname'))"><i>*Name
-                                          should be atleast 8 characters*</i></span>
+                                       *ngIf="(signupForm.controls['fullname'].touched) && (signupForm.hasError('minlength','fullname'))"> *Name
+                                          should be atleast 8 characters </span>
                                     <span class="sp"
-                                       *ngIf="(signupForm.controls['fullname'].touched) && (signupForm.hasError('maxlength','fullname'))"><i>*Name
-                                          is too long*</i></span>
+                                       *ngIf="(signupForm.controls['fullname'].touched) && (signupForm.hasError('maxlength','fullname'))"> *Name
+                                          is too long </span>
                                  </div>
                               </div>
                               <div class="mb-4 pb-2">
                                  <div class="form-outline">
-                                    <input placeholder="Date of Birth" type="date" formControlName="dob"
-                                       id="form3Examplev4" class="form-control form-control-lg" />
+                                    <input placeholder="Date of Birth" type="date"  formControlName="dob"    id="form3Examplev4" class="form-control form-control-lg"/>
                                  </div>
                                  <div>
                                     <span class="sp"
-                                       *ngIf="(signupForm.controls['dob'].touched) && (signupForm.hasError('required','dob'))"><i>*required*</i></span>
+                                       *ngIf="(signupForm.controls['dob'].touched) && (signupForm.hasError('required','dob'))"> *required </span>
                                  </div>
                               </div>
                               <div class="mb-4 pb-2">
@@ -63,13 +62,13 @@
                                  </div>
                                  <div>
                                     <span class="sp"
-                                       *ngIf="(signupForm.controls['email'].touched) && (signupForm.hasError('required','email'))"><i>*required*</i></span>
+                                       *ngIf="(signupForm.controls['email'].touched) && (signupForm.hasError('required','email'))"> *required </span>
                                     <span class="sp"
-                                       *ngIf="(signupForm.controls['email'].touched) && (signupForm.hasError('pattern','email'))"><i>*Invalid
-                                          Format*</i></span>
+                                       *ngIf="(signupForm.controls['email'].touched) && (signupForm.hasError('pattern','email'))"> *Invalid
+                                          Format </span>
                                     <span class="sp"
-                                       *ngIf="(signupForm.controls['email'].touched) && (signupForm.hasError('maxlength','email'))"><i>*Email
-                                          is too long*</i></span>
+                                       *ngIf="(signupForm.controls['email'].touched) && (signupForm.hasError('maxlength','email'))"> *Email
+                                          is too long </span>
                                  </div>
                               </div>
                               <div class="mb-4 pb-2">
@@ -79,16 +78,16 @@
                                  </div>
                                  <div>
                                     <span class="sp"
-                                       *ngIf="(signupForm.controls['password'].touched) && (signupForm.hasError('required','password'))"><i>*required*</i></span>
+                                       *ngIf="(signupForm.controls['password'].touched) && (signupForm.hasError('required','password'))"> *required </span>
                                     <span class="sp"
-                                       *ngIf="(signupForm.controls['password'].touched) && (signupForm.hasError('minlength','password'))"><i>*password
-                                          is too short*</i></span>
+                                       *ngIf="(signupForm.controls['password'].touched) && (signupForm.hasError('minlength','password'))"> *password
+                                          is too short </span>
                                     <span class="sp"
-                                       *ngIf="(signupForm.controls['password'].touched) && (signupForm.hasError('maxlength','password'))"><i>*password
-                                          is too long*</i></span>
+                                       *ngIf="(signupForm.controls['password'].touched) && (signupForm.hasError('maxlength','password'))"> *password
+                                          is too long </span>
                                           <span class="sp"
-                                          *ngIf="(signupForm.controls['password'].touched) && (signupForm.hasError('pattern','password'))"><i>*password
-                                             is invalid*</i></span>
+                                          *ngIf="(signupForm.controls['password'].touched) && (signupForm.hasError('pattern','password'))"> *password
+                                             is invalid </span>
                                  </div>
                               </div>
                               <div class="mb-4 pb-2">
@@ -98,13 +97,13 @@
                                  </div>
                                  <div>
                                     <span class="sp"
-                                       *ngIf="(signupForm.controls['cPassword'].touched) && (signupForm.hasError('required','cPassword'))"><i>*required*</i></span>
+                                       *ngIf="(signupForm.controls['cPassword'].touched) && (signupForm.hasError('required','cPassword'))">*required</span>
                                     <span class="sp"
-                                       *ngIf="(signupForm.controls['cPassword'].touched) && (signupForm.hasError('minlength','cPassword'))"><i>*password
-                                          is too short*</i></span>
+                                       *ngIf="(signupForm.controls['cPassword'].touched) && (signupForm.hasError('minlength','cPassword'))">*password
+                                          is too short</span>
                                     <span class="sp"
-                                       *ngIf="(signupForm.controls['cPassword'].touched) && (signupForm.hasError('maxlength','cPassword'))"><i>*password
-                                          is too long*</i></span>
+                                       *ngIf="(signupForm.controls['cPassword'].touched) && (signupForm.hasError('maxlength','cPassword'))">*password
+                                          is too long</span>
                                  </div>
                                  <div class="cpass"
                                     *ngIf="(signupForm.controls['cPassword'].touched) && (signupForm.hasError('confirmPasswordValidator','cPassword'))">
@@ -118,16 +117,16 @@
                                  </div>
                                  <div>
                                     <span class="sp"
-                                       *ngIf="(signupForm.controls['passportNo'].touched) && (signupForm.hasError('required','passportNo'))"><i>*required*</i></span>
+                                       *ngIf="(signupForm.controls['passportNo'].touched) && (signupForm.hasError('required','passportNo'))">*required</span>
                                     <span class="sp"
-                                       *ngIf="(signupForm.controls['phone'].touched) && (signupForm.hasError('pattern','passportNo'))"><i>*Invalid
-                                          Format*</i></span>
+                                       *ngIf="(signupForm.controls['phone'].touched) && (signupForm.hasError('pattern','passportNo'))">*Invalid
+                                          Format*</span>
                                     <span class="sp"
-                                       *ngIf="(signupForm.controls['phone'].touched) && (signupForm.hasError('minlength','passportNo'))"><i>*Passport
-                                          number should be 8 characters*</i></span>
+                                       *ngIf="(signupForm.controls['phone'].touched) && (signupForm.hasError('minlength','passportNo'))">*Passport
+                                          number should be 8 characters*</span>
                                     <span class="sp"
-                                       *ngIf="(signupForm.controls['phone'].touched) && (signupForm.hasError('maxlength','passportNo'))"><i>*Passport
-                                          number should be 8 characters*</i></span>
+                                       *ngIf="(signupForm.controls['phone'].touched) && (signupForm.hasError('maxlength','passportNo'))">*Passport
+                                          number should be 8 characters*</span>
                                  </div>
                               </div>
                               <div class="mb-4 pb-2">
@@ -137,16 +136,16 @@
                                  </div>
                                  <div>
                                     <span class="sp"
-                                       *ngIf="(signupForm.controls['phone'].touched) && (signupForm.hasError('required','phone'))"><i>*required*</i></span>
+                                       *ngIf="(signupForm.controls['phone'].touched) && (signupForm.hasError('required','phone'))">*required*</span>
                                     <span class="sp"
-                                       *ngIf="(signupForm.controls['phone'].touched) && (signupForm.hasError('minlength','phone'))"><i>*phone
-                                          number should be 10 characters*</i></span>
+                                       *ngIf="(signupForm.controls['phone'].touched) && (signupForm.hasError('minlength','phone'))">*phone
+                                          number should be 10 characters*</span>
                                     <span class="sp"
-                                       *ngIf="(signupForm.controls['phone'].touched) && (signupForm.hasError('maxlength','phone'))"><i>*phone
-                                          number should be 10 characters*</i></span>
+                                       *ngIf="(signupForm.controls['phone'].touched) && (signupForm.hasError('maxlength','phone'))">*phone
+                                          number should be 10 characters</span>
                                     <span class="sp"
-                                       *ngIf="(signupForm.controls['phone'].touched) && (signupForm.hasError('pattern','phone'))"><i>*Invalid
-                                          Format*</i></span>
+                                       *ngIf="(signupForm.controls['phone'].touched) && (signupForm.hasError('pattern','phone'))">*Invalid
+                                          Format</span>
                                  </div>
                               </div>
                            </div>
@@ -160,7 +159,7 @@
                                  </div>
                                  <div>
                                     <span class="sp"
-                                       *ngIf="(signupForm.controls['address'].touched) && (signupForm.hasError('required','address'))"><i>*required*</i></span>
+                                       *ngIf="(signupForm.controls['address'].touched) && (signupForm.hasError('required','address'))">*required</span>
                                  </div>
                               </div>
                               <div class="mb-4 pb-2">
@@ -170,20 +169,10 @@
                                  </div>
                                  <div>
                                     <span class="sp"
-                                       *ngIf="(signupForm.controls['city'].touched) && (signupForm.hasError('required','city'))"><i>*required*</i></span>
+                                       *ngIf="(signupForm.controls['city'].touched) && (signupForm.hasError('required','city'))">*required</span>
                                  </div>
                               </div>
-                              <!-- <div class="mb-4 pb-2">
-                                 <div class="form-outline form-white">
-                                    <input placeholder="Enter Zipcode " type="text" id="form3Examplea9"
-                                       formControlName="zipcode" class="form-control form-control-lg" />
-                                 </div>
-                                 <div>
-                                    <span class="sp"
-                                       *ngIf="(signupForm.controls['zipcode'].touched) && (signupForm.hasError('required','zipcode'))"><i>*required*</i></span>
-                                 </div>
-                              </div> -->
-                              <div class="mb-4 pb-2">
+                             <div class="mb-4 pb-2">
                                  <select class="form-control" (change)="changeCountry($event)"
                                     formControlName="country">
                                     <option value="">Select Country</option>
@@ -191,14 +180,11 @@
                                  </select>
                                  <div>
                                     <span class="sp"
-                                       *ngIf="(signupForm.controls['country'].touched) && (signupForm.hasError('required','country'))"><i>*required*</i></span>
+                                       *ngIf="(signupForm.controls['country'].touched) && (signupForm.hasError('required','country'))">*required</span>
                                  </div>
                               </div>
-                              <!-- <div>
-                                <span  class="sp" *ngIf="status"><i>*Please fill the form correctly*</i></span>
-                            </div> -->
                               <button type="button" class="btn2" (click)="register()"
-                                 [disabled]="status">Register</button>
+                              [disabled]="signupForm.invalid">Register</button>
                               <p class="text-center">Already Registered?<a [routerLink]="['/login']">Login</a> </p>
                            </div>
                         </div>

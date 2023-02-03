@@ -1,30 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.airline.reservation.security;
-
 import com.airline.reservation.security.util.InvalidTokenException;
 import com.airline.reservation.security.util.TokenExpiredException;
 import com.airline.reservation.security.util.TokenGenerator;
 import com.airline.reservation.security.util.TokenGenerator.Status;
-import java.util.Collection;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.AuthenticationUserDetailsService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
-
-/**
- *
- * @author nirmal
- */
 public class AccessTokenUserDetailsService implements AuthenticationUserDetailsService<PreAuthenticatedAuthenticationToken> {
-
+    
     public static final String PURPOSE_ACCESS_TOKEN = "ACCESS_TOKEN";
 
     @Autowired
