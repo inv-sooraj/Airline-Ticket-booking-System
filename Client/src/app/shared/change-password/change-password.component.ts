@@ -67,6 +67,7 @@ export class ChangePasswordComponent implements OnInit {
         },
         error: (err: any) => {
           this.status=false;
+          console.log(err)
           console.log(err.error.errors[0].code);
           switch (err.error.errors[0].code) {
             case '104':
@@ -81,6 +82,9 @@ export class ChangePasswordComponent implements OnInit {
         complete: () => {},
       });
 
+    }
+    else{
+      this.alertservice.showError("please fill the form currectly","Invalid form")
     }
   }
 }

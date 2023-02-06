@@ -11,14 +11,13 @@ import com.airline.reservation.view.FlightView;
 
 @Service
 public class FlightServiceImpl implements FlightService {
-    
+
     @Autowired
     private FlightRepository flightRepository;
 
-     // Add Company
-     @Override
-     public FlightView add(FlightForm form) {
-         return new FlightView(flightRepository.save(new Flight(form)));
-     }
+    // Add Company
+    @Override
+    public FlightView add(FlightForm form) {
+        return new FlightView(flightRepository.save(new Flight(form)));
+    }
 }
-

@@ -1,13 +1,16 @@
 package com.airline.reservation.form;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
+
 public class CompanyForm {
+
     @Size(min = 5, max = 50)
     private String fullName;
     @Email
     @Size(max = 30)
     private String email;
-    @Size(min = 10,max = 11)
+    @Size(min = 10, max = 11)
     private String phone;
     private String address;
     private String password;

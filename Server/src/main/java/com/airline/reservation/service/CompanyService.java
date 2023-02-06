@@ -1,16 +1,24 @@
 package com.airline.reservation.service;
+
 import com.airline.reservation.entity.Company;
 import com.airline.reservation.exception.NotFoundException;
 import com.airline.reservation.form.CompanyForm;
 import com.airline.reservation.view.CompanyView;
 import java.util.List;
 import org.springframework.data.domain.Page;
+
 public interface CompanyService {
+
     CompanyView add(CompanyForm form);
-    List<CompanyView>list();
+
+    List<CompanyView> list();
+
     void delete(Integer bookId) throws NotFoundException;
-    Page<Company>getCompanySearch(String keyword, Integer pageNo,Integer pageSize,String sortBy);
+
+    Page<Company> getCompanySearch(String keyword, Integer pageNo, Integer pageSize, String sortBy);
+
     // detail view
     CompanyView get(Integer userId) throws NotFoundException;
+
     CompanyView update(Integer userId, CompanyForm form) throws NotFoundException;
 }
