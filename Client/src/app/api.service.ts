@@ -19,8 +19,11 @@ export class ApiService {
 
     return this.httpClient.post(this.baseUrl + "/" + "users/signup", userForm);
   }
+  getAllUsers(){
+    return this.httpClient.get(this.baseUrl + '/users/GetUsers',this.getHeader());
+  }
   getUserBookingList() {
-    return this.httpClient.get(this.baseUrl + '/bookings/getById', this.getHeader());
+    return this.httpClient.get(this.baseUrl + '/bookings/getById/1', this.getHeader());
   }
   updateUser(userid: any, updateForm: any) {
  
@@ -156,7 +159,14 @@ export class ApiService {
 
   bookingDetailsById(id:any){
     return this.httpClient.get(
-      this.baseUrl + "/" + "bookings" + "/" + id,
+      this.baseUrl + "/" + "bookings" + "/" + id + "/" + "1",
+      this.getHeader()
+    );
+  }
+
+  cancelBooking(id:any){
+    return this.httpClient.put(
+      this.baseUrl +'/bookings/changeStatus/' +id + '/3',
       this.getHeader()
     );
   }

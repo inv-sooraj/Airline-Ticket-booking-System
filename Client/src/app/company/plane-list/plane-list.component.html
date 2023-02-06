@@ -78,19 +78,20 @@
                     <div class="main-title"></div>
                   </div>
                 </div>
+               
                 <div class="white_card_body">
+                  <h4>Airplane Details</h4>
                   <div class="QA_section">
                     <div class="white_box_tittle list_header">
-                      <h4>Airplane Details</h4>
                       <div class="box_right d-flex lms_block">
                         <div class="serach_field_2">
                           <div class="search_inner">
                             <form [formGroup]="planeListForm">
-                              <div class="search-hero">
+                              <div class="search-hero col-lg-12">
                                 <input
                                   type="text"
                                   formControlName="search"
-                                  placeholder="Search plane details here..."
+                                  placeholder="Search plane details..."
                                   [(ngModel)]="searchText"
                                   autocomplete="off"
                                 />

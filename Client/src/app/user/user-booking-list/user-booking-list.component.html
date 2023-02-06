@@ -34,11 +34,12 @@
             <td>{{booking.flight.departure}}</td>
             <td>{{booking.flight.destination}}</td>
             <td>{{booking.flight.depDateTime| date}}</td>
-            <td  *ngIf="booking.status ==0">Rejected</td>
-            <td  *ngIf="booking.status ==1">Approved</td>
-            <td  *ngIf="booking.status ==2">Pending</td>
+            <td  *ngIf="booking.status ==0"style="color: red;">Rejected</td>
+            <td  *ngIf="booking.status ==1"style="color: green;">Approved</td>
+            <td  *ngIf="booking.status ==2"style="color: orange;">Pending</td>
+            <td  *ngIf="booking.status ==3" style="color: rgb(58, 4, 4);">Cancelled</td>
             <td>
-               <a href="#" class="status_btn" data-toggle="modal" data-target="#exampleModal">View</a>
+               <a  class="status_btn" data-toggle="modal" data-target="#exampleModal" (click)="getBookingDetails(booking.bookingId)">View</a>
             </td>
          </tr>
          
@@ -51,7 +52,7 @@
    <div class="modal-dialog" role="document">
       <div class="modal-content">
          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Booking Status</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Booking Details</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
@@ -86,18 +87,22 @@
                                                                <div class="title">
                                                                   <h4 class="fs-16">
                                                                      <a href="#"
-                                                                        class="text-custom-black">London
+                                                                        class="text-custom-black">{{item.departure}}
                                                                      <i
                                                                         class='fa fa-plane'></i>
-                                                                     Paris</a>
+                                                                        {{item.destination}}</a>
                                                                      <br><span
                                                                         class="text-light-dark">Total
                                                                      : 6000 </span>
                                                                   </h4>
                                                                </div>
                                                                <div class="right-side">
-                                                                  <span
-                                                                     class="price"><small>Status</small>Confirmed</span>
+                                                                  <span *ngIf="item.status ==0"
+                                                                     class="price"><small>Status</small>Rejected</span>
+                                                                  <span *ngIf="item.status ==1"
+                                                                     class="price"><small>Status</small>Approved</span>
+                                                                  <span *ngIf="item.status ==2"
+                                                                     class="price"><small>Status</small>Pending</span>   
                                                                </div>
                                                             </div>
                                                          </div>
@@ -111,62 +116,62 @@
                                                          <li class="text-light-dark">
                                                             <label
                                                                class="no-margin text-custom-blue">
-                                                            Flight Name :
-                                                            </label>Delta
+                                                            Passenger Name
+                                                            </label>{{item.user.fullName}}
                                                          </li>
                                                          <li class="text-light-dark">
                                                             <label
                                                                class="no-margin text-custom-blue">
-                                                            Company:
-                                                            </label>Indigo
+                                                               Flight Name :
+                                                            </label>{{item.flight.flightNumber}}
                                                          </li>
-                                                         <li class="text-light-dark">
+                                                         <!-- <li class="text-light-dark">
                                                             <label
                                                                class="no-margin text-custom-blue">
                                                             Flight Number:
                                                             </label>7232
-                                                         </li>
-                                                         <li class="text-light-dark">
+                                                         </li> -->
+                                                         <!-- <li class="text-light-dark">
                                                             <label
                                                                class="no-margin text-custom-blue">
                                                             Model Number:
                                                             </label>ME312
-                                                         </li>
+                                                         </li> -->
                                                          <li class="text-light-dark">
                                                             <label
                                                                class="no-margin text-custom-blue">
                                                             Departing From :
-                                                            </label>Kochi
+                                                            </label>{{item.flight.departure}}
                                                          </li>
                                                          <li class="text-light-dark">
                                                             <label
                                                                class="no-margin text-custom-blue">
                                                             Destination:
-                                                            </label>Chennai
+                                                            </label>{{item.flight.destination}}
                                                          </li>
                                                          <li class="text-light-dark">
                                                             <label
                                                                class="no-margin text-custom-blue">
                                                             Date of Departing:
-                                                            </label>1994-11-05
+                                                            </label>{{item.flight.depDateTime | date}}
                                                          </li>
                                                          <li class="text-light-dark">
                                                             <label
                                                                class="no-margin text-custom-blue">
                                                             Time of Departing:
-                                                            </label>12:50
+                                                            </label>{{item.flight.depDateTime | date:"HH:mm"}}
                                                          </li>
                                                          <li class="text-light-dark">
                                                             <label
                                                                class="no-margin text-custom-blue">
-                                                            Dateof Arrival:
-                                                            </label>1994-11-05
+                                                            Date of Arrival:
+                                                            </label>{{item.flight.destDateTime | date}}
                                                          </li>
                                                          <li class="text-light-dark">
                                                             <label
                                                                class="no-margin text-custom-blue">
                                                             Time of Arrival:
-                                                            </label>12:50
+                                                            </label>{{item.flight.destDateTime| date:"HH:mm"}}
                                                          </li>
                                                       </ul>
                                                    </div>
@@ -183,7 +188,7 @@
                   </div>
                </div>
                <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" data-dismiss="modal">Back1</button>
+                  <button type="button" class="btn btn-primary" data-dismiss="modal">Back</button>
                   <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#cancellation" >Cancel booking</button>
                   <div class="modal fade bd-example-modal-lg" id="cancellation" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                       <div class="modal-dialog modal-lg">
@@ -203,7 +208,7 @@
                             </div>
                             <div class="modal-footer">
                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                               <button type="button" class="btn btn-primary" data-dismiss="modal">Submit changes</button>
+                               <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="changeStaus()">Submit changes</button>
                             </div>
                          </div>
                       </div>

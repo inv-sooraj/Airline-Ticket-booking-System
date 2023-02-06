@@ -35,7 +35,8 @@ import { CompanyNavComponent } from './company/company-nav/company-nav.component
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserProfileEditComponent } from './user/user-profile-edit/user-profile-edit.component';
 import { AdminProfileComponent } from './admin-profile/admin-profile.component';
-import { BookingDetailsComponent } from './booking-details/booking-details.component';
+import { UserListComponent } from './user-list/user-list.component';
+
 @NgModule({
   declarations: [
    AdminHomeComponent,
@@ -65,7 +66,8 @@ import { BookingDetailsComponent } from './booking-details/booking-details.compo
     CompanyNavComponent,
     UserProfileEditComponent,
     AdminProfileComponent,
-    BookingDetailsComponent
+    UserListComponent
+   
   ],
   imports: [
     BrowserModule,

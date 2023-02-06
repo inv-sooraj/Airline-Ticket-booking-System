@@ -1,9 +1,12 @@
 package com.airline.reservation.view;
+
 import java.util.Date;
 import com.airline.reservation.security.util.TokenGenerator.Token;
 import com.airline.reservation.entity.User;
 import com.airline.reservation.json.Json;
-public class LoginView extends UserView{
+
+public class LoginView extends UserView {
+
     public static class TokenView {
 
         private final String value;
@@ -52,4 +55,3 @@ public class LoginView extends UserView{
         return refreshToken;
     }
 }
-

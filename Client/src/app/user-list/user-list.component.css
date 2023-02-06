@@ -1,9 +1,6 @@
-/* .main_content_iner {
-    margin-left: 20%;
-} */
-.main_content_iner {
-    margin-left: 20%;
-}
+element {
+    z-index: 0 !important;
+  }
 .material-icons {
    margin-left: 5%;
 }
