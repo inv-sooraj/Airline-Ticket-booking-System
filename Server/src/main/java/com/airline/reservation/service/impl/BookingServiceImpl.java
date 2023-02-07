@@ -118,4 +118,10 @@ public class BookingServiceImpl implements BookingService {
         return new BookingListView(bookingRepository.findByBookingIdAndDeleteFlag(bookingId, flag));
 
     }
+
+    @Override
+    public List<Bookings> findByStatus(int i) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }

@@ -41,7 +41,7 @@ const routes: Routes = [
   {path:'flight-list',component:FlightListCompanyComponent},
   {path:'profile-edit',component:UserProfileEditComponent},
   {path:'profile',component:AdminProfileComponent},
-  {path:'cancelled-list',component:CancelledReservationListComponent}
+  {path:'cancelled-list',component:CancelledReservationListComponent},
   {path:'user-list',component:UserListComponent}
 ];
 @NgModule({

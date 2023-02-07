@@ -1,12 +1,6 @@
 package com.airline.reservation.entity;
-<<<<<<< HEAD
-import java.util.ArrayList;
-=======
-
->>>>>>> f19bbfea1100554cad85a39b706bbea75814e096
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -18,10 +12,8 @@ import javax.persistence.TemporalType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 import com.airline.reservation.form.FlightForm;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name = "flight")
