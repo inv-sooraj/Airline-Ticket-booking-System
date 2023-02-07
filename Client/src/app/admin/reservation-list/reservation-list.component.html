@@ -21,7 +21,7 @@
                                         <div class="serach_field_2">
                                             <div class="search_inner">
                                                 <form [formGroup]="bookingListForm">
-                                                    <div class="search_field">
+                                                    <div class="search_field pr-3 pb-0">
                                                         <input type="text" formControlName="search"
                                                             placeholder="Search plane details here..."
                                                             [(ngModel)]="searchText" autocomplete="off" />
@@ -33,7 +33,7 @@
                                             </div>
                                         </div>
                                         <div>
-                                            <button class="btn primary">CSV Export</button>
+                                            <button  (click)="export()" [disabled]="items.length == 0 ? true : false" class="btn btn-primary">CSV Export</button>
                                         </div>
                                     </div>
                                 </div>

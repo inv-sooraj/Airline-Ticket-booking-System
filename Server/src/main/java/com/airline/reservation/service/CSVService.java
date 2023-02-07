@@ -19,4 +19,9 @@ public class CSVService {
         ByteArrayInputStream in = CSVHelper.tutorialsToCSV(tutorials);
         return in;
     }
+    public ByteArrayInputStream loadCancelledBookings(byte status) {
+        List<Bookings> cancelledBookings = repository.findByStatus(status);
+        ByteArrayInputStream in = CSVHelper.cancelledBookingCSV(cancelledBookings);
+        return in;
+    }
 }

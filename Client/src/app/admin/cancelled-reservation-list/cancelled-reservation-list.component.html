@@ -20,9 +20,9 @@
                                     <div class="box_right d-flex lms_block">
                                         <div class="serach_field_2">
                                             <div class="search_inner">
-                                                <form >
-                                                    <div class="search_field">
-                                                        <input type="text" formControlName="search"
+                                                <form [formGroup]="cancelledListForm">
+                                                    <div class="search_field  pr-3 pb-0">
+                                                        <input type="text" formControlName="search"  [(ngModel)]="searchText"
                                                             placeholder="Search plane details here..."
                                                              autocomplete="off" />
                                                     </div>
@@ -33,7 +33,7 @@
                                             </div>
                                         </div>
                                         <div>
-                                            <button class="btn primary">CSV Export</button>
+                                            <button (click)="export()"  [disabled]="items.length == 0 ? true : false" class="btn btn-primary">CSV Export</button>
                                         </div>
                                     </div>
                                 </div>
@@ -46,28 +46,25 @@
                                                 <th scope="col">Flight Number</th>
                                                 <th scope="col">Departing From</th>
                                                 <th scope="col">Destination</th>
-                                                <th scope="col">Reason</th>
-                                                <th scope="col" style="text-align: center">
-                                                    <button class="fa fa-trash" 
-                                                    
-                                                       ></button>
-                                                </th>
+                                                <th scope="col">Departing Date</th>
+                                                <th scope="col">Reason   <button class="fa fa-trash deleteButton"  [disabled]="checkList.length == 0 ? true : false" (click)="deleteData()"></button></th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <th scope="row">
-                                                    <label for="sel"></label>
-                                                    <input type="checkbox"
-                                                       />
-                                                </th>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td ></td>
-                                                <td ></td>
-                                               
+                                            <tr  *ngFor="
+                                            let bookings of items| filter : searchText;
+                                            let i = index">
+                                            <th scope="row">
+                                                <label for="sel"></label>
+                                                <input type="checkbox" [value]="bookings.bookingId"
+                                                    (change)="onCheckboxChange($event)" />
+                                            </th>
+                                                <td>{{bookings.user.fullName}}</td>
+                                                <td>{{bookings.flight.flightNumber}}</td>
+                                                <td>{{bookings.flight.departure}}</td>
+                                                <td>{{bookings.flight.destination}}</td>
+                                                <td>{{bookings.flight.depDateTime| date:'fullDate'}}</td>
+                                                <td>{{bookings.cancellation}}</td>
                                             </tr>
                                         </tbody>
                                     </table>

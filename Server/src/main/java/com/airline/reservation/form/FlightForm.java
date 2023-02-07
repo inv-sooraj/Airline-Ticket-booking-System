@@ -1,23 +1,16 @@
 package com.airline.reservation.form;
 
 import java.util.Date;
-import java.util.List;
+
 public class FlightForm {
 
     private Integer airplaneId;
     private String flightNumber;
-    List<SeatForm> seats; 
     private String departure;
     private Date depDateTime;
     private String destination;
-    public List<SeatForm> getSeats() {
-        return seats;
-    }
-    public void setSeats(List<SeatForm> seats) {
-        
-        this.seats = seats;
-    }
     private Date destDateTime;
+
     public Integer getAirplaneId() {
         return airplaneId;
     }

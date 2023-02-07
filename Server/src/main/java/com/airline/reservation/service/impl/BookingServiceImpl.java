@@ -112,6 +112,7 @@ public class BookingServiceImpl implements BookingService {
 
         return bookingRepository.findByUserUserIdAndDeleteFlag((SecurityUtil.getCurrentUserId()), flag);
     }
+
     @Override
     public BookingListView getBooking(Integer bookingId, Byte flag) {
 
@@ -120,8 +121,7 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public List<Bookings> findByStatus(int i) {
-        // TODO Auto-generated method stub
-        return null;
+    public List<Bookings> findByStatus(Byte status) {
+        return bookingRepository.findByStatus(status);
     }
 }

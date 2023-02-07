@@ -9,7 +9,6 @@ import com.airline.reservation.entity.Seat;
 import com.airline.reservation.form.SeatForm;
 import com.airline.reservation.repository.SeatRepository;
 import com.airline.reservation.service.SeatService;
-
 @Service
 public class SeatServiceImpl implements SeatService {
 
@@ -22,6 +21,6 @@ public class SeatServiceImpl implements SeatService {
 
     @Override
     public List<Seat> list() {
-      return null;
+        return seatRepository.findAll();
     }
 }
