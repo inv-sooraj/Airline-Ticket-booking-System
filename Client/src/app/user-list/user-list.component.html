@@ -49,6 +49,7 @@
                           <tr>
                            
                             <th scope="col">User Name</th>
+                            <th scope="col">Role</th>
                             <th scope="col">Email</th>
                             <th scope="col">Phone Number</th>
                             <th scope="col">Date of birth</th>
@@ -71,6 +72,13 @@
                               />
                             </th> -->
                             <td>{{ data.fullName }}</td>
+                            <td>
+                              <ng-container [ngSwitch]="true">
+                                <div *ngSwitchCase="data.role === 1" style="color: blue;">Admin</div>
+                                <div *ngSwitchCase="data.role === 2" style="color:orange;">Company Exicutive</div>
+                                <div *ngSwitchCase="data.role === 3" style="color:purple;">Passenger</div>
+                            </ng-container> 
+                            </td>
                             <td>{{ data.email }}</td>
                             <td>{{ data.phone }}</td>
                             <td>{{ data.dob }}</td>

@@ -82,6 +82,19 @@
                                                            City:
                                                             </label>{{data.city}}
                                                          </li>
+                                                         <li class="text-light-dark">
+                                                            <label
+                                                               class="no-margin text-custom-blue">
+                                                           Role:
+                                                            </label>
+                                                            <span *ngIf="data.role ==1"
+                                                            class="price">Admin</span>
+                                                            <span *ngIf="data.role ==2"
+                                                            class="price">Company</span>
+                                                            <span *ngIf="data.role ==3"
+                                                            class="price">Passenger</span>
+                                                         </li>
+                                                           
                                                       </ul>
                                                    </div>
                                                    <button

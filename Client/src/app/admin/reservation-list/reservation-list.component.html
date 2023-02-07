@@ -67,9 +67,9 @@
                                                 <td>{{ bookings.flight.flightNumber }}</td>
                                                 <td>{{ bookings.flight.departure }}</td>
                                                 <td>{{ bookings.flight.destination }}</td>
-                                                <td *ngIf="bookings.status == 2">No Action</td>
-                                                <td *ngIf="bookings.status == 0">Rejected</td>
-                                                <td *ngIf="bookings.status == 1">Approved</td>
+                                                <td *ngIf="bookings.status == 2" style="color: orangered;">Pending</td>
+                                                <td *ngIf="bookings.status == 0" style="color: rgb(126, 19, 19);">Rejected</td>
+                                                <td *ngIf="bookings.status == 1" style="color: rgb(68, 109, 68);">Approved</td>
                                                 <td>
                                                     <a class="status_btn"
                                                         (click)="approve(bookings.bookingId, 1)">Approve</a>
