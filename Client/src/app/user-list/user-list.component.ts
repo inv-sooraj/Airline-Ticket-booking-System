@@ -27,11 +27,7 @@ export class UserListComponent implements OnInit {
       company: [''],
       sel: this.formbuilder.array([])
     });
-    this.role = localStorage.getItem('Role');
-    this.userid = localStorage.getItem('userid');
-    if (this.role == '1') {
-      this.status = true;
-    }
+    
   }
 
   /**For storing the id of selected users in array */
@@ -60,19 +56,6 @@ export class UserListComponent implements OnInit {
         error: (err: any) => {
           this.alertservice.showError("Failed to load user data", "Error")
 
-        },
-        complete: () => { }
-      });
-    }
-    getUserDetailsById(id:any){
-      this.apiservice.getUserById(id).subscribe({
-        next: (response: any) => {
-          this.data = response;
-          console.log("Editing details",response);
-        },
-        error: (err: any) => { 
-  
-          this.alertservice.showError("Failed to load user details","Error")
         },
         complete: () => { }
       });
