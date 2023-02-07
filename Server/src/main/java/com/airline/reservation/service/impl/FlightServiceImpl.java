@@ -17,7 +17,7 @@ import com.airline.reservation.view.FlightView;
 
 @Service
 public class FlightServiceImpl implements FlightService {
-    
+
     @Autowired
     private FlightRepository flightRepository;
 
@@ -44,4 +44,3 @@ public class FlightServiceImpl implements FlightService {
    return new FlightView(flightRepository.save(new Flight(form)));
      }
 }
-

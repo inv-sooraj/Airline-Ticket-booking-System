@@ -15,24 +15,25 @@ import javax.validation.constraints.Size;
  * @author lakshmimohan
  */
 public class UserUpdateForm {
-    @NotBlank(message="1001")
+
+    @NotBlank(message = "1001")
     @Size(min = 4, max = 20)
     private String fullName;
 
-    @NotBlank(message="1002")
-    @Email(message="1002")
+    @NotBlank(message = "1002")
+    @Email(message = "1002")
     private String email;
 
     private Date dob;
 
     @Size(min = 8, max = 8)
     private String passportNumber;
-    
+
     private String address;
 
-    @NotBlank(message="1004")
-    @Pattern(regexp="(^$|[0-9]{10})", message="1004")
-    @Size(max = 11,message = "1004")
+    @NotBlank(message = "1004")
+    @Pattern(regexp = "(^$|[0-9]{10})", message = "1004")
+    @Size(max = 11, message = "1004")
     private String phone;
 
     @Size(max = 18)
@@ -104,6 +105,5 @@ public class UserUpdateForm {
     public void setCountry(String country) {
         this.country = country;
     }
-    
-    
+
 }

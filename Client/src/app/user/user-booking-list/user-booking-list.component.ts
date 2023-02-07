@@ -13,6 +13,7 @@ export class UserBookingListComponent{
   bookingListForm!: FormGroup;
 items:any[]=[];
 itemName:any;
+item:any;
 public searchData: any[] = [];
 searchText: any;
   closeResult = '';
@@ -54,4 +55,30 @@ getUserBookingList()
   open(content: any) {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' })
 	}	
+
+  getBookingDetails(id:any){
+    this.apiService.bookingDetailsById(id).subscribe({
+      next: (response: any) => {
+        this.item = response;
+        console.log("user booking details response",this.item);
+        console.log("departure",response.departure);
+      },
+      error: (err: any) => {
+        this.alertservice.showError("Failed to load user booking", "Error")
+      },
+      complete: () => { }
+    });
+  }
+  changeStaus()
+    {
+      this.apiService.cancelBooking(this.item.bookingId).subscribe({
+        next: (response: any) => {
+          this.alertservice.showSuccess("Reservation cancelled sussessfully!!!","Success")
+        },
+        error: (err: any) => {
+          this.alertservice.showError("Failed to cancel reservation", "Error")
+        },
+        complete: () => { }
+      });
+    }
 }

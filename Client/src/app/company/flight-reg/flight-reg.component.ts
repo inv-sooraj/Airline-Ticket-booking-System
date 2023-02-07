@@ -40,7 +40,7 @@ export class FlightRegComponent implements OnInit {
   }
   changeSeat(e:any) {
     console.log(e.value)
-    this.seats.setValue(e.target.value, {
+    this.FlightRegForm?.get('seatType')?.setValue(e.target.value, {
       onlySelf: true
     });
 }

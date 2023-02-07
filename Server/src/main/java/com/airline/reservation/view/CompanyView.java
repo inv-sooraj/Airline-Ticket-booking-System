@@ -11,8 +11,8 @@ public class CompanyView {
     private String address;
     private String password;
     private Integer role;
-     
-    public CompanyView(Company company){
+
+    public CompanyView(Company company) {
         this.userId = company.getUserId();
         this.fullName = company.getFullName();
         this.email = company.getEmail();
@@ -77,7 +77,5 @@ public class CompanyView {
     public void setRole(Integer role) {
         this.role = role;
     }
-    
 
-    
 }

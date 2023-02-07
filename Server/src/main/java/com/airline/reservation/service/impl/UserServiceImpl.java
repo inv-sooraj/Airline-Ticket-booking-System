@@ -1,4 +1,5 @@
 package com.airline.reservation.service.impl;
+
 import com.airline.reservation.entity.User;
 import com.airline.reservation.exception.ApplicationError;
 import com.airline.reservation.exception.BadRequestException;
@@ -26,12 +27,15 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.Errors;
 import static com.airline.reservation.security.AccessTokenUserDetailsService.PURPOSE_ACCESS_TOKEN;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Optional;
 import org.springframework.transaction.annotation.Transactional;
 import javax.validation.Valid;
+
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
+
     private static final String PURPOSE_REFRESH_TOKEN = "REFRESH_TOKEN";
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -41,11 +45,13 @@ public class UserServiceImpl implements UserService{
     private UserRepository userRepository;
     @Autowired
     private TokenGenerator tokenGenerator;
+
     //email existing check
-    public  Boolean emailCheck(String email){
-    
+    public Boolean emailCheck(String email) {
+
         return userRepository.existsByEmail(email);
-    } 
+    }
+
     @Override
     public LoginView login(LoginForm form, Errors errors) throws BadRequestException {
         if (errors.hasErrors()) {
@@ -60,6 +66,7 @@ public class UserServiceImpl implements UserService{
         Token refreshToken = tokenGenerator.create(PURPOSE_REFRESH_TOKEN, id + user.getPassword(), securityConfig.getRefreshTokenExpiry());
         return new LoginView(user, accessToken, refreshToken);
     }
+
     @Override
     public LoginView refresh(String refreshToken) throws BadRequestException {
         Status status;
@@ -85,48 +92,54 @@ public class UserServiceImpl implements UserService{
                 new LoginView.TokenView(accessToken.value, accessToken.expiry),
                 new LoginView.TokenView(refreshToken, status.expiry)
         );
+    }
+
+    @Override
+    public ResponseEntity<ResBody> add(@Valid UserForm form) {
+        ResBody body = new ResBody();
+        Optional<User> usernameEntry = userRepository.findByEmail(form.getEmail());
+        if (!usernameEntry.isEmpty()) {
+            body.getErrors().add(new ApplicationError("200", "User already exist"));
+            return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
         }
-        @Override
-        public ResponseEntity<ResBody> add(@Valid UserForm form)  {
-            ResBody body = new ResBody();
-            Optional<User> usernameEntry = userRepository.findByEmail(form.getEmail());
-            if(!usernameEntry.isEmpty())
-            {
-                body.getErrors().add(new ApplicationError("200","User already exist"));
-                return new ResponseEntity<>(body,HttpStatus.BAD_REQUEST);
-            }
-            UserView uview =  new UserView(userRepository.save(new User(
-                    form.getFullName(),
-                    form.getEmail(),
-                    form.getPhone(),
-                    passwordEncoder.encode(form.getPassword()),
-                    form.getRole(),
-                    form.getStatus(),
-                    form.getAddress(),
-                    form.getPassportNumber(),
-                    form.getCity(),
-                    form.getCountry(),
-                    form.getDob())));
-            body.getValues().put("user",uview);
-            return new ResponseEntity<ResBody>(body,HttpStatus.OK);
-        } 
+        UserView uview = new UserView(userRepository.save(new User(
+                form.getFullName(),
+                form.getEmail(),
+                form.getPhone(),
+                passwordEncoder.encode(form.getPassword()),
+                form.getRole(),
+                form.getStatus(),
+                form.getAddress(),
+                form.getPassportNumber(),
+                form.getCity(),
+                form.getCountry(),
+                form.getDob())));
+        body.getValues().put("user", uview);
+        return new ResponseEntity<ResBody>(body, HttpStatus.OK);
+    }
+
     private static BadRequestException badRequestException() {
         return new BadRequestException("Invalid credentials");
     }
+
     @Override
-    public Collection<User> list() { 
-            return userRepository.findAll();
+    public Collection<User> list() {
+        var flag = 1;
+        return userRepository.findAllByStatus(flag);
     }
+
     @Override
-    public Collection<User> Search(String userName) {   
+    public Collection<User> Search(String userName) {
         return userRepository.findByFullNameContaining(userName);
     }
+
     @Override
     public Collection<User> getCompany() {
-        
-         return userRepository.findAllByRole(2);
+
+        return userRepository.findAllByRole(2);
     }
-   @Override
+
+    @Override
     @Transactional
     public UserView update(UserUpdateForm form) throws NotFoundException {
         return userRepository.findByUserId(SecurityUtil.getCurrentUserId())
@@ -134,6 +147,7 @@ public class UserServiceImpl implements UserService{
                     return new UserView(userRepository.save(User.update(form)));
                 }).orElseThrow(NotFoundException::new);
     }
+
     @Override
     public UserView currentUser() {
         // System.out.println(SecurityUtil.getCurrentUserId());
@@ -150,34 +164,31 @@ public class UserServiceImpl implements UserService{
         System.out.println(SecurityUtil.getCurrentUserId());
         User user = userRepository.findByUserId(userid).orElseThrow(UserServiceImpl::badRequestException);
         System.out.println(user.getEmail());
-        if(form.getCurrentPwd().matches(form.getNewPwd()))
-        {
-            body.getErrors().add(new ApplicationError("104","Current and New Passwords are Same "));
-            return new ResponseEntity<>(body,HttpStatus.BAD_REQUEST);
-        }
-        else if (!passwordEncoder.matches(form.getCurrentPwd(), user.getPassword())) {
-            body.getErrors().add(new ApplicationError("105","Current is Wrong "));
-            return new ResponseEntity<>(body,HttpStatus.BAD_REQUEST);
-        
-        }
-        else{
-            System.out.println("new password is "+ passwordEncoder.encode(form.getNewPwd()));
+        if (form.getCurrentPwd().matches(form.getNewPwd())) {
+            body.getErrors().add(new ApplicationError("104", "Current and New Passwords are Same "));
+            return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
+        } else if (!passwordEncoder.matches(form.getCurrentPwd(), user.getPassword())) {
+            body.getErrors().add(new ApplicationError("105", "Current is Wrong "));
+            return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
+
+        } else {
+            System.out.println("new password is " + passwordEncoder.encode(form.getNewPwd()));
             user.setPassword(passwordEncoder.encode(form.getNewPwd()));
             userRepository.save(user);
-            body.getValues().put("106","Password changed Successfully");
-            return new ResponseEntity<>(body,HttpStatus.OK);
+            body.getValues().put("106", "Password changed Successfully");
+            return new ResponseEntity<>(body, HttpStatus.OK);
         }
-        
+
     }
-    
-      // user Details
-      @Override
-      public UserView get(Integer UserId) throws NotFoundException{
-          return userRepository.findByUserId(UserId).map((User)->{
-              return new UserView(User);
-          }).orElseThrow(NotFoundException::new);
-      }
-      
+
+    // user Details
+    @Override
+    public UserView get(Integer UserId) throws NotFoundException {
+        return userRepository.findByUserId(UserId).map((User) -> {
+            return new UserView(User);
+        }).orElseThrow(NotFoundException::new);
+    }
+
     public UserView updateById(Integer userId, UserForm form) {
         // TODO Auto-generated method stub
         User user = userRepository.findByUserId(userId).orElseThrow(UserServiceImpl::badRequestException);
@@ -191,13 +202,19 @@ public class UserServiceImpl implements UserService{
         user.setPhone(form.getPhone());
         return new UserView(userRepository.save(user));
     }
-     public ResponseEntity<ResBody> changeStatus(Integer userId) {
-        
+
+    public ResponseEntity<ResBody> changeStatus(Integer userId) {
+
         ResBody body = new ResBody();
         User user = userRepository.findByUserId(userId).orElseThrow(UserServiceImpl::badRequestException);
         user.setStatus(0);
-            userRepository.save(user);
-            body.getValues().put("108","Deleted  user Successfully");
-            return new ResponseEntity<>(body,HttpStatus.OK);
-}
+        userRepository.save(user);
+        body.getValues().put("108", "Deleted  user Successfully");
+        return new ResponseEntity<>(body, HttpStatus.OK);
+    }
+
+    @Override
+    public void deleteAllBYIds(ArrayList<Integer> ids) {
+        userRepository.softDeleteAllIds(ids);
+    }
 }

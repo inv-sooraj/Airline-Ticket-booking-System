@@ -26,30 +26,29 @@ public class AirplaneServiceImpl implements AirplaneService {
 
     @Autowired
     private AirplaneRepository airplaneRepository;
-    
+
     @Override
     public AirplaneListView add(AirplaneForm form) {
-               return new AirplaneListView(airplaneRepository.save(new Airplane(form,SecurityUtil.getCurrentUserId(),Airplane.Status.ACTIVE.value )));
+        return new AirplaneListView(airplaneRepository.save(new Airplane(form, SecurityUtil.getCurrentUserId(), Airplane.Status.ACTIVE.value)));
     }
 
     @Override
     public Collection<Airplane> list() {
-        
-//            return airplaneRepository.findAllByStatusAndUserUserId(Airplane.Status.ACTIVE.value,SecurityUtil.getCurrentUserId());
-              return airplaneRepository.findAllByStatus(Airplane.Status.ACTIVE.value);
 
+//            return airplaneRepository.findAllByStatusAndUserUserId(Airplane.Status.ACTIVE.value,SecurityUtil.getCurrentUserId());
+        return airplaneRepository.findAllByStatus(Airplane.Status.ACTIVE.value);
 
     }
-    
 
     @Override
-    public AirplaneListView get(Integer airplaneId)throws NotFoundException {
-        
+    public AirplaneListView get(Integer airplaneId) throws NotFoundException {
+
         return airplaneRepository.findByAirplaneId(airplaneId)
                 .map((Airplane) -> {
                     return new AirplaneListView(Airplane);
                 }).orElseThrow(NotFoundException::new);
     }
+
     @Override
     @Transactional
     public AirplaneListView update(Integer airplaneId, AirplaneForm form) throws NotFoundException {
@@ -58,6 +57,7 @@ public class AirplaneServiceImpl implements AirplaneService {
                     return new AirplaneListView(airplaneRepository.save(Airplane.update(form)));
                 }).orElseThrow(NotFoundException::new);
     }
+
     @Override
     @Transactional
     public void deleteAllBYIds(List<Integer> integers) {
@@ -66,11 +66,9 @@ public class AirplaneServiceImpl implements AirplaneService {
 
     @Override
     public Collection<Airplane> getDataByUser(Integer userId) {
-        
-        return airplaneRepository.findAllByUserUserIdAndStatus(userId,Airplane.Status.ACTIVE.value);
+
+        return airplaneRepository.findAllByUserUserIdAndStatus(userId, Airplane.Status.ACTIVE.value);
 
     }
 
-
-    }
-
+}

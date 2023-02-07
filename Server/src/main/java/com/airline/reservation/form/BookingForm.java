@@ -1,16 +1,18 @@
 package com.airline.reservation.form;
+
 public class BookingForm {
+
     private Integer bookingId;
-    
+
     private Integer userId;
-    
+
     private Integer flightId;
-    
+
     private Integer seatId;
-   
+
     private String cancellation;
-   
-    private byte status=0;
+
+    private byte status = 0;
 
     public Integer getBookingId() {
         return bookingId;
@@ -58,6 +60,6 @@ public class BookingForm {
 
     public void setStatus(byte status) {
         this.status = status;
-    }  
+    }
 
 }

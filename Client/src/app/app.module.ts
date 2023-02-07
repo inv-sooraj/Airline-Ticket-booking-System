@@ -34,8 +34,14 @@ import { CompanyNavComponent } from './company/company-nav/company-nav.component
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserProfileEditComponent } from './user/user-profile-edit/user-profile-edit.component';
 import { AdminProfileComponent } from './admin-profile/admin-profile.component';
+<<<<<<< HEAD
 import { BookingDetailsComponent } from './booking-details/booking-details.component';
 import { CancelledReservationListComponent } from './admin/cancelled-reservation-list/cancelled-reservation-list.component';
+import { UserListComponent } from './user-list/user-list.component';
+=======
+import { UserListComponent } from './user-list/user-list.component';
+
+>>>>>>> f19bbfea1100554cad85a39b706bbea75814e096
 @NgModule({
   declarations: [
    AdminHomeComponent,
@@ -67,7 +73,8 @@ import { CancelledReservationListComponent } from './admin/cancelled-reservation
     AdminProfileComponent,
     BookingDetailsComponent,
     CancelledReservationListComponent,
-    
+    UserListComponent
+   
   ],
   imports: [
     BrowserModule,

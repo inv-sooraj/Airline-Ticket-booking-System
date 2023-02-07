@@ -1,5 +1,9 @@
 package com.airline.reservation.entity;
+<<<<<<< HEAD
 import java.util.ArrayList;
+=======
+
+>>>>>>> f19bbfea1100554cad85a39b706bbea75814e096
 import java.util.Date;
 import java.util.List;
 
@@ -17,10 +21,12 @@ import javax.persistence.Table;
 
 import com.airline.reservation.form.FlightForm;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name = "flight")
 public class Flight {
+
     public static enum DeleteFlag {
         DELETE((byte) 0),
         ACTIVE((byte) 1);
@@ -62,6 +68,7 @@ public class Flight {
     }
     public Flight() {
     }
+
     public Flight(Integer flightId) {
         this.flightId = flightId;
     }
@@ -96,6 +103,7 @@ public class Flight {
     public Integer getFlightId() {
         return flightId;
     }
+
     public void setFlightId(Integer flightId) {
         this.flightId = flightId;
     }
@@ -103,48 +111,63 @@ public class Flight {
     public String getFlightNumber() {
         return flightNumber;
     }
+
     public void setFlightNumber(String flightNumber) {
         this.flightNumber = flightNumber;
     }
+
     public String getDeparture() {
         return departure;
     }
+
     public void setDeparture(String departure) {
         this.departure = departure;
     }
+
     public Date getDepDateTime() {
         return depDateTime;
     }
+
     public void setDepDateTime(Date depDateTime) {
         this.depDateTime = depDateTime;
     }
+
     public String getDestination() {
         return destination;
     }
+
     public void setDestination(String destination) {
         this.destination = destination;
     }
+
     public Date getDestDateTime() {
         return destDateTime;
     }
+
     public void setDestDateTime(Date destDateTime) {
         this.destDateTime = destDateTime;
     }
+
     public byte getDeleteFlag() {
         return deleteFlag;
     }
+
     public void setDeleteFlag(byte deleteFlag) {
         this.deleteFlag = deleteFlag;
     }
+
     public Date getCreateDate() {
         return createDate;
     }
+
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
+
     public Date getUpdateDate() {
         return updateDate;
     }
+
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
     }
