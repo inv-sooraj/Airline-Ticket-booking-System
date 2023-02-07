@@ -14,7 +14,7 @@ public interface BookingRepository extends  JpaRepository<Bookings,Integer>
     @Modifying
     @Query("update  Bookings p set p.deleteFlag = 0 where p.bookingId in(:integers)")
     void softDeleteAllIds(List<Integer> integers);
-    List<Bookings> findByStatus(Byte status);
+    List<Bookings> findByStatus(int i);
     List<Bookings> findByUserUserId(Integer integer);   
      Bookings findByBookingIdAndDeleteFlag(Integer bookingId,Byte flag);
 }

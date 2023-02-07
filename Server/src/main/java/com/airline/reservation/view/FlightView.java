@@ -2,12 +2,13 @@ package com.airline.reservation.view;
 
 import java.util.Date;
 
+import com.airline.reservation.entity.Airplane;
 import com.airline.reservation.entity.Flight;
 
 public class FlightView {
     
     private Integer flightId;
-    private Integer airplaneId;
+    private Airplane airplane;
     private String flightNumber;
     private String departure;
     private Date depDateTime;
@@ -17,7 +18,7 @@ public class FlightView {
 
     public FlightView(Flight flight){
         this.flightId = flight.getFlightId();
-        this.airplaneId = flight.getAirplaneId();
+        this.airplane= flight.getAirplane();
         this.flightNumber = flight.getFlightNumber();
         this.departure = flight.getDeparture();
         this.depDateTime = flight.getDepDateTime();
@@ -34,18 +35,6 @@ public class FlightView {
     public void setFlightId(Integer flightId) {
         this.flightId = flightId;
     }
-
-
-    public Integer getAirplaneId() {
-        return airplaneId;
-    }
-
-
-    public void setAirplaneId(Integer airplaneId) {
-        this.airplaneId = airplaneId;
-    }
-
-
     public String getFlightNumber() {
         return flightNumber;
     }
@@ -93,6 +82,16 @@ public class FlightView {
 
     public void setDestDateTime(Date destDateTime) {
         this.destDateTime = destDateTime;
+    }
+
+
+    public Airplane getAirplane() {
+        return airplane;
+    }
+
+
+    public void setAirplane(Airplane airplane) {
+        this.airplane = airplane;
     }
 
     

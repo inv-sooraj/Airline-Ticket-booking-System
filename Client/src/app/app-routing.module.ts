@@ -19,6 +19,7 @@ import { UserBookingListComponent } from './user/user-booking-list/user-booking-
 import { PlaneListComponent } from './company/plane-list/plane-list.component';
 import { UserProfileEditComponent } from './user/user-profile-edit/user-profile-edit.component';
 import { AdminProfileComponent } from './admin-profile/admin-profile.component';
+import { CancelledReservationListComponent } from './admin/cancelled-reservation-list/cancelled-reservation-list.component';
 const routes: Routes = [
  {path:'',component:LoginComponent},
   {path:'companyreg',component:CompanyRegistrationComponent},
@@ -38,7 +39,8 @@ const routes: Routes = [
   {path:'flight-details',component:FlightDetailsAdminComponent},
   {path:'flight-list',component:FlightListCompanyComponent},
   {path:'profile-edit',component:UserProfileEditComponent},
-  {path:'profile',component:AdminProfileComponent}
+  {path:'profile',component:AdminProfileComponent},
+  {path:'cancelled-list',component:CancelledReservationListComponent}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

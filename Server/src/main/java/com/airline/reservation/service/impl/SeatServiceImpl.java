@@ -18,6 +18,6 @@ public class SeatServiceImpl implements SeatService{
     }
     @Override
     public List<Seat> list() {
-      return seatRepository.findAll();
+      return null;
     }
 }

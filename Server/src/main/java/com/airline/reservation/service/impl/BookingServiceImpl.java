@@ -120,12 +120,10 @@ public class BookingServiceImpl implements BookingService{
     }
      @Override
     public BookingListView getBooking(Integer bookingId, Byte flag){
-        
-        
-               
-        return new BookingListView(bookingRepository.findByBookingIdAndDeleteFlag(bookingId,flag));
-                
+        return new BookingListView(bookingRepository.findByBookingIdAndDeleteFlag(bookingId,flag));          
+    }
+    @Override
+    public List<Bookings> findByStatus(int i) {
+        return bookingRepository.findByStatus(i);
     }    
-    
-    
 }

@@ -41,6 +41,12 @@ public class BookingsController {
        
         return  bookingService.findByDeleteFlag(flag);
     }
+    
+    //cancelled Reservation list
+    @GetMapping("/getCancelled")
+    public List<Bookings>listCancelled(){
+        return bookingService.findByStatus(3);
+    }
     @GetMapping("/download")
     public ResponseEntity<Resource> getFile() {
       String filename = "tutorials.csv";
@@ -81,6 +87,7 @@ public class BookingsController {
     public List<Bookings> userBookings(){
         return  bookingService.findByUserUserId();
     }
+    
     
      @GetMapping("/{bookingId}/{flag}")
     public BookingListView get(@PathVariable("bookingId") Integer bookingId,@PathVariable("flag") Byte flag) {

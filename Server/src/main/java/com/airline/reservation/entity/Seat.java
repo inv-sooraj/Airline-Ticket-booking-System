@@ -6,17 +6,22 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 import com.airline.reservation.form.SeatForm;
 import com.airline.reservation.json.Json;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
+@Table(name="seat")
 public class Seat {
     @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY )
     private int seatId;
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "flight_id")
     private Flight flight;
     @Column(length=45,nullable = false)
     private String seatType;

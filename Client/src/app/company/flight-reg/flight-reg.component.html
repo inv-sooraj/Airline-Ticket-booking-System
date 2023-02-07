@@ -113,7 +113,9 @@
                                         <span class="sp"
                                             *ngIf="(FlightRegForm.controls['ariivalDT'].touched) && (FlightRegForm.hasError('required','ariivalDT'))"><i>*required*</i></span>
                                     </div>
-                                </div>
+                                    
+                                    </div>
+                                    
                             </div>
                             <div class="white_card_body">
                                 <button class="btn btn-dark" (click)="addCreds()" id="btnadd">Click here to add seat
@@ -128,18 +130,21 @@
                                                 <!-- <select class="form-control" (change)="changeSeat($event)"
                                                     formControlName="seat" id="dropdownMenuButton1">
                                                     <option value="">Seat Type</option>
-                                                    <option *ngFor="let seat of seats" [value]="seat">{{seat}}</option>
+                                                    <option *ngFor="let seat of seats" value="seat">{{seat}}</option>
                                                 </select> -->
                                                 <select class="form-control" (change)="changeSeat($event)" formControlName="seatType" id="dropdownMenuButton1">
                                                     <option value="">Seat type</option>
-                                                    <option *ngFor="let type of seats" [value]=" ">{{type}}</option>
+                                                    <option value="economy">economy</option>
+                                                    <option  value=" premium economy"> premium economy</option>
+                                                    <option   value="business">business</option>
+                                                    <option  value="first class">first class</option>
                                                   </select>
                                                 <input class="form-control" placeholder="No of seats"
                                                     formControlName="seatNo" id="exampleInputPassword1">
                                                 <input class="form-control" placeholder="Price" formControlName="price"
                                                     id="exampleInputPassword2">
-                                                <span class="sp"
-                                                    *ngIf="(FlightRegForm.controls['price'].touched) && (FlightRegForm.hasError('required','price'))"><i>*required*</i></span>
+                                                <!-- <span class="sp"
+                                                    *ngIf="(FlightRegForm.controls['price'].touched) && (FlightRegForm.hasError('required','price'))"><i>*required*</i></span> -->
                                             </div>
                                         </ng-container>
                                     </div><br>
