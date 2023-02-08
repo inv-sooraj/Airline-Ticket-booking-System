@@ -44,17 +44,26 @@ public class BookingsController {
 
         return bookingService.findByDeleteFlag(flag);
     }
-
     @GetMapping("/download")
     public ResponseEntity<Resource> getFile() {
-        String filename = "tutorials.csv";
+        String filename = "bookings.csv";
         InputStreamResource file = new InputStreamResource(fileService.load());
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + filename)
                 .contentType(MediaType.parseMediaType("application/csv"))
                 .body(file);
     }
+//downloadCancelled
 
+@GetMapping("/download/{status}")
+public ResponseEntity<Resource> getByStatus(@PathVariable byte status) {
+    String filename = "cancelled_Bookings.csv";
+    InputStreamResource file = new InputStreamResource(fileService.loadCancelledBookings(status));
+    return ResponseEntity.ok()
+            .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + filename)
+            .contentType(MediaType.parseMediaType("application/csv"))
+            .body(file);
+}
     //delete Bookings 
     @DeleteMapping
     public void delete(@RequestParam("ids") ArrayList<Integer> ids) {
@@ -87,7 +96,10 @@ public class BookingsController {
     public List<Bookings> userBookings(@PathVariable("flag") Byte flag) {
         return bookingService.findByUserUserId(flag);
     }
-
+    @GetMapping("/getCancelled/{status}")
+    public List<Bookings> getCancelled(@PathVariable("status") Byte status) {
+        return bookingService.findByStatus(status);
+    }
     @GetMapping("/{bookingId}/{flag}")
     public BookingListView get(@PathVariable("bookingId") Integer bookingId, @PathVariable("flag") Byte flag) {
         return bookingService.getBooking(bookingId, flag);

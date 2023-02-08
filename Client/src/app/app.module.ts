@@ -29,12 +29,12 @@ import { ReservationListComponent } from './admin/reservation-list/reservation-l
 import { AdminNavComponent } from './admin/admin-nav/admin-nav.component';
 import { UserDetailComponent } from './admin/user-detail/user-detail.component';
 import { FlightDetailsAdminComponent } from './company/flight-details-admin/flight-details-admin.component';
-// import { HeaderCompanyComponent } from './company/header-company/header-company.component';
 import { FlightListCompanyComponent } from './company/flight-list-company/flight-list-company.component';
 import { CompanyNavComponent } from './company/company-nav/company-nav.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserProfileEditComponent } from './user/user-profile-edit/user-profile-edit.component';
 import { AdminProfileComponent } from './admin-profile/admin-profile.component';
+import { CancelledReservationListComponent } from './admin/cancelled-reservation-list/cancelled-reservation-list.component';
 import { UserListComponent } from './user-list/user-list.component';
 
 @NgModule({
@@ -66,6 +66,7 @@ import { UserListComponent } from './user-list/user-list.component';
     CompanyNavComponent,
     UserProfileEditComponent,
     AdminProfileComponent,
+    CancelledReservationListComponent,
     UserListComponent
    
   ],
@@ -80,7 +81,8 @@ import { UserListComponent } from './user-list/user-list.component';
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     NgbModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
