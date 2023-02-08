@@ -10,8 +10,7 @@ import { ApiService } from 'src/app/api.service';
   styleUrls: ['./user-detail.component.css']
 })
 export class UserDetailComponent implements OnInit {
-  userEditForm!:FormGroup
-id:any;
+  // userEditForm!:FormGroup
 data : any;
 userId = -1;
   constructor(private formbuilder:FormBuilder,private apiservice:ApiService,private router:Router,private route :ActivatedRoute,private alertservice:AlertService) { }
@@ -21,16 +20,16 @@ userId = -1;
     this.route.params.forEach((params: Params) => {
       this.userId = params['userId'];});
 
-    this.userEditForm=this.formbuilder.group({
-      address:['',[Validators.required]],
-      dob:['',[Validators.required]],
-      fullName:['',[Validators.required]],
-      city:['',[Validators.required]],
-      country: ['',[Validators.required]],
-      email: ['',[Validators.required]],
-      passportNumber:['',[Validators.required]],
-      ​phone:['',[Validators.required]],
-        });
+    // this.userEditForm=this.formbuilder.group({
+    //   address:['',[Validators.required]],
+    //   dob:['',[Validators.required]],
+    //   fullName:['',[Validators.required]],
+    //   city:['',[Validators.required]],
+    //   country: ['',[Validators.required]],
+    //   email: ['',[Validators.required]],
+    //   passportNumber:['',[Validators.required]],
+    //   ​phone:['',[Validators.required]],
+    //     });
     this.getData();
   }
   getData(){
@@ -47,25 +46,26 @@ userId = -1;
     });
   }
 
-  onEditSubmit() {
-    this.apiservice.updateUser(this.userId,this.userEditForm.value).subscribe({
-      next: (response: any) => {
-        this.data = response;
-        console.log("Editing details",response);
-      },
-      error: (err: any) => { 
+  // onEditSubmit() {
+  //   this.apiservice.updateUser(this.userId,this.userEditForm.value).subscribe({
+  //     next: (response: any) => {
+  //       this.data = response;
+  //       console.log("Editing details",response);
+  //     },
+  //     error: (err: any) => { 
 
-        this.alertservice.showError("Failed to load user details","Error")
-      },
-      complete: () => { }
-    });
-    }
+  //       this.alertservice.showError("Failed to load user details","Error")
+  //     },
+  //     complete: () => { }
+  //   });
+  //   }
 
     deleteAccount() {
       this.apiservice.deleteUser(this.userId).subscribe({
         next: (response: any) => {
           this.data = response;
        this.alertservice.showSuccess("Deletion Success","success")
+       this.router.navigate(['/user-list']);
         },
         error: (err: any) => { 
   
