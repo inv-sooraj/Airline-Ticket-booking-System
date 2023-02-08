@@ -58,6 +58,7 @@
                         <!-- Modal -->
                         <div class="modal fade" id="changePass" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                            <div class="modal-dialog" role="document">
+                              <form [formGroup]="changePasswordForm">
                               <div class="modal-content">
                                  <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
@@ -65,28 +66,36 @@
                                     <span aria-hidden="true">&times;</span>
                                     </button>
                                  </div>
+                                 
                                  <div class="modal-body">
+                                   
                                     <div class="mb-4 pb-2">
                                        <div class="form-outline">
-                                          <input  placeholder="Enter Current Password" type="password" id="form3Examplev4" class="form-control form-control-lg" />
+                                          <input  name="currentPwd" formControlName="currentPwd" placeholder="Enter Current Password" type="password" id="form3Examplev4" class="form-control form-control-lg" />
                                        </div>
                                     </div>
                                     <div class="mb-4 pb-2">
                                        <div class="form-outline">
-                                          <input  placeholder="Enter New Password" type="password" id="form3Examplev4" class="form-control form-control-lg" />
+                                          <input  name="newPwd" formControlName="newPwd" placeholder="Enter New Password" type="password" id="form3Examplev4" class="form-control form-control-lg" />
                                        </div>
                                     </div>
                                     <div class="mb-4 pb-2">
-                                       <div class="form-outline">
-                                          <input  placeholder="Confirm Password" type="password" id="form3Examplev4" class="form-control form-control-lg" />
+                                       <div class="form-outline" >
+                                     
+                                          <input  formControlName="cPwd" name="cPwd" placeholder="Confirm Password" type="password" id="form3Examplev4" class="form-control form-control-lg" />
+                                       <span  *ngIf="(changePasswordForm.controls['cPwd'].touched) && (changePasswordForm.hasError('confirmPasswordValidator','cPassword'))">
+                                          Passsword and
+                                          Confirm Password didn't match. </span>
                                        </div>
                                     </div>
+                                 
                                  </div>
                                  <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                    <button type="button" class="btn btn-primary" (click)="register()">Save changes</button>
                                  </div>
                               </div>
+                           </form>
                            </div>
                         </div>
                         <div class="hamburger-menu">

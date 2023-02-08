@@ -11,7 +11,7 @@ import { ApiService } from 'src/app/api.service';
   styleUrls: ['./flight-reg.component.css']
 })
 export class FlightRegComponent implements OnInit {
-
+ 
   FlightRegForm!:FormGroup;
   seats: any = ['Economy', 'Business','First Class'];
   status:any=false;
@@ -30,6 +30,8 @@ export class FlightRegComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPlaneName() ;
+    this.seatDetails().push(this.newData());
+    
   }
   changePlane(e:any) {
     this.FlightRegForm?.get('airplane')?.setValue(e.target.value, {
@@ -64,6 +66,7 @@ newData(): FormGroup {
 addFlight()
   {
     if(this.FlightRegForm.valid){
+    console.log(this.FlightRegForm.value);
       this.apiservice.createFlight(this.FlightRegForm.value).subscribe({
         next: (result: any) => {
         alert('Created successfully')

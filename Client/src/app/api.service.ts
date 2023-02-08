@@ -148,6 +148,7 @@ export class ApiService {
   /**change password */
 
   changePasswd(requestbody:any){
+    console.log("Form Data"+requestbody)
     return this.httpClient.put(
       this.baseUrl + "/" + "users"+"/"+"changePwd",
       requestbody,

@@ -11,8 +11,9 @@ export class ReservationListComponent implements OnInit {
   items: any[] = [];
 site:any[]=[];
   bookingListForm!: FormGroup;
-  role: any;
   searchText:any;
+  role: any;
+
   userid: any;
   itemName: any;
   public data: any;
@@ -62,11 +63,7 @@ approve(id:any,status:any){
         }
       });
   }
-  export(){
-    console.log("export function");
-    // this.bookingService.download().subscribe();
-    window.open("http://localhost:9091/bookings/download");
-  }
+  
   onCheckboxChange(e: any) {
     // const site: FormArray = this.bookingListForm.get('sel') as FormArray;
 
@@ -75,6 +72,7 @@ approve(id:any,status:any){
       console.log("ids are : "+this.site);
 }
   }
+  
   getBookings() {
     // if (this.role == '1') {
       this.bookingService.getBooking().subscribe({
@@ -117,4 +115,11 @@ Search() {
       return res.itemName.toLocaleLowerCase().match(this.itemName.toLocaleLowerCase());
     });
   }
-}}
+}
+
+export(){
+  console.log("export function");
+  // this.bookingService.download().subscribe();
+  window.open("http://localhost:9091/bookings/download");
+}
+}

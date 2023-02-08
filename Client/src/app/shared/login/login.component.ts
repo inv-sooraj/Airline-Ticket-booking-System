@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('Role', this.role)
           localStorage.setItem('userid',this.userid)
           console.log("Role login",this.role);
+          console.log("access token ="+localStorage.getItem('accessToken'));
           this.status=true;
           switch (result.role) {
             /**For admin */
