@@ -1,7 +1,6 @@
 package com.airline.reservation.view;
 
 
-import com.airline.reservation.entity.Airplane;
 import com.airline.reservation.entity.Flight;
 import com.airline.reservation.entity.User;
 import com.airline.reservation.form.FlightForm;

@@ -18,11 +18,7 @@ export class FlightRegComponent implements OnInit {
   status:any=false;
   AirplaneDetails:any;
   userid:any;
-    now: Date = new Date();
-     yesterdayDate:Date = new Date();
-    minDate: any;
-    maxDate: any;
-  setDob: any ;
+  today:any;
   constructor(private formbuilder:FormBuilder,private router:Router,private apiservice:ApiService,private alertservice:AlertService) {
     this.FlightRegForm=this.formbuilder.group({
       airplane:['',Validators.required],
@@ -33,7 +29,6 @@ export class FlightRegComponent implements OnInit {
       ariivalDT:['',Validators.required],
       seatDetails:this.formbuilder.array([])
         });
-        let currentDateTime =new Date(); 
    }
 
 
@@ -42,35 +37,9 @@ export class FlightRegComponent implements OnInit {
     this.userid=localStorage.getItem('userid');
     this.getPlaneName() ;
     this.seatDetails().push(this.newData());
-    this.getToday();
-     
-    
+     this.today = new Date().toISOString().slice(0, 16);
+    console.log("currentdate",this.today);
   }
-  getToday(){
-    
-    
-    //If you want to disable past dates from current date, you can set mindate to current date.
-    
-    this.minDate = { year: this.now.getFullYear(), month: this.now.getMonth(), day: this.now.getDate() };
-    var datePipe = new DatePipe('en-IND');
-    this.setDob = datePipe.transform(this.minDate, 'yyyy-mm-dd hh:mm');
-    this.yesterdayDate.setDate(this.setDob - 1); 
-    console.log("currentdate",this.yesterdayDate);
-    return this.yesterdayDate;
-    
-   
-  }
-  // changePlane(e:any) {
-  //   this.FlightRegForm?.get('airplane')?.setValue(e.target.value, {
-  //     onlySelf: true
-  //   });
-  // }
-//   changeSeat(e:any) {
-//     console.log(e.value)
-//     this.FlightRegForm?.get('seatType')?.setValue(e.target.value, {
-//       onlySelf: true
-//     });
-// }
 seatDetails() : FormArray {
 
   return this.FlightRegForm.get("seatDetails") as FormArray
@@ -100,7 +69,9 @@ addFlight()
         "depDateTime":  this.FlightRegForm.value.departureDT,
         "destination":  this.FlightRegForm.value.destination,
         "destDateTime":  this.FlightRegForm.value.ariivalDT,
-        "seatDetails":this.FlightRegForm.value.seatDetails
+        "userId":this.userid,
+        "deleteFlag":1,
+        "seats":this.FlightRegForm.value.seatDetails
       }
     console.log("Flight form",param);
       this.apiservice.createFlight(param).subscribe({

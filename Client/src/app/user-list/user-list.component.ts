@@ -38,6 +38,12 @@ export class UserListComponent implements OnInit {
       this.website.push(e.target.value);
       console.log("ids are : "+this.website);
 }
+else {
+  const index = this.website.indexOf(e.target.value);
+  this.website.splice(index, 1);
+  console.log("Array after unchecked",this.website);
+
+}
   }
  
   ngOnInit(): void {

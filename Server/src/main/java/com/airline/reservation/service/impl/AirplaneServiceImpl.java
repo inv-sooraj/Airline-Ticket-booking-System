@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.airline.reservation.service.impl;
-
 import com.airline.reservation.entity.Airplane;
 import com.airline.reservation.exception.NotFoundException;
 import com.airline.reservation.form.AirplaneForm;
@@ -27,22 +26,24 @@ public class AirplaneServiceImpl implements AirplaneService {
     @Autowired
     private AirplaneRepository airplaneRepository;
 
+    //method to add airplane
     @Override
-    public AirplaneListView add(AirplaneForm form) {
-        System.out.println("user id ="+ SecurityUtil.getCurrentUserId());
+    public AirplaneListView addPlane(AirplaneForm form) {
+        System.out.println("user id =" + SecurityUtil.getCurrentUserId());
         return new AirplaneListView(airplaneRepository.save(new Airplane(form, SecurityUtil.getCurrentUserId(), Airplane.Status.ACTIVE.value)));
     }
 
+    //method to list all plane details
     @Override
-    public Collection<Airplane> list() {
+    public Collection<Airplane> listPlanes() {
 
-//            return airplaneRepository.findAllByStatusAndUserUserId(Airplane.Status.ACTIVE.value,SecurityUtil.getCurrentUserId());
         return airplaneRepository.findAllByStatus(Airplane.Status.ACTIVE.value);
 
     }
 
+    //method to get details of a particular airplane id
     @Override
-    public AirplaneListView get(Integer airplaneId) throws NotFoundException {
+    public AirplaneListView getPlaneById(Integer airplaneId) throws NotFoundException {
 
         return airplaneRepository.findByAirplaneId(airplaneId)
                 .map((Airplane) -> {
@@ -50,21 +51,24 @@ public class AirplaneServiceImpl implements AirplaneService {
                 }).orElseThrow(NotFoundException::new);
     }
 
+    //method to update details of a particular ariplaneid
     @Override
     @Transactional
-    public AirplaneListView update(Integer airplaneId, AirplaneForm form) throws NotFoundException {
+    public AirplaneListView updatePlane(Integer airplaneId, AirplaneForm form) throws NotFoundException {
         return airplaneRepository.findByAirplaneId(airplaneId)
                 .map((Airplane) -> {
                     return new AirplaneListView(airplaneRepository.save(Airplane.update(form)));
                 }).orElseThrow(NotFoundException::new);
     }
 
+    //method to delete airplane details of listed ids(soft delete)
     @Override
     @Transactional
-    public void deleteAllBYIds(List<Integer> integers) {
+    public void deletePlaneByIds(List<Integer> integers) {
         airplaneRepository.softDeleteAllIds(integers);
     }
 
+    //method to get airplane details by particular userid(company)
     @Override
     public Collection<Airplane> getDataByUser(Integer userId) {
 

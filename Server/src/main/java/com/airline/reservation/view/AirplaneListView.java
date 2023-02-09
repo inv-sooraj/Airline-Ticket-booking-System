@@ -20,7 +20,7 @@ public class AirplaneListView {
     @Json.DateTimeFormat
     private final Date updateDate;
     private final byte status;
-    private User user;
+    private final User user;
 
     public AirplaneListView(Airplane airplane) {
         this.user = airplane.getUser();
