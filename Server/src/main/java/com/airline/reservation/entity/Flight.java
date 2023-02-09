@@ -15,7 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.TemporalType;
 import com.airline.reservation.form.FlightForm;
-
+import com.airline.reservation.json.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.JoinColumn;
 
@@ -38,9 +38,9 @@ public class Flight {
     private Integer flightId;
     private String flightNumber;
     private String departure;
-
     private Date depDateTime;
     private String destination;
+    @Json.DateTimeFormat
     private Date destDateTime;
 
     
