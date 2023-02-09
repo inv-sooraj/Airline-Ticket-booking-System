@@ -32,6 +32,14 @@ public class Flight {
     @Json.DateTimeFormat
     private Date destDateTime;
     private byte deleteFlag;
+    public Airplane getAirplane() {
+        return airplane;
+    }
+
+    public void setAirplane(Airplane airplane) {
+        this.airplane = airplane;
+    }
+
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Airplane airplane;
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
@@ -67,6 +75,22 @@ public class Flight {
 
     public String getFlightNumber() {
         return flightNumber;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<Seat> getSeats() {
+        return seats;
+    }
+
+    public void setSeats(List<Seat> seats) {
+        this.seats = seats;
     }
 
     public void setFlightNumber(String flightNumber) {
