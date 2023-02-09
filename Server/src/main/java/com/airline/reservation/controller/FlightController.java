@@ -41,5 +41,11 @@ public class FlightController {
     public List<Flight>findByCompany(@PathVariable("userId")Integer userId){
         return flightservice.findByCompany(userId);
     }
+
+    //Flight Detail
+    @GetMapping("/{flightId}")
+    public List<Flight>findByFlightId(@PathVariable("flightId")Integer flightId){
+        return flightservice.findByFlightId(flightId);
+    }
     
 }

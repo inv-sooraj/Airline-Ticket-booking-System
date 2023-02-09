@@ -14,6 +14,8 @@ public interface FlightService {
 
     List<Flight> findByCompany(Integer userId);
 
+    List<Flight> findByFlightId(Integer flightId);
+
  
     
 }

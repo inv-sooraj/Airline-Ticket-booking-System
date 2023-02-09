@@ -39,4 +39,10 @@ public class FlightServiceImpl implements FlightService {
     }
 
 
+    @Override
+    public List<Flight> findByFlightId(Integer flightId) {
+       return flightRepository.findByFlightId(flightId);
+    }
+
+
 }
