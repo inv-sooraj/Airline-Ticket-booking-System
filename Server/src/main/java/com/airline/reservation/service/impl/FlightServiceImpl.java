@@ -1,5 +1,7 @@
 package com.airline.reservation.service.impl;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +24,17 @@ public class FlightServiceImpl implements FlightService {
     public FlightView save(FlightForm form) {
         flightRepository.save(new Flight(form));
         return new FlightView(new Flight(form));
+    }
+
+
+    @Override
+    public List<Flight> findAll() {
+        return flightRepository.findAll();
+    }
+
+
+    @Override
+    public List<Flight> findByCompany(Integer userId) {
+      return flightRepository.findByUserUserId(userId);
     }
 }

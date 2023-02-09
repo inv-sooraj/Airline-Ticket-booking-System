@@ -22,17 +22,6 @@ import javax.persistence.JoinColumn;
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 @Entity
 public class Flight {
-    public static enum DeleteFlag {
-        DELETE((byte) 0),
-        ACTIVE((byte) 1);
-
-        public final byte value;
-
-        private DeleteFlag(byte value) {
-            this.value = value;
-        }
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer flightId;
@@ -42,8 +31,6 @@ public class Flight {
     private String destination;
     @Json.DateTimeFormat
     private Date destDateTime;
-
-    
     private byte deleteFlag;
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Airplane airplane;
@@ -56,7 +43,16 @@ public class Flight {
     @OneToMany(targetEntity = Seat.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "cp_fk", referencedColumnName = "flight_id", nullable = false)
     private List<Seat> seats;
+    public static enum DeleteFlag {
+        DELETE((byte) 0),
+        ACTIVE((byte) 1);
 
+        public final byte value;
+
+        private DeleteFlag(byte value) {
+            this.value = value;
+        }
+    }
     public Flight(Integer flightId) {
         this.flightId = flightId;
     }
@@ -69,12 +65,6 @@ public class Flight {
         this.flightId = flightId;
     }
 
-    // public Airplane getAirplane() {
-    // return airplane;
-    // }
-    // public void setAirplane(Airplane airplane) {
-    // this.airplane = airplane;
-    // }
     public String getFlightNumber() {
         return flightNumber;
     }
@@ -146,7 +136,7 @@ public class Flight {
     // public void setSeats(List<Seat> seats) {
     //     this.seats = seats;
     // }
-
+public Flight(){}
  
     public Flight(FlightForm form) {
         this.flightNumber = form.getFlightNumber();
