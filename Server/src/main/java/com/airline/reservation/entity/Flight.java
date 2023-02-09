@@ -27,6 +27,7 @@ public class Flight {
     private Integer flightId;
     private String flightNumber;
     private String departure;
+     @Json.DateTimeFormat
     private Date depDateTime;
     private String destination;
     @Json.DateTimeFormat
