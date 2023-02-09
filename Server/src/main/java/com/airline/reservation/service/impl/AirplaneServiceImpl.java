@@ -29,6 +29,7 @@ public class AirplaneServiceImpl implements AirplaneService {
 
     @Override
     public AirplaneListView add(AirplaneForm form) {
+        System.out.println("user id ="+ SecurityUtil.getCurrentUserId());
         return new AirplaneListView(airplaneRepository.save(new Airplane(form, SecurityUtil.getCurrentUserId(), Airplane.Status.ACTIVE.value)));
     }
 

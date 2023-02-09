@@ -1,11 +1,14 @@
 package com.airline.reservation.repository;
 
+import javax.validation.Valid;
+
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.Repository;
 
 import com.airline.reservation.entity.Flight;
+import com.airline.reservation.form.FlightForm;
+import com.airline.reservation.view.FlightView;
 
-public interface FlightRepository extends Repository<Flight, Integer> {
-
-    Flight save(Flight flight);
-
+public interface FlightRepository extends JpaRepository<Flight, Integer> {
+    Flight save(@Valid FlightForm form);
 }

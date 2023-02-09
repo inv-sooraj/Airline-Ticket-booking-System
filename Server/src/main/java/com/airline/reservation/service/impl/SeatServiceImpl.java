@@ -12,15 +12,15 @@ import com.airline.reservation.service.SeatService;
 @Service
 public class SeatServiceImpl implements SeatService {
 
-    @Autowired
-    private SeatRepository seatRepository;
+    // @Autowired
+    // private SeatRepository seatRepository;
 
-    public void addSeat(SeatForm form) {
-        seatRepository.save(new Seat(form, form.getFlightId(), form.getSeatType(), form.getNumber(), form.getDeleteFlag()));
-    }
+    // public void addSeat(SeatForm form) {
+    //     seatRepository.save(new Seat(form, form.getFlightId(), form.getSeatType(), form.getNumber(), form.getDeleteFlag()));
+    // }
 
-    @Override
-    public List<Seat> list() {
-        return seatRepository.findAll();
-    }
+    // @Override
+    // public List<Seat> list() {
+    //     return seatRepository.findAll();
+    // }
 }

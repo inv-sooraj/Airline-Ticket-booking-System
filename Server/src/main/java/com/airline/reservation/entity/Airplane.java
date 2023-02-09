@@ -21,7 +21,6 @@ public class Airplane {
     public static enum Status {
         DELETED((byte) 0),
         ACTIVE((byte) 1);
-
         public final byte value;
 
         private Status(byte value) {
