@@ -38,6 +38,7 @@ public class Flight {
     private Integer flightId;
     private String flightNumber;
     private String departure;
+     @Json.DateTimeFormat
     private Date depDateTime;
     private String destination;
     @Json.DateTimeFormat
@@ -161,6 +162,25 @@ public class Flight {
         Date dt = new Date();
         this.createDate = dt;
         this.updateDate = dt;
+    }
+
+    public Flight() {
+    }
+
+    public Airplane getAirplane() {
+        return airplane;
+    }
+
+    public void setAirplane(Airplane airplane) {
+        this.airplane = airplane;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
 }
