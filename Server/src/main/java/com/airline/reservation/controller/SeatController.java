@@ -15,16 +15,16 @@ import com.airline.reservation.service.SeatService;
 @RequestMapping("/seat")
 public class SeatController {
 
-    @Autowired
-    private SeatService seatService;
+    // @Autowired
+    // private SeatService seatService;
 
-    @PostMapping("/addSeat")
-    public void addBooking(@RequestBody SeatForm form) {
-        seatService.addSeat(form);
-    }
+    // @PostMapping("/addSeat")
+    // public void addBooking(@RequestBody SeatForm form) {
+    //     seatService.addSeat(form);
+    // }
 
-    @GetMapping("/list")
-    public List<Seat> list() {
-        return seatService.list();
-    }
+    // @GetMapping("/list")
+    // public List<Seat> list() {
+    //     return seatService.list();
+    // }
 }
