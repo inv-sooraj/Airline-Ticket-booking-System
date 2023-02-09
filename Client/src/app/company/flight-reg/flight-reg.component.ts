@@ -19,6 +19,7 @@ export class FlightRegComponent implements OnInit {
   AirplaneDetails:any;
   userid:any;
     now: Date = new Date();
+     yesterdayDate:Date = new Date();
     minDate: any;
     maxDate: any;
   setDob: any ;
@@ -53,10 +54,9 @@ export class FlightRegComponent implements OnInit {
     this.minDate = { year: this.now.getFullYear(), month: this.now.getMonth(), day: this.now.getDate() };
     var datePipe = new DatePipe('en-IND');
     this.setDob = datePipe.transform(this.minDate, 'yyyy-mm-dd hh:mm');
-    console.log("currentdate",this.setDob);
-    
-
-    return this.setDob;
+    this.yesterdayDate.setDate(this.setDob - 1); 
+    console.log("currentdate",this.yesterdayDate);
+    return this.yesterdayDate;
     
    
   }
