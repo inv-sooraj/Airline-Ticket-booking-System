@@ -104,4 +104,9 @@ public ResponseEntity<Resource> getByStatus(@PathVariable byte status) {
     public BookingListView get(@PathVariable("bookingId") Integer bookingId, @PathVariable("flag") Byte flag) {
         return bookingService.getBooking(bookingId, flag);
     }
+    
+    @GetMapping("/getByflight/{flightId}/{flag}")
+    public List<Bookings> userBookingsByFlight(@PathVariable("flightId") Integer flightId,@PathVariable("flag") Byte flag) {
+        return bookingService.findByFlightId(flightId,flag);
+    }
 }

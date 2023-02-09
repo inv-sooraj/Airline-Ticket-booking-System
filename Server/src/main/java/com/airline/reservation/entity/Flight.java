@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import com.airline.reservation.form.FlightForm;
+import com.airline.reservation.json.Json;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -30,8 +31,10 @@ public class Flight {
     private Integer airplaneId;
     private String flightNumber;
     private String departure;
+    @Json.DateTimeFormat
     private Date depDateTime;
     private String destination;
+    @Json.DateTimeFormat
     private Date destDateTime;
     private byte deleteFlag;
     @Temporal(TemporalType.TIMESTAMP)

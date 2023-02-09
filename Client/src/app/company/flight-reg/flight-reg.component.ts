@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 import { AlertService } from 'src/app/alert.service';
 import { ApiService } from 'src/app/api.service';
 // import { ApiService } from '../api.service';
-
+import { DatePipe } from '@angular/common';
+import { LoginComponent } from 'src/app/shared/login/login.component';
 @Component({
   selector: 'app-flight-reg',
   templateUrl: './flight-reg.component.html',
@@ -16,6 +17,11 @@ export class FlightRegComponent implements OnInit {
   seats: any = ['Economy', 'Business','First Class'];
   status:any=false;
   AirplaneDetails:any;
+  userid:any;
+    now: Date = new Date();
+    minDate: any;
+    maxDate: any;
+  setDob: any ;
   constructor(private formbuilder:FormBuilder,private router:Router,private apiservice:ApiService,private alertservice:AlertService) {
     this.FlightRegForm=this.formbuilder.group({
       airplane:['',Validators.required],
@@ -26,24 +32,45 @@ export class FlightRegComponent implements OnInit {
       ariivalDT:['',Validators.required],
       seatDetails:this.formbuilder.array([])
         });
+        let currentDateTime =new Date(); 
    }
 
+
   ngOnInit(): void {
+
+    this.userid=localStorage.getItem('userid');
     this.getPlaneName() ;
     this.seatDetails().push(this.newData());
+    this.getToday();
+     
     
   }
-  changePlane(e:any) {
-    this.FlightRegForm?.get('airplane')?.setValue(e.target.value, {
-      onlySelf: true
-    });
+  getToday(){
+    
+    
+    //If you want to disable past dates from current date, you can set mindate to current date.
+    
+    this.minDate = { year: this.now.getFullYear(), month: this.now.getMonth(), day: this.now.getDate() };
+    var datePipe = new DatePipe('en-IND');
+    this.setDob = datePipe.transform(this.minDate, 'yyyy-mm-dd hh:mm');
+    console.log("currentdate",this.setDob);
+    
+
+    return this.setDob;
+    
+   
   }
-  changeSeat(e:any) {
-    console.log(e.value)
-    this.FlightRegForm?.get('seatType')?.setValue(e.target.value, {
-      onlySelf: true
-    });
-}
+  // changePlane(e:any) {
+  //   this.FlightRegForm?.get('airplane')?.setValue(e.target.value, {
+  //     onlySelf: true
+  //   });
+  // }
+//   changeSeat(e:any) {
+//     console.log(e.value)
+//     this.FlightRegForm?.get('seatType')?.setValue(e.target.value, {
+//       onlySelf: true
+//     });
+// }
 seatDetails() : FormArray {
 
   return this.FlightRegForm.get("seatDetails") as FormArray
@@ -66,8 +93,17 @@ newData(): FormGroup {
 addFlight()
   {
     if(this.FlightRegForm.valid){
-    console.log(this.FlightRegForm.value);
-      this.apiservice.createFlight(this.FlightRegForm.value).subscribe({
+      let param = {
+        "airplaneId": this.FlightRegForm.value.airplane,
+        "flightNumber": this.FlightRegForm.value.flightno,
+        "departure":  this.FlightRegForm.value.departure,
+        "depDateTime":  this.FlightRegForm.value.departureDT,
+        "destination":  this.FlightRegForm.value.destination,
+        "destDateTime":  this.FlightRegForm.value.ariivalDT,
+        "seatDetails":this.FlightRegForm.value.seatDetails
+      }
+    console.log("Flight form",param);
+      this.apiservice.createFlight(param).subscribe({
         next: (result: any) => {
         alert('Created successfully')
       //  this.router.navigate(['/login'])   
@@ -87,7 +123,7 @@ addFlight()
     this.FlightRegForm.reset();
   }
   getPlaneName() {
-    this.apiservice.getAirPlane().subscribe({
+    this.apiservice.getPlaneByCompany(this.userid).subscribe({
       next: (response: any) => {
         this.AirplaneDetails = response;
       },

@@ -67,7 +67,8 @@ import { UserListComponent } from './user-list/user-list.component';
     UserProfileEditComponent,
     AdminProfileComponent,
     CancelledReservationListComponent,
-    UserListComponent
+    UserListComponent,
+    
    
   ],
   imports: [

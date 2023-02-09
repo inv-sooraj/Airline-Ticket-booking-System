@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -123,5 +122,12 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public List<Bookings> findByStatus(Byte status) {
         return bookingRepository.findByStatus(status);
+    }
+
+    @Override
+    public List<Bookings> findByFlightId(Integer flightId, Byte flag) {
+        
+                return bookingRepository.findByFlightFlightIdAndDeleteFlag(flightId,flag);
+
     }
 }
