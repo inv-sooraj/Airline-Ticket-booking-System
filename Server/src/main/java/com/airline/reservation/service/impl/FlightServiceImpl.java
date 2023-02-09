@@ -21,8 +21,9 @@ public class FlightServiceImpl implements FlightService {
     private FlightRepository flightRepository;
 
 
-    public FlightView save(FlightForm form) {
-        return new FlightView(flightRepository.save(new Flight(form)));
+    public Flight save(FlightForm form) {
+        return flightRepository.save(new Flight(form));
+       
     }
 
 
@@ -36,4 +37,6 @@ public class FlightServiceImpl implements FlightService {
     public List<Flight> findByCompany(Integer userId) {
       return flightRepository.findByUserUserId(userId);
     }
+
+
 }

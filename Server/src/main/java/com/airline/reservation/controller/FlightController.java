@@ -25,14 +25,11 @@ public class FlightController {
 
     @Autowired
     private FlightService flightservice;
-    @Autowired
-    private FlightRepository flightRepository;
 
-    @Autowired
-    private SeatRepository seatRepository;
+   
     // Add Flight
     @PostMapping
-    public  FlightView add(@RequestBody FlightForm form) {
+    public  Flight add(@RequestBody FlightForm form) {
         return flightservice.save(form);
     }
     //All Flights
@@ -40,8 +37,6 @@ public class FlightController {
     public List<Flight>findAll(){
         return flightservice.findAll();
     }
- 
-
     @GetMapping("/findAll/{userId}")
     public List<Flight>findByCompany(@PathVariable("userId")Integer userId){
         return flightservice.findByCompany(userId);
