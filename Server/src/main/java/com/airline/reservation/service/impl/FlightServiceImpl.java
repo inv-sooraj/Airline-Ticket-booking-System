@@ -22,8 +22,7 @@ public class FlightServiceImpl implements FlightService {
 
 
     public FlightView save(FlightForm form) {
-        flightRepository.save(new Flight(form));
-        return new FlightView(new Flight(form));
+        return new FlightView(flightRepository.save(new Flight(form)));
     }
 
 
