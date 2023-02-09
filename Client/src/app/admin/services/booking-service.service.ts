@@ -52,4 +52,8 @@ console.log(" URL = "+this.DownloadURL);
      
      
      }
+
+     getFlight(){
+      return this.http.get(this.baseUrl + '/status/1', this.getHeader());
+     }
 }

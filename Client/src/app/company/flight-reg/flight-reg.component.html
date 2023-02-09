@@ -1,29 +1,5 @@
 
-<script src="/assets/js/admin/popper1.min.js"></script>
-
-<script src="/assets/js/admin/bootstrap1.min.js"></script>
-
-<script src="/assets/js/admin/metisMenu.js"></script>
-
-<script src="/assets/vendors/scroll/perfect-scrollbar.min.js"></script>
-<script src="/assets/vendors/scroll/scrollable-custom.js"></script>
-
-<script src="/assets/js/admin/custom.js"></script>
-<link rel="icon" href="/assets/img/mini_logo.png" type="/assets/image/png">
-
-<link rel="stylesheet" href="/assets/css/admin/bootstrap1.min.css" />
-
-<link rel="stylesheet" href="/assets/vendors/themefy_icon/themify-icons.css" />
-<link rel="stylesheet" href="/assets/vendors/font_awesome/css/all.min.css" />
-
-
-<link rel="stylesheet" href="/assets/vendors/scroll/scrollable.css" />
-
-<link rel="stylesheet" href="/assets/css/admin/metisMenu.css">
-
-<link rel="stylesheet" href="/assets/css/admin/style1.css" />
-<link rel="stylesheet" href="/assets/css/admin/colors/default.css" id="colorSkinCSS">
-<app-nav></app-nav><br><br>
+<app-company-nav></app-company-nav><br><br>
 
 <body>
     <form [formGroup]="FlightRegForm">
@@ -40,20 +16,22 @@
                                 </div>
                             </div>
                             <div class="white_card_body">
+
                                 <!--Dropdown for selecting airplane names-->
+
                                 <label class="form-label" for="exampleInputEmail1">Airplane Name</label>
                                 <div class="dropdown">
                                     
                                     <div class="mb-4 pb-2">
-                                        <select class="form-control" (change)="changePlane($event)" formControlName="airplane"
+                                        <select class="form-control"formControlName="airplane"
                                         id="Companydropdown">
                                         <option value="">Select Airplane</option>
-                                        <option *ngFor="let name of AirplaneDetails" [value]="">{{name.airplaneName}}
+                                        <option *ngFor="let name of AirplaneDetails" [value]="name.airplaneId">{{name.airplaneName}}
                                         </option>
                                       </select>
                                         <div>
-                                            <span class="sp"
-                                                *ngIf="(FlightRegForm.controls['airplane'].touched) && (FlightRegForm.hasError('required','airplane'))"><i>*required*</i></span>
+                                            <span class="span1"
+                                                *ngIf="(FlightRegForm.controls['airplane'].touched) && (FlightRegForm.hasError('required','airplane'))"><i>Please select airplane name</i></span>
                                         </div>
                                     </div>
                                 </div>
@@ -62,44 +40,43 @@
                                     <input type="email" class="form-control" id="exampleInputEmail1"
                                         formControlName="flightno" aria-describedby="emailHelp" placeholder="">
                                     <div>
-                                        <span class="sp"
-                                            *ngIf="(FlightRegForm.controls['flightno'].touched) && (FlightRegForm.hasError('required','flightno'))"><i>*required*</i></span>
-                                        <span class="sp"
-                                            *ngIf="(FlightRegForm.controls['flightno'].touched) && (FlightRegForm.hasError('pattern','flightno'))"><i>*Invalid
-                                                Format*</i></span>
+                                        <span class="span1"
+                                            *ngIf="(FlightRegForm.controls['flightno'].touched) && (FlightRegForm.hasError('required','flightno'))"><i>Please enter flight number</i></span>
+                                        <span class="span1"
+                                            *ngIf="(FlightRegForm.controls['flightno'].touched) && (FlightRegForm.hasError('pattern','flightno'))"><i>Invalid format</i></span>
 
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label" for="exampleInputPassword1">Departure</label>
+                                    <label class="form-label" for="exampleInputPassword1">Departing City</label>
                                     <input type="text" class="form-control" id="exampleInputPassword"
                                         formControlName="departure" placeholder="">
                                     <div>
-                                        <span class="sp"
-                                            *ngIf="(FlightRegForm.controls['departure'].touched) && (FlightRegForm.hasError('required','departure'))"><i>*required*</i></span>
-                                        <span class="sp"
-                                            *ngIf="(FlightRegForm.controls['departure'].touched) && (FlightRegForm.hasError('pattern','departure'))"><i>*Invalid
-                                                Format*</i></span>
+                                        <span class="span1"
+                                            *ngIf="(FlightRegForm.controls['departure'].touched) && (FlightRegForm.hasError('required','departure'))"><i>Please enter departure city</i></span>
+                                        <span class="span1"
+                                            *ngIf="(FlightRegForm.controls['departure'].touched) && (FlightRegForm.hasError('pattern','departure'))"><i>Invalid
+                                                Format</i></span>
 
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="exampleInputPassword1">Departure date&time</label>
-                                    <input type="text" class="form-control" id="exampleInputPassword"
+                                    <input type="datetime-local" class="form-control" id="exampleInputPassword"
                                         formControlName="departureDT" placeholder="">
                                     <div>
-                                        <span class="sp"
-                                            *ngIf="(FlightRegForm.controls['departureDT'].touched) && (FlightRegForm.hasError('required','departureDT'))"><i>*required*</i></span>
+                                        <span class="span1"
+                                            *ngIf="(FlightRegForm.controls['departureDT'].touched) && (FlightRegForm.hasError('required','departureDT'))"><i>Please enter departing date & time</i></span>
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label" for="exampleInputPassword1">Destination</label>
+                                    <label class="form-label" for="exampleInputPassword1">Destination City</label>
                                     <input type="text" class="form-control" id="exampleInputPassword"
                                         formControlName="destination" placeholder="">
                                     <div>
-                                        <span class="sp"
-                                            *ngIf="(FlightRegForm.controls['destination'].touched) && (FlightRegForm.hasError('required','destination'))"><i>*required*</i></span>
-                                        <span class="sp"
+                                        <span class="span1"
+                                            *ngIf="(FlightRegForm.controls['destination'].touched) && (FlightRegForm.hasError('required','destination'))"><i>Please enter destination city</i></span>
+                                        <span class="span1"
                                             *ngIf="(FlightRegForm.controls['destination'].touched) && (FlightRegForm.hasError('pattern','destination'))"><i>*Invalid
                                                 Format*</i></span>
 
@@ -107,11 +84,11 @@
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="exampleInputPassword1">Arrival date&time</label>
-                                    <input type="text" class="form-control" id="exampleInputPassword"
+                                    <input type="datetime-local" min="2023-02-07T00:00" class="form-control" id="exampleInputPassword"
                                         formControlName="ariivalDT" placeholder="">
                                     <div>
-                                        <span class="sp"
-                                            *ngIf="(FlightRegForm.controls['ariivalDT'].touched) && (FlightRegForm.hasError('required','ariivalDT'))"><i>*required*</i></span>
+                                        <span class="span1"
+                                            *ngIf="(FlightRegForm.controls['ariivalDT'].touched) && (FlightRegForm.hasError('required','ariivalDT'))"><i>Please enter arrival date & time</i></span>
                                     </div>
                                     
                                     </div>
@@ -120,19 +97,16 @@
                             <div class="white_card_body">
                                 <button class="btn btn-dark" (click)="addCreds()" id="btnadd">Click here to add seat
                                     details</button><br>
+
                                 <!--Formarray to store seat details-->
+
                                 <div class="mb-4">
                                     <div formArrayName="seatDetails"
                                         *ngFor="let seatDetail of seatDetails().controls; let i=index"
                                         [formGroupName]="i">
                                         <br><ng-container [formGroupName]="i">
                                             <div class="mb-4 pb-2">
-                                                <!-- <select class="form-control" (change)="changeSeat($event)"
-                                                    formControlName="seat" id="dropdownMenuButton1">
-                                                    <option value="">Seat Type</option>
-                                                    <option *ngFor="let seat of seats" value="seat">{{seat}}</option>
-                                                </select> -->
-                                                <select class="form-control" (change)="changeSeat($event)" formControlName="seatType" id="dropdownMenuButton1">
+                                                <select class="form-control"formControlName="seatType" id="dropdownMenuButton1">
                                                     <option value="">Seat type</option>
                                                     <option value="economy">economy</option>
                                                     <option  value=" premium economy"> premium economy</option>

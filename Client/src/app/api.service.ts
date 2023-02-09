@@ -53,7 +53,7 @@ export class ApiService {
   /** Method to create flight */
 
   createFlight(userForm: any) {
-    return this.httpClient.post(this.baseUrl + "/" + "flight", userForm);
+    return this.httpClient.post(this.baseUrl + "/" + "flight", userForm,this.getHeader());
   }
 
   /** Method to check whether the email id entered by the user is unique or not */

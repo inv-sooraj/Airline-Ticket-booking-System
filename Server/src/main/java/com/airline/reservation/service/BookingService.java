@@ -27,4 +27,6 @@ public interface BookingService {
     List<Bookings> findByStatus(Byte flag);
 
     public BookingListView getBooking(Integer bookingId, Byte flag);
+
+    public List<Bookings> findByFlightId(Integer flightId, Byte flag);
 }

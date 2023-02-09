@@ -35,10 +35,28 @@
                                         <div>
                                             <button  (click)="export()" [disabled]="items.length == 0 ? true : false" class="btn btn-primary">CSV Export</button>
                                         </div>
+                                        
                                     </div>
                                 </div>
+                               
                                 <div class="QA_table mb_30">
-                                    <table class="table lms_table_active3">
+                                    <!-- <ng-container *ngIf="visible">Please select a flight
+                                        <select
+                                          class="form-control"
+                                          (change)="changeFlight()"
+                                          formControlName="flight"
+                                          id="Companydropdown"
+                                        >
+                                          <option value="">Select a Flight</option>
+                                          <option
+                                            *ngFor="let flight of flight"
+                                            [value]="flight.flightId"
+                                          >
+                                           
+                                          </option>
+                                        </select>
+                                      </ng-container> -->
+                                    <table class="table lms_table_active3" >
                                         <thead>
                                             <tr>
                                                 <th></th>
