@@ -37,5 +37,8 @@ public class FlightController {
     public List<Flight> findByCompany(@PathVariable("userId") Integer userId) {
         return flightservice.findByCompany(userId);
     }
+    
+    
+    
 
 }

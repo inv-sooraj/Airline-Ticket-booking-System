@@ -21,6 +21,7 @@ import { UserProfileEditComponent } from './user/user-profile-edit/user-profile-
 import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 import { CancelledReservationListComponent } from './admin/cancelled-reservation-list/cancelled-reservation-list.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { ReservationDetailsComponent } from './reservation-details/reservation-details.component';
 const routes: Routes = [
  {path:'',component:LoginComponent},
   {path:'companyreg',component:CompanyRegistrationComponent},
@@ -42,7 +43,8 @@ const routes: Routes = [
   {path:'profile-edit',component:UserProfileEditComponent},
   {path:'profile',component:AdminProfileComponent},
   {path:'cancelled-list',component:CancelledReservationListComponent},
-  {path:'user-list',component:UserListComponent}
+  {path:'user-list',component:UserListComponent},
+  {path:'reservation-details/:bookingId',component:ReservationDetailsComponent}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

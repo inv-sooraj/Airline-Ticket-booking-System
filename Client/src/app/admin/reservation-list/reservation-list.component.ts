@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { AlertService } from 'src/app/alert.service';
+import { ApiService } from 'src/app/api.service';
 import { BookingServiceService } from '../services/booking-service.service';
 @Component({
   selector: 'app-reservation-list',
@@ -13,20 +14,21 @@ site:any[]=[];
   bookingListForm!: FormGroup;
   searchText:any;
   role: any;
-
-  userid: any;
-  itemName: any;
   public data: any;
-  public searchData: any[] = [];
+  status:boolean=false;
   constructor(private formbuilder: FormBuilder,private alertservice: AlertService,private bookingService:BookingServiceService) { 
     this.bookingListForm = this.formbuilder.group({
       search: [''],
       sel: this.formbuilder.array([])
-      // sel: this.formbuilder.array([])
     });
   }
   ngOnInit(): void {
+    this.role=localStorage.getItem('Role');
+    console.log("current user role",this.role);
+
     this.getBookings();
+
+    
   }
 approve(id:any,status:any){
   this.bookingService.changeStatus(id,status).subscribe
@@ -65,61 +67,59 @@ approve(id:any,status:any){
   }
   
   onCheckboxChange(e: any) {
-    // const site: FormArray = this.bookingListForm.get('sel') as FormArray;
-
+    
     if (e.target.checked) {
       this.site.push(e.target.value);
       console.log("ids are : "+this.site);
 }
+else {
+  const index = this.site.indexOf(e.target.value);
+  this.site.splice(index, 1);
+  console.log("Array after unchecked",this.site);
+
+}
   }
   
   getBookings() {
-    // if (this.role == '1') {
-      this.bookingService.getBooking().subscribe({
-        next: (response: any) => {
-          this.items = response;
-          console.log(this.items);
-        },
-        error: (err: any) => {
-          this.alertservice.showError("Failed to load airplane data", "Error")
-        },
-        complete: () => { }
-      });
-      
+    console.log("inside get",this.role);
+    
+    switch (this.role) {
 
-    // }
-    // else if (this.role == '2') {
-    //   this.apiservice.getPlaneByCompany(this.userid).subscribe({
-    //     next: (response: any) => {
-    //       this.items = response;
-    //       console.log("airplane by  company", this.items);
-    //     },
-    //     error: (err: any) => {
-    //       this.alertservice.showError("Failed to load airplane data", "Error")
+      case "1" :
+                  this.bookingService.getBooking().subscribe({
+                    next: (response: any) => {
+                      this.items = response;
+                      console.log(this.items);
+                    },
+                    error: (err: any) => {
+                      this.alertservice.showError("Failed to load airplane data", "Error")
+                    },
+                    complete: () => { }
+                  });
+                  break;
+      case "2":
+                  this.bookingService.getBookingByCompany().subscribe({
+                    next: (response: any) => {
+                      this.items = response;
+                      console.log("Bookngs by  company", this.items);
+                    },
+                    error: (err: any) => {
+                      this.alertservice.showError("Failed to load booking data", "Error")
 
-    //     },
-    //     complete: () => { }
-    //   });
-    // }
-    // else {
-    //   this.alertservice.showError("Access Denied", "Error")
-    // }
-}
-Search() {
-  console.log(this.itemName)
-  if (this.itemName == "") {
-    this.ngOnInit();
+                    },
+                    complete: () => { }
+                  });
+                  break;
+            default:
+                  this.alertservice.showError("Access Denied", "Error")
+                  break;
   }
-  else {
-    this.searchData = this.searchData.filter(res => {
-      return res.itemName.toLocaleLowerCase().match(this.itemName.toLocaleLowerCase());
-    });
-  }
+
 }
+
 
 export(){
   console.log("export function");
-  // this.bookingService.download().subscribe();
   window.open("http://localhost:9091/bookings/download");
 }
 }

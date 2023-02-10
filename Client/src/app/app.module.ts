@@ -36,6 +36,7 @@ import { UserProfileEditComponent } from './user/user-profile-edit/user-profile-
 import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 import { CancelledReservationListComponent } from './admin/cancelled-reservation-list/cancelled-reservation-list.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { ReservationDetailsComponent } from './reservation-details/reservation-details.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { UserListComponent } from './user-list/user-list.component';
     AdminProfileComponent,
     CancelledReservationListComponent,
     UserListComponent,
+    ReservationDetailsComponent,
     
    
   ],

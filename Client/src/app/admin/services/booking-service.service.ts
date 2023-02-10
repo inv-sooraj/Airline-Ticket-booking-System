@@ -46,6 +46,9 @@ export class BookingServiceService {
 console.log(" URL = "+this.DownloadURL);
      this.http.get(this.DownloadURL);
   }
+
+  //Method to get booking details of all passenegrs(for admin)
+
   getBooking() {
 
     return this.http.get(this.baseUrl + '/status/1', this.getHeader());
@@ -55,5 +58,13 @@ console.log(" URL = "+this.DownloadURL);
 
      getFlight(){
       return this.http.get(this.baseUrl + '/status/1', this.getHeader());
+     }
+
+     //method to get booking details of passengers based on company(for company)
+     
+     getBookingByCompany(){
+
+      return this.http.get(this.baseUrl + '/getByCompany/1', this.getHeader());
+     
      }
 }

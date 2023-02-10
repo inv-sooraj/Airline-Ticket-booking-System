@@ -88,11 +88,17 @@
                                                 <td *ngIf="bookings.status == 2" style="color: orangered;">Pending</td>
                                                 <td *ngIf="bookings.status == 0" style="color: rgb(126, 19, 19);">Rejected</td>
                                                 <td *ngIf="bookings.status == 1" style="color: rgb(68, 109, 68);">Approved</td>
-                                                <td>
+                                                <!-- <td>
                                                     <a class="status_btn"
                                                         (click)="approve(bookings.bookingId, 1)">Approve</a>
                                                     <a class="status_btn_rejected"
                                                         (click)="approve(bookings.bookingId, 0)">Reject</a>
+                                                </td> -->
+                                                <td>
+                                                        <a
+                                                        class="status_btn"
+                                                        [routerLink]="['/reservation-details',bookings.bookingId ]"
+                                                        >More</a>
                                                 </td>
                                             </tr>
                                         </tbody>
