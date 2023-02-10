@@ -12,7 +12,6 @@
                     <div class="main-title"></div>
                   </div>
                 </div>
-               
                 <div class="white_card_body">
                   <h4>Registered User List</h4>
                   <div class="QA_section">
@@ -37,17 +36,9 @@
                     </div>
                     <div class="QA_table mb_30">
                       <br /><br />
-                      <!-- <a
-                        class="delete"
-                        title="Delete"
-                        data-toggle="tooltip"
-                        (click)="deleteData()"
-                        ><i class="material-icons">&#xE872;</i></a
-                      > -->
                       <table class="table">
                         <thead>
                           <tr>
-                           
                             <th scope="col">User Name</th>
                             <th scope="col">Role</th>
                             <th scope="col">Email</th>
@@ -63,21 +54,28 @@
                               let i = index
                             "
                           >
-                            <!-- <th scope="row">
-                              <label for="sel"></label>
-                              <input
-                                type="checkbox"
-                                [value]="data.userId"
-                                (change)="onCheckboxChange($event)"
-                              />
-                            </th> -->
                             <td>{{ data.fullName }}</td>
                             <td>
                               <ng-container [ngSwitch]="true">
-                                <div *ngSwitchCase="data.role === 1" style="color: blue;">Admin</div>
-                                <div *ngSwitchCase="data.role === 2" style="color:orange;">Company Exicutive</div>
-                                <div *ngSwitchCase="data.role === 3" style="color:purple;">Passenger</div>
-                            </ng-container> 
+                                <div
+                                  *ngSwitchCase="data.role === 1"
+                                  style="color: blue"
+                                >
+                                  Admin
+                                </div>
+                                <div
+                                  *ngSwitchCase="data.role === 2"
+                                  style="color: orange"
+                                >
+                                  Company Exicutive
+                                </div>
+                                <div
+                                  *ngSwitchCase="data.role === 3"
+                                  style="color: purple"
+                                >
+                                  Passenger
+                                </div>
+                              </ng-container>
                             </td>
                             <td>{{ data.email }}</td>
                             <td>{{ data.phone }}</td>
@@ -86,7 +84,8 @@
                               <a
                                 class="status_btn"
                                 [routerLink]="['/user-detail', data.userId]"
-                              >View More</a>
+                                >View More</a
+                              >
                             </td>
                           </tr>
                         </tbody>

@@ -1,24 +1,21 @@
-import { Injectable } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
+import { Injectable } from "@angular/core";
+import { ToastrService } from "ngx-toastr";
 @Injectable({
-  providedIn: 'root'
-  
+  providedIn: "root",
 })
-
 export class AlertService {
-  
-  constructor(private toastr: ToastrService) {
-  }
+  constructor(private toastr: ToastrService) {}
   /**
    * Method to show success message
    * @param message
    * @param title
    */
-  
-  
+
   showSuccess(message: string | undefined, title: string | undefined) {
-    
-    this.toastr.success(message, title ,{timeOut:1000,positionClass: 'toast-top-center'});
+    this.toastr.success(message, title, {
+      timeOut: 1000,
+      positionClass: "toast-top-center",
+    });
   }
 
   /**
@@ -27,7 +24,10 @@ export class AlertService {
    * @param title
    */
   showError(message: string | undefined, title: string | undefined) {
-    this.toastr.error(message, title,{timeOut:1000,positionClass: 'toast-top-center'});
+    this.toastr.error(message, title, {
+      timeOut: 1000,
+      positionClass: "toast-top-center",
+    });
   }
 
   /**
@@ -36,7 +36,10 @@ export class AlertService {
    * @param title
    */
   showInfo(message: string | undefined, title: string | undefined) {
-    this.toastr.info(message, title,{timeOut:1000,positionClass: 'toast-top-center'});
+    this.toastr.info(message, title, {
+      timeOut: 1000,
+      positionClass: "toast-top-center",
+    });
   }
 
   /**
@@ -45,6 +48,9 @@ export class AlertService {
    * @param title
    */
   showWarning(message: string | undefined, title: string | undefined) {
-    this.toastr.warning(message, title,{timeOut:1000,positionClass: 'toast-top-center'});
+    this.toastr.warning(message, title, {
+      timeOut: 1000,
+      positionClass: "toast-top-center",
+    });
   }
 }

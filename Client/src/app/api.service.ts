@@ -14,25 +14,35 @@ export class ApiService {
   }
   /** Method to create new user(signup a new user) */
   createUser(userForm: any) {
-
     console.log(userForm);
 
     return this.httpClient.post(this.baseUrl + "/" + "users/signup", userForm);
   }
-  getAllUsers(){
-    return this.httpClient.get(this.baseUrl + '/users/GetUsers',this.getHeader());
+  getAllUsers() {
+    return this.httpClient.get(
+      this.baseUrl + "/users/GetUsers",
+      this.getHeader()
+    );
   }
   getUserBookingList() {
-    return this.httpClient.get(this.baseUrl + '/bookings/getById/1', this.getHeader());
+    return this.httpClient.get(
+      this.baseUrl + "/bookings/getById/1",
+      this.getHeader()
+    );
   }
   updateUser(userid: any, updateForm: any) {
- 
-    return this.httpClient.put(this.baseUrl + '/' + 'users/'+userid, updateForm, this.getHeader());
-
+    return this.httpClient.put(
+      this.baseUrl + "/" + "users/" + userid,
+      updateForm,
+      this.getHeader()
+    );
   }
 
-  deleteUser(id:any) {
-    return this.httpClient.put(this.baseUrl + '/' + 'users/changeStatus/'+id, this.getHeader());
+  deleteUser(id: any) {
+    return this.httpClient.put(
+      this.baseUrl + "/" + "users/changeStatus/" + id,
+      this.getHeader()
+    );
   }
   /** Method to login users */
 
@@ -53,7 +63,11 @@ export class ApiService {
   /** Method to create flight */
 
   createFlight(userForm: any) {
-    return this.httpClient.post(this.baseUrl + "/" + "flight", userForm,this.getHeader());
+    return this.httpClient.post(
+      this.baseUrl + "/" + "flight",
+      userForm,
+      this.getHeader()
+    );
   }
 
   /** Method to check whether the email id entered by the user is unique or not */
@@ -103,11 +117,13 @@ export class ApiService {
   /** Method to delete(soft delete) the plane */
 
   deletePlane(ids: any) {
-    let params = new HttpParams()
-      .set('ids', ids);
-      
-    return this.httpClient.delete(this.baseUrl + '/' + 'airplane' + '?' + 'ids' + '=' + ids, this.getHeader())
-  };
+    let params = new HttpParams().set("ids", ids);
+
+    return this.httpClient.delete(
+      this.baseUrl + "/" + "airplane" + "?" + "ids" + "=" + ids,
+      this.getHeader()
+    );
+  }
   /** Method to get the users of role 2(company users) */
 
   getCompany() {
@@ -147,10 +163,10 @@ export class ApiService {
 
   /**change password */
 
-  changePasswd(requestbody:any){
-    console.log("Form Data"+requestbody)
+  changePasswd(requestbody: any) {
+    console.log("Form Data" + requestbody);
     return this.httpClient.put(
-      this.baseUrl + "/" + "users"+"/"+"changePwd",
+      this.baseUrl + "/" + "users" + "/" + "changePwd",
       requestbody,
       this.getHeader()
     );
@@ -158,16 +174,16 @@ export class ApiService {
 
   /**Method to get booking details by id */
 
-  bookingDetailsById(id:any){
+  bookingDetailsById(id: any) {
     return this.httpClient.get(
       this.baseUrl + "/" + "bookings" + "/" + id + "/" + "1",
       this.getHeader()
     );
   }
 
-  cancelBooking(id:any){
+  cancelBooking(id: any) {
     return this.httpClient.put(
-      this.baseUrl +'/bookings/changeStatus/' +id + '/3',
+      this.baseUrl + "/bookings/changeStatus/" + id + "/3",
       this.getHeader()
     );
   }

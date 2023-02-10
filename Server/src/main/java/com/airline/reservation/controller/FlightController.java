@@ -33,6 +33,8 @@ public class FlightController {
         return flightservice.findAll();
     }
 
+    // get flight details of a paraticular company
+    
     @GetMapping("/findAll/{userId}")
     public List<Flight> findByCompany(@PathVariable("userId") Integer userId) {
         return flightservice.findByCompany(userId);
