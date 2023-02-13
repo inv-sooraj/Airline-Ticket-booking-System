@@ -11,4 +11,6 @@ public interface FlightRepository extends JpaRepository<Flight, Integer> {
     Flight save(@Valid FlightForm form);
 
     List<Flight> findByUserUserId(int i);
+
+    List<Flight> findByFlightId(Integer flightId);
 }

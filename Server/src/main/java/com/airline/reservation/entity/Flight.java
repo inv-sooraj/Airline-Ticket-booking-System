@@ -34,6 +34,14 @@ public class Flight {
     private Date destDateTime;
     private byte deleteFlag;
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
+
+    public Airplane getAirplane() {
+        return airplane;
+    }
+
+    public void setAirplane(Airplane airplane) {
+        this.airplane = airplane;
+    }
     private Airplane airplane;
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private User user;
@@ -70,6 +78,22 @@ public class Flight {
 
     public String getFlightNumber() {
         return flightNumber;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<Seat> getSeats() {
+        return seats;
+    }
+
+    public void setSeats(List<Seat> seats) {
+        this.seats = seats;
     }
 
     public void setFlightNumber(String flightNumber) {
@@ -149,7 +173,6 @@ public class Flight {
         this.createDate = dt;
         this.updateDate = dt;
     }
-
     public Airplane getAirplane() {
         return airplane;
     }
@@ -165,5 +188,4 @@ public class Flight {
     public void setUser(User user) {
         this.user = user;
     }
-
 }

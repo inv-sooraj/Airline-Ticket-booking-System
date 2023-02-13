@@ -21,9 +21,11 @@ public class FlightController {
     @Autowired
     private FlightService flightservice;
 
+
+   
     // Add Flight
     @PostMapping
-    public FlightView add(@RequestBody FlightForm form) {
+    public  Flight add(@RequestBody FlightForm form) {
         return flightservice.save(form);
     }
 
@@ -32,12 +34,17 @@ public class FlightController {
     public List<Flight> findAll() {
         return flightservice.findAll();
     }
-
     // get flight details of a paraticular company
     
     @GetMapping("/findAll/{userId}")
     public List<Flight> findByCompany(@PathVariable("userId") Integer userId) {
         return flightservice.findByCompany(userId);
+    }
+
+    //Flight Detail
+    @GetMapping("/{flightId}")
+    public List<Flight>findByFlightId(@PathVariable("flightId")Integer flightId){
+        return flightservice.findByFlightId(flightId);
     }
     
     

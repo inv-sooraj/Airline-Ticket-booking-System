@@ -16,8 +16,11 @@ public class FlightServiceImpl implements FlightService {
     @Autowired
     private FlightRepository flightRepository;
 
-    public FlightView save(FlightForm form) {
-        return new FlightView(flightRepository.save(new Flight(form)));
+
+
+    public Flight save(FlightForm form) {
+        return flightRepository.save(new Flight(form));
+       
     }
 
     @Override
@@ -29,4 +32,12 @@ public class FlightServiceImpl implements FlightService {
     public List<Flight> findByCompany(Integer userId) {
         return flightRepository.findByUserUserId(userId);
     }
+
+
+    @Override
+    public List<Flight> findByFlightId(Integer flightId) {
+       return flightRepository.findByFlightId(flightId);
+    }
+
+
 }

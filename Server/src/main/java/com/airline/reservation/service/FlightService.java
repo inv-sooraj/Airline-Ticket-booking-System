@@ -10,10 +10,12 @@ import com.airline.reservation.view.FlightView;
 
 public interface FlightService {
 
-    FlightView save(@Valid FlightForm form);
+    Flight save(@Valid FlightForm form);
 
     List<Flight> findAll();
 
     List<Flight> findByCompany(Integer userId);
+
+    List<Flight> findByFlightId(Integer flightId);
 
 }
