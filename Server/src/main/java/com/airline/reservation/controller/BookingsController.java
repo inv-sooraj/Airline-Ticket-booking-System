@@ -38,7 +38,9 @@ public class BookingsController {
     public void addBooking(@RequestBody BookingForm form) {
         bookingService.addBooking(form);
     }
-
+    
+    //list all booking details(for admin)
+    
     @GetMapping("/status/{flag}")
     public List<Bookings> list(@RequestBody @PathVariable Byte flag) {
 
@@ -71,7 +73,7 @@ public ResponseEntity<Resource> getByStatus(@PathVariable byte status) {
         bookingService.deleteAllBYIds(ids);
     }
 
-    //list flights
+    //list bookings
     @GetMapping
     public ResponseEntity<List<Bookings>> getAllBookings(
             @RequestParam(defaultValue = "0") Integer pageNo,
@@ -83,6 +85,7 @@ public ResponseEntity<Resource> getByStatus(@PathVariable byte status) {
         return new ResponseEntity<List<Bookings>>(list, new HttpHeaders(), HttpStatus.OK);
     }
 
+    //change booking status(approve,reject)
     @PutMapping("/changeStatus/{bookingId}/{status}")
     public ResponseEntity<ResBody> changeStatus(@PathVariable Integer bookingId, @PathVariable Byte status) {
         System.out.println("status=" + status);
@@ -91,22 +94,31 @@ public ResponseEntity<Resource> getByStatus(@PathVariable byte status) {
 
     }
 
-    //get bookings done by individual user
+    //get bookings done by individual user(for passenger)
+    
     @GetMapping("/getById/{flag}")
     public List<Bookings> userBookings(@PathVariable("flag") Byte flag) {
         return bookingService.findByUserUserId(flag);
     }
+    
+    //To get cancelled booking details
+    
     @GetMapping("/getCancelled/{status}")
     public List<Bookings> getCancelled(@PathVariable("status") Byte status) {
         return bookingService.findByStatus(status);
     }
+    
+    //Get booking details of an id
+    
     @GetMapping("/{bookingId}/{flag}")
     public BookingListView get(@PathVariable("bookingId") Integer bookingId, @PathVariable("flag") Byte flag) {
         return bookingService.getBooking(bookingId, flag);
     }
     
-    @GetMapping("/getByflight/{flightId}/{flag}")
-    public List<Bookings> userBookingsByFlight(@PathVariable("flightId") Integer flightId,@PathVariable("flag") Byte flag) {
-        return bookingService.findByFlightId(flightId,flag);
+    /*To get booking deatils of a particular company(for company)*/
+    
+    @GetMapping("/getByCompany/{flag}")
+    public List<Bookings> userBookingsByCompany(@PathVariable("flag") Byte flag) {
+        return bookingService.findByCompany(flag);
     }
 }

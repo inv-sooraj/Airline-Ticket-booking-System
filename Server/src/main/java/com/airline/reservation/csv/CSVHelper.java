@@ -10,7 +10,6 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.QuoteMode;
 import com.airline.reservation.entity.Bookings;
-import com.fasterxml.jackson.annotation.JsonAlias;
 public class CSVHelper {
     public static ByteArrayInputStream tutorialsToCSV(List<Bookings> tutorials) {
         final CSVFormat format = CSVFormat.DEFAULT.withQuoteMode(QuoteMode.MINIMAL);

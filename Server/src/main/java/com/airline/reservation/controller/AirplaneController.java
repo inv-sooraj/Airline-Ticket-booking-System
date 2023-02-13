@@ -32,36 +32,41 @@ public class AirplaneController {
     private AirplaneService airplaneService;
 
     @PostMapping
-    public AirplaneListView add(@Valid @RequestBody AirplaneForm form) {
+    public AirplaneListView addAirplane(@Valid @RequestBody AirplaneForm form) {
 
-        return airplaneService.add(form);
+        return airplaneService.addPlane(form);
     }
 
+    //Method to list all airplane details
     @GetMapping
-    public Collection<Airplane> list(Principal p) {
-        return airplaneService.list();
+    public Collection<Airplane> listAllPlanes(Principal p) {
+        return airplaneService.listPlanes();
     }
 
+    //method to get details of a particular airplane id
     @GetMapping("/{airplaneId}")
-    public AirplaneListView get(@PathVariable("airplaneId") Integer airplaneId) {
-        return airplaneService.get(airplaneId);
+    public AirplaneListView getPlaneDetails(@PathVariable("airplaneId") Integer airplaneId) {
+        return airplaneService.getPlaneById(airplaneId);
     }
 
+    //method to update details od a particular airplane id
     @PutMapping("/{airplaneId}")
-    public AirplaneListView update(
+    public AirplaneListView updateAirplane(
             @PathVariable("airplaneId") Integer airplaneId,
             @Valid @RequestBody AirplaneForm form) {
-        return airplaneService.update(airplaneId, form);
+        return airplaneService.updatePlane(airplaneId, form);
     }
 
+    //Method to delete multiple airplane details
     @DeleteMapping
-    public void delete(@RequestParam("ids") ArrayList<Integer> ids) {
+    public void deleteAirplane(@RequestParam("ids") ArrayList<Integer> ids) {
         System.out.println("deleting");
-        airplaneService.deleteAllBYIds(ids);
+        airplaneService.deletePlaneByIds(ids);
     }
 
+    //method to get airplane details of particular company id(user id)
     @RequestMapping(value = "/getbyCompany/{userId}", method = RequestMethod.GET)
-    public Collection<Airplane> getByCompany(@PathVariable("userId") Integer userId) {
+    public Collection<Airplane> getAirplaneByCompany(@PathVariable("userId") Integer userId) {
         return airplaneService.getDataByUser(userId);
     }
 }

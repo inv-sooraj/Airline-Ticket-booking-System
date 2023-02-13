@@ -125,9 +125,9 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public List<Bookings> findByFlightId(Integer flightId, Byte flag) {
+    public List<Bookings> findByCompany( Byte flag) {
         
-                return bookingRepository.findByFlightFlightIdAndDeleteFlag(flightId,flag);
+                return bookingRepository.findByFlightUserUserIdAndDeleteFlag(SecurityUtil.getCurrentUserId(),flag);
 
     }
 }

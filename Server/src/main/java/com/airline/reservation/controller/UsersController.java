@@ -86,6 +86,7 @@ public class UsersController {
         return userService.get(userId);
     }
 
+    //Delete user details by listed ids
     @DeleteMapping
     public void delete(@RequestParam("ids") ArrayList<Integer> ids) {
         System.out.println("deleting");

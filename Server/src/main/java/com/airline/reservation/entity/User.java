@@ -1,5 +1,4 @@
 package com.airline.reservation.entity;
-import com.airline.reservation.form.UserForm;
 import com.airline.reservation.form.UserUpdateForm;
 import java.util.Date;
 import javax.persistence.Column;

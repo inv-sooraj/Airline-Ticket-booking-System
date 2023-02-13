@@ -1,4 +1,4 @@
-<app-admin-nav></app-admin-nav>
+<app-company-nav></app-company-nav>
 <section class="main_content dashboard_part large_header_bg">
   <div class="col-lg-12">
     <div class="white_box mb_30">
@@ -6,7 +6,13 @@
         <div class="col-lg-6">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">User Details</h5>
+              <h5
+                class="modal-title text_white"
+                id="exampleModalLabel"
+                style="margin-left: 35%"
+              >
+                Booking Details
+              </h5>
             </div>
             <div class="modal-body">
               <div class="container">
@@ -50,88 +56,98 @@
                                               <label
                                                 class="no-margin text-custom-blue"
                                               >
-                                                User Name </label
-                                              >{{ data.fullName }}
+                                                Passenger Name </label
+                                              >{{ response.user.fullName }}
                                             </li>
                                             <li class="text-light-dark">
                                               <label
                                                 class="no-margin text-custom-blue"
                                               >
-                                                Email: </label
-                                              >{{ data.email }}
+                                                Flight Name : </label
+                                              >{{
+                                                response.flight.flightNumber
+                                              }}
                                             </li>
                                             <li class="text-light-dark">
                                               <label
                                                 class="no-margin text-custom-blue"
                                               >
-                                                Date of birth : </label
-                                              >{{ data.dob }}
+                                                Departing From : </label
+                                              >{{ response.flight.departure }}
                                             </li>
                                             <li class="text-light-dark">
                                               <label
                                                 class="no-margin text-custom-blue"
                                               >
-                                                Address </label
-                                              >{{ data.address }}
+                                                Destination: </label
+                                              >{{ response.flight.destination }}
                                             </li>
                                             <li class="text-light-dark">
                                               <label
                                                 class="no-margin text-custom-blue"
                                               >
-                                                Country: </label
-                                              >{{ data.country }}
+                                                Date of Departing: </label
+                                              >{{
+                                                response.flight.depDateTime
+                                                  | date
+                                              }}
                                             </li>
                                             <li class="text-light-dark">
                                               <label
                                                 class="no-margin text-custom-blue"
                                               >
-                                                Phone Number: </label
-                                              >{{ data.phone }}
+                                                Time of Departing: </label
+                                              >{{
+                                                response.flight.depDateTime
+                                                  | date : "HH:mm"
+                                              }}
                                             </li>
                                             <li class="text-light-dark">
                                               <label
                                                 class="no-margin text-custom-blue"
                                               >
-                                                City: </label
-                                              >{{ data.city }}
+                                                Date of Arrival: </label
+                                              >{{
+                                                response.flight.destDateTime
+                                                  | date
+                                              }}
                                             </li>
                                             <li class="text-light-dark">
                                               <label
                                                 class="no-margin text-custom-blue"
                                               >
-                                                Role:
-                                              </label>
-                                              <span
-                                                *ngIf="data.role == 1"
-                                                class="price"
-                                                >Admin</span
-                                              >
-                                              <span
-                                                *ngIf="data.role == 2"
-                                                class="price"
-                                                >Company</span
-                                              >
-                                              <span
-                                                *ngIf="data.role == 3"
-                                                class="price"
-                                                >Passenger</span
-                                              >
+                                                Time of Arrival: </label
+                                              >{{
+                                                response.flight.destDateTime
+                                                  | date : "HH:mm"
+                                              }}
                                             </li>
                                           </ul>
                                         </div>
                                         <button
                                           type="submit"
                                           class="btn_1 full_width text-center"
-                                          (click)="deleteAccount()"
+                                          (click)="
+                                            approve(response.bookingId, 0)
+                                          "
                                         >
-                                          Delete</button
+                                          Reject</button
                                         ><br /><br />
                                         <button
                                           type="submit"
                                           class="btn_1 full_width text-center"
-                                          (click)="cancel()"
+                                          (click)="
+                                            approve(response.bookingId, 1)
+                                          "
                                         >
-                                          Cancel
+                                          Approve</button
+                                        ><br /><br />
+                                        <button
+                                          type="submit"
+                                          class="btn_1 full_width text-center"
+                                          [routerLink]="['/reservation-list']"
+                                        >
+                                          cancel
                                         </button>
                                       </div>
                                     </div>

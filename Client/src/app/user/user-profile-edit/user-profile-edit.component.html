@@ -1,68 +1,125 @@
-<app-header></app-header>
- <br><br>
-    <section class="h-100 h-custom gradient-custom-2 pb-5">
-        <form [formGroup]="profileEditForm">
-       <div class="container  h-100">
-          <h3 class="text-center">My Profile</h3>
-          <div class="row d-flex justify-content-center align-items-center h-100 border">
-             <div class="col-12">
-                <div class="card-body p-0">
-                   <div class="row g-0">
-                      <div class="col-lg-6 bg-light">
-                         <div class="p-5">
-                            <div class="mb-4 pb-2">
-                               <div class="form-outline">
-                                  <input formControlName="fullname" type="text" id="form3Examplev4" class="form-control form-control-lg"[(ngModel)]="items.fullName" />
-                               </div>
-                            </div>
-                            <div class="mb-4 pb-2">
-                               <div class="form-outline">
-                                  <input formControlName="dob" type="date" id="form3Examplev4" class="form-control form-control-lg" [(ngModel)]="items.dob"/>
-                               </div>
-                            </div>
-                            <div class="mb-4 pb-2">
-                               <div class="form-outline">
-                                  <input formControlName="email" type="text" id="form3Examplev4" class="form-control form-control-lg" [(ngModel)]="items.email" />
-                               </div>
-                            </div>
-                            <div class="mb-4 pb-2">
-                               <div class="form-outline">
-                                  <input formControlName="passportNo" type="text" id="form3Examplev4" class="form-control form-control-lg" [(ngModel)]="items.passportNumber"/>
-                               </div>
-                            </div>
-                            <div class="mb-4 pb-2">
-                               <div class="form-outline">
-                                  <input formControlName="phone" type="text" id="form3Examplev4" class="form-control form-control-lg" [(ngModel)]="items.phone"/>
-                               </div>
-                            </div>
-                            <div class="mb-4 pb-2">
-                               <select  class="form-control form-control-lg" formControlName="country"  id="exampleFormControlSelect1"(change)="changeCountry($event)">
-                                  <option selected>{{items.country}}</option>
-                                  <option *ngFor="let country of country">{{country}}</option>
-                               </select>
-                            </div>
-                         </div>
-                      </div>
-                      <div class="col-lg-6 bg-indigo text-white mt-3 mb-3">
-                         <div class="p-5">
-                            <div class="mb-4 pb-2">
-                               <div class="form-outline form-white">
-                                  <textarea rows="4"formControlName="address" class="form-control form-control-lg" [(ngModel)]="items.address" ></textarea>
-                               </div>
-                            </div>
-                            <div class="mb-4 pb-2">
-                               <div class="form-outline form-white">
-                                  <input  formControlName="city" type="text" id="form3Examplea9" class="form-control form-control-lg" [(ngModel)]="items.city" />
-                               </div>
-                            </div>
-                            <button type="button" class="btn2" (click)="editUser()">Update</button>
-                         <button type="button" onclick="window.location.href='index.html';"class="btn btn-outline-light btn-lg btn-block">Cancel</button>
-                         </div>
-                      </div>
-                   </div>
+<app-header></app-header> <br /><br />
+<section class="h-100 h-custom gradient-custom-2 pb-5">
+  <form [formGroup]="profileEditForm">
+    <div class="container h-100">
+      <h3 class="text-center">My Profile</h3>
+      <div
+        class="row d-flex justify-content-center align-items-center h-100 border"
+      >
+        <div class="col-12">
+          <div class="card-body p-0">
+            <div class="row g-0">
+              <div class="col-lg-6 bg-light">
+                <div class="p-5">
+                  <div class="mb-4 pb-2">
+                    <div class="form-outline">
+                      <input
+                        formControlName="fullname"
+                        type="text"
+                        id="form3Examplev4"
+                        class="form-control form-control-lg"
+                        [(ngModel)]="items.fullName"
+                      />
+                    </div>
+                  </div>
+                  <div class="mb-4 pb-2">
+                    <div class="form-outline">
+                      <input
+                        formControlName="dob"
+                        type="date"
+                        id="form3Examplev4"
+                        class="form-control form-control-lg"
+                        [(ngModel)]="items.dob"
+                      />
+                    </div>
+                  </div>
+                  <div class="mb-4 pb-2">
+                    <div class="form-outline">
+                      <input
+                        formControlName="email"
+                        type="text"
+                        id="form3Examplev4"
+                        class="form-control form-control-lg"
+                        [(ngModel)]="items.email"
+                      />
+                    </div>
+                  </div>
+                  <div class="mb-4 pb-2">
+                    <div class="form-outline">
+                      <input
+                        formControlName="passportNo"
+                        type="text"
+                        id="form3Examplev4"
+                        class="form-control form-control-lg"
+                        [(ngModel)]="items.passportNumber"
+                      />
+                    </div>
+                  </div>
+                  <div class="mb-4 pb-2">
+                    <div class="form-outline">
+                      <input
+                        formControlName="phone"
+                        type="text"
+                        id="form3Examplev4"
+                        class="form-control form-control-lg"
+                        [(ngModel)]="items.phone"
+                      />
+                    </div>
+                  </div>
+                  <div class="mb-4 pb-2">
+                    <select
+                      class="form-control form-control-lg"
+                      formControlName="country"
+                      id="exampleFormControlSelect1"
+                      (change)="changeCountry($event)"
+                    >
+                      <option selected>{{ items.country }}</option>
+                      <option *ngFor="let country of country">
+                        {{ country }}
+                      </option>
+                    </select>
+                  </div>
                 </div>
-             </div>
+              </div>
+              <div class="col-lg-6 bg-indigo text-white mt-3 mb-3">
+                <div class="p-5">
+                  <div class="mb-4 pb-2">
+                    <div class="form-outline form-white">
+                      <textarea
+                        rows="4"
+                        formControlName="address"
+                        class="form-control form-control-lg"
+                        [(ngModel)]="items.address"
+                      ></textarea>
+                    </div>
+                  </div>
+                  <div class="mb-4 pb-2">
+                    <div class="form-outline form-white">
+                      <input
+                        formControlName="city"
+                        type="text"
+                        id="form3Examplea9"
+                        class="form-control form-control-lg"
+                        [(ngModel)]="items.city"
+                      />
+                    </div>
+                  </div>
+                  <button type="button" class="btn2" (click)="editUser()">
+                    Update
+                  </button>
+                  <button
+                    type="button"
+                    onclick="window.location.href='index.html';"
+                    class="btn btn-outline-light btn-lg btn-block"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
-       </div>
-    </form>
-    </section>
+        </div>
+      </div>
+    </div>
+  </form>
+</section>

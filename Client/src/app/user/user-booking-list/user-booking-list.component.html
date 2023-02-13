@@ -1,222 +1,322 @@
 <app-header></app-header>
 <head>
-   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width,initial-scale=1">
-   <meta name="keywords" content="#">
-   <meta name="description" content="#">
-   <title> Booking List</title>
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
- </head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="keywords" content="#" />
+  <meta name="description" content="#" />
+  <title>Booking List</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+</head>
 <div class="container bg-light p-4">
-      <form [formGroup]="bookingListForm">
-         <div class="search-hero">
-            <input type="text" placeholder="Search Here " formControlName="search" class="searchFieldCustom" [(ngModel)]="searchText" autocomplete="off">
-         </div>
-      </form>
+  <form [formGroup]="bookingListForm">
+    <div class="search-hero">
+      <input
+        type="text"
+        placeholder="Search Here "
+        formControlName="search"
+        class="searchFieldCustom"
+        [(ngModel)]="searchText"
+        autocomplete="off"
+      />
+    </div>
+  </form>
 
-   <table class=" p-2">
-      <thead>
-         <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Flight No</th>
-            <th scope="col">Departing</th>
-            <th scope="col">Destination</th>
-            <th scope="col">Departing Date</th>
-            <th scope="col">Status</th>
-            <th scope="col">View</th>
-         </tr>
-      </thead>
-      <tbody>
-         <tr *ngFor="let booking of items | filter:searchText let i = index" >
-          <td>{{booking.bookingId}}</td>
-            <td>{{booking.flight.flightNumber}}</td>
-            <td>{{booking.flight.departure}}</td>
-            <td>{{booking.flight.destination}}</td>
-            <td>{{booking.flight.depDateTime| date}}</td>
-            <td  *ngIf="booking.status ==0"style="color: red;">Rejected</td>
-            <td  *ngIf="booking.status ==1"style="color: green;">Approved</td>
-            <td  *ngIf="booking.status ==2"style="color: orange;">Pending</td>
-            <td  *ngIf="booking.status ==3" style="color: rgb(58, 4, 4);">Cancelled</td>
-            <td>
-               <a  class="status_btn" data-toggle="modal" data-target="#exampleModal" (click)="getBookingDetails(booking.bookingId)">View</a>
-            </td>
-         </tr>
-         
-      </tbody>
-   </table>
+  <table class="p-2">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Flight No</th>
+        <th scope="col">Departing</th>
+        <th scope="col">Destination</th>
+        <th scope="col">Departing Date</th>
+        <th scope="col">Status</th>
+        <th scope="col">View</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let booking of items | filter : searchText; let i = index">
+        <td>{{ booking.bookingId }}</td>
+        <td>{{ booking.flight.flightNumber }}</td>
+        <td>{{ booking.flight.departure }}</td>
+        <td>{{ booking.flight.destination }}</td>
+        <td>{{ booking.flight.depDateTime | date }}</td>
+        <td *ngIf="booking.status == 0" style="color: red">Rejected</td>
+        <td *ngIf="booking.status == 1" style="color: green">Approved</td>
+        <td *ngIf="booking.status == 2" style="color: orange">Pending</td>
+        <td *ngIf="booking.status == 3" style="color: rgb(58, 4, 4)">
+          Cancelled
+        </td>
+        <td>
+          <a
+            class="status_btn"
+            data-toggle="modal"
+            data-target="#exampleModal"
+            (click)="getBookingDetails(booking.bookingId)"
+            >View</a
+          >
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-   aria-hidden="true">
-   <div class="modal-dialog" role="document">
-      <div class="modal-content">
-         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Booking Details</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-         </div>
-         <div class="modal-body">
-            <div class="container">
-               <div class="row">
-                  <div class="col-12">
-                     <div class="listing-details-inner bx-wrapper bg-custom-white padding-20">
-                        <div class="row">
-                           <div class="col-lg-12">
-                              <div class="listing-meta-sec">
-                                 <div class="tabs">
-                                    <div class="tab-content">
-                                       <div class="tab-pane fade active show" id="overview">
-                                          <div class="tab-inner">
-                                             <div class="row">
-                                                <div class="col-12">
-                                                   <div class="flights-grid ">
-                                                      <div
-                                                         class="flights-grid-wrapper bx-wrapper">
-                                                         <div class="image-sec animate-img">
-                                                            <a href="#">
-                                                            <img src="/assets/img/user/flights/1.jpg"
-                                                               class="full-width"
-                                                               alt="img">
-                                                            </a>
-                                                         </div>
-                                                         <div
-                                                            class="flights-grid-caption padding-20 bg-custom-white p-relative">
-                                                            <div class="heading-sec">
-                                                               <div class="title">
-                                                                  <h4 class="fs-16">
-                                                                     <a href="#"
-                                                                        class="text-custom-black">{{item.departure}}
-                                                                     <i
-                                                                        class='fa fa-plane'></i>
-                                                                        {{item.destination}}</a>
-                                                                     <br><span
-                                                                        class="text-light-dark">Total
-                                                                     : 6000 </span>
-                                                                  </h4>
-                                                               </div>
-                                                               <div class="right-side">
-                                                                  <span *ngIf="item.status ==0"
-                                                                     class="price"><small>Status</small>Rejected</span>
-                                                                  <span *ngIf="item.status ==1"
-                                                                     class="price"><small>Status</small>Approved</span>
-                                                                  <span *ngIf="item.status ==2"
-                                                                     class="price"><small>Status</small>Pending</span>   
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                                <div class="col-12">
-                                                   <div
-                                                      class="hotel-type mb-xl-20 bg-light-white padding-10">
-                                                      <ul class="custom">
-                                                         <li class="text-light-dark">
-                                                            <label
-                                                               class="no-margin text-custom-blue">
-                                                            Passenger Name
-                                                            </label>{{item.user.fullName}}
-                                                         </li>
-                                                         <li class="text-light-dark">
-                                                            <label
-                                                               class="no-margin text-custom-blue">
-                                                               Flight Name :
-                                                            </label>{{item.flight.flightNumber}}
-                                                         </li>
-                                                         <!-- <li class="text-light-dark">
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Booking Details</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div
+                class="listing-details-inner bx-wrapper bg-custom-white padding-20"
+              >
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="listing-meta-sec">
+                      <div class="tabs">
+                        <div class="tab-content">
+                          <div class="tab-pane fade active show" id="overview">
+                            <div class="tab-inner">
+                              <div class="row">
+                                <div class="col-12">
+                                  <div class="flights-grid">
+                                    <div
+                                      class="flights-grid-wrapper bx-wrapper"
+                                    >
+                                      <div class="image-sec animate-img">
+                                        <a href="#">
+                                          <img
+                                            src="/assets/img/user/flights/1.jpg"
+                                            class="full-width"
+                                            alt="img"
+                                          />
+                                        </a>
+                                      </div>
+                                      <div
+                                        class="flights-grid-caption padding-20 bg-custom-white p-relative"
+                                      >
+                                        <div class="heading-sec">
+                                          <div class="title">
+                                            <h4 class="fs-16">
+                                              <a
+                                                href="#"
+                                                class="text-custom-black"
+                                                >{{ item.departure }}
+                                                <i class="fa fa-plane"></i>
+                                                {{ item.destination }}</a
+                                              >
+                                              <br /><span
+                                                class="text-light-dark"
+                                                >Total : 6000
+                                              </span>
+                                            </h4>
+                                          </div>
+                                          <div class="right-side">
+                                            <span
+                                              *ngIf="item.status == 0"
+                                              class="price"
+                                              ><small>Status</small
+                                              >Rejected</span
+                                            >
+                                            <span
+                                              *ngIf="item.status == 1"
+                                              class="price"
+                                              ><small>Status</small
+                                              >Approved</span
+                                            >
+                                            <span
+                                              *ngIf="item.status == 2"
+                                              class="price"
+                                              ><small>Status</small
+                                              >Pending</span
+                                            >
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-12">
+                                  <div
+                                    class="hotel-type mb-xl-20 bg-light-white padding-10"
+                                  >
+                                    <ul class="custom">
+                                      <li class="text-light-dark">
+                                        <label
+                                          class="no-margin text-custom-blue"
+                                        >
+                                          Passenger Name </label
+                                        >{{ item.user.fullName }}
+                                      </li>
+                                      <li class="text-light-dark">
+                                        <label
+                                          class="no-margin text-custom-blue"
+                                        >
+                                          Flight Name : </label
+                                        >{{ item.flight.flightNumber }}
+                                      </li>
+                                      <!-- <li class="text-light-dark">
                                                             <label
                                                                class="no-margin text-custom-blue">
                                                             Flight Number:
                                                             </label>7232
                                                          </li> -->
-                                                         <!-- <li class="text-light-dark">
+                                      <!-- <li class="text-light-dark">
                                                             <label
                                                                class="no-margin text-custom-blue">
                                                             Model Number:
                                                             </label>ME312
                                                          </li> -->
-                                                         <li class="text-light-dark">
-                                                            <label
-                                                               class="no-margin text-custom-blue">
-                                                            Departing From :
-                                                            </label>{{item.flight.departure}}
-                                                         </li>
-                                                         <li class="text-light-dark">
-                                                            <label
-                                                               class="no-margin text-custom-blue">
-                                                            Destination:
-                                                            </label>{{item.flight.destination}}
-                                                         </li>
-                                                         <li class="text-light-dark">
-                                                            <label
-                                                               class="no-margin text-custom-blue">
-                                                            Date of Departing:
-                                                            </label>{{item.flight.depDateTime | date}}
-                                                         </li>
-                                                         <li class="text-light-dark">
-                                                            <label
-                                                               class="no-margin text-custom-blue">
-                                                            Time of Departing:
-                                                            </label>{{item.flight.depDateTime | date:"HH:mm"}}
-                                                         </li>
-                                                         <li class="text-light-dark">
-                                                            <label
-                                                               class="no-margin text-custom-blue">
-                                                            Date of Arrival:
-                                                            </label>{{item.flight.destDateTime | date}}
-                                                         </li>
-                                                         <li class="text-light-dark">
-                                                            <label
-                                                               class="no-margin text-custom-blue">
-                                                            Time of Arrival:
-                                                            </label>{{item.flight.destDateTime| date:"HH:mm"}}
-                                                         </li>
-                                                      </ul>
-                                                   </div>
-                                                </div>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
+                                      <li class="text-light-dark">
+                                        <label
+                                          class="no-margin text-custom-blue"
+                                        >
+                                          Departing From : </label
+                                        >{{ item.flight.departure }}
+                                      </li>
+                                      <li class="text-light-dark">
+                                        <label
+                                          class="no-margin text-custom-blue"
+                                        >
+                                          Destination: </label
+                                        >{{ item.flight.destination }}
+                                      </li>
+                                      <li class="text-light-dark">
+                                        <label
+                                          class="no-margin text-custom-blue"
+                                        >
+                                          Date of Departing: </label
+                                        >{{ item.flight.depDateTime | date }}
+                                      </li>
+                                      <li class="text-light-dark">
+                                        <label
+                                          class="no-margin text-custom-blue"
+                                        >
+                                          Time of Departing: </label
+                                        >{{
+                                          item.flight.depDateTime
+                                            | date : "HH:mm"
+                                        }}
+                                      </li>
+                                      <li class="text-light-dark">
+                                        <label
+                                          class="no-margin text-custom-blue"
+                                        >
+                                          Date of Arrival: </label
+                                        >{{ item.flight.destDateTime | date }}
+                                      </li>
+                                      <li class="text-light-dark">
+                                        <label
+                                          class="no-margin text-custom-blue"
+                                        >
+                                          Time of Arrival: </label
+                                        >{{
+                                          item.flight.destDateTime
+                                            | date : "HH:mm"
+                                        }}
+                                      </li>
+                                    </ul>
+                                  </div>
+                                </div>
                               </div>
-                           </div>
+                            </div>
+                          </div>
                         </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" data-dismiss="modal">Back</button>
-                  <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#cancellation" >Cancel booking</button>
-                  <div class="modal fade bd-example-modal-lg" id="cancellation" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                      <div class="modal-dialog modal-lg">
-                         <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="text-center">Reason For Cancellation</h5>
-                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                               <span aria-hidden="true">&times;</span>
-                               </button>
-                            </div>        
-                            <div class="modal-body">
-                              
-                              <div class="form-outline form-white">
-                                  <textarea rows="6" placeholder=" Reason for Cancellation"
-                                     class="form-control form-control-lg"></textarea>
-                               </div>
-                            </div>
-                            <div class="modal-footer">
-                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                               <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="changeStaus()">Submit changes</button>
-                            </div>
-                         </div>
                       </div>
-                   </div>
-               </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-         </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">
+              Back
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-toggle="modal"
+              data-target="#cancellation"
+            >
+              Cancel booking
+            </button>
+            <div
+              class="modal fade bd-example-modal-lg"
+              id="cancellation"
+              tabindex="-1"
+              role="dialog"
+              aria-labelledby="myLargeModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="text-center">Reason For Cancellation</h5>
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-outline form-white">
+                      <textarea
+                        rows="6"
+                        placeholder=" Reason for Cancellation"
+                        class="form-control form-control-lg"
+                      ></textarea>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-dismiss="modal"
+                    >
+                      Close
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      data-dismiss="modal"
+                      (click)="changeStaus()"
+                    >
+                      Submit changes
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-   </div>
+    </div>
+  </div>
 </div>
 <!-- <app-footer></app-footer> -->

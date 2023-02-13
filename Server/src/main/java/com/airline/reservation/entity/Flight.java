@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -19,20 +18,23 @@ import com.airline.reservation.json.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.JoinColumn;
 
-@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 public class Flight {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer flightId;
     private String flightNumber;
     private String departure;
-     @Json.DateTimeFormat
+    @Json.DateTimeFormat
     private Date depDateTime;
     private String destination;
     @Json.DateTimeFormat
     private Date destDateTime;
     private byte deleteFlag;
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+
     public Airplane getAirplane() {
         return airplane;
     }
@@ -40,8 +42,6 @@ public class Flight {
     public void setAirplane(Airplane airplane) {
         this.airplane = airplane;
     }
-
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Airplane airplane;
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private User user;
@@ -52,6 +52,7 @@ public class Flight {
     @OneToMany(targetEntity = Seat.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "cp_fk", referencedColumnName = "flight_id", nullable = false)
     private List<Seat> seats;
+
     public static enum DeleteFlag {
         DELETE((byte) 0),
         ACTIVE((byte) 1);
@@ -62,6 +63,7 @@ public class Flight {
             this.value = value;
         }
     }
+
     public Flight(Integer flightId) {
         this.flightId = flightId;
     }
@@ -154,20 +156,14 @@ public class Flight {
         this.updateDate = updateDate;
     }
 
-    // public List<Seat> getSeats() {
-    //     return seats;
-    // }
+    public Flight() {
+    }
 
-    // public void setSeats(List<Seat> seats) {
-    //     this.seats = seats;
-    // }
-public Flight(){}
- 
     public Flight(FlightForm form) {
         this.flightNumber = form.getFlightNumber();
         this.departure = form.getDeparture();
-        this.airplane=new Airplane(form.getAirplaneId());
-        this.user=new User(form.getUserId());
+        this.airplane = new Airplane(form.getAirplaneId());
+        this.user = new User(form.getUserId());
         this.depDateTime = form.getDepDateTime();
         this.destination = form.getDestination();
         this.destDateTime = form.getDestDateTime();
@@ -177,5 +173,19 @@ public Flight(){}
         this.createDate = dt;
         this.updateDate = dt;
     }
+    public Airplane getAirplane() {
+        return airplane;
+    }
 
+    public void setAirplane(Airplane airplane) {
+        this.airplane = airplane;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
