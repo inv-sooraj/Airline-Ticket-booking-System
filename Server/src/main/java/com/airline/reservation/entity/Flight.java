@@ -34,14 +34,6 @@ public class Flight {
     private Date destDateTime;
     private byte deleteFlag;
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
-
-    public Airplane getAirplane() {
-        return airplane;
-    }
-
-    public void setAirplane(Airplane airplane) {
-        this.airplane = airplane;
-    }
     private Airplane airplane;
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private User user;
@@ -68,6 +60,13 @@ public class Flight {
         this.flightId = flightId;
     }
 
+    public Airplane getAirplane() {
+        return airplane;
+    }
+
+    public void setAirplane(Airplane airplane) {
+        this.airplane = airplane;
+    }
     public Integer getFlightId() {
         return flightId;
     }
@@ -172,20 +171,5 @@ public class Flight {
         Date dt = new Date();
         this.createDate = dt;
         this.updateDate = dt;
-    }
-    public Airplane getAirplane() {
-        return airplane;
-    }
-
-    public void setAirplane(Airplane airplane) {
-        this.airplane = airplane;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 }
