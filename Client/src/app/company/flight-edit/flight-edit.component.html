@@ -10,7 +10,7 @@
               <div class="white_card_header">
                 <div class="box_header m-0">
                   <div class="main-title">
-                    <h3 class="m-0">Flight Registration</h3>
+                    <h3 class="m-0">Flight Details</h3>
                     <br />
                   </div>
                 </div>
@@ -199,13 +199,21 @@
                 </div>
               </div>
               <div class="white_card_body">
-                <button class="btn btn-dark" (click)="addCreds()" id="btnadd">
+               
+                <!-- <button class="btn btn-dark" (click)="addCreds()" id="btnadd">
                   Click here to add seat details</button
-                ><br />
+                ><br> -->
 
                 <!--Formarray to store seat details-->
 
                 <div class="mb-4">
+                  <!-- <div *ngFor="
+                  let seatDetail of seatsArray">
+                    <li>
+                      {{seatDetail.seatType}}
+                    </li>
+                  </div> -->
+                  
                   <div
                     formArrayName="seatDetails"
                     *ngFor="
@@ -214,35 +222,45 @@
                     "
                     [formGroupName]="i"
                   >
+                  
                     <br /><ng-container [formGroupName]="i">
-                      <div class="mb-4 pb-2" *ngfor="let data of response.seats">
-                        <select
+                      <!-- <div *ngFor="
+                      let seatDetail of seatsArray">
+                        <li>
+                          {{seatDetail.seatType}}
+                        </li>
+                      </div> -->
+                      <div class="mb-4 pb-2" *ngfor="let seatDetail of seatsArray">
+                         <select
                           class="form-control"
                           formControlName="seatType"
                           id="dropdownMenuButton1"
+                          
                         >
-                          <option value="data.seatType">{{data.seatType}}</option>
-                          <option value="economy">economy</option>
+                          <option value="seatDetail.seatType">{{seatDetail.seatType}}</option>
+                          <option value="economy">{{seatDetail.number}}</option>
                           <option value=" premium economy">
                             premium economy
                           </option>
                           <option value="business">business</option>
                           <option value="first class">first class</option>
                         </select>
-                        <input
+                         <input
                           class="form-control"
+                          type="text"
                           placeholder="No of seats"
                           formControlName="seatNo"
                           id="exampleInputPassword1"
-                          [value]="data.number"
+                          
                         />
                         <input
                           class="form-control"
+                          type="text"
                           placeholder="Price"
                           formControlName="price"
                           id="exampleInputPassword2"
-                          [value]="data.price"
-                        />
+                          
+                        /> 
                       </div>
                     </ng-container>
                   </div>

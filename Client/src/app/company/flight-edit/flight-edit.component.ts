@@ -136,7 +136,7 @@ export class FlightEditComponent {
       },
       complete: () => {},
     });
-    console.log(this.seatsArray);
+    console.log("array for seat",this.seatsArray);
     
   }
 }
