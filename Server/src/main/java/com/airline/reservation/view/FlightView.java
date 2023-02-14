@@ -2,10 +2,12 @@ package com.airline.reservation.view;
 
 
 import com.airline.reservation.entity.Flight;
+import com.airline.reservation.entity.Seat;
 import com.airline.reservation.entity.User;
 import com.airline.reservation.form.FlightForm;
 import com.airline.reservation.json.Json;
 import java.util.Date;
+import java.util.List;
 
 public class FlightView {
 
@@ -18,7 +20,7 @@ public class FlightView {
     @Json.DateTimeFormat
     private Date destDateTime;
     private User user;
-  
+    private List<Seat> seats;
    
     public FlightView(Flight flight) {
         
@@ -29,7 +31,7 @@ public class FlightView {
         this.destination=flight.getDestination();
         this.destDateTime=flight.getDestDateTime();
         this.user=flight.getUser();
-        
+        this.seats=flight.getSeats();
         
     }
 
@@ -60,8 +62,12 @@ public class FlightView {
         return destDateTime;
     }
 
-    public User getUser() {
-        return user;
+//    public User getUser() {
+//        return user;
+//    }
+
+    public List<Seat> getSeats() {
+        return seats;
     }
 
     

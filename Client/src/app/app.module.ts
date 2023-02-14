@@ -37,6 +37,8 @@ import { AdminProfileComponent } from "./admin-profile/admin-profile.component";
 import { CancelledReservationListComponent } from "./admin/cancelled-reservation-list/cancelled-reservation-list.component";
 import { UserListComponent } from "./user-list/user-list.component";
 import { ReservationDetailsComponent } from "./reservation-details/reservation-details.component";
+import { FlightEditComponent } from './company/flight-edit/flight-edit.component';
+import { CommonModule } from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -70,12 +72,14 @@ import { ReservationDetailsComponent } from "./reservation-details/reservation-d
     CancelledReservationListComponent,
     UserListComponent,
     ReservationDetailsComponent,
+    FlightEditComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserModule,
     FormsModule,
+    CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
     Ng2SearchPipeModule,
