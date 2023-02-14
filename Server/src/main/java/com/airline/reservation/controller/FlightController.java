@@ -63,7 +63,7 @@ public class FlightController {
     @GetMapping
     public ResponseEntity<List<Flight>> getAllBookings(
             @RequestParam(defaultValue = "0") Integer pageNo,
-            @RequestParam(defaultValue = "0") Integer pageSize,
+            @RequestParam(defaultValue = "5") Integer pageSize,
             @RequestParam String departure, @RequestParam String destination, @RequestParam String date,    
             @RequestParam(defaultValue = "flight_id") String sortBy,
             @RequestParam(defaultValue = "ASC") String sortDir) {

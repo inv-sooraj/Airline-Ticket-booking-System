@@ -7,6 +7,10 @@ import { environment } from "src/environments/environment";
   providedIn: "root",
 })
 export class ApiService {
+  searchFlight(formValue: any) {
+   return this.httpClient.get(this.baseUrl+"/flight")
+  }
+  
   baseUrl = environment.baseUrl;
   constructor(private httpClient: HttpClient) {}
   /** Method to get the accesstocken stored in the local storage */

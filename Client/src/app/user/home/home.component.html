@@ -1,5 +1,6 @@
  <app-header></app-header> 
     <head>
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -58,34 +59,33 @@
                      <div class="tab-content bg-custom-white bx-wrapper padding-20">
                         <div class="tab-pane active" id="hotel">
                            <div class="tab-inner">
-                              <form>
+                              <form [formGroup]="searchForm">
                                  <div class="row">
                                     <div class="col-lg-3 col-md-6">
                                        <div class="form-group">
                                           <label class="fs-14 text-custom-black fw-500">Departing From</label>
-                                          <input type="text" name="#" class="form-control form-control-custom" placeholder=" Departing Place">
+                                          <input type="text" name="departure" formControlName="departure"  class="form-control form-control-custom" placeholder=" Departing Place">
                                        </div>
                                     </div>
                                     <div class="col-lg-3 col-md-6">
                                        <div class="form-group">
                                           <label class="fs-14 text-custom-black fw-500">Destination To</label>
-                                          <input type="text" name="#" class="form-control form-control-custom" placeholder=" Departing Place">
+                                          <input type="text" name="destination" formControlName="destination" class="form-control form-control-custom" placeholder=" Departing Place">
                                        </div>
                                     </div>
                                     <div class="col-lg-3 col-md-6">
                                        <div class="form-group">
-                                          <label class="fs-14 text-custom-black fw-500">Arrival Date</label>
+                                          <label class="fs-14 text-custom-black fw-500">Departure Date</label>
                                           <div class="input-group group-form">
-                                             <input type="text" name="#" class="form-control form-control-custom datepickr" placeholder="mm/dd/yy" readonly>
-                                             <span class="input-group-append">
-                                             <i style="color: aliceblue;" class="fa fa-calendar"></i>
-                                             </span>
+                                             <input type="date"  min="{{ today }}"
+                                             name="date" formControlName="date" class="form-control form-control-custom " placeholder="mm/dd/yy" >
+                                            
                                           </div>
                                        </div>
                                     </div>
                                     <div class="col-lg-3 col-md-6">
                                        <label class="submit"></label>
-                                       <button type="submit" onclick = "window.location.href='flights.html';" class="btn-first btn-submit full-width btn-height">Search Flight </button>
+                                       <button type="submit" (click)="onSubmit()" class="btn-first btn-submit full-width btn-height">Search Flight </button>
                                     </div>
                                  </div>
                            

@@ -69,8 +69,7 @@ Version: 1.0.0
 	// Datepicker
 	$(document).ready(function () {
 	    $('.datepickr').datepicker({
-	      timepicker: false,
-	      minDate: new Date()
+	     datepicker:true
 	    });
 	    $('.dob').datepicker({
 	      timepicker: false,
