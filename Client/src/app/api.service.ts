@@ -1,5 +1,6 @@
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
 
 @Injectable({
@@ -24,11 +25,13 @@ export class ApiService {
       this.getHeader()
     );
   }
+  getRandom(){
+    console.log(this.baseUrl+"/flight/random");
+    return this.httpClient.get(this.baseUrl+"/flight/random",this.getHeader());
+  }
+ 
   getUserBookingList() {
-    return this.httpClient.get(
-      this.baseUrl + "/bookings/getById/1",
-      this.getHeader()
-    );
+    return this.httpClient.get(this.baseUrl + "/bookings/getById/1",this.getHeader());
   }
   updateUser(userid: any, updateForm: any) {
     return this.httpClient.put(
