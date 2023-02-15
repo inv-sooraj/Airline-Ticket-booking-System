@@ -55,11 +55,11 @@ public class FlightServiceImpl implements FlightService {
        return flightRepository.findByFlightId(flightId);
     }
     @Override
-    public List<Flight> searchResult(Integer pageNo, Integer pageSize, String sortBy, String sortDir, String departure,String destination,String date) {
+    public List<Flight> searchResult(Integer pageNo, Integer pageSize, String sortBy, String sortDir, String departure,String destination,String depDateTime) {
         Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending();
         Pageable paging = PageRequest.of(pageNo, pageSize, sort);
-        System.out.println("date - "+ date);
-        Page<Flight> pagedResult = flightRepository.findByDepartureAndDestinationAndDepDateTime(paging, departure,destination,date);
+        System.out.println("date - "+ depDateTime);
+        Page<Flight> pagedResult = flightRepository.findByDepartureAndDestinationAndDepDateTime(paging, departure,destination,depDateTime);
         if (departure == "") {
             Page<Flight> AllpagedResult = flightRepository.findAll(paging);
             if (AllpagedResult.hasContent()) {

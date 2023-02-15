@@ -78,14 +78,14 @@
                                           <label class="fs-14 text-custom-black fw-500">Departure Date</label>
                                           <div class="input-group group-form">
                                              <input type="date"  min="{{ today }}"
-                                             name="date" formControlName="date" class="form-control form-control-custom " placeholder="mm/dd/yy" >
+                                             name="depDateTime" formControlName="depDateTime" class="form-control form-control-custom " placeholder="mm/dd/yy" >
                                             
                                           </div>
                                        </div>
                                     </div>
                                     <div class="col-lg-3 col-md-6">
                                        <label class="submit"></label>
-                                       <button type="submit" (click)="onSubmit()" class="btn-first btn-submit full-width btn-height">Search Flight </button>
+                                       <button  type="submit"  class="btn-first btn-submit full-width btn-height" [routerLink]="['/user-flight-list', {destination: searchForm.value.destination,departure:searchForm.value.departure,depDateTime:searchForm.value.depDateTime}]" >Search Flight </button>
                                     </div>
                                  </div>
                            

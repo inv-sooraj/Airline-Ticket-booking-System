@@ -31,6 +31,6 @@ public interface FlightRepository extends JpaRepository<Flight, Integer> {
     Page<Flight> findByDepartureAndDestination(Pageable paging, String departure, String destination);
 
     @Query(value = "SELECT * FROM flight WHERE destination  like %?2% AND departure like %?1% AND dep_date_time like %?3%",nativeQuery = true)
-    Page<Flight> findByDepartureAndDestinationAndDepDateTime(Pageable paging, String departure, String destination,String date);
+    Page<Flight> findByDepartureAndDestinationAndDepDateTime(Pageable paging, String departure, String destination,String depDateTime);
 }
  

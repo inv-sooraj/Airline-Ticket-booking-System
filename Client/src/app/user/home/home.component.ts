@@ -20,7 +20,7 @@ baseUrl = environment.baseUrl;
     this.searchForm = new FormGroup({
       destination: new FormControl(),
       departure: new FormControl(),
-      date:new FormControl(),
+      depDateTime:new FormControl(),
     });
   }
 
@@ -40,16 +40,16 @@ getRandomFlight(){
     complete: () => {},
   });
 }
-onSubmit(){
-  const formValue = this.searchForm.value;
-  console.log(formValue);
-  let params = new HttpParams();
-  params = params.append('destination', formValue.destination);
-  params = params.append('departure', formValue.departure);
-  params = params.append('date',formValue.date);
-  this.http.get(this.baseUrl+'/flight', { params }).subscribe(
-    response => console.log('Search results:', response),
-    error => console.error('Error searching:', error)
-  );
-}
+// onSubmit(){
+//   const formValue = this.searchForm.value;
+//   // console.log(formValue);
+//   let params = new HttpParams();
+//   params = params.append('destination', formValue.destination);
+//   params = params.append('departure', formValue.departure);
+//   params = params.append('depDateTime',formValue.depDateTime);
+//   this.http.get(this.baseUrl+'/flight', { params }).subscribe(
+//     response => console.log('Search results:', response),
+//     error => console.error('Error searching:', error)
+//   );
+// }
 }

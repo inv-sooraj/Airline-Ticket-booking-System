@@ -64,10 +64,10 @@ public class FlightController {
     public ResponseEntity<List<Flight>> getAllBookings(
             @RequestParam(defaultValue = "0") Integer pageNo,
             @RequestParam(defaultValue = "5") Integer pageSize,
-            @RequestParam String departure, @RequestParam String destination, @RequestParam String date,    
+            @RequestParam String departure, @RequestParam String destination, @RequestParam String depDateTime,    
             @RequestParam(defaultValue = "flight_id") String sortBy,
             @RequestParam(defaultValue = "ASC") String sortDir) {
-        List<Flight> list = flightservice.searchResult(pageNo, pageSize, sortBy, sortDir, departure,destination,date);
+        List<Flight> list = flightservice.searchResult(pageNo, pageSize, sortBy, sortDir, departure,destination,depDateTime);
         return new ResponseEntity<List<Flight>>(list, new HttpHeaders(), HttpStatus.OK);
     }
 }
