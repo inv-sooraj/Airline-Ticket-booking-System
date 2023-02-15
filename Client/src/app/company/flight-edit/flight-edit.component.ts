@@ -75,32 +75,7 @@ export class FlightEditComponent {
   }
   //Method to add flight details
   updateFlight() {
-    if (this.FlightEditForm.valid) {
-      let param = {
-        airplaneId: this.FlightEditForm.value.airplane,
-        flightNumber: this.FlightEditForm.value.flightno,
-        departure: this.FlightEditForm.value.departure,
-        depDateTime: this.FlightEditForm.value.departureDT,
-        destination: this.FlightEditForm.value.destination,
-        destDateTime: this.FlightEditForm.value.ariivalDT,
-        userId: this.userid,
-        deleteFlag: 1,
-        seats: this.FlightEditForm.value.seatDetails,
-      };
-      console.log("Flight form", param);
-      this.apiservice.createFlight(param).subscribe({
-        next: (result: any) => {
-          alert("Created successfully");
-          //  this.router.navigate(['/login'])
-        },
-        error: (err: any) => {
-          alert(err.name);
-          console.log(err);
-        },
-      });
-    } else {
-      this.status = true;
-    }
+    
   }
   cancel() {
     this.FlightEditForm.reset();

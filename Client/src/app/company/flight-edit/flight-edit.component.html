@@ -200,9 +200,9 @@
               </div>
               <div class="white_card_body">
                
-                <!-- <button class="btn btn-dark" (click)="addCreds()" id="btnadd">
+                <button class="btn btn-dark" (click)="addCreds()" id="btnadd">
                   Click here to add seat details</button
-                ><br> -->
+                ><br>
 
                 <!--Formarray to store seat details-->
 
@@ -224,12 +224,7 @@
                   >
                   
                     <br /><ng-container [formGroupName]="i">
-                      <!-- <div *ngFor="
-                      let seatDetail of seatsArray">
-                        <li>
-                          {{seatDetail.seatType}}
-                        </li>
-                      </div> -->
+                  
                       <div class="mb-4 pb-2" *ngfor="let seatDetail of seatsArray">
                          <select
                           class="form-control"
@@ -238,7 +233,7 @@
                           
                         >
                           <option value="seatDetail.seatType">{{seatDetail.seatType}}</option>
-                          <option value="economy">{{seatDetail.number}}</option>
+                          <option value="economy">economy</option>
                           <option value=" premium economy">
                             premium economy
                           </option>
@@ -251,7 +246,7 @@
                           placeholder="No of seats"
                           formControlName="seatNo"
                           id="exampleInputPassword1"
-                          
+                          [value]="seatDetail.number"
                         />
                         <input
                           class="form-control"
@@ -259,7 +254,7 @@
                           placeholder="Price"
                           formControlName="price"
                           id="exampleInputPassword2"
-                          
+                          [value]="seatDetail.price"
                         /> 
                       </div>
                     </ng-container>
