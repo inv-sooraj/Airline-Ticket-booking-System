@@ -93,7 +93,14 @@ public ResponseEntity<Resource> getByStatus(@PathVariable byte status) {
         return bookingService.changeStatus(bookingId, status);
 
     }
+    //cancellation from passenger side
+    @PutMapping("/cancelBooking/{bookingId}/{reason}/{status}")
+    public ResponseEntity<ResBody> cancelBooking(@PathVariable Integer bookingId, @PathVariable String reason,@PathVariable Byte status) {
+        System.out.println("reason=" + reason);
+        System.out.println("booking id=" + bookingId);
+        return bookingService.cancelBooking(bookingId, reason,status);
 
+    }
     //get bookings done by individual user(for passenger)
     
     @GetMapping("/getById/{flag}")

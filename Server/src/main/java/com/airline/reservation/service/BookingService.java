@@ -33,4 +33,6 @@ public interface BookingService {
     List<Bookings> findByUserUserIdAndDeleteFlag(Integer userId, Byte flag);
 
     List<Bookings> findByUserUserIdAndDeleteFlag(Byte flag);
+
+    ResponseEntity<ResBody> cancelBooking(Integer bookingId, String reason,Byte status);
 }

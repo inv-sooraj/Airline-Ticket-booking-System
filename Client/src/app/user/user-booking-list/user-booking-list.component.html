@@ -78,7 +78,7 @@
         <h5 class="modal-title" id="exampleModalLabel">Booking Details</h5>
         <button
           type="button"
-          class="close"
+          class="close" 
           data-dismiss="modal"
           aria-label="Close"
         >
@@ -264,7 +264,7 @@
               Cancel booking
             </button>
             <div
-              class="modal fade bd-example-modal-lg"
+              class="modal modal2 fade bd-example-modal-lg"
               id="cancellation"
               tabindex="-1"
               role="dialog"
@@ -272,12 +272,13 @@
               aria-hidden="true"
             >
               <div class="modal-dialog modal-lg">
+                <form [formGroup]="cancellationForm">
                 <div class="modal-content">
                   <div class="modal-header">
                     <h5 class="text-center">Reason For Cancellation</h5>
                     <button
                       type="button"
-                      class="close"
+                      class="close" 
                       data-dismiss="modal"
                       aria-label="Close"
                     >
@@ -286,7 +287,7 @@
                   </div>
                   <div class="modal-body">
                     <div class="form-outline form-white">
-                      <textarea
+                      <textarea formControlName="reason" name="reason"
                         rows="6"
                         placeholder=" Reason for Cancellation"
                         class="form-control form-control-lg"
@@ -297,7 +298,7 @@
                     <button
                       type="button"
                       class="btn btn-secondary"
-                      data-dismiss="modal"
+                      data-dismiss="modal" 
                     >
                       Close
                     </button>
@@ -309,8 +310,10 @@
                     >
                       Submit changes
                     </button>
+                    <button onclick="myFunction()" type="button" class="btn btn-primary" id="closeModals">Close Modals</button>
                   </div>
                 </div>
+              </form>
               </div>
             </div>
           </div>
@@ -319,4 +322,5 @@
     </div>
   </div>
 </div>
+
 <!-- <app-footer></app-footer> -->

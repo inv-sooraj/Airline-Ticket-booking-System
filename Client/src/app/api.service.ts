@@ -195,9 +195,11 @@ export class ApiService {
     );
   }
 
-  cancelBooking(id: any) {
+  cancelBooking(id: any,reason:any) {
+    const cancelStatus=3;
+    console.log( this.baseUrl + "/bookings/cancelBooking/" + id +'/'+reason +cancelStatus)
     return this.httpClient.put(
-      this.baseUrl + "/bookings/changeStatus/" + id + "/3",
+      this.baseUrl + "/bookings/cancelBooking/" + id +'/'+reason +'/'+cancelStatus,
       this.getHeader()
     );
   }

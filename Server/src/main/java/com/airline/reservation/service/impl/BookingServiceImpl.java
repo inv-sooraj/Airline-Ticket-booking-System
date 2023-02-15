@@ -141,4 +141,23 @@ public class BookingServiceImpl implements BookingService {
     public List<Bookings> findByUserUserIdAndDeleteFlag(Byte flag) {
         return bookingRepository.findByUserUserIdAndDeleteFlag(SecurityUtil.getCurrentUserId(), flag);
     }
+
+    @Override
+    public ResponseEntity<ResBody> cancelBooking(Integer bookingId, String reason,Byte status) {
+        // TODO Auto-generated method stub
+        ResBody body = new ResBody();
+        //Finds Booking by id
+        Bookings booking = bookingRepository.findByBookingId(bookingId);
+        System.out.println("Before Booking" + booking.getStatus());
+        //Checks whether the status value is out of our desired range
+        if (status > 3 || status < 0) {
+            body.getErrors().add(new ApplicationError("1004", "Invalid Status Value"));
+            return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
+        } else {
+            booking.setStatus(status);
+            booking.setCancellation(reason);
+            bookingRepository.save(booking);
+            return new ResponseEntity<>(body, HttpStatus.OK);
+        }
+    }
 }
