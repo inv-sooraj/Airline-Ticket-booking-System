@@ -130,4 +130,15 @@ public class BookingServiceImpl implements BookingService {
                 return bookingRepository.findByFlightUserUserIdAndDeleteFlag(SecurityUtil.getCurrentUserId(),flag);
 
     }
+
+    @Override
+    public List<Bookings> findByUserUserIdAndDeleteFlag(Integer userId, Byte flag) {
+        // TODO Auto-generated method stub
+        return bookingRepository.findByUserUserIdAndDeleteFlag(SecurityUtil.getCurrentUserId(), flag);
+    }
+
+    @Override
+    public List<Bookings> findByUserUserIdAndDeleteFlag(Byte flag) {
+        return bookingRepository.findByUserUserIdAndDeleteFlag(SecurityUtil.getCurrentUserId(), flag);
+    }
 }

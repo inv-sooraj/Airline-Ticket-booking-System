@@ -110,10 +110,10 @@
                </div>
             </div>
             <div class="row">
-               <div class="col-12">
+               <div class="col-12" >
                   <div class="flights-slider arrow-layout-2 row">
                      <!-- Flight Item - Start -->
-                     <div class="slide-item col-lg-4 col-md-12">
+                     <div class="slide-item col-lg-4 col-md-12" *ngFor="let flights of items" >
                         <div class="flights-grid">
                            <div class="flights-grid-wrapper bx-wrapper">
                               <div class="image-sec animate-img">
@@ -127,13 +127,13 @@
                                        <i class="fa fa-plane text-gray"></i>
                                        <div class="title">
                                           <h4 class="fs-16">
-                                             <a href="flight-detail.html" class="text-custom-black">London to Paris</a>
+                                             <a href="flight-detail.html" class="text-custom-black">{{flights.departure}} to {{flights.destination}}</a>
                                              <span class="text-light-dark">Oneway Flight</span>
                                           </h4>
                                        </div>
                                     </div>
                                     <div class="right-side">
-                                       <span class="price"><small>From</small>$620</span>
+                                       <span class="price"><small>From</small>{{flights.min_price}}</span>
                                     </div>
                                  </div>
                                  <div class="action">

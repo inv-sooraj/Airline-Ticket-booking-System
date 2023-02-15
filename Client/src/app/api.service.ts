@@ -9,7 +9,7 @@ import { environment } from "src/environments/environment";
 export class ApiService {
   flightSearch(params: HttpParams) {
     
-    
+
  return this.httpClient.get(this.baseUrl+'/flight', { params });
   }
   searchFlight(formValue: any) {
@@ -36,10 +36,11 @@ export class ApiService {
   }
   getRandom(){
     console.log(this.baseUrl+"/flight/random");
-    return this.httpClient.get(this.baseUrl+"/flight/random",this.getHeader());
+    return this.httpClient.get(this.baseUrl+"/flight/test",this.getHeader());
   }
  
   getUserBookingList() {
+    console.log(this.baseUrl + "/bookings/getById/1");
     return this.httpClient.get(this.baseUrl + "/bookings/getById/1",this.getHeader());
   }
   updateUser(userid: any, updateForm: any) {
@@ -187,6 +188,7 @@ export class ApiService {
   /**Method to get booking details by id */
 
   bookingDetailsById(id: any) {
+    console.log(this.baseUrl + "/" + "bookings" + "/" + id + "/" + "1")
     return this.httpClient.get(
       this.baseUrl + "/" + "bookings" + "/" + id + "/" + "1",
       this.getHeader()

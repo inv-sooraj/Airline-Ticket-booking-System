@@ -98,7 +98,7 @@ public ResponseEntity<Resource> getByStatus(@PathVariable byte status) {
     
     @GetMapping("/getById/{flag}")
     public List<Bookings> userBookings(@PathVariable("flag") Byte flag) {
-        return bookingService.findByUserUserId(flag);
+        return bookingService.findByUserUserIdAndDeleteFlag(flag);
     }
     
     //To get cancelled booking details

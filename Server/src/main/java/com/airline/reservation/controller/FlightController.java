@@ -3,12 +3,14 @@ package com.airline.reservation.controller;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -70,4 +72,14 @@ public class FlightController {
         List<Flight> list = flightservice.searchResult(pageNo, pageSize, sortBy, sortDir, departure,destination,depDateTime);
         return new ResponseEntity<List<Flight>>(list, new HttpHeaders(), HttpStatus.OK);
     }
+    @Autowired
+JdbcTemplate jdbcTemplate;
+@GetMapping("/test")
+public List<Map<String, Object>> getDataWithMinField() {
+    String sql = "SELECT flight.*, " +
+                 "(SELECT MIN(price) FROM seat WHERE flight.flight_id = seat.cp_fk) as min_price " +
+                 "FROM flight  order by RAND() LIMIT 3";
+    List<Map<String, Object>> data = jdbcTemplate.queryForList(sql);
+    return data;
+}
 }

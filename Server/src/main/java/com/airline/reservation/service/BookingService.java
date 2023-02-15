@@ -29,4 +29,8 @@ public interface BookingService {
     public BookingListView getBooking(Integer bookingId, Byte flag);
 
     public List<Bookings> findByCompany( Byte flag);
+
+    List<Bookings> findByUserUserIdAndDeleteFlag(Integer userId, Byte flag);
+
+    List<Bookings> findByUserUserIdAndDeleteFlag(Byte flag);
 }

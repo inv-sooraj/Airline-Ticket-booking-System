@@ -64,7 +64,7 @@
   </table>
 </div>
 <!-- Modal -->
-<div
+<div *ngIf="item"
   class="modal fade"
   id="exampleModal"
   tabindex="-1"
@@ -85,7 +85,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" >
         <div class="container">
           <div class="row">
             <div class="col-12">
