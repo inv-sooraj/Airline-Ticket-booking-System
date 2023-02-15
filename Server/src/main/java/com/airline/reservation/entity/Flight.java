@@ -33,15 +33,7 @@ public class Flight {
     @Json.DateTimeFormat
     private Date destDateTime;
     private byte deleteFlag;
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
-
-    public Airplane getAirplane() {
-        return airplane;
-    }
-
-    public void setAirplane(Airplane airplane) {
-        this.airplane = airplane;
-    }
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Airplane airplane;
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private User user;
@@ -156,6 +148,13 @@ public class Flight {
         this.updateDate = updateDate;
     }
 
+      public Airplane getAirplane() {
+        return airplane;
+    }
+
+    public void setAirplane(Airplane airplane) {
+        this.airplane = airplane;
+    }
     public Flight() {
     }
 
@@ -173,19 +172,19 @@ public class Flight {
         this.createDate = dt;
         this.updateDate = dt;
     }
-    public Airplane getAirplane() {
-        return airplane;
+    public Flight update(FlightForm form){
+        this.flightNumber=form.getFlightNumber();
+        this.departure=form.getDeparture();
+        this.depDateTime=form.getDepDateTime();
+        this.destination=form.getDestination();
+        this.destDateTime=form.getDestDateTime();
+        this.airplane=new Airplane(form.getAirplaneId());
+        this.user=new User(form.getUserId());
+        this.seats = form.getSeats();
+        Date dt = new Date();
+        this.updateDate = dt;
+        this.deleteFlag = 1;
+        return this;
     }
-
-    public void setAirplane(Airplane airplane) {
-        this.airplane = airplane;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
+    
 }

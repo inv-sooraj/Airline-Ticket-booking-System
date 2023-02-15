@@ -7,6 +7,8 @@ import javax.validation.Valid;
 import com.airline.reservation.entity.Flight;
 import com.airline.reservation.form.FlightForm;
 import com.airline.reservation.view.FlightView;
+import java.util.ArrayList;
+import java.util.Optional;
 
 public interface FlightService {
 
@@ -16,6 +18,10 @@ public interface FlightService {
 
     List<Flight> findByCompany(Integer userId);
 
-    List<Flight> findByFlightId(Integer flightId);
+    Optional<Flight> findByFlightId(Integer flightId);
+
+    public FlightView updateFlight(Integer flightId, FlightForm form);
+
+    public void deleteFlightByIds(ArrayList<Integer> ids);
 
 }

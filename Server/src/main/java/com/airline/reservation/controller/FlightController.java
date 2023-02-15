@@ -13,6 +13,12 @@ import com.airline.reservation.entity.Flight;
 import com.airline.reservation.form.FlightForm;
 import com.airline.reservation.service.FlightService;
 import com.airline.reservation.view.FlightView;
+import java.util.ArrayList;
+import java.util.Optional;
+import javax.validation.Valid;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/flight")
@@ -32,7 +38,7 @@ public class FlightController {
     //All Flights
     @GetMapping("/findAll")
     public List<Flight> findAll() {
-        return flightservice.findAll();
+        return flightservice.findAll() ;
     }
     // get flight details of a paraticular company
     
@@ -43,11 +49,23 @@ public class FlightController {
 
     //Flight Detail
     @GetMapping("/{flightId}")
-    public List<Flight>findByFlightId(@PathVariable("flightId")Integer flightId){
+    public Optional<Flight>findByFlightId(@PathVariable("flightId")Integer flightId){
         return flightservice.findByFlightId(flightId);
     }
     
+    //update flight details of a particular flight
     
+    @PutMapping("/{flightId}")
+    public FlightView updateFlightById(
+            @PathVariable("flightId") Integer flightId,
+            @Valid @RequestBody FlightForm form) {
+        return flightservice.updateFlight(flightId, form);
+    }
     
-
+    //delete flights
+    @DeleteMapping
+    public void deleteFlights(@RequestParam("ids") ArrayList<Integer> ids) {
+        System.out.println("deleting");
+        flightservice.deleteFlightByIds(ids);
+    }
 }
