@@ -42,6 +42,7 @@ export class UserBookingListComponent {
       });
     }
   }
+  
 
   /**To fetch the user data of the spacific id from db */
 
@@ -85,7 +86,7 @@ export class UserBookingListComponent {
       error: (err: any) => {
         this.alertservice.showError("Failed to cancel reservation", "Error");
       },
-      complete: () => {},
+      complete: () => {this.getUserBookingList();},
     });
   }
 }

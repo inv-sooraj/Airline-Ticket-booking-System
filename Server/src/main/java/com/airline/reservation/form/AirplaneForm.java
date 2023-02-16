@@ -10,13 +10,13 @@ import javax.validation.constraints.Size;
  */
 public class AirplaneForm {
 
-    @NotNull
-    @Size(min = 5, max = 30)
+    @NotBlank(message = "1010")
+    @Size(min = 5, max = 30,message = "1011")
     private String airplaneName;
-    @NotNull
-    @Size(min = 5, max = 30)
+    @NotBlank(message = "1012")
+    @Size(min = 5, max = 30,message = "1013")
     private String modelNo;
-    @NotNull
+    @NotNull(message = "1014")
     private Integer totalSeats;
 
     public String getAirplaneName() {

@@ -13,6 +13,7 @@ import com.airline.reservation.view.AirplaneListView;
 import java.util.Collection;
 import java.util.List;
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +29,7 @@ public class AirplaneServiceImpl implements AirplaneService {
 
     //method to add airplane
     @Override
-    public AirplaneListView addPlane(AirplaneForm form) {
+    public AirplaneListView addPlane(@Valid AirplaneForm form) {
         System.out.println("user id =" + SecurityUtil.getCurrentUserId());
         return new AirplaneListView(airplaneRepository.save(new Airplane(form, SecurityUtil.getCurrentUserId(), Airplane.Status.ACTIVE.value)));
     }

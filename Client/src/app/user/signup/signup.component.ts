@@ -96,7 +96,6 @@ export class SignupComponent implements OnInit {
         ],
         address: ["", Validators.required],
         city: ["", Validators.required],
-        // zipcode:['',Validators.required],
         country: ["", Validators.required],
       },
       {
@@ -104,7 +103,9 @@ export class SignupComponent implements OnInit {
       } as AbstractControlOptions
     );
   }
-
+  ngOnInit(): void {
+    this.getToday();
+  }
   changeCountry(e: any) {
     console.log(e.value);
     this.country.setValue(e.target.value, {
@@ -150,5 +151,9 @@ export class SignupComponent implements OnInit {
       );
     }
   }
-  ngOnInit(): void {}
+  getToday(){
+    return new Date().toISOString().split('T')[0];
+  }
+  
 }
+
