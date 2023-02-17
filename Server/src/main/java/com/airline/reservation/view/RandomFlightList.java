@@ -1,5 +1,7 @@
 package com.airline.reservation.view;
 
+ 
+ 
 import java.util.Date;
 
 public class RandomFlightList
@@ -7,7 +9,7 @@ public class RandomFlightList
     private Integer flightId;
     private String flightNumber;
     private String departure;
-    private Date depDateTime;
+    private  Date depDateTime;
     private String destination;
     private Date destDateTime;
 
@@ -29,14 +31,15 @@ public class RandomFlightList
     public void setDeparture(String departure) {
         this.departure = departure;
     }
-    public Date getDepDateTime() {
-        return depDateTime;
-    }
-    public void setDepDateTime(Date depDateTime) {
-        this.depDateTime = depDateTime;
-    }
+     
     public String getDestination() {
         return destination;
+    }
+    public  Date getDepDateTime() {
+        return depDateTime;
+    }
+    public void setDepDateTime( Date depDateTime) {
+        this.depDateTime = depDateTime;
     }
     public void setDestination(String destination) {
         this.destination = destination;
@@ -47,7 +50,7 @@ public class RandomFlightList
     public void setDestDateTime(Date destDateTime) {
         this.destDateTime = destDateTime;
     }
-public RandomFlightList(Integer flightId, String flightNumber, String departure, Date depDateTime,
+public RandomFlightList(Integer flightId, String flightNumber, String departure,  Date depDateTime,
             String destination, Date destDateTime) {
         this.flightId = flightId;
         this.flightNumber = flightNumber;

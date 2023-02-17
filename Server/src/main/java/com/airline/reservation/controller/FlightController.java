@@ -1,11 +1,18 @@
 package com.airline.reservation.controller;
 
-import java.time.LocalDateTime;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+ 
+ 
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -21,7 +28,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.airline.reservation.entity.Flight;
 import com.airline.reservation.form.FlightForm;
+import com.airline.reservation.repository.FlightRepository;
 import com.airline.reservation.service.FlightService;
+import com.airline.reservation.view.FlightResponse;
 import com.airline.reservation.view.RandomFlightList;
 
 @RestController
@@ -31,7 +40,8 @@ public class FlightController {
     @Autowired
     private FlightService flightservice;
 
-
+@Autowired
+private FlightRepository flightRepository;
    
     // Add Flight
     @PostMapping
@@ -74,7 +84,7 @@ public class FlightController {
     }
     @Autowired
 JdbcTemplate jdbcTemplate;
-@GetMapping("/test")
+@GetMapping("/getRandom")
 public List<Map<String, Object>> getDataWithMinField() {
     String sql = "SELECT flight.*, " +
                  "(SELECT MIN(price) FROM seat WHERE flight.flight_id = seat.cp_fk) as min_price " +
@@ -82,4 +92,13 @@ public List<Map<String, Object>> getDataWithMinField() {
     List<Map<String, Object>> data = jdbcTemplate.queryForList(sql);
     return data;
 }
+
+@GetMapping("/search")
+public ResponseEntity<List<FlightResponse>> searchFlights(@RequestParam String departure, @RequestParam String destination, @RequestParam("depDateTime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date depDateTime, Pageable pageable) {
+  System.out.println(" DATE TIME = " + depDateTime);
+    Page<Object[]> flightsPage = flightRepository.findFlightsWithMinSeatPrice(departure, destination, depDateTime, pageable);
+    List<FlightResponse> flights = flightsPage.getContent().stream().map(objects -> new FlightResponse((Integer) objects[0], (String) objects[1], (String) objects[2], (String) objects[3], (Integer) objects[4])).collect(Collectors.toList());
+    return ResponseEntity.ok(flights);
+}
+
 }

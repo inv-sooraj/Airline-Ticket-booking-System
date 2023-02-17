@@ -45,8 +45,10 @@ console.log(this.searchResults);
     this.alertService.showError("Error Fetching Search Results","Error")
   }
 })
-  // this.http.get(this.baseUrl+'/flight', { params }).subscribe(
-  //     response => console.log('Search results:', response),
-  //     error => console.error('Error searching:', error)
-  //   );
-  }}
+  this.http.get(this.baseUrl+'/flight/search', { params }).subscribe(
+      response => this.searchResults=response,
+    
+      error => console.error('Error searching:', error)
+    );
+  }
+}

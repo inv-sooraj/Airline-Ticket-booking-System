@@ -1,5 +1,7 @@
 package com.airline.reservation.entity;
 
+ 
+ 
 import java.util.Date;
 import java.util.List;
 
@@ -28,7 +30,7 @@ public class Flight {
     private String flightNumber;
     private String departure;
     @Json.DateTimeFormat
-    private Date depDateTime;
+    private  Date depDateTime;
     private String destination;
     @Json.DateTimeFormat
     private Date destDateTime;
@@ -107,11 +109,11 @@ public class Flight {
         this.departure = departure;
     }
 
-    public Date getDepDateTime() {
+    public  Date getDepDateTime() {
         return depDateTime;
     }
 
-    public void setDepDateTime(Date depDateTime) {
+    public void setDepDateTime( Date depDateTime) {
         this.depDateTime = depDateTime;
     }
 

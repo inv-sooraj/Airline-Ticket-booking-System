@@ -10,7 +10,7 @@ export class ApiService {
   flightSearch(params: HttpParams) {
     
 
- return this.httpClient.get(this.baseUrl+'/flight', { params });
+ return this.httpClient.get(this.baseUrl+'/flight/search', { params });
   }
   searchFlight(formValue: any) {
    return this.httpClient.get(this.baseUrl+"/flight")
@@ -36,7 +36,7 @@ export class ApiService {
   }
   getRandom(){
     console.log(this.baseUrl+"/flight/random");
-    return this.httpClient.get(this.baseUrl+"/flight/test",this.getHeader());
+    return this.httpClient.get(this.baseUrl+"/flight/getRandom",this.getHeader());
   }
  
   getUserBookingList() {

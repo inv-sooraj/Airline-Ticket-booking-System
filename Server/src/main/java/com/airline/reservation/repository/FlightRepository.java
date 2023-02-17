@@ -1,6 +1,7 @@
 package com.airline.reservation.repository;
 
-import java.time.LocalDateTime;
+ 
+ 
 import java.util.Date;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import com.airline.reservation.entity.Flight;
 import com.airline.reservation.form.FlightForm;
@@ -32,5 +34,11 @@ public interface FlightRepository extends JpaRepository<Flight, Integer> {
 
     @Query(value = "SELECT * FROM flight WHERE destination  like %?2% AND departure like %?1% AND dep_date_time like %?3%",nativeQuery = true)
     Page<Flight> findByDepartureAndDestinationAndDepDateTime(Pageable paging, String departure, String destination,String depDateTime);
+    @Query("SELECT f.flightId, f.flightNumber, f.departure, f.destination, MIN(s.price) AS minSeatPrice " +
+       "FROM Flight f JOIN f.seats s " +
+       "WHERE f.departure LIKE :departure AND f.destination LIKE:destination AND DATE(f.depDateTime) LIKE DATE(:depDateTime)" +
+       "GROUP BY f.flightId")
+Page<Object[]> findFlightsWithMinSeatPrice(@Param("departure") String departure, @Param("destination") String destination, @Param("depDateTime")  Date depDateTime, Pageable pageable);
+
 }
  

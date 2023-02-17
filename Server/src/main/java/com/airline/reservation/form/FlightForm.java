@@ -1,8 +1,10 @@
 package com.airline.reservation.form;
 
+ 
+ 
 import java.util.Date;
 import java.util.List;
-
+import com.airline.reservation.json.*;
 import com.airline.reservation.entity.Seat;
 import com.airline.reservation.security.util.SecurityUtil;
 
@@ -20,7 +22,8 @@ public class FlightForm {
         this.userId = userId;
     }
     private String departure;
-    private Date depDateTime;
+   
+    private  Date depDateTime;
     
     private List<Seat>seats;
     private String destination;
@@ -67,13 +70,13 @@ public class FlightForm {
 
 
 
-    public Date getDepDateTime() {
+    public  Date getDepDateTime() {
         return depDateTime;
     }
 
 
 
-    public void setDepDateTime(Date depDateTime) {
+    public void setDepDateTime( Date depDateTime) {
         this.depDateTime = depDateTime;
     }
 
