@@ -1,6 +1,5 @@
 package com.airline.reservation.controller;
 
-import com.airline.reservation.entity.Seat;
 import com.airline.reservation.form.SeatForm;
 import com.airline.reservation.service.SeatService;
 import com.airline.reservation.view.SeatView;

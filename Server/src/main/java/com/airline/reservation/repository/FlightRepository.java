@@ -18,7 +18,7 @@ public interface FlightRepository extends JpaRepository<Flight, Integer> {
 
     Optional<Flight> findByFlightId(Integer flightId);
     
-//    Optional<Flight> findByFlightIdAndSeatSeatId(Integer flightId,Integer seatId);
+//    Optional<Flight> findByFlightIdAndSeatId(Integer flightId,Integer seatId);
 
     @Modifying
     @Transactional

@@ -135,6 +135,7 @@ export class FlightEditComponent {
       },
       complete: () => {},
     });
+    console.log("seat",this.seatsArray);
     
   }
  
