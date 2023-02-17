@@ -1,5 +1,6 @@
  <app-header></app-header> 
     <head>
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -58,34 +59,33 @@
                      <div class="tab-content bg-custom-white bx-wrapper padding-20">
                         <div class="tab-pane active" id="hotel">
                            <div class="tab-inner">
-                              <form>
+                              <form [formGroup]="searchForm">
                                  <div class="row">
                                     <div class="col-lg-3 col-md-6">
                                        <div class="form-group">
                                           <label class="fs-14 text-custom-black fw-500">Departing From</label>
-                                          <input type="text" name="#" class="form-control form-control-custom" placeholder=" Departing Place">
+                                          <input type="text" name="departure" formControlName="departure"  class="form-control form-control-custom" placeholder=" Departing Place">
                                        </div>
                                     </div>
                                     <div class="col-lg-3 col-md-6">
                                        <div class="form-group">
                                           <label class="fs-14 text-custom-black fw-500">Destination To</label>
-                                          <input type="text" name="#" class="form-control form-control-custom" placeholder=" Departing Place">
+                                          <input type="text" name="destination" formControlName="destination" class="form-control form-control-custom" placeholder=" Departing Place">
                                        </div>
                                     </div>
                                     <div class="col-lg-3 col-md-6">
                                        <div class="form-group">
-                                          <label class="fs-14 text-custom-black fw-500">Arrival Date</label>
+                                          <label class="fs-14 text-custom-black fw-500">Departure Date</label>
                                           <div class="input-group group-form">
-                                             <input type="text" name="#" class="form-control form-control-custom datepickr" placeholder="mm/dd/yy" readonly>
-                                             <span class="input-group-append">
-                                             <i style="color: aliceblue;" class="fa fa-calendar"></i>
-                                             </span>
+                                             <input type="date"  min="{{ today }}"
+                                             name="depDateTime" formControlName="depDateTime" class="form-control form-control-custom " placeholder="mm/dd/yy" >
+                                            
                                           </div>
                                        </div>
                                     </div>
                                     <div class="col-lg-3 col-md-6">
                                        <label class="submit"></label>
-                                       <button type="submit" onclick = "window.location.href='flights.html';" class="btn-first btn-submit full-width btn-height">Search Flight </button>
+                                       <button  type="submit"  class="btn-first btn-submit full-width btn-height" [routerLink]="['/user-flight-list', {destination: searchForm.value.destination,departure:searchForm.value.departure,depDateTime:searchForm.value.depDateTime}]" >Search Flight </button>
                                     </div>
                                  </div>
                            
@@ -110,9 +110,10 @@
                </div>
             </div>
             <div class="row">
-               <div class="col-12">
+               <div class="col-12" >
                   <div class="flights-slider arrow-layout-2 row">
-                     <div class="slide-item col-lg-4 col-md-12">
+                     <!-- Flight Item - Start -->
+                     <div class="slide-item col-lg-4 col-md-12" *ngFor="let flights of items" >
                         <div class="flights-grid">
                            <div class="flights-grid-wrapper bx-wrapper">
                               <div class="image-sec animate-img">
@@ -126,13 +127,13 @@
                                        <i class="fa fa-plane text-gray"></i>
                                        <div class="title">
                                           <h4 class="fs-16">
-                                             <a href="flight-detail.html" class="text-custom-black">London to Paris</a>
+                                             <a href="flight-detail.html" class="text-custom-black">{{flights.departure}} to {{flights.destination}}</a>
                                              <span class="text-light-dark">Oneway Flight</span>
                                           </h4>
                                        </div>
                                     </div>
                                     <div class="right-side">
-                                       <span class="price"><small>From</small>$620</span>
+                                       <span class="price"><small>From</small>₹{{flights.min_price}}</span>
                                     </div>
                                  </div>
                                  <div class="action">
@@ -142,67 +143,9 @@
                            </div>
                         </div>
                      </div>
-                     <div class="slide-item col-lg-4 col-md-12">
-                        <div class="flights-grid">
-                           <div class="flights-grid-wrapper bx-wrapper">
-                              <div class="image-sec animate-img">
-                                 <a href="flight-detail.html">
-                                 <img src="/assets/img/user/flights/6.png" class="full-width" alt="img">
-                                 </a>
-                              </div>
-                              <div class="flights-grid-caption padding-20 bg-custom-white p-relative">
-                                 <div class="heading-sec">
-                                    <div class="left-side">
-                                       <i class="fa fa-plane text-gray"></i>
-                                       <div class="title">
-                                          <h4 class="fs-16">
-                                             <a href="flight-detail.html" class="text-custom-black">Paris to India</a>
-                                             <span class="text-light-dark">Oneway Flight</span>
-                                          </h4>
-                                       </div>
-                                    </div>
-                                    <div class="right-side">
-                                       <span class="price"><small>From</small>$100</span>
-                                    </div>
-                                 </div>
-                                 <div class="action">
-                                    <a class="btn-second btn-small" href="flight-detail.html" tabindex="-1">View</a>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="slide-item col-lg-4 col-md-12">
-                        <div class="flights-grid">
-                           <div class="flights-grid-wrapper bx-wrapper">
-                              <div class="image-sec animate-img">
-                                 <a href="flight-detail.html">
-                                 <img src="/assets/img/user/flights/7.png" class="full-width" alt="img">
-                                 </a>
-                              </div>
-                              <div class="flights-grid-caption padding-20 bg-custom-white p-relative">
-                                 <div class="heading-sec">
-                                    <div class="left-side">
-                                       <i class="fa fa-plane text-gray"></i>
-                                       <div class="title">
-                                          <h4 class="fs-16">
-                                             <a href="flight-detail.html" class="text-custom-black">Paris to London</a>
-                                             <span class="text-light-dark">Oneway Flight</span>
-                                          </h4>
-                                       </div>
-                                    </div>
-                                    <div class="right-side">
-                                       <span class="price"><small>From</small>$420</span>
-                                    </div>
-                                 </div>
-                                 <div class="action">
-                                    <a class="btn-second btn-small" href="flight-detail.html" tabindex="-1">View</a>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
+                      
                  </div>
+                 
                </div>
             </div>
          </div>

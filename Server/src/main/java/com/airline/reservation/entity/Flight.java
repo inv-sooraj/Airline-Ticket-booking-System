@@ -1,9 +1,7 @@
 package com.airline.reservation.entity;
-
 import com.airline.reservation.form.FlightEditForm;
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -18,23 +16,21 @@ import com.airline.reservation.form.FlightForm;
 import com.airline.reservation.json.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.JoinColumn;
-
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 public class Flight {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer flightId;
     private String flightNumber;
     private String departure;
     @Json.DateTimeFormat
-    private Date depDateTime;
+    private  Date depDateTime;
     private String destination;
     @Json.DateTimeFormat
     private Date destDateTime;
     private byte deleteFlag;
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Airplane airplane;
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private User user;
@@ -61,6 +57,7 @@ public class Flight {
         this.flightId = flightId;
     }
 
+   
     public Integer getFlightId() {
         return flightId;
     }
@@ -101,11 +98,11 @@ public class Flight {
         this.departure = departure;
     }
 
-    public Date getDepDateTime() {
+    public  Date getDepDateTime() {
         return depDateTime;
     }
 
-    public void setDepDateTime(Date depDateTime) {
+    public void setDepDateTime( Date depDateTime) {
         this.depDateTime = depDateTime;
     }
 

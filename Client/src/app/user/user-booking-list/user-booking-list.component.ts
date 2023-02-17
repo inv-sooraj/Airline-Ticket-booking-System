@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { AlertService } from "src/app/alert.service";
 import { ApiService } from "src/app/api.service";
@@ -12,6 +12,7 @@ import { ApiService } from "src/app/api.service";
 export class UserBookingListComponent {
   bookingListForm!: FormGroup;
   items: any[] = [];
+  cancellationForm!:FormGroup;
   itemName: any;
   item: any;
   public searchData: any[] = [];
@@ -22,7 +23,15 @@ export class UserBookingListComponent {
     private alertservice: AlertService,
     private modalService: NgbModal,
     private apiService: ApiService
-  ) {}
+  
+  ) { 
+     this.cancellationForm=new FormGroup(
+    {
+        reason:new FormControl(''),
+        
+
+      }
+    )}
   ngOnInit(): void {
     this.getUserBookingList();
     this.bookingListForm = this.formbuilder.group({
@@ -76,7 +85,9 @@ export class UserBookingListComponent {
     });
   }
   changeStaus() {
-    this.apiService.cancelBooking(this.item.bookingId).subscribe({
+    const reason = this.cancellationForm.get('reason')?.value;
+    console.log("Reason = "+reason)
+    this.apiService.cancelBooking(this.item.bookingId,reason).subscribe({
       next: (response: any) => {
         this.alertservice.showSuccess(
           "Reservation cancelled sussessfully!!!",
@@ -86,7 +97,11 @@ export class UserBookingListComponent {
       error: (err: any) => {
         this.alertservice.showError("Failed to cancel reservation", "Error");
       },
-      complete: () => {this.getUserBookingList();},
+ 
+      complete: () => {this.getUserBookingList();
+        this.cancellationForm.reset();
+      },
+
     });
   }
 }

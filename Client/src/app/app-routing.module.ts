@@ -22,6 +22,7 @@ import { AdminProfileComponent } from "./admin-profile/admin-profile.component";
 import { CancelledReservationListComponent } from "./admin/cancelled-reservation-list/cancelled-reservation-list.component";
 import { UserListComponent } from "./user-list/user-list.component";
 import { ReservationDetailsComponent } from "./reservation-details/reservation-details.component";
+import { UserFlightListComponent } from "./user/user-flight-list/user-flight-list.component";
 import { FlightEditComponent } from "./company/flight-edit/flight-edit.component";
 const routes: Routes = [
   { path: "", component: LoginComponent },
@@ -49,6 +50,7 @@ const routes: Routes = [
     path: "reservation-details/:bookingId",
     component: ReservationDetailsComponent,
   },
+  {path:"user-flight-list",component:UserFlightListComponent},
   {path:"flight-edit/:flightId",component:FlightEditComponent}
 ];
 @NgModule({
