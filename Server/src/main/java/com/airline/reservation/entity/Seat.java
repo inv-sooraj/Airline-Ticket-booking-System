@@ -1,14 +1,12 @@
 package com.airline.reservation.entity;
 
+import com.airline.reservation.form.SeatForm;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import com.airline.reservation.form.SeatForm;
 import com.airline.reservation.json.Json;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -114,5 +112,15 @@ public class Seat {
     Date dt = new Date();
         this.createDate = dt;
         this.updateDate = dt;
+    }
+    
+    public Seat update(SeatForm form){
+       this.seatType=form.getSeatType();
+       this.number=form.getNumber();
+       this.price=form.getPrice();
+        Date dt = new Date();
+        this.updateDate = dt;
+        this.deleteFlag = 1;
+        return this;
     }
 }

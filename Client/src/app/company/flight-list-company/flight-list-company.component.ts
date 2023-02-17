@@ -42,7 +42,6 @@ export class FlightListCompanyComponent implements OnInit {
   /**For storing the id of selected airplanes in formarray */
 
   onCheckboxChange(e: any) {
-    // const website: FormArray = this.planeListForm.get('sel') as FormArray;
 
     if (e.target.checked) {
       this.website.push(e.target.value);

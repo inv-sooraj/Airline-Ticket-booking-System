@@ -45,7 +45,7 @@ export class FlightEditComponent {
       seatDetails: this.formbuilder.array([]),
     });
   }
-
+  
   ngOnInit(): void {
 
     this.route.params.forEach((params: Params) => {
@@ -55,7 +55,6 @@ export class FlightEditComponent {
     this.getPlaneName();
     this.seatDetails().push(this.newData());
     this.today = new Date().toISOString().slice(0, 16);
-    console.log("currentdate", this.today);
     this.getFlightById();
   }
   seatDetails(): FormArray {
@@ -68,15 +67,39 @@ export class FlightEditComponent {
     return this.formbuilder.group({
       seatType: ["", Validators.required],
 
-      seatNo: ["", Validators.required],
+      number: ["", Validators.required],
 
       price: ["", Validators.required],
     });
   }
+  
   //Method to add flight details
   updateFlight() {
-    
+    let param = {
+      flightNumber: this.FlightEditForm.value.flightno,
+      departure: this.FlightEditForm.value.departure,
+      depDateTime: this.FlightEditForm.value.departureDT,
+      destination: this.FlightEditForm.value.destination,
+      destDateTime: this.FlightEditForm.value.ariivalDT,
+      airplaneId: this.FlightEditForm.value.airplane,
+      userId: this.userid,
+      // deleteFlag: 1,
+      // seats: this.FlightEditForm.value.seatDetails,
+    };
+    this.apiservice.sendUpdateflight(param, this.flightId).subscribe({
+      next: (response: any) => {
+        
+       this.alertservice.showSuccess("Successfully edited","Success")
+        
+      },
+      error: (err: any) => {
+
+        this.alertservice.showError("Failed", "error");
+      },
+      complete: () => {},
+    });
   }
+  
   cancel() {
     this.FlightEditForm.reset();
   }
@@ -86,8 +109,10 @@ export class FlightEditComponent {
     this.apiservice.getPlaneByCompany(this.userid).subscribe({
       next: (response: any) => {
         this.AirplaneDetails = response;
-        console.log("airplane names",this.AirplaneDetails);
-        
+        this.FlightEditForm.setValue({
+          airplane: this.response.airplane.airplaneId, 
+        });
+
       },
       error: (err: any) => {
         this.alertservice.showError("Couldnt fetch airplane details", "error");
@@ -103,7 +128,6 @@ export class FlightEditComponent {
         for(let i of response.seats){
           this.seatsArray.push(i)
         }
-        console.log("flight details",this.response);
         
       },
       error: (err: any) => {
@@ -111,7 +135,8 @@ export class FlightEditComponent {
       },
       complete: () => {},
     });
-    console.log("array for seat",this.seatsArray);
+    console.log("seat",this.seatsArray);
     
   }
+ 
 }

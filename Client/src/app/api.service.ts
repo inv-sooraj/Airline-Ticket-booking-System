@@ -223,4 +223,13 @@ export class ApiService {
       this.getHeader()
     );
   }
+
+  /* Edit flight*/
+  
+  sendUpdateflight(flightform:any,flightId:any){
+    return this.httpClient.put(
+      this.baseUrl + '/flight/'+flightId,flightform,
+      this.getHeader()
+    );
+  }
 }

@@ -63,7 +63,7 @@
                             signupForm.controls['fullname'].touched &&
                             signupForm.hasError('required', 'fullname')
                           "
-                          ><i>*required*</i></span
+                          ><i>Please enter your fullname</i></span
                         >
                         <span
                           class="sp"
@@ -71,7 +71,7 @@
                             signupForm.controls['fullname'].touched &&
                             signupForm.hasError('pattern', 'fullname')
                           "
-                          ><i>*Invalid Format*</i></span
+                          ><i>*Name must contain alphabets only*</i></span
                         >
                         <span
                           class="sp"
@@ -99,6 +99,7 @@
                           formControlName="dob"
                           id="form3Examplev4"
                           class="form-control form-control-lg"
+                          [max]="getToday()"
                         />
                       </div>
                       <div>
@@ -108,7 +109,7 @@
                             signupForm.controls['dob'].touched &&
                             signupForm.hasError('required', 'dob')
                           "
-                          ><i>*required*</i></span
+                          ><i>Please select your date of birth</i></span
                         >
                       </div>
                     </div>
@@ -129,7 +130,7 @@
                             signupForm.controls['email'].touched &&
                             signupForm.hasError('required', 'email')
                           "
-                          ><i>*required*</i></span
+                          ><i>Please enter your email</i></span
                         >
                         <span
                           class="sp"
@@ -137,7 +138,7 @@
                             signupForm.controls['email'].touched &&
                             signupForm.hasError('pattern', 'email')
                           "
-                          ><i>*Invalid Format*</i></span
+                          ><i>*Invalid email Format*</i></span
                         >
                         <span
                           class="sp"
@@ -166,7 +167,7 @@
                             signupForm.controls['password'].touched &&
                             signupForm.hasError('required', 'password')
                           "
-                          ><i>*required*</i></span
+                          ><i>Please enter your password</i></span
                         >
                         <span
                           class="sp"
@@ -174,7 +175,7 @@
                             signupForm.controls['password'].touched &&
                             signupForm.hasError('minlength', 'password')
                           "
-                          ><i>*password is too short*</i></span
+                          ><i>*Password is too short*</i></span
                         >
                         <span
                           class="sp"
@@ -182,7 +183,7 @@
                             signupForm.controls['password'].touched &&
                             signupForm.hasError('maxlength', 'password')
                           "
-                          ><i>*password is too long*</i></span
+                          ><i>*Password is too long*</i></span
                         >
                         <span
                           class="sp"
@@ -190,7 +191,7 @@
                             signupForm.controls['password'].touched &&
                             signupForm.hasError('pattern', 'password')
                           "
-                          ><i>*password is invalid*</i></span
+                          ><i>*Password is invalid*</i></span
                         >
                       </div>
                     </div>
@@ -211,7 +212,7 @@
                             signupForm.controls['cPassword'].touched &&
                             signupForm.hasError('required', 'cPassword')
                           "
-                          ><i>*required*</i></span
+                          ><i>*Please re-enter your password*</i></span
                         >
                         <span
                           class="sp"
@@ -219,7 +220,7 @@
                             signupForm.controls['cPassword'].touched &&
                             signupForm.hasError('minlength', 'cPassword')
                           "
-                          ><i>*password is too short*</i></span
+                          ><i>*Password is too short*</i></span
                         >
                         <span
                           class="sp"
@@ -227,7 +228,7 @@
                             signupForm.controls['cPassword'].touched &&
                             signupForm.hasError('maxlength', 'cPassword')
                           "
-                          ><i>*password is too long*</i></span
+                          ><i>*Password is too long*</i></span
                         >
                       </div>
                       <div
@@ -260,7 +261,7 @@
                             signupForm.controls['passportNo'].touched &&
                             signupForm.hasError('required', 'passportNo')
                           "
-                          ><i>*required*</i></span
+                          ><i>Please enter your passport number</i></span
                         >
                         <span
                           class="sp"
@@ -268,7 +269,7 @@
                             signupForm.controls['passportNo'].touched &&
                             signupForm.hasError('pattern', 'passportNo')
                           "
-                          >*Invalid Format</span
+                          >Invalid passport number</span
                         >
                         <span
                           class="sp"
@@ -305,7 +306,7 @@
                             signupForm.controls['phone'].touched &&
                             signupForm.hasError('required', 'phone')
                           "
-                          ><i>*required*</i></span
+                          ><i>Please enter your phone number</i></span
                         >
                         <span
                           class="sp"
@@ -329,7 +330,7 @@
                             signupForm.controls['phone'].touched &&
                             signupForm.hasError('pattern', 'phone')
                           "
-                          ><i>*Invalid Format*</i></span
+                          ><i>Invalid phone number</i></span
                         >
                       </div>
                     </div>
@@ -353,7 +354,7 @@
                             signupForm.controls['address'].touched &&
                             signupForm.hasError('required', 'address')
                           "
-                          ><i>*required*</i></span
+                          ><i>Please enter your address</i></span
                         >
                       </div>
                     </div>
@@ -374,7 +375,7 @@
                             signupForm.controls['city'].touched &&
                             signupForm.hasError('required', 'city')
                           "
-                          ><i>*required*</i></span
+                          ><i>Please enter your city name</i></span
                         >
                       </div>
                     </div>
@@ -400,7 +401,7 @@
                             signupForm.controls['country'].touched &&
                             signupForm.hasError('required', 'country')
                           "
-                          ><i>*required*</i></span
+                          ><i>Please select your country</i></span
                         >
                       </div>
                     </div>

@@ -21,6 +21,7 @@ public interface AirplaneRepository extends Repository<Airplane, Integer> {
 
     Optional<Airplane> findByAirplaneId(Integer airplaneId);
 
+    
     Collection<Airplane> findAllByUserUserIdAndStatus(Integer userId, byte status);
 
     @Modifying

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.airline.reservation.entity.Flight;
+import com.airline.reservation.form.FlightEditForm;
 import com.airline.reservation.form.FlightForm;
 import com.airline.reservation.service.FlightService;
 import com.airline.reservation.view.FlightView;
@@ -58,8 +59,8 @@ public class FlightController {
     @PutMapping("/{flightId}")
     public FlightView updateFlightById(
             @PathVariable("flightId") Integer flightId,
-            @Valid @RequestBody FlightForm form) {
-        return flightservice.updateFlight(flightId, form);
+            @Valid @RequestBody FlightEditForm form) {
+        return flightservice.updateFlight(flightId,form);
     }
     
     //delete flights

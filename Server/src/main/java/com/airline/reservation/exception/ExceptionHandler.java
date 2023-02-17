@@ -38,7 +38,35 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler{
                       if((s.equals("1004"))){
                         body.getErrors().add(new ApplicationError("1004","Invalid Phone Number"));
                           }
+                          if((s.equals("1010"))){
+                            body.getErrors().add(new ApplicationError("1010","Airplane name is null"));
+                            }
+                          if((s.equals("1011"))){
+                            body.getErrors().add(new ApplicationError("1011","Airplane name should be between 5 and 30"));
+                            }
+                          if((s.equals("1012"))){
+                            body.getErrors().add(new ApplicationError("1012","Model number is null"));
+                            }
+                          if((s.equals("1013"))){
+                            body.getErrors().add(new ApplicationError("1013","Model number should be between 5 and 30"));
+                            }
+                          if((s.equals("1014"))){
+                            body.getErrors().add(new ApplicationError("1014","Total seat field is null"));
+                            }
+                          if((s.equals("1003"))){
+                            body.getErrors().add(new ApplicationError("1003","email is null"));
+                            }
+                          if((s.equals("1005"))){
+                            body.getErrors().add(new ApplicationError("1005","Passport number should be 8 charactors"));
+                            }
+                          if((s.equals("1006"))){
+                            body.getErrors().add(new ApplicationError("1006","City max size 18"));
+                            }
+                           if((s.equals("1007"))){
+                            body.getErrors().add(new ApplicationError("1007","country max size 18"));
+                            }
                         }
+                      
         objectBody.put("Errors", body);
         return new ResponseEntity<>(body, httpStatus);
     }

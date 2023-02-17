@@ -70,7 +70,6 @@ export class AirplaneRegComponent implements OnInit {
             "Failed"
           );
           this.status = false;
-          console.log(err);
         },
       });
     } else {
@@ -84,3 +83,5 @@ export class AirplaneRegComponent implements OnInit {
     this.planeRegForm.reset();
   }
 }
+
+

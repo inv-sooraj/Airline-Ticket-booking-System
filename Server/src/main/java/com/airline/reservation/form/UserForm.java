@@ -14,7 +14,7 @@ public class UserForm {
     @Size(min = 4, max = 20)
     private String fullName;
 
-    @NotBlank(message = "1002")
+    @NotBlank(message = "1003")
     @Email(message = "1002")
     private String email;
 
