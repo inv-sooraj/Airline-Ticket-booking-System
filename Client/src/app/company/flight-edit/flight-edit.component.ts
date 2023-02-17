@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AlertService } from 'src/app/alert.service';
 import { ApiService } from 'src/app/api.service';
@@ -75,6 +75,7 @@ export class FlightEditComponent {
   
   //Method to add flight details
   updateFlight() {
+    
     let param = {
       flightNumber: this.FlightEditForm.value.flightno,
       departure: this.FlightEditForm.value.departure,
@@ -86,6 +87,7 @@ export class FlightEditComponent {
       // deleteFlag: 1,
       // seats: this.FlightEditForm.value.seatDetails,
     };
+    console.log("parameters",param);
     this.apiservice.sendUpdateflight(param, this.flightId).subscribe({
       next: (response: any) => {
         
@@ -109,10 +111,9 @@ export class FlightEditComponent {
     this.apiservice.getPlaneByCompany(this.userid).subscribe({
       next: (response: any) => {
         this.AirplaneDetails = response;
-        this.FlightEditForm.setValue({
-          airplane: this.response.airplane.airplaneId, 
-        });
-
+        // this.FlightEditForm.setValue({
+        //   airplane: this.response.airplane.airplaneId, 
+        // });
       },
       error: (err: any) => {
         this.alertservice.showError("Couldnt fetch airplane details", "error");
@@ -122,13 +123,14 @@ export class FlightEditComponent {
   }
   getFlightById(){
     this.apiservice.getPlaneDataById(this.flightId).subscribe({
-      next: (response: any) => {
-        this.response = response;
+      next: (responseData: any) => {
+        this.response = responseData;
         // this.seatsArray=response.seats;
-        for(let i of response.seats){
+        for(let i of responseData.seats){
           this.seatsArray.push(i)
         }
-        
+        this.FlightEditForm.controls['airplane'].setValue(responseData.airplane.airplaneId);
+
       },
       error: (err: any) => {
         this.alertservice.showError("Couldnt fetch flight details", "error");

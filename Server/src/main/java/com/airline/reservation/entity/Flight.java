@@ -173,7 +173,7 @@ public class Flight {
         this.createDate = dt;
         this.updateDate = dt;
     }
-    public Flight update(FlightEditForm form){
+    public Flight update(FlightForm form){
         this.flightNumber=form.getFlightNumber();
         this.departure=form.getDeparture();
         this.depDateTime=form.getDepDateTime();
@@ -181,7 +181,7 @@ public class Flight {
         this.destDateTime=form.getDestDateTime();
         this.airplane=new Airplane(form.getAirplaneId());
         this.user=new User(form.getUserId());
-//        this.seats = form.getSeats();
+        this.seats = form.getSeats();
         Date dt = new Date();
         this.updateDate = dt;
         this.deleteFlag = 1;

@@ -41,7 +41,7 @@ public class FlightServiceImpl implements FlightService {
 
     @Override
     @Transactional
-    public FlightView updateFlight(Integer flightId, FlightEditForm form) {
+    public FlightView updateFlight(Integer flightId, FlightForm form) {
         
          return flightRepository.findByFlightId(flightId)
                 .map((Flight) -> {

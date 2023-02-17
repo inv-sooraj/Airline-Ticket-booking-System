@@ -22,7 +22,7 @@ public interface FlightService {
     Optional<Flight> findByFlightId(Integer flightId);
 //    Optional<Flight> findByFlightIdAndSeat(Integer flightId,Integer seatId);
 
-    public FlightView updateFlight(Integer flightId, FlightEditForm form);
+    public FlightView updateFlight(Integer flightId, FlightForm form);
 
     public void deleteFlightByIds(ArrayList<Integer> ids);
 
