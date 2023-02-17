@@ -53,5 +53,7 @@ Page<Object[]> findFlightsWithMinSeatPrice(@Param("departure") String departure,
     @Query("update  Flight p set p.deleteFlag = 0 where p.flightId in(:integers)")
     void softDeleteAllIds(List<Integer> integers);
     List<Flight> findBydeleteFlag(byte flag);
+
+    
 }
  

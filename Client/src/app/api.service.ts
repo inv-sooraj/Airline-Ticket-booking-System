@@ -7,6 +7,9 @@ import { environment } from "src/environments/environment";
   providedIn: "root",
 })
 export class ApiService {
+  getFlightDetail(flightId: any) {
+    return this.httpClient.get(this.baseUrl+"/flight/"+flightId,this.getHeader());
+  }
   flightSearch(params: HttpParams) {
     
 

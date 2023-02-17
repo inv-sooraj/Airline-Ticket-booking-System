@@ -24,7 +24,7 @@
         <div
           class="listing-details-inner bx-wrapper bg-custom-white padding-20"
         >
-          <div class="row">
+          <div class="row" >
             <div class="col-lg-8">
               <hr />
               <div class="listing-meta-sec mb-md-80">
@@ -75,37 +75,33 @@
                                 <li class="text-light-dark">
                                   <label class="no-margin text-custom-blue">
                                     Flight Name : </label
-                                  >Delta
+                                  >{{items.flightNumber}}
                                 </li>
                                 <li class="text-light-dark">
                                   <label class="no-margin text-custom-blue">
                                     Company: </label
-                                  >Indigo
+                                  >{{items.user.fullName}}
                                 </li>
                                 <li class="text-light-dark">
                                   <label class="no-margin text-custom-blue">
                                     Flight Number: </label
-                                  >7232
+                                  >{{items.flightNumber}}
                                 </li>
-                                <li class="text-light-dark">
-                                  <label class="no-margin text-custom-blue">
-                                    Model Number: </label
-                                  >ME312
-                                </li>
+                               
                                 <li class="text-light-dark">
                                   <label class="no-margin text-custom-blue">
                                     Departing From : </label
-                                  >Kochi
+                                  >{{items.departure}}
                                 </li>
                                 <li class="text-light-dark">
                                   <label class="no-margin text-custom-blue">
                                     Destination: </label
-                                  >Chennai
+                                  >{{items.destination}}
                                 </li>
                                 <li class="text-light-dark">
                                   <label class="no-margin text-custom-blue">
                                     Date of Departing: </label
-                                  >1994-11-05
+                                  >{{items.depDateTime}}
                                 </li>
                                 <li class="text-light-dark">
                                   <label class="no-margin text-custom-blue">

@@ -37,7 +37,7 @@ const routes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "header", component: HeaderComponent },
   { path: "user-booking-list", component: UserBookingListComponent },
-  { path: "flight-detail", component: FlightDetailComponent },
+  { path: "flight-detail/:flightId", component: FlightDetailComponent },
   { path: "reservation-list", component: ReservationListComponent },
   { path: "user-detail/:userId", component: UserDetailComponent },
   { path: "flight-details", component: FlightDetailsAdminComponent },
