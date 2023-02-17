@@ -59,7 +59,7 @@ public class FlightController {
     @PutMapping("/{flightId}")
     public FlightView updateFlightById(
             @PathVariable("flightId") Integer flightId,
-            @Valid @RequestBody FlightEditForm form) {
+            @Valid @RequestBody FlightForm form) {
         return flightservice.updateFlight(flightId,form);
     }
     
