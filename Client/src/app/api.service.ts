@@ -137,6 +137,15 @@ export class ApiService {
       this.getHeader()
     );
   }
+  /* multi deletion of flights */
+  deleteFlight(ids:any){
+    
+
+    return this.httpClient.delete(
+      this.baseUrl + '/flight?ids='+ ids,
+      this.getHeader()
+    );
+  }
   /** Method to get the users of role 2(company users) */
 
   getCompany() {
@@ -200,6 +209,42 @@ export class ApiService {
     console.log( this.baseUrl + "/bookings/cancelBooking/" + id +'/'+reason +cancelStatus)
     return this.httpClient.put(
       this.baseUrl + "/bookings/cancelBooking/" + id +'/'+reason +'/'+cancelStatus,
+      this.getHeader()
+    );
+  }
+
+  //method to get all flight details(for admin)
+  getAllFlight(){
+    return this.httpClient.get(
+      this.baseUrl + '/flight/findAll',
+      this.getHeader()
+    );
+    
+  }
+
+  //Method to get flight details of a particular company(userid)
+
+  getFlightByCompany(id:any){
+    return this.httpClient.get(
+      this.baseUrl + '/flight/findAll/'+id,
+      this.getHeader()
+    );
+    
+  }
+
+  /* method to get flight details by id(flightid) */
+  getPlaneDataById(flightId:any){
+    return this.httpClient.get(
+      this.baseUrl + '/flight/'+flightId,
+      this.getHeader()
+    );
+  }
+
+  /* Edit flight*/
+  
+  sendUpdateflight(flightform:any,flightId:any){
+    return this.httpClient.put(
+      this.baseUrl + '/flight/'+flightId,flightform,
       this.getHeader()
     );
   }

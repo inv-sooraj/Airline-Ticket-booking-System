@@ -1,10 +1,7 @@
 package com.airline.reservation.entity;
-
- 
- 
+import com.airline.reservation.form.FlightEditForm;
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,11 +16,9 @@ import com.airline.reservation.form.FlightForm;
 import com.airline.reservation.json.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.JoinColumn;
-
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 public class Flight {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer flightId;
@@ -62,13 +57,7 @@ public class Flight {
         this.flightId = flightId;
     }
 
-    public Airplane getAirplane() {
-        return airplane;
-    }
-
-    public void setAirplane(Airplane airplane) {
-        this.airplane = airplane;
-    }
+   
     public Integer getFlightId() {
         return flightId;
     }
@@ -157,6 +146,13 @@ public class Flight {
         this.updateDate = updateDate;
     }
 
+      public Airplane getAirplane() {
+        return airplane;
+    }
+
+    public void setAirplane(Airplane airplane) {
+        this.airplane = airplane;
+    }
     public Flight() {
     }
 
@@ -174,4 +170,19 @@ public class Flight {
         this.createDate = dt;
         this.updateDate = dt;
     }
+    public Flight update(FlightForm form){
+        this.flightNumber=form.getFlightNumber();
+        this.departure=form.getDeparture();
+        this.depDateTime=form.getDepDateTime();
+        this.destination=form.getDestination();
+        this.destDateTime=form.getDestDateTime();
+        this.airplane=new Airplane(form.getAirplaneId());
+        this.user=new User(form.getUserId());
+        this.seats = form.getSeats();
+        Date dt = new Date();
+        this.updateDate = dt;
+        this.deleteFlag = 1;
+        return this;
+    }
+    
 }

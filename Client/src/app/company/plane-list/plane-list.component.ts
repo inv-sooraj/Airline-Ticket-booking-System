@@ -41,7 +41,6 @@ export class PlaneListComponent implements OnInit {
   /**For storing the id of selected airplanes in formarray */
 
   onCheckboxChange(e: any) {
-    // const website: FormArray = this.planeListForm.get('sel') as FormArray;
 
     if (e.target.checked) {
       this.website.push(e.target.value);
@@ -56,12 +55,6 @@ export class PlaneListComponent implements OnInit {
   /**For selecting company from dropdown list(for admin only) */
 
   changeCompany() {
-    this.onSubmit();
-  }
-
-  /**For fetching airplane details based on  a spacific company id */
-
-  onSubmit() {
     this.apiservice
       .getPlaneByCompany(this.planeListForm.value.company)
       .subscribe({
@@ -74,6 +67,9 @@ export class PlaneListComponent implements OnInit {
         complete: () => {},
       });
   }
+
+  /**For fetching airplane details based on  a spacific company id */
+
   ngOnInit(): void {
     this.getPlane();
     this.getCompanyName();

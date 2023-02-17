@@ -7,12 +7,10 @@
   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 />
 
-<!-- <link rel="icon" href="img/mini_logo.png" type="image/png"> -->
 
 <link rel="stylesheet" href="/assets/css/admin/bootstrap1.min.css" />
 
-<!-- <link rel="stylesheet" href=" -->
-<!-- /assets/vendors/themefy_icon/themify-icons.css" /> -->
+
 
 <link rel="stylesheet" href="/assets/vendors/niceselect/css/nice-select.css" />
 
@@ -87,7 +85,7 @@
                         <div class="serach_field_2">
                           <div class="search_inner">
                             <form [formGroup]="planeListForm">
-                              <div class="search-hero col-lg-12">
+                              <div class="search-hero "><!--col-lg-12-->
                                 <input
                                   type="text"
                                   formControlName="search"
@@ -115,7 +113,7 @@
                             </form>
                           </div>
                         </div>
-                        <div class="add_button ms-2">
+                        <div class="add_button "><!--ms-2-->
                           <a
                             [routerLink]="['/plane-reg']"
                             data-bs-toggle="modal"
@@ -138,10 +136,6 @@
                       <table class="table">
                         <thead>
                           <tr>
-                            <!-- <th scope="col">
-                              <input class="form-check-input" type="checkbox" [(ngModel)]="parentSelector" [value]="-1"
-                                (change)="onChange($event)" />
-                            </th> -->
                             <th></th>
                             <th scope="col">Airplane Id</th>
                             <th scope="col">Name</th>
@@ -158,8 +152,6 @@
                             "
                           >
                             <th scope="row">
-                              <!-- <input class="form-check-input" type="checkbox" [value]="n.airplaneId"
-                                [checked]="n.select" (change)="onChange($event)" /> -->
                               <label for="sel"></label>
                               <input
                                 type="checkbox"

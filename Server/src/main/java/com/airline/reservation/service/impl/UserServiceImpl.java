@@ -141,7 +141,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public UserView update(UserUpdateForm form) throws NotFoundException {
+    public UserView update(@Valid UserUpdateForm form) throws NotFoundException {
         return userRepository.findByUserId(SecurityUtil.getCurrentUserId())
                 .map((User) -> {
                     return new UserView(userRepository.save(User.update(form)));
@@ -197,7 +197,7 @@ public class UserServiceImpl implements UserService {
         user.setAddress(form.getAddress());
         user.setCity(form.getCity());
         user.setCountry(form.getCountry());
-        user.setDob(form.getDob());;
+        user.setDob(form.getDob());
         user.setPassportNumber(form.getPassportNumber());
         user.setPhone(form.getPhone());
         return new UserView(userRepository.save(user));

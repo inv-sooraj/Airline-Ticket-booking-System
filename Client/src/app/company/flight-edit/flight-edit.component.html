@@ -1,7 +1,7 @@
 <app-company-nav></app-company-nav><br /><br />
 
 <body>
-  <form [formGroup]="FlightRegForm">
+  <form [formGroup]="FlightEditForm">
     <div class="main_content_iner">
       <div class="container-fluid p-0 sm_padding_15px">
         <div class="row justify-content-center">
@@ -10,7 +10,7 @@
               <div class="white_card_header">
                 <div class="box_header m-0">
                   <div class="main-title">
-                    <h3 class="m-0">Flight Registration</h3>
+                    <h3 class="m-0">Flight Details</h3>
                     <br />
                   </div>
                 </div>
@@ -28,7 +28,7 @@
                       formControlName="airplane"
                       id="Companydropdown"
                     >
-                      <option value="">Select Airplane</option>
+                      <option value="">{{response.airplane.airplaneName}}</option>
                       <option
                         *ngFor="let name of AirplaneDetails"
                         [value]="name.airplaneId"
@@ -40,8 +40,8 @@
                       <span
                         class="span1"
                         *ngIf="
-                          FlightRegForm.controls['airplane'].touched &&
-                          FlightRegForm.hasError('required', 'airplane')
+                        FlightEditForm.controls['airplane'].touched &&
+                        FlightEditForm.hasError('required', 'airplane')
                         "
                         ><i>Please select airplane name</i></span
                       >
@@ -59,21 +59,22 @@
                     formControlName="flightno"
                     aria-describedby="emailHelp"
                     placeholder=""
+                    [(ngModel)]="response.flightNumber"
                   />
                   <div>
                     <span
                       class="span1"
                       *ngIf="
-                        FlightRegForm.controls['flightno'].touched &&
-                        FlightRegForm.hasError('required', 'flightno')
+                      FlightEditForm.controls['flightno'].touched &&
+                      FlightEditForm.hasError('required', 'flightno')
                       "
                       ><i>Please enter flight number</i></span
                     >
                     <span
                       class="span1"
                       *ngIf="
-                        FlightRegForm.controls['flightno'].touched &&
-                        FlightRegForm.hasError('pattern', 'flightno')
+                      FlightEditForm.controls['flightno'].touched &&
+                      FlightEditForm.hasError('pattern', 'flightno')
                       "
                       ><i>Invalid format</i></span
                     >
@@ -89,21 +90,22 @@
                     id="exampleInputPassword"
                     formControlName="departure"
                     placeholder=""
+                    [(ngModel)]="response.departure"
                   />
                   <div>
                     <span
                       class="span1"
                       *ngIf="
-                        FlightRegForm.controls['departure'].touched &&
-                        FlightRegForm.hasError('required', 'departure')
+                      FlightEditForm.controls['departure'].touched &&
+                      FlightEditForm.hasError('required', 'departure')
                       "
                       ><i>Please enter departure city</i></span
                     >
                     <span
                       class="span1"
                       *ngIf="
-                        FlightRegForm.controls['departure'].touched &&
-                        FlightRegForm.hasError('pattern', 'departure')
+                      FlightEditForm.controls['departure'].touched &&
+                      FlightEditForm.hasError('pattern', 'departure')
                       "
                       ><i>Invalid Format</i></span
                     >
@@ -120,13 +122,14 @@
                     id="exampleInputPassword"
                     formControlName="departureDT"
                     placeholder=""
+                    [(ngModel)]="response.depDateTime"
                   />
                   <div>
                     <span
                       class="span1"
                       *ngIf="
-                        FlightRegForm.controls['departureDT'].touched &&
-                        FlightRegForm.hasError('required', 'departureDT')
+                      FlightEditForm.controls['departureDT'].touched &&
+                      FlightEditForm.hasError('required', 'departureDT')
                       "
                       ><i>Please enter departing date & time</i></span
                     >
@@ -142,21 +145,22 @@
                     id="exampleInputPassword"
                     formControlName="destination"
                     placeholder=""
+                    [(ngModel)]="response.destination"
                   />
                   <div>
                     <span
                       class="span1"
                       *ngIf="
-                        FlightRegForm.controls['destination'].touched &&
-                        FlightRegForm.hasError('required', 'destination')
+                      FlightEditForm.controls['destination'].touched &&
+                      FlightEditForm.hasError('required', 'destination')
                       "
                       ><i>Please enter destination city</i></span
                     >
                     <span
                       class="span1"
                       *ngIf="
-                        FlightRegForm.controls['destination'].touched &&
-                        FlightRegForm.hasError('pattern', 'destination')
+                      FlightEditForm.controls['destination'].touched &&
+                      FlightEditForm.hasError('pattern', 'destination')
                       "
                       ><i>*Invalid Format*</i></span
                     >
@@ -173,27 +177,26 @@
                     id="exampleInputPassword"
                     formControlName="ariivalDT"
                     placeholder=""
+                    [(ngModel)]="response.destDateTime"
                   />
                   <div>
                     <span
                       class="span1"
                       *ngIf="
-                        FlightRegForm.controls['ariivalDT'].touched &&
-                        FlightRegForm.hasError('required', 'ariivalDT')
+                      FlightEditForm.controls['ariivalDT'].touched &&
+                      FlightEditForm.hasError('required', 'ariivalDT')
                       "
                       ><i>Please enter arrival date & time</i></span
                     >
                   </div>
+                
                 </div>
               </div>
               <div class="white_card_body">
-                <button class="btn btn-dark" (click)="addCreds()" id="btnadd">
-                  Click here to add seat details</button
-                ><br />
-
+               
                 <!--Formarray to store seat details-->
 
-                <div class="mb-4">
+                <div class="mb-4">  
                   <div
                     formArrayName="seatDetails"
                     *ngFor="
@@ -202,18 +205,19 @@
                     "
                     [formGroupName]="i"
                   >
-                    <br /><ng-container [formGroupName]="i">
+                 
+                    <br /><div [formGroupName]="i">
+                  
+                      <div class="mb-4 pb-2" *ngFor="
+                      let seat of seatsArray">
                       
-                      <div class="mb-4 pb-2">
-                        <button type="button" class="close" aria-label="Close" (click)="delete(i)">
-                          <span aria-hidden="true">&times;</span>
-                        </button><br>
-                        <select
+                         <select
                           class="form-control"
                           formControlName="seatType"
                           id="dropdownMenuButton1"
+                          
                         >
-                          <option value="">Seat type</option>
+                          <option value="">{{seat.seatType}}</option>
                           <option value="economy">economy</option>
                           <option value=" premium economy">
                             premium economy
@@ -221,21 +225,10 @@
                           <option value="business">business</option>
                           <option value="first class">first class</option>
                         </select>
-                        <input
-                          class="form-control"
-                          placeholder="No of seats"
-                          formControlName="number"
-                          id="exampleInputPassword1"
-                        />
-                        <input
-                          class="form-control"
-                          placeholder="Price"
-                          formControlName="price"
-                          id="exampleInputPassword2"
-                        />
-                        
+                        <input type="text" id="exampleInputPassword1" class="form-control"  value="{{seat.number}}"/>
+                        <input type="text" id="exampleInputPassword2" class="form-control"  value="{{seat.price}}"/>
                       </div>
-                    </ng-container>
+                    </div>
                   </div>
                   <br />
                   <div>
@@ -249,9 +242,9 @@
                       Cancel
                     </button>
                     <button
-                      type="submit"
+                      type="button"
                       class="btn btn-success"
-                      (click)="addFlight()"
+                      (click)="updateFlight()"
                     >
                       Submit
                     </button>

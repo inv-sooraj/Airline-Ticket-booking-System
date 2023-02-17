@@ -1,15 +1,8 @@
 package com.airline.reservation.controller;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
- 
- 
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -25,14 +18,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.airline.reservation.entity.Flight;
 import com.airline.reservation.form.FlightForm;
 import com.airline.reservation.repository.FlightRepository;
 import com.airline.reservation.service.FlightService;
 import com.airline.reservation.view.FlightResponse;
 import com.airline.reservation.view.RandomFlightList;
-
+import com.airline.reservation.view.FlightView;
+import java.util.ArrayList;
+import java.util.Optional;
+import javax.validation.Valid;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 @RestController
 @RequestMapping("/flight")
 public class FlightController {
@@ -52,7 +49,7 @@ private FlightRepository flightRepository;
     //All Flights
     @GetMapping("/findAll")
     public List<Flight> findAll() {
-        return flightservice.findAll();
+        return flightservice.findAll() ;
     }
     // get flight details of a paraticular company
     
@@ -63,7 +60,7 @@ private FlightRepository flightRepository;
 
     //Flight Detail
     @GetMapping("/{flightId}")
-    public List<Flight>findByFlightId(@PathVariable("flightId")Integer flightId){
+    public Optional<Flight>findByFlightId(@PathVariable("flightId")Integer flightId){
         return flightservice.findByFlightId(flightId);
     }
     
@@ -100,5 +97,19 @@ public ResponseEntity<List<FlightResponse>> searchFlights(@RequestParam String d
     List<FlightResponse> flights = flightsPage.getContent().stream().map(objects -> new FlightResponse((Integer) objects[0], (String) objects[1], (String) objects[2], (String) objects[3], (Integer) objects[4])).collect(Collectors.toList());
     return ResponseEntity.ok(flights);
 }
-
+    //update flight details of a particular flight
+    
+    @PutMapping("/{flightId}")
+    public FlightView updateFlightById(
+            @PathVariable("flightId") Integer flightId,
+            @Valid @RequestBody FlightForm form) {
+        return flightservice.updateFlight(flightId,form);
+    }
+    
+    //delete flights
+    @DeleteMapping
+    public void deleteFlights(@RequestParam("ids") ArrayList<Integer> ids) {
+        System.out.println("deleting");
+        flightservice.deleteFlightByIds(ids);
+    }
 }
