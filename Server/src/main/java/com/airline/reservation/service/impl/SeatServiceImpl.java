@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 
 import com.airline.reservation.service.SeatService;
 import com.airline.reservation.view.SeatView;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 @Service
 public class SeatServiceImpl implements SeatService {
@@ -21,6 +24,11 @@ public class SeatServiceImpl implements SeatService {
                 .map((Seat) -> {
                     return new SeatView(seatRepository.save(Seat.update(form)));
                 }).orElseThrow(NotFoundException::new);
+    }
+
+    
+    public List<Object[]> getAllSeatIdAndType(Integer flightId) {
+        return seatRepository.findAllSeatIdAndType(flightId);
     }
 
     }

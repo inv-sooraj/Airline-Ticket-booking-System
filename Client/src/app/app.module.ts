@@ -39,7 +39,7 @@ import { UserListComponent } from "./user-list/user-list.component";
 import { ReservationDetailsComponent } from "./reservation-details/reservation-details.component";
 import { UserFlightListComponent } from './user/user-flight-list/user-flight-list.component';
 import { FlightEditComponent } from './company/flight-edit/flight-edit.component';
-import { CommonModule } from "@angular/common";
+import { CommonModule, DatePipe } from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -90,7 +90,7 @@ import { CommonModule } from "@angular/common";
     NgbModule,
     FontAwesomeModule,
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

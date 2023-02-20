@@ -3,8 +3,13 @@ package com.airline.reservation.controller;
 import com.airline.reservation.form.SeatForm;
 import com.airline.reservation.service.SeatService;
 import com.airline.reservation.view.SeatView;
+
+import java.util.List;
+
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,5 +28,13 @@ public class SeatController {
             @PathVariable("seatId") Integer seatId,
             @Valid @RequestBody SeatForm form) {
         return seatService.updateSeat(seatId,form);
+    }
+
+ //for Form Array 
+    //Fetch id 
+    @GetMapping("/{flightId}")
+    public ResponseEntity<List<Object[]>> getAllColumns(@PathVariable Integer flightId) {
+        List<Object[]> columns = seatService.getAllSeatIdAndType(flightId);
+        return ResponseEntity.ok(columns);
     }
 }
