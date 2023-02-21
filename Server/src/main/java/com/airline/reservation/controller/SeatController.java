@@ -45,7 +45,7 @@ public class SeatController {
         return seatService.getSeatInfo(flightId);
     }
     @GetMapping("/getPrice/{seatId}")
-    public String getPrice(@PathVariable Integer seatId){
+    public Integer getPrice(@PathVariable Integer seatId){
         return seatService.getPrice(seatId);
     }
 }

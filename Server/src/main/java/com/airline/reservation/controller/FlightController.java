@@ -91,6 +91,14 @@ public List<Map<String, Object>> getDataWithMinField() {
     List<Map<String, Object>> data = jdbcTemplate.queryForList(sql);
     return data;
 }
+@GetMapping("/getTwoRandom")
+public List<Map<String, Object>> getTwoDataWithMinField() {
+    String sql = "SELECT flight.*, " +
+                 "(SELECT MIN(price) FROM seat WHERE flight.flight_id = seat.cp_fk) as min_price " +
+                 "FROM flight  order by RAND() LIMIT 2";
+    List<Map<String, Object>> data = jdbcTemplate.queryForList(sql);
+    return data;
+}
 
 @GetMapping("/search")
 public ResponseEntity<List<FlightResponse>> searchFlights(@RequestParam String departure, @RequestParam String destination, @RequestParam("depDateTime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date depDateTime, Pageable pageable) {

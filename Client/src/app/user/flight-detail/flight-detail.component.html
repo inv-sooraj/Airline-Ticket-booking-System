@@ -127,8 +127,8 @@
                                     <div class="row" *ngFor="let seat of seats.controls; let i=index" [formGroupName]="i">
                                       <div class="col-lg-3 col-md-6">
                                         <div class="form-group">
-                                          <label for="class{{i}}">Select Class</label>
-                                          <select id="class{{i}}" formControlName="seatId"  (change)="changed($event)" class="form-control form-control-custom" name="seatId" >
+                                          <label for="seatId{{i}}">Select Class</label>
+                                          <select id="seatId{{i}}" formControlName="seatId"  (change)="changed($event, i)" class="form-control form-control-custom" name="seatId" >
                                             <!-- <option value="" disabled selected>Select Class</option> -->
                                             <option *ngFor="let seatType of seatTypes" [value]="seatType.seatId">{{ seatType.seatType }}</option>
                                           </select>
@@ -137,13 +137,15 @@
                                       <div class="col-lg-3 col-md-6">
                                         <div class="form-group">
                                           <label for="price{{i}}">Seat Price </label>
-                                          <input id="price{{i}}" [value]="seatPrice" type="text" formControlName="price" [readonly]="true" class="form-control form-control-custom" placeholder=" Price ">
+                                          <!-- <input id="price{{i}}" [value]="getSeatPrice(seats?.get('seatId')?.value, i)" type="number" formControlName="price" name="price" [readonly]="true" class="form-control form-control-custom" placeholder="Price"> -->
+                                          <input id="price{{i}}" [value]="getSeatPrice(seats?.get('seatId')?.value, i)" type="number" formControlName="price" name="price" [readonly]="true" class="form-control form-control-custom" placeholder="Price">
+
                                         </div>
                                       </div>
                                       <div class="col-lg-3 col-md-6">
                                         <div class="form-group">
-                                          <label for="count{{i}}" class="fs-14 text-custom-black fw-500">No . of Seats </label>
-                                          <input id="count{{i}}" type="number"  formControlName="count" type="number" name="count" class="form-control form-control-custom" placeholder=" No of Seat ">
+                                          <label for="number{{i}}" class="fs-14 text-custom-black fw-500">No . of Seats </label>
+                                          <input id="number{{i}}" type="number"  formControlName="number" type="number" name="count" class="form-control form-control-custom" placeholder=" No of Seat ">
                                         </div>
                                       </div>
                                       <div class="col-lg-1 col-md-6">
@@ -539,9 +541,9 @@
               </div>
             </div>
             <div class="col-lg-4">
-              <div class="flights-grid mb-xl-30">
+              <div class="flights-grid mb-xl-30" >
                 <h4 class="text-center">Recommended Flights</h4>
-                <div class="flights-grid-wrapper bx-wrapper">
+                <div class="flights-grid-wrapper bx-wrapper" *ngFor="let flights of randomFlights" >
                   <div class="image-sec animate-img">
                     <a href="#">
                       <img
@@ -560,52 +562,20 @@
                         <div class="title">
                           <h4 class="fs-16">
                             <a href="#" class="text-custom-black"
-                              >London to Paris</a
+                              >{{flights.departure}} to {{flights.destination}}</a
                             >
                             <span class="text-light-dark">Oneway Flight</span>
                           </h4>
                         </div>
                       </div>
                       <div class="right-side">
-                        <span class="price"><small>From</small>$620</span>
+                        <span class="price"><small>From</small>₹{{flights.min_price}}</span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="flights-grid mb-xl-30">
-                <div class="flights-grid-wrapper bx-wrapper">
-                  <div class="image-sec animate-img">
-                    <a href="#">
-                      <img
-                        src="/assets/img/user/flights/1.jpg"
-                        class="full-width"
-                        alt="img"
-                      />
-                    </a>
-                  </div>
-                  <div
-                    class="flights-grid-caption padding-20 bg-custom-white p-relative"
-                  >
-                    <div class="heading-sec">
-                      <div class="left-side">
-                        <i class="fa fa-plane text-yellow"></i>
-                        <div class="title">
-                          <h4 class="fs-16">
-                            <a href="#" class="text-custom-black"
-                              >London to Paris</a
-                            >
-                            <span class="text-light-dark">Oneway Flight</span>
-                          </h4>
-                        </div>
-                      </div>
-                      <div class="right-side">
-                        <span class="price"><small>From</small>$620</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              
             </div>
           </div>
         </div>

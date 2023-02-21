@@ -42,7 +42,7 @@ public class SeatServiceImpl implements SeatService {
 
 
     @Override
-    public String getPrice(Integer seatId) {
+    public Integer getPrice(Integer seatId) {
         return seatRepository.getPrice(seatId);
     }
 

@@ -7,7 +7,10 @@ import { environment } from "src/environments/environment";
   providedIn: "root",
 })
 export class ApiService {
-  getSeatPrice(seatId: any) {
+  getTwoRandom() {
+    return this.httpClient.get(this.baseUrl+"/flight/getTwoRandom",this.getHeader());
+  }
+  getSeatPrice(seatId: any,index:any) {
     console.log(this.baseUrl+'/seat/getPrice');
    return this.httpClient.get(this.baseUrl+'/seat/getPrice/'+seatId);
   }
@@ -46,7 +49,7 @@ export class ApiService {
     );
   }
   getRandom(){
-    console.log(this.baseUrl+"/flight/random");
+    
     return this.httpClient.get(this.baseUrl+"/flight/getRandom",this.getHeader());
   }
  

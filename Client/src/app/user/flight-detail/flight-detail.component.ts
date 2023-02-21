@@ -4,7 +4,7 @@ import { ApiService } from 'src/app/api.service';
 import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
-import { VirtualTimeScheduler } from 'rxjs';
+import { of, VirtualTimeScheduler } from 'rxjs';
 
 @Component({
   selector: 'app-flight-detail',
@@ -15,6 +15,7 @@ export class FlightDetailComponent implements OnInit {
   items:any;
   depDateTime:any
   flightId:any
+  randomFlights:any
   destDateTime:any
   selectedSeatTypes = []; 
   depTime:any
@@ -27,18 +28,28 @@ seatPrice!:String;
    
   }
   
-
+getRandom(){
+  this.apiService.getTwoRandom().subscribe(
+    {
+      next: (response: any) => {
+        console.log("RANDOM FLIGHTS ARE : ")
+        this.randomFlights=response;
+        console.log(this.randomFlights);
+      }
+    }
+  );
+}
   ngOnInit() {
     this.myForm = this.fb.group({
       seats: this.fb.array([
         this.fb.group({
           seatId: [],
-          price: [{value: '', disabled: true}],
+          price: [],
           number: []
         })
       ])
     }); 
-    
+    this.getRandom();
     this.route.params.subscribe(params => {
       const flightId = params['flightId'];
       this.flightId=flightId
@@ -84,9 +95,9 @@ this.getIdAndType();
 
   addSeat() {
     const seat = this.fb.group({
-      class: [],
-      price: [{value: '', disabled: true}],
-      count: []
+      seatId: [],
+      price: [this.seatPrice],
+      number: []
     });
     this.seats.push(seat);
   }
@@ -97,7 +108,10 @@ this.getIdAndType();
   }
   onSubmit() {
     const formValues = this.myForm.value;
-    console.log(formValues);
+  
+    // this.myForm.get('controlName').setValue(variableData);
+    this.myForm.get('price')?.setValue(this.seatPrice);
+      console.log(formValues);
   }
   getIdAndType(){
     this.apiService.getSeatIdAndTypeId(this.flightId).subscribe({
@@ -109,16 +123,37 @@ this.getIdAndType();
       }
     });
   }
-  changed(e:any){
+  // changed(e:any){
     
-  this.apiService.getSeatPrice(e.target.value).subscribe(
-    {
-      next:(response:any)=>{
-        this.seatPrice=response;
-        console.log("Price of "+e.target.value+" = "+this.seatPrice);
+  // this.apiService.getSeatPrice(e.target.value).subscribe(
+  //   {
+  //     next:(response:any)=>{
+  //       this.seatPrice=response;
+  //       alert(typeof this.seatPrice)
+  //       console.log("Price of "+e.target.value+" = "+this.seatPrice);
+  //     }
+  //   }
+  // )
+  // }
+  changed(e: any, i: number) {
+    const seatId = e.target.value;
+    this.apiService.getSeatPrice(seatId, i).subscribe(
+      {
+        next: (response: any) => {
+          const seatGroup = this.seats.controls[i] as FormGroup;
+          seatGroup.get('price')?.setValue(response);
+          console.log("Price of " + seatId + " = " + response);
+          console.log(seatGroup)
+        }
       }
-    }
-  )
+    );
+  }
+  getSeatPrice(seatId: string, index: number) {
+   
+    // You can replace this with your actual API call to get the seat price
+    const price = index * 10; // Example calculation
+  console.log("seatId="+seatId,"index=",index)
+    return of(price); // Returning an Observable with the price value
   }
 }
  

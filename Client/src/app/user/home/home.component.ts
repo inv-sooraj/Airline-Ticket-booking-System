@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AlertService } from 'src/app/alert.service';
 import { ApiService } from 'src/app/api.service';
 import { environment } from 'src/environments/environment';
@@ -20,13 +20,18 @@ baseUrl = environment.baseUrl;
     this.searchForm = new FormGroup({
       destination: new FormControl(),
       departure: new FormControl(),
-      depDateTime:new FormControl(),
+      depDateTime:new FormControl('', Validators.required)
     });
   }
 
   ngOnInit(): void {
     this.getRandomFlight();
-    this.today = new Date().toISOString().slice(0, 16);
+    this.today = new Date().toISOString().split('T')[0];
+  }
+  isBeforeToday() {
+    const selectedDate = new Date(this.searchForm.value.myDate);
+    const today = new Date();
+    return selectedDate < today;
   }
 getRandomFlight(){
   this.apiservce.getRandom().subscribe({
