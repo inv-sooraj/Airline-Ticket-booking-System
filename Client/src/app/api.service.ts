@@ -28,6 +28,9 @@ export class ApiService {
 
     return this.httpClient.post(this.baseUrl + "/" + "users/signup", userForm);
   }
+  createCompany(form:any){
+    return this.httpClient.post(this.baseUrl +'/company', form);
+  }
   getAllUsers() {
     return this.httpClient.get(
       this.baseUrl + "/users/GetUsers",
@@ -130,8 +133,6 @@ export class ApiService {
   /** Method to delete(soft delete) the plane */
 
   deletePlane(ids: any) {
-    let params = new HttpParams().set("ids", ids);
-
     return this.httpClient.delete(
       this.baseUrl + "/" + "airplane" + "?" + "ids" + "=" + ids,
       this.getHeader()
@@ -139,8 +140,6 @@ export class ApiService {
   }
   /* multi deletion of flights */
   deleteFlight(ids:any){
-    
-
     return this.httpClient.delete(
       this.baseUrl + '/flight?ids='+ ids,
       this.getHeader()
@@ -245,6 +244,13 @@ export class ApiService {
   sendUpdateflight(flightform:any,flightId:any){
     return this.httpClient.put(
       this.baseUrl + '/flight/'+flightId,flightform,
+      this.getHeader()
+    );
+  }
+  //delete company
+  deleteCompany(ids:any){
+    return this.httpClient.delete(
+      this.baseUrl + '/users?ids='+ ids,
       this.getHeader()
     );
   }

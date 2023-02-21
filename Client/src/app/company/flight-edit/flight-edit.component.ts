@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AlertService } from 'src/app/alert.service';
@@ -9,9 +9,9 @@ import { ApiService } from 'src/app/api.service';
   templateUrl: './flight-edit.component.html',
   styleUrls: ['./flight-edit.component.css']
 })
-export class FlightEditComponent {
+export class FlightEditComponent implements OnInit{
   FlightEditForm!: FormGroup;
-  seats: any = ["Economy", "Business", "First Class"];
+  // seats: any = ["Economy", "Business", "First Class"];
   status: any = false;
   AirplaneDetails: any;
   userid: any;
@@ -53,9 +53,9 @@ export class FlightEditComponent {
     });
     this.userid = localStorage.getItem("userid");
     this.getPlaneName();
-    this.seatDetails().push(this.newData());
     this.today = new Date().toISOString().slice(0, 16);
     this.getFlightById();
+    this.seatDetails().push(this.newData());
   }
   seatDetails(): FormArray {
     return this.FlightEditForm.get("seatDetails") as FormArray;
@@ -63,19 +63,23 @@ export class FlightEditComponent {
   addCreds() {
     this.seatDetails().push(this.newData());
   }
+  delete(index:any){
+    this.seatDetails().removeAt(index);
+  }
   newData(): FormGroup {
     return this.formbuilder.group({
-      seatType: ["", Validators.required],
+      seatType: this.FlightEditForm.get('seatType'),
 
-      number: ["", Validators.required],
+      number: this.FlightEditForm.get('number'),
 
-      price: ["", Validators.required],
+      price: this.FlightEditForm.get('price'),
     });
   }
   
   //Method to add flight details
   updateFlight() {
-    
+    // this.addCreds();
+  // console.log("new data",this.seatDetails());
     let param = {
       flightNumber: this.FlightEditForm.value.flightno,
       departure: this.FlightEditForm.value.departure,
@@ -85,9 +89,9 @@ export class FlightEditComponent {
       airplaneId: this.FlightEditForm.value.airplane,
       userId: this.userid,
       // deleteFlag: 1,
-      // seats: this.FlightEditForm.value.seatDetails,
+      seats: this.FlightEditForm.value.seatDetails,
     };
-    console.log("parameters",param);
+    console.log("parameters",this.FlightEditForm.value.seatDetails);
     this.apiservice.sendUpdateflight(param, this.flightId).subscribe({
       next: (response: any) => {
         
@@ -126,11 +130,11 @@ export class FlightEditComponent {
       next: (responseData: any) => {
         this.response = responseData;
         // this.seatsArray=response.seats;
-        for(let i of responseData.seats){
+        for(let i of responseData.seats.seatId){
           this.seatsArray.push(i)
         }
         this.FlightEditForm.controls['airplane'].setValue(responseData.airplane.airplaneId);
-
+        
       },
       error: (err: any) => {
         this.alertservice.showError("Couldnt fetch flight details", "error");

@@ -1,275 +1,188 @@
-<!DOCTYPE html>
-<html lang="zxx">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Company Registration</title>
-    <link rel="icon" href="/assets/img/mini_logo.png" type="/assets/image/png" />
-    <link rel="stylesheet" href="/assets/css/bootstrap1.min.css" />
-    <link rel="stylesheet" href="/assets/vendors/themefy_icon/themify-icons.css" />
-    <link rel="stylesheet" href="/assets/vendors/font_awesome/css/all.min.css" />
-    <link rel="stylesheet" href="/assets/vendors/scroll/scrollable.css" />
-    <link rel="stylesheet" href="/assets/css/metisMenu.css" />
-    <link rel="stylesheet" href="/assets/css/style1.css" />
-    <link rel="stylesheet" href="/assets/css/colors/default.css" id="colorSkinCSS" />
-</head>
-<body class="crm_body_bg">
-    <!-- sidebar Start -->
-    <nav class="sidebar dark_sidebar">
-        <div class="logo d-flex justify-content-between">
-            <a class="large_logo" href="index-2.html">
-                <h4 style="color: antiquewhite">Airline Ticket Booking</h4>
-            </a>
-            <a class="small_logo" href="index-2.html"><img src="img/mini_logo.png" alt="" /></a>
-            <div class="sidebar_close_icon d-lg-none">
-                <i class="ti-close"></i>
+<app-company-nav></app-company-nav>
+<div
+  class="main_content_iner"
+  style="margin-top: -75px; position: relative; margin-left: 215px"
+>
+  <div class="container-fluid p-0 sm_padding_15px">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="white_card card_height_100 mb_30">
+          <div class="white_card_header">
+            <div class="box_header m-0">
+              <div class="main-title" style="margin: 20px">
+                <h3 class="m-0">Company Registration</h3>
+              </div>
             </div>
-        </div>
-        <ul id="sidebar_menu">
-            <li class="">
-                <a href="#" aria-expanded="false">
-                    <div class="nav_icon_small">
-                        <i class="fas fa-th" style="font-size: 24px"></i>
-                    </div>
-                    <div class="nav_title">
-                        <span>Dashboard </span>
-                    </div>
-                </a>
-            </li>
-            <li class="">
-                <a href="crypto_wallet.html" aria-expanded="false">
-                    <div class="nav_icon_small">
-                        <i class="fas fa-building" style="font-size: 24px"></i>
-                    </div>
-                    <div class="nav_title">
-                        <span>Company Registration</span>
-                    </div>
-                </a>
-            </li>
-            <li class="">
-                <a href="buy_sell.html" aria-expanded="false">
-                    <div class="nav_icon_small">
-                        <i class="fas fa-city" style="font-size: 24px"></i>
-                    </div>
-                    <div class="nav_title">
-                        <span>Company List</span>
-                    </div>
-                </a>
-            </li>
-            <li class="">
-                <a href="crypto_stats.html" aria-expanded="false">
-                    <div class="nav_icon_small">
-                       <i class="fas fa-chalkboard-teacher" style="font-size: 24px"></i>
-                    </div>
-                    <div class="nav_title">
-                        <span>Registered Users</span>
-                    </div>
-                </a>
-            </li>
-            <li class="">
-                <a href="#" aria-expanded="false">
-                    <div class="nav_icon_small">
-                        <img src="https://cdn-icons-png.flaticon.com/512/2140/2140667.png" alt=""
-                            style="background-color: white; font-size: 24px" />
-                    </div>
-                    <div class="nav_title">
-                        <span>Cancel Reservation List</span>
-                    </div>
-                </a>
-            </li>
-            <li class="">
-                <a href="#" aria-expanded="false">
-                    <div class="nav_icon_small">
-                        <i class="far fa-list-alt" style="font-size: 24px"></i>
-                    </div>
-                    <div class="nav_title">
-                        <span>Reservation List</span>
-                    </div>
-                </a>
-            </li>
-            <li class="">
-                <a href="#" aria-expanded="false">
-                    <div class="nav_icon_small">
-                       <i class="fa fa-plane" style="font-size: 24px"></i>
-                    </div>
-                    <div class="nav_title">
-                        <span>Aeroplane List</span>
-                    </div>
-                </a>
-            </li>
-            <li class="">
-                <a href="#" aria-expanded="false">
-                    <div class="nav_icon_small">
-                       <i class="fas fa-fighter-jet" style="font-size: 24px"></i>
-                    </div>
-                    <div class="nav_title">
-                        <span>Flight List</span>
-                    </div>
-                </a>
-            </li>
-        </ul>
-    </nav>
-
-    <!-- sidebar end -->
-
-    <!-- sidebar popup start-->
-    <section class="main_content dashboard_part large_header_bg">
-        <div class="container-fluid g-0">
-            <div class="row">
-                <div class="col-lg-12 p-0">
-                    <div class="header_iner d-flex justify-content-between align-items-center">
-                        <div class="sidebar_icon d-lg-none">
-                            <i class="ti-menu"></i>
-                        </div>
-                        <div class="line_icon open_miniSide d-none d-lg-block">
-                            <img src="/assets/img/line_img.png" alt="" />
-                        </div>
-                        <div class="profile_info d-flex align-items-center">
-                            <div class="profile_thumb mr_20">
-                                <i class="fas fa-user-circle" style="font-size: 50px; color: rgb(114, 205, 228)"></i>
-                            </div>
-                            <div class="author_name">
-                                <h4 class="f_s_15 f_w_500 mb-0">Aron Jose</h4>
-                                <p class="f_s_12 f_w_400">Admin</p>
-                            </div>
-                            <div class="profile_info_iner">
-                                <div class="profile_author_name">
-                                    <p>Admin</p>
-                                    <h5>Aron Jose</h5>
-                                </div>
-                                <div class="profile_info_details">
-                                    <a href="#">My Profile </a>
-                                    <a href="#">Login</a>
-                                    <a href="#">Log Out </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+          </div>
+          <div class="white_card_body">
+            <form [formGroup]="companyreg">
+              <div class="mb-3">
+                <label class="form-label" for="fullName">Company Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="fullName"
+                  formControlName="fullName"
+                  aria-describedby="fullName"
+                  placeholder=""
+                  required="fullName"
+                />
+                <div>
+                  <span
+                    class="sp"
+                    style="color: brown"
+                    *ngIf="
+                      companyreg.controls['fullName'].touched &&
+                      companyreg.hasError('required', 'fullName')
+                    "
+                    ><i>Company name is mandatory*</i></span
+                  >
+                  <div *ngIf="flag == true">
+                    <span
+                      class="text-danger"
+                      *ngIf="
+                        companyreg.controls['fullName'].invalid ||
+                        companyreg.hasError('required', 'fullName')
+                      "
+                      ><i>Name required</i></span
+                    >
+                  </div>
                 </div>
-            </div>
-        </div>
-        <!-- profile end -->
-
-        <!-- registration form start -->
-        <div class="main_content_iner">
-            <div class="container-fluid p-0">
-                <div class="row justify-content-center">
-                    <div class="col-12">
-                        <div class="dashboard_header mb_50">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="dashboard_header_title">
-                                        <h3>Register</h3>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="dashboard_breadcam text-end">
-                                        <p>
-                                            <a href="index-2.html">Dashboard</a>
-                                            <i class="fas fa-caret-right"></i>Company Register
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="white_box mb_30">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-6">
-                                    <div class="modal-content cs_modal">
-                                        <div class="modal-header theme_bg_1 justify-content-center">
-                                            <h5 class="modal-title text_white">Company Register</h5>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form [formGroup]="companyreg" (ngSubmit)="CompanyReg()">
-                                                <div class="">
-                                                    <input type="text" class="form-control"
-                                                        formControlName="companyname" placeholder="Company Name" />
-                                                    <small class="form-text text-muted error"
-                                                        *ngIf="companyreg.controls['companyname']?.errors?.['required']&&companyreg.controls['companyname'].touched">
-                                                        **companyname is Required....**
-                                                    </small>
-                                                </div>
-                                                <div class="">
-                                                    <input type="number" class="form-control"
-                                                        formControlName="companycontact"
-                                                        placeholder="Company Contact" />
-                                                </div>
-                                                <div class="">
-                                                    <input type="text" class="form-control"
-                                                        formControlName="companyaddress"
-                                                        placeholder="Company Address" />
-                                                </div>
-                                                <div class="">
-                                                    <input type="text" class="form-control" formControlName="email"
-                                                        placeholder="Enter your email" />
-                                                </div>
-                                                <div class="">
-                                                    <input type="password" class="form-control"
-                                                        formControlName="password" placeholder="Password" />
-                                                </div>
-                                                <div class="">
-                                                    <input type="password" class="form-control"
-                                                        formControlName="conformpassword"
-                                                        placeholder=" conform Password" />
-                                                </div>
-                                                <div class="cs_check_box">
-                                                    <input type="checkbox" id="check_box" class="common_checkbox" />
-                                                    <label class="form-label" for="check_box">
-                                                        Keep me up to date
-                                                    </label>
-                                                </div>
-                                                <a href="#" class="btn_1 full_width text-center">
-                                                    Sign Up</a>
-                                                <p>
-                                                    Need an account?
-                                                    <a data-bs-toggle="modal" data-bs-target="#sing_up"
-                                                        data-bs-dismiss="modal" href="#">Log in</a>
-                                                </p>
-                                                <div class="text-center">
-                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#forgot_password"
-                                                        data-bs-dismiss="modal" class="pass_forget_btn">Forget
-                                                        Password?</a>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="phone">Contact Number</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="phone"
+                  formControlName="phone"
+                  aria-describedby="phone"
+                  placeholder=""
+                />
+                <div>
+                  <span
+                    class="sp"
+                    style="color: brown"
+                    *ngIf="
+                      companyreg.controls['phone'].touched &&
+                      companyreg.hasError('required', 'phone')
+                    "
+                    ><i>Phone number is mandatory*</i></span
+                  >
+                  <div *ngIf="flag == true">
+                    <span
+                      class="text-danger"
+                      *ngIf="
+                        companyreg.controls['phone'].invalid ||
+                        companyreg.hasError('required', 'phone')
+                      "
+                      ><i>Contact Number required</i></span
+                    >
+                  </div>
                 </div>
-            </div>
-        </div>
-
-        <!-- registration from end -->
-        <div class="footer_part">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="footer_iner text-center">
-                            <p>
-                                2020 © Influence - Designed by
-                                <a href="#"> <i class="ti-heart"></i> </a><a href="#"> DashboardPack</a>
-                            </p>
-                        </div>
-                    </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="address">Company Address</label>
+                <textarea
+                  class="form-control"
+                  id="address"
+                  formControlName="address"
+                  aria-describedby="Address"
+                  placeholder=""
+                ></textarea>
+                <div>
+                  <span
+                    class="sp"
+                    style="color: brown"
+                    *ngIf="
+                      companyreg.controls['address'].touched &&
+                      companyreg.hasError('required', 'address')
+                    "
+                    ><i>Address field is mondatory*</i></span
+                  >
+                  <div *ngIf="flag == true">
+                    <span
+                      class="text-danger"
+                      *ngIf="
+                        companyreg.controls['address'].invalid ||
+                        companyreg.hasError('required', 'address')
+                      "
+                      ><i>Company Address required</i></span
+                    >
+                  </div>
                 </div>
-            </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="email">Company Email</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="email"
+                  formControlName="email"
+                  aria-describedby="email"
+                  placeholder=""
+                />
+                <div>
+                  <span
+                    class="sp"
+                    style="color: brown"
+                    *ngIf="
+                      companyreg.controls['email'].touched &&
+                      companyreg.hasError('required', 'email')
+                    "
+                    ><i>Email field is mandatory*</i></span
+                  >
+                  <span
+                    class="sp"
+                    style="color: brown"
+                    *ngIf="
+                      companyreg.controls['email'].touched &&
+                      companyreg.hasError('pattern', 'email')
+                    "
+                    ><i>*Invalid Format*</i></span
+                  >
+                  <div *ngIf="flag == true">
+                    <span
+                      class="text-danger"
+                      *ngIf="
+                        companyreg.controls['email'].invalid ||
+                        companyreg.hasError('required', 'email')
+                      "
+                      ><i>Email required</i></span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label hidden class="form-label" for="password">Password</label>
+                <input
+                  hidden
+                  type="password"
+                  [disabled]="true"
+                  class="form-control"
+                  id="password"
+                  formControlName="password"
+                  placeholder=""
+                />
+              </div>
+              <button
+                class="btn btn-secondary"
+                style="position: relative; margin-left: 210px"
+                (click)="cancel()"
+              >
+                Cancel
+              </button>
+              <button
+                class="btn btn-success"
+                style="position: relative; margin-left: 10px"
+                (click)="CompanyReg()"
+              >
+                Register
+              </button>
+            </form>
+          </div>
         </div>
-    </section>
-    <div id="back-top" style="display: none">
-        <a title="Go to Top" href="#">
-            <i class="ti-angle-up"></i>
-        </a>
+      </div>
     </div>
-    <script src="/assets/js/jquery1-3.4.1.min.js"></script>
-    <script src="/assets/js/popper1.min.js"></script>
-    <script src="/assets/js/bootstrap1.min.js"></script>
-    <script src="/assets/js/metisMenu.js"></script>
-    <script src="/assets/vendors/scroll/perfect-scrollbar.min.js"></script>
-    <script src="/assets/vendors/scroll/scrollable-custom.js"></script>
-    <script src="/assets/js/custom.js"></script>
-</body>
-</html>
+  </div>
+</div>
