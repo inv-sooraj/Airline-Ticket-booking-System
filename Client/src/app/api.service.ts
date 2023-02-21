@@ -15,6 +15,10 @@ export class ApiService {
 
  return this.httpClient.get(this.baseUrl+'/flight/search', { params });
   }
+
+  getSeatIdAndTypeId(flightId:any){
+    return this.httpClient.get(this.baseUrl+'/seat/'+flightId);
+  }
   searchFlight(formValue: any) {
    return this.httpClient.get(this.baseUrl+"/flight")
   }

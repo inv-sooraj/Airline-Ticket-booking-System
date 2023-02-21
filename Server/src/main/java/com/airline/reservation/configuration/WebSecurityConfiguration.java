@@ -51,6 +51,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/**").permitAll()
                 .antMatchers("/users/**/**").permitAll()
                 .antMatchers("/company/**").permitAll()
+                .antMatchers("/seat/**").permitAll()
                 .antMatchers(OPTIONS, "/login").anonymous()
                 .antMatchers("/bookings/**").permitAll()
                 .antMatchers(POST, "/login").anonymous()

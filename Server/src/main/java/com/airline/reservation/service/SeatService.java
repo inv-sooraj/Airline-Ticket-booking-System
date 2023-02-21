@@ -8,7 +8,6 @@ import com.airline.reservation.view.SeatView;
 public interface SeatService {
 
     public SeatView updateSeat(Integer seatId, SeatForm form);
-
-    public List<Object[]> getAllSeatIdAndType(Integer flighId);
+    public List<Seat> getSeatInfo(Integer flightId);
    
 }

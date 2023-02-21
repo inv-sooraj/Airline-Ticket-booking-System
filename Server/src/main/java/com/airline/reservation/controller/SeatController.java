@@ -1,6 +1,8 @@
 package com.airline.reservation.controller;
 
+import com.airline.reservation.entity.Seat;
 import com.airline.reservation.form.SeatForm;
+import com.airline.reservation.service.FlightService;
 import com.airline.reservation.service.SeatService;
 import com.airline.reservation.view.SeatView;
 
@@ -32,9 +34,14 @@ public class SeatController {
 
  //for Form Array 
     //Fetch id 
+    // @GetMapping("/{flightId}")
+    // public ResponseEntity<List<Object[]>> getAllColumns(@PathVariable Integer flightId) {
+    //     List<Object[]> columns = seatService.getAllSeatIdAndType(flightId);
+    //     return ResponseEntity.ok(columns);
+    // }
+
     @GetMapping("/{flightId}")
-    public ResponseEntity<List<Object[]>> getAllColumns(@PathVariable Integer flightId) {
-        List<Object[]> columns = seatService.getAllSeatIdAndType(flightId);
-        return ResponseEntity.ok(columns);
+    public List<Seat>getSeatInfo(@PathVariable Integer flightId){
+        return seatService.getSeatInfo(flightId);
     }
 }

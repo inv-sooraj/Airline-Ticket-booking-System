@@ -1,5 +1,6 @@
 package com.airline.reservation.service.impl;
 
+import com.airline.reservation.entity.Seat;
 import com.airline.reservation.exception.NotFoundException;
 import com.airline.reservation.form.SeatForm;
 import com.airline.reservation.repository.SeatRepository;
@@ -27,10 +28,19 @@ public class SeatServiceImpl implements SeatService {
     }
 
     
-    public List<Object[]> getAllSeatIdAndType(Integer flightId) {
-        return seatRepository.findAllSeatIdAndType(flightId);
+   
+
+
+    @Override
+    public List<Seat> getSeatInfo(Integer flightId) {
+        
+       return seatRepository.findByFlightId(flightId);
     }
 
+
+
+
+ 
     }
 
     // @Autowired
