@@ -1,11 +1,21 @@
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: "root",
 })
 export class ApiService {
+  flightSearch(params: HttpParams) {
+    
+
+ return this.httpClient.get(this.baseUrl+'/flight/search', { params });
+  }
+  searchFlight(formValue: any) {
+   return this.httpClient.get(this.baseUrl+"/flight")
+  }
+  
   baseUrl = environment.baseUrl;
   constructor(private httpClient: HttpClient) {}
   /** Method to get the accesstocken stored in the local storage */
@@ -27,11 +37,14 @@ export class ApiService {
       this.getHeader()
     );
   }
+  getRandom(){
+    console.log(this.baseUrl+"/flight/random");
+    return this.httpClient.get(this.baseUrl+"/flight/getRandom",this.getHeader());
+  }
+ 
   getUserBookingList() {
-    return this.httpClient.get(
-      this.baseUrl + "/bookings/getById/1",
-      this.getHeader()
-    );
+    console.log(this.baseUrl + "/bookings/getById/1");
+    return this.httpClient.get(this.baseUrl + "/bookings/getById/1",this.getHeader());
   }
   updateUser(userid: any, updateForm: any) {
     return this.httpClient.put(
@@ -183,15 +196,18 @@ export class ApiService {
   /**Method to get booking details by id */
 
   bookingDetailsById(id: any) {
+    console.log(this.baseUrl + "/" + "bookings" + "/" + id + "/" + "1")
     return this.httpClient.get(
       this.baseUrl + "/" + "bookings" + "/" + id + "/" + "1",
       this.getHeader()
     );
   }
 
-  cancelBooking(id: any) {
+  cancelBooking(id: any,reason:any) {
+    const cancelStatus=3;
+    console.log( this.baseUrl + "/bookings/cancelBooking/" + id +'/'+reason +cancelStatus)
     return this.httpClient.put(
-      this.baseUrl + "/bookings/changeStatus/" + id + "/3",
+      this.baseUrl + "/bookings/cancelBooking/" + id +'/'+reason +'/'+cancelStatus,
       this.getHeader()
     );
   }

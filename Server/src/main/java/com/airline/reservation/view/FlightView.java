@@ -6,6 +6,9 @@ import com.airline.reservation.entity.Seat;
 import com.airline.reservation.entity.User;
 import com.airline.reservation.form.FlightForm;
 import com.airline.reservation.json.Json;
+
+ 
+ 
 import java.util.Date;
 import java.util.List;
 
@@ -15,7 +18,7 @@ public class FlightView {
     private String flightNumber;
     private String departure;
      @Json.DateTimeFormat
-    private Date depDateTime;
+    private  Date depDateTime;
     private String destination;
     @Json.DateTimeFormat
     private Date destDateTime;
@@ -50,7 +53,7 @@ public class FlightView {
         return departure;
     }
 
-    public Date getDepDateTime() {
+    public  Date getDepDateTime() {
         return depDateTime;
     }
 
