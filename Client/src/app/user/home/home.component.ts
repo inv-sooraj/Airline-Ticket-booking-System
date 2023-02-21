@@ -17,10 +17,10 @@ items:any;
 baseUrl = environment.baseUrl;
    
   constructor(private http:HttpClient,private apiservce: ApiService,private alertservice: AlertService,private formBuilder:FormBuilder) { 
-    this.searchForm = new FormGroup({
-      destination: new FormControl(),
-      departure: new FormControl(),
-      depDateTime:new FormControl('', Validators.required)
+    this.searchForm = this.formBuilder.group({
+      departure: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+      destination: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+      depDateTime: ['', Validators.required]
     });
   }
 
