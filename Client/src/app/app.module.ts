@@ -39,8 +39,8 @@ import { UserListComponent } from "./user-list/user-list.component";
 import { ReservationDetailsComponent } from "./reservation-details/reservation-details.component";
 import { UserFlightListComponent } from './user/user-flight-list/user-flight-list.component';
 import { FlightEditComponent } from './company/flight-edit/flight-edit.component';
-import { CommonModule } from "@angular/common";
-import { CompanyListComponent } from './admin/company-list/company-list.component';
+import { CommonModule, DatePipe } from "@angular/common";
+import { CompanyListComponent } from "./admin/company-list/company-list.component";
 
 @NgModule({
   declarations: [
@@ -92,7 +92,7 @@ import { CompanyListComponent } from './admin/company-list/company-list.componen
     NgbModule,
     FontAwesomeModule,
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

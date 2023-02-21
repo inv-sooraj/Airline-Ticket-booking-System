@@ -52,5 +52,7 @@ Page<Object[]> findFlightsWithMinSeatPrice(@Param("departure") String departure,
     void softDeleteAllIds(List<Integer> integers);
 
     List<Flight> findBydeleteFlag(byte flag);
+
+    
 }
  
