@@ -19,7 +19,7 @@ export class FlightDetailComponent implements OnInit {
   selectedSeatTypes = []; 
   depTime:any
   seatData:any
-
+seatPrice!:String;
   destTime:any
   seatTypes:any;
   myForm!: FormGroup;
@@ -29,7 +29,15 @@ export class FlightDetailComponent implements OnInit {
   
 
   ngOnInit() {
-    
+    this.myForm = this.fb.group({
+      seats: this.fb.array([
+        this.fb.group({
+          seatId: [],
+          price: [{value: '', disabled: true}],
+          number: []
+        })
+      ])
+    }); 
     
     this.route.params.subscribe(params => {
       const flightId = params['flightId'];
@@ -57,15 +65,7 @@ export class FlightDetailComponent implements OnInit {
         complete: () => {},
       });
   });
-  this.myForm = this.fb.group({
-    seats: this.fb.array([
-      this.fb.group({
-        seatId: [],
-        price: [{value: '', disabled: true}],
-        number: []
-      })
-    ])
-  }); 
+
   
  // Assuming you have a form array called 'seatsFormArray'
 // Assuming you have an array of seat data called 'seatDetails'
@@ -109,11 +109,16 @@ this.getIdAndType();
       }
     });
   }
-  updatePrice(seatId: string, index: number) {
-    if (this.myForm) {
-      const seat = this.myForm.get('seats')
-      console.log("SINGLE SEAT ");
-      console.log(seat) 
+  changed(e:any){
+    
+  this.apiService.getSeatPrice(e.target.value).subscribe(
+    {
+      next:(response:any)=>{
+        this.seatPrice=response;
+        console.log("Price of "+e.target.value+" = "+this.seatPrice);
+      }
     }
+  )
   }
 }
+ 

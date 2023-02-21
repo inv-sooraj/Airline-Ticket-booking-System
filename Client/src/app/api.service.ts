@@ -7,6 +7,10 @@ import { environment } from "src/environments/environment";
   providedIn: "root",
 })
 export class ApiService {
+  getSeatPrice(seatId: any) {
+    console.log(this.baseUrl+'/seat/getPrice');
+   return this.httpClient.get(this.baseUrl+'/seat/getPrice/'+seatId);
+  }
   getFlightDetail(flightId: any) {
     return this.httpClient.get(this.baseUrl+"/flight/"+flightId,this.getHeader());
   }

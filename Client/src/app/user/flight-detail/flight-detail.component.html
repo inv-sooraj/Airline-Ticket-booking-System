@@ -128,8 +128,8 @@
                                       <div class="col-lg-3 col-md-6">
                                         <div class="form-group">
                                           <label for="class{{i}}">Select Class</label>
-                                          <select id="class{{i}}" formControlName="seatId" class="form-control form-control-custom" name="seatId" >
-                                            <option value="" disabled selected>Select Class</option>
+                                          <select id="class{{i}}" formControlName="seatId"  (change)="changed($event)" class="form-control form-control-custom" name="seatId" >
+                                            <!-- <option value="" disabled selected>Select Class</option> -->
                                             <option *ngFor="let seatType of seatTypes" [value]="seatType.seatId">{{ seatType.seatType }}</option>
                                           </select>
                                         </div>
@@ -137,13 +137,13 @@
                                       <div class="col-lg-3 col-md-6">
                                         <div class="form-group">
                                           <label for="price{{i}}">Seat Price </label>
-                                          <input id="price{{i}}" type="text" formControlName="price" [readonly]="true" class="form-control form-control-custom" placeholder=" Price ">
+                                          <input id="price{{i}}" [value]="seatPrice" type="text" formControlName="price" [readonly]="true" class="form-control form-control-custom" placeholder=" Price ">
                                         </div>
                                       </div>
                                       <div class="col-lg-3 col-md-6">
                                         <div class="form-group">
                                           <label for="count{{i}}" class="fs-14 text-custom-black fw-500">No . of Seats </label>
-                                          <input id="count{{i}}" type="number" formControlName="count" type="number" name="count" class="form-control form-control-custom" placeholder=" No of Seat ">
+                                          <input id="count{{i}}" type="number"  formControlName="count" type="number" name="count" class="form-control form-control-custom" placeholder=" No of Seat ">
                                         </div>
                                       </div>
                                       <div class="col-lg-1 col-md-6">
