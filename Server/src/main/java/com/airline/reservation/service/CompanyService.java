@@ -4,12 +4,13 @@ import com.airline.reservation.entity.Company;
 import com.airline.reservation.exception.NotFoundException;
 import com.airline.reservation.form.CompanyForm;
 import com.airline.reservation.view.CompanyView;
+import com.airline.reservation.view.UserView;
 import java.util.List;
 import org.springframework.data.domain.Page;
 
 public interface CompanyService {
 
-    CompanyView add(CompanyForm form);
+    UserView add(CompanyForm form);
 
     List<CompanyView> list();
 

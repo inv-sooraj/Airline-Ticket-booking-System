@@ -28,6 +28,7 @@ import com.airline.reservation.entity.Company;
 import com.airline.reservation.form.CompanyForm;
 import com.airline.reservation.service.CompanyService;
 import com.airline.reservation.view.CompanyView;
+import com.airline.reservation.view.UserView;
 
 @RestController
 @RequestMapping("/company")
@@ -38,7 +39,7 @@ public class CompanyController {
 
     // Add companies
     @PostMapping
-    public CompanyView add(@Valid @RequestBody CompanyForm form) {
+    public UserView add(@Valid @RequestBody CompanyForm form) {
         return CompanyService.add(form);
     }
 

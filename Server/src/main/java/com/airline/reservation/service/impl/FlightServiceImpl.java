@@ -2,10 +2,10 @@ package com.airline.reservation.service.impl;
 
  
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
+// import java.util.Collection;
+// import java.util.Date;
 import java.util.List;
-import java.util.stream.Collector;
+// import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,16 +16,16 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.airline.reservation.entity.Flight;
-import com.airline.reservation.entity.Flight;
+// import com.airline.reservation.entity.Flight;
 import com.airline.reservation.exception.NotFoundException;
-import com.airline.reservation.form.FlightEditForm;
 import com.airline.reservation.form.FlightForm;
 import com.airline.reservation.repository.FlightRepository;
+import com.airline.reservation.repository.SeatRepository;
 import com.airline.reservation.service.FlightService;
-import com.airline.reservation.service.RandomFlight;
+// import com.airline.reservation.service.RandomFlight;
 import com.airline.reservation.view.FlightView;
 import com.airline.reservation.view.RandomFlightList;
-import java.util.ArrayList;
+// import java.util.ArrayList;
 import java.util.Optional;
 import javax.transaction.Transactional;
 @Service
@@ -33,6 +33,12 @@ public class FlightServiceImpl implements FlightService {
 
     @Autowired
     private FlightRepository flightRepository;
+
+
+    @Autowired
+    private SeatRepository seatRepository;
+
+
     public Flight save(FlightForm form) {
         return flightRepository.save(new Flight(form));
        
@@ -74,6 +80,8 @@ public class FlightServiceImpl implements FlightService {
     @Override
     @Transactional
     public FlightView updateFlight(Integer flightId, FlightForm form) {
+        
+//        seatRepository.deleteAllByFlightId(flightId);
         
          return flightRepository.findByFlightId(flightId)
                 .map((Flight) -> {

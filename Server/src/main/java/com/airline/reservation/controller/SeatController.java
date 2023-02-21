@@ -22,9 +22,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/seat")
 public class SeatController {
     
-    @Autowired
-    private SeatService seatService;
-
+@Autowired
+private SeatService seatService;
 @PutMapping("/{seatId}")
     public SeatView updateSeat(
             @PathVariable("seatId") Integer seatId,
@@ -49,3 +48,4 @@ public class SeatController {
         return seatService.getPrice(seatId);
     }
 }
+

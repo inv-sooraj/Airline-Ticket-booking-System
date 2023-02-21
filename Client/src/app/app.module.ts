@@ -40,6 +40,7 @@ import { ReservationDetailsComponent } from "./reservation-details/reservation-d
 import { UserFlightListComponent } from './user/user-flight-list/user-flight-list.component';
 import { FlightEditComponent } from './company/flight-edit/flight-edit.component';
 import { CommonModule, DatePipe } from "@angular/common";
+import { CompanyListComponent } from "./admin/company-list/company-list.component";
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { CommonModule, DatePipe } from "@angular/common";
     ReservationDetailsComponent,
     UserFlightListComponent,
     FlightEditComponent,
+    CompanyListComponent,
   ],
   imports: [
     BrowserModule,
