@@ -14,14 +14,14 @@ public class SeatServiceImpl implements SeatService {
      @Autowired
     private SeatRepository seatRepository;
 
-    @Override
-    public SeatView updateSeat(Integer seatId, SeatForm form) {
-        
-        return seatRepository.findBySeatId(seatId)
-                .map((Seat) -> {
-                    return new SeatView(seatRepository.save(Seat.update(form)));
-                }).orElseThrow(NotFoundException::new);
-    }
+//    @Override
+//    public SeatView updateSeat(Integer seatId, SeatForm form) {
+//        
+//        return seatRepository.findBySeatId(seatId)
+//                .map((Seat) -> {
+//                    return new SeatView(seatRepository.save(Seat.update(form)));
+//                }).orElseThrow(NotFoundException::new);
+//    }
 
     }
 

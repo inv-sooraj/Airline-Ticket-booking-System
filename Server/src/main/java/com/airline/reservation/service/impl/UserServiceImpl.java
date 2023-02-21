@@ -136,7 +136,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public Collection<User> getCompany() {
 
-        return userRepository.findAllByRole(2);
+        return userRepository.findAllByRoleAndStatus(2,1);
     }
 
     @Override

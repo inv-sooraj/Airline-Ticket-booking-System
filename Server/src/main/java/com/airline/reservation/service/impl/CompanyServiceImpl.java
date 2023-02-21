@@ -15,11 +15,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.airline.reservation.entity.Company;
+import com.airline.reservation.entity.User;
 import com.airline.reservation.exception.NotFoundException;
 import com.airline.reservation.form.CompanyForm;
 import com.airline.reservation.repository.CompanyRepository;
+import com.airline.reservation.repository.UserRepository;
 import com.airline.reservation.service.CompanyService;
 import com.airline.reservation.view.CompanyView;
+import com.airline.reservation.view.UserView;
 
 @Service
 
@@ -29,13 +32,15 @@ public class CompanyServiceImpl implements CompanyService {
     private PasswordEncoder passwordEncoder;
     @Autowired
     private CompanyRepository companyRepository;
+     @Autowired
+    private UserRepository userRepository;
 
     @Override
     // Add Company
-    public CompanyView add(CompanyForm form) {
+    public UserView add(CompanyForm form) {
         String pas = passwordEncoder.encode(form.getPassword());
         form.setPassword(pas);
-        return new CompanyView(companyRepository.save(new Company(form)));
+        return new UserView(userRepository.save(new User(form)));
     }
 
     // List Company

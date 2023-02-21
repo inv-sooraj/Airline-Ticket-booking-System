@@ -17,7 +17,7 @@ public interface CompanyRepository extends Repository<Company, Integer> {
     List<Company> findAll();
 
     // List All Companies
-    @Query(value = "select * from user where role=3", nativeQuery = true)
+    @Query(value = "select * from user where role=2", nativeQuery = true)
     List<Company> findByrole();
 
     // Search and pagination

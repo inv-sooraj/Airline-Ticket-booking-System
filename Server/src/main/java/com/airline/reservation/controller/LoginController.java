@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.airline.reservation.form.LoginForm;
 import com.airline.reservation.service.UserService;
 import com.airline.reservation.view.LoginView;
-//@CrossOrigin(origins = "http://localhost:4200")
-
 @RestController
 @RequestMapping("/login")
 public class LoginController {

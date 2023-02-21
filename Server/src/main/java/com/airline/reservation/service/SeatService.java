@@ -5,6 +5,6 @@ import com.airline.reservation.view.SeatView;
 
 public interface SeatService {
 
-    public SeatView updateSeat(Integer seatId, SeatForm form);
+//    public SeatView updateSeat(Integer seatId, SeatForm form);
    
 }

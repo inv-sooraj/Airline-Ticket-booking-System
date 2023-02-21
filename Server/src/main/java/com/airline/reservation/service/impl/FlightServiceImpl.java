@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.airline.reservation.entity.Flight;
 import com.airline.reservation.exception.NotFoundException;
-import com.airline.reservation.form.FlightEditForm;
 import com.airline.reservation.form.FlightForm;
 import com.airline.reservation.repository.FlightRepository;
+import com.airline.reservation.repository.SeatRepository;
 import com.airline.reservation.service.FlightService;
 import com.airline.reservation.view.FlightView;
 import java.util.ArrayList;
@@ -21,7 +21,8 @@ public class FlightServiceImpl implements FlightService {
     @Autowired
     private FlightRepository flightRepository;
 
-
+    @Autowired
+    private SeatRepository seatRepository;
 
     public Flight save(FlightForm form) {
         return flightRepository.save(new Flight(form));
@@ -42,6 +43,8 @@ public class FlightServiceImpl implements FlightService {
     @Override
     @Transactional
     public FlightView updateFlight(Integer flightId, FlightForm form) {
+        
+//        seatRepository.deleteAllByFlightId(flightId);
         
          return flightRepository.findByFlightId(flightId)
                 .map((Flight) -> {

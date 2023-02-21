@@ -39,6 +39,7 @@ import { UserListComponent } from "./user-list/user-list.component";
 import { ReservationDetailsComponent } from "./reservation-details/reservation-details.component";
 import { FlightEditComponent } from './company/flight-edit/flight-edit.component';
 import { CommonModule } from "@angular/common";
+import { CompanyListComponent } from './admin/company-list/company-list.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { CommonModule } from "@angular/common";
     UserListComponent,
     ReservationDetailsComponent,
     FlightEditComponent,
+    CompanyListComponent,
   ],
   imports: [
     BrowserModule,

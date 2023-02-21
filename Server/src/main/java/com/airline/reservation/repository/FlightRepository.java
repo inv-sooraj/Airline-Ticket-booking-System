@@ -14,15 +14,14 @@ public interface FlightRepository extends JpaRepository<Flight, Integer> {
 
     Flight save(@Valid FlightForm form);
 
-    List<Flight> findByUserUserIdAndDeleteFlag(int i,byte flag);
+    List<Flight> findByUserUserIdAndDeleteFlag(int i, byte flag);
 
     Optional<Flight> findByFlightId(Integer flightId);
-    
-//    Optional<Flight> findByFlightIdAndSeatId(Integer flightId,Integer seatId);
 
     @Modifying
     @Transactional
     @Query("update  Flight p set p.deleteFlag = 0 where p.flightId in(:integers)")
     void softDeleteAllIds(List<Integer> integers);
+
     List<Flight> findBydeleteFlag(byte flag);
 }
