@@ -84,7 +84,7 @@
                                                 'currentPwd'
                                               )
                                             "
-                                            ><i>Please enter your current password</i></span
+                                            ><i class="errorMsg">Please enter your current password</i></span
                                           >
                                         </div>
                                         <div>
@@ -98,10 +98,10 @@
                                                 'currentPwd'
                                               )
                                             "
-                                            ><i>Invalid Format</i></span
+                                            ><i class="errorMsg">Invalid Format</i></span
                                           >
                                         </div>
-                                        <div class="errorMsg"> 
+                                        <div > 
                                           <span
                                             
                                             *ngIf="
@@ -115,7 +115,7 @@
                                                 'currentPwd'
                                               )
                                             "
-                                            ><i>Password should be between 8 and 25 letters</i></span
+                                            ><i class="errorMsg">Password should be between 8 and 25 letters</i></span
                                           >
                                         </div>
                                         <!-- <div>
@@ -148,7 +148,7 @@
                                                 'newPwd'
                                               )
                                             "
-                                            ><i>Please enter your new password</i></span
+                                            ><i class="errorMsg">Please enter your new password</i></span
                                           >
                                         </div>
                                         <div>
@@ -162,7 +162,7 @@
                                                 'newPwd'
                                               )
                                             "
-                                            ><i>Invalid Format</i></span
+                                            ><i class="errorMsg">Invalid Format</i></span
                                           >
                                         </div>
                                         <div class="errorMsg"> 
@@ -179,7 +179,7 @@
                                                 'newPwd'
                                               )
                                             "
-                                            ><i>Password should be between 8 and 25 letters</i></span
+                                            ><i class="errorMsg">Password should be between 8 and 25 letters</i></span
                                           >
                                         </div>
                                     </div>
@@ -198,11 +198,11 @@
                                                    'cPwd'
                                                  )
                                                "
-                                               ><i>Please re-enter your new password</i></span
+                                               ><i class="errorMsg">Please re-enter your new password</i></span
                                              >
                                            </div>
                                           <div>
-                                             <span  *ngIf="(changePasswordForm.controls['cPwd'].touched) && (changePasswordForm.hasError('confirmPasswordValidator','cPwd'))">
+                                             <span class="errorMsg" *ngIf="(changePasswordForm.controls['cPwd'].touched) && (changePasswordForm.hasError('confirmPasswordValidator','cPwd'))">
                                                 Passsword and
                                                 Confirm Password didn't match. </span>
                                           </div>
