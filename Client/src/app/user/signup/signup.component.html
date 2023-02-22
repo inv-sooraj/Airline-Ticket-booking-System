@@ -63,7 +63,7 @@
                             signupForm.controls['fullname'].touched &&
                             signupForm.hasError('required', 'fullname')
                           "
-                          ><i>Please enter your fullname</i></span
+                          ><i class="errorMsg">Please enter your fullname</i></span
                         >
                         <span
                           class="sp"
@@ -71,7 +71,7 @@
                             signupForm.controls['fullname'].touched &&
                             signupForm.hasError('pattern', 'fullname')
                           "
-                          ><i>*Name must contain alphabets only*</i></span
+                          ><i class="errorMsg">*Name must contain alphabets only*</i></span
                         >
                         <span
                           class="sp"
@@ -79,7 +79,7 @@
                             signupForm.controls['fullname'].touched &&
                             signupForm.hasError('minlength', 'fullname')
                           "
-                          ><i>*Name should be atleast 8 characters*</i></span
+                          ><i class="errorMsg">*Name should be atleast 8 characters*</i></span
                         >
                         <span
                           class="sp"
@@ -87,7 +87,7 @@
                             signupForm.controls['fullname'].touched &&
                             signupForm.hasError('maxlength', 'fullname')
                           "
-                          ><i>*Name is too long*</i></span
+                          ><i class="errorMsg">*Name is too long*</i></span
                         >
                       </div>
                     </div>
@@ -109,7 +109,7 @@
                             signupForm.controls['dob'].touched &&
                             signupForm.hasError('required', 'dob')
                           "
-                          ><i>Please select your date of birth</i></span
+                          ><i class="errorMsg">Please select your date of birth</i></span
                         >
                       </div>
                     </div>
@@ -130,7 +130,7 @@
                             signupForm.controls['email'].touched &&
                             signupForm.hasError('required', 'email')
                           "
-                          ><i>Please enter your email</i></span
+                          ><i class="errorMsg">Please enter your email</i></span
                         >
                         <span
                           class="sp"
@@ -138,7 +138,7 @@
                             signupForm.controls['email'].touched &&
                             signupForm.hasError('pattern', 'email')
                           "
-                          ><i>*Invalid email Format*</i></span
+                          ><i class="errorMsg">*Invalid email Format*</i></span
                         >
                         <span
                           class="sp"
@@ -146,7 +146,7 @@
                             signupForm.controls['email'].touched &&
                             signupForm.hasError('maxlength', 'email')
                           "
-                          ><i>*Email is too long*</i></span
+                          ><i class="errorMsg">*Email is too long*</i></span
                         >
                       </div>
                     </div>
@@ -167,7 +167,7 @@
                             signupForm.controls['password'].touched &&
                             signupForm.hasError('required', 'password')
                           "
-                          ><i>Please enter your password</i></span
+                          ><i class="errorMsg">Please enter your password</i></span
                         >
                         <span
                           class="sp"
@@ -175,7 +175,7 @@
                             signupForm.controls['password'].touched &&
                             signupForm.hasError('minlength', 'password')
                           "
-                          ><i>*Password is too short*</i></span
+                          ><i class="errorMsg">*Password is too short*</i></span
                         >
                         <span
                           class="sp"
@@ -183,7 +183,7 @@
                             signupForm.controls['password'].touched &&
                             signupForm.hasError('maxlength', 'password')
                           "
-                          ><i>*Password is too long*</i></span
+                          ><i class="errorMsg">*Password is too long*</i></span
                         >
                         <span
                           class="sp"
@@ -191,7 +191,7 @@
                             signupForm.controls['password'].touched &&
                             signupForm.hasError('pattern', 'password')
                           "
-                          ><i>*Password is invalid*</i></span
+                          ><i class="errorMsg">*Password is invalid*</i></span
                         >
                       </div>
                     </div>
@@ -212,7 +212,7 @@
                             signupForm.controls['cPassword'].touched &&
                             signupForm.hasError('required', 'cPassword')
                           "
-                          ><i>*Please re-enter your password*</i></span
+                          ><i class="errorMsg">*Please re-enter your password*</i></span
                         >
                         <span
                           class="sp"
@@ -220,7 +220,7 @@
                             signupForm.controls['cPassword'].touched &&
                             signupForm.hasError('minlength', 'cPassword')
                           "
-                          ><i>*Password is too short*</i></span
+                          ><i class="errorMsg">*Password is too short*</i></span
                         >
                         <span
                           class="sp"
@@ -228,11 +228,11 @@
                             signupForm.controls['cPassword'].touched &&
                             signupForm.hasError('maxlength', 'cPassword')
                           "
-                          ><i>*Password is too long*</i></span
+                          ><i class="errorMsg">*Password is too long*</i></span
                         >
                       </div>
                       <div
-                        class="cpass"
+                        class="cpass errorMsg"
                         *ngIf="
                           signupForm.controls['cPassword'].touched &&
                           signupForm.hasError(
@@ -261,10 +261,10 @@
                             signupForm.controls['passportNo'].touched &&
                             signupForm.hasError('required', 'passportNo')
                           "
-                          ><i>Please enter your passport number</i></span
+                          ><i class="errorMsg">Please enter your passport number</i></span
                         >
                         <span
-                          class="sp"
+                          class="sp errorMsg"
                           *ngIf="
                             signupForm.controls['passportNo'].touched &&
                             signupForm.hasError('pattern', 'passportNo')
@@ -272,7 +272,7 @@
                           >Invalid passport number</span
                         >
                         <span
-                          class="sp"
+                          class="sp errorMsg"
                           *ngIf="
                             signupForm.controls['passportNo'].touched &&
                             signupForm.hasError('minlength', 'passportNo')
@@ -280,7 +280,7 @@
                           >*Passport number should be 8 characters</span
                         >
                         <span
-                          class="sp"
+                          class="sp errorMsg"
                           *ngIf="
                             signupForm.controls['passportNo'].touched &&
                             signupForm.hasError('maxlength', 'passportNo')
@@ -306,7 +306,7 @@
                             signupForm.controls['phone'].touched &&
                             signupForm.hasError('required', 'phone')
                           "
-                          ><i>Please enter your phone number</i></span
+                          ><i  class="errorMsg">Please enter your phone number</i></span
                         >
                         <span
                           class="sp"
@@ -314,7 +314,7 @@
                             signupForm.controls['phone'].touched &&
                             signupForm.hasError('minlength', 'phone')
                           "
-                          ><i>*phone number should be 10 characters*</i></span
+                          ><i  class="errorMsg">*phone number should be 10 characters*</i></span
                         >
                         <span
                           class="sp"
@@ -322,7 +322,7 @@
                             signupForm.controls['phone'].touched &&
                             signupForm.hasError('maxlength', 'phone')
                           "
-                          ><i>*phone number should be 10 characters*</i></span
+                          ><i  class="errorMsg">*phone number should be 10 characters*</i></span
                         >
                         <span
                           class="sp"
@@ -330,7 +330,7 @@
                             signupForm.controls['phone'].touched &&
                             signupForm.hasError('pattern', 'phone')
                           "
-                          ><i>Invalid phone number</i></span
+                          ><i  class="errorMsg">Invalid phone number</i></span
                         >
                       </div>
                     </div>
@@ -354,7 +354,7 @@
                             signupForm.controls['address'].touched &&
                             signupForm.hasError('required', 'address')
                           "
-                          ><i>Please enter your address</i></span
+                          ><i  class="errorMsg">Please enter your address</i></span
                         >
                       </div>
                     </div>
@@ -375,7 +375,7 @@
                             signupForm.controls['city'].touched &&
                             signupForm.hasError('required', 'city')
                           "
-                          ><i>Please enter your city name</i></span
+                          ><i  class="errorMsg">Please enter your city name</i></span
                         >
                       </div>
                     </div>
@@ -401,7 +401,7 @@
                             signupForm.controls['country'].touched &&
                             signupForm.hasError('required', 'country')
                           "
-                          ><i>Please select your country</i></span
+                          ><i  class="errorMsg">Please select your country</i></span
                         >
                       </div>
                     </div>
@@ -414,8 +414,8 @@
                     >
                       Register
                     </button>
-                    <p class="text-center text-light">
-                      Already Registered?<a [routerLink]="['/login']">Login</a>
+                    <p class="text-center text-white">
+                      Already Registered ? <a [routerLink]="['/login']" class="text-white"> Login</a>
                     </p>
                   </div>
                 </div>
