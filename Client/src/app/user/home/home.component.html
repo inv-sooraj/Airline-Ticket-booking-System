@@ -65,27 +65,39 @@
                                        <div class="form-group">
                                           <label class="fs-14 text-custom-black fw-500">Departing From</label>
                                           <input type="text" name="departure" formControlName="departure"  class="form-control form-control-custom" placeholder=" Departing Place">
+                                          <div *ngIf="searchForm.get('departure')?.invalid && (searchForm.get('departure')?.dirty || searchForm.get('departure')?.touched)" class="text-danger">
+                                             <div class="errorMsg" *ngIf="searchForm.get('departure')?.errors?.['required']">Departing From is required.</div>
+                                             <div class="errorMsg" *ngIf="searchForm.get('departure')?.hasError('pattern')">Invalid input. Please enter only text.</div>
+                                          </div> 
                                        </div>
                                     </div>
                                     <div class="col-lg-3 col-md-6">
                                        <div class="form-group">
                                           <label class="fs-14 text-custom-black fw-500">Destination To</label>
                                           <input type="text" name="destination" formControlName="destination" class="form-control form-control-custom" placeholder=" Departing Place">
+                                          <div *ngIf="searchForm.get('destination')?.invalid && (searchForm.get('destination')?.dirty || searchForm.get('destination')?.touched)" class="text-danger">
+                                             <div class="errorMsg" *ngIf="searchForm.get('destination')?.errors?.['required']">destination To is required.</div>
+                                             <div class="errorMsg" *ngIf="searchForm.get('destination')?.hasError('pattern')">Invalid input. Please enter only text.</div>
+                                          </div>
                                        </div>
                                     </div>
                                     <div class="col-lg-3 col-md-6">
                                        <div class="form-group">
                                           <label class="fs-14 text-custom-black fw-500">Departure Date</label>
-                                          <div class="input-group group-form">
-                                             <input type="date" [min]="today" [disabled]="isBeforeToday()" 
+                                         
+                                             <input  type="date" [min]="today" [disabled]="isBeforeToday()" 
                                              name="depDateTime" formControlName="depDateTime" class="form-control form-control-custom " placeholder="mm/dd/yy" >
+                                             <div *ngIf="searchForm.get('depDateTime')?.invalid && (searchForm.get('depDateTime')?.dirty || searchForm.get('depDateTime')?.touched)" class="text-danger">
+                                                <div class="errorMsg" *ngIf="searchForm.get('depDateTime')?.errors?.['required']">Departure date is required.</div>
+                                              </div>
                                             
-                                          </div>
+                                          
+                                          
                                        </div>
                                     </div>
                                     <div class="col-lg-3 col-md-6">
                                        <label class="submit"></label>
-                                       <button  type="submit"  class="btn-first btn-submit full-width btn-height" [routerLink]="['/user-flight-list', {destination: searchForm.value.destination,departure:searchForm.value.departure,depDateTime:searchForm.value.depDateTime}]" >Search Flight </button>
+                                       <button  type="submit" [disabled]="!searchForm.valid"  class="btn-first btn-submit full-width btn-height" [routerLink]="['/user-flight-list', {destination: searchForm.value.destination,departure:searchForm.value.departure,depDateTime:searchForm.value.depDateTime}]" >Search Flight </button>
                                     </div>
                                  </div>
                            
