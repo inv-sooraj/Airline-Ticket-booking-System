@@ -77,7 +77,7 @@
                                        <div class="form-group">
                                           <label class="fs-14 text-custom-black fw-500">Departure Date</label>
                                           <div class="input-group group-form">
-                                             <input type="date"  min="{{ today }}"
+                                             <input type="date" [min]="today" [disabled]="isBeforeToday()" 
                                              name="depDateTime" formControlName="depDateTime" class="form-control form-control-custom " placeholder="mm/dd/yy" >
                                             
                                           </div>

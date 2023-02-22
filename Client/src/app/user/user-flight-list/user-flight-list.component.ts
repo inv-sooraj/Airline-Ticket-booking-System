@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService } from 'src/app/alert.service';
 import { ApiService } from 'src/app/api.service';
 import { environment } from 'src/environments/environment';
@@ -17,21 +17,15 @@ export class UserFlightListComponent {
   departure: any
   depDateTime: any
   searchResults:any
-  constructor(private route:ActivatedRoute,private http:HttpClient,private alertService:AlertService,private apiService:ApiService){}
+  constructor(private router: Router,private route:ActivatedRoute,private http:HttpClient,private alertService:AlertService,private apiService:ApiService){}
   ngOnInit(): void {
+ 
     this.route.paramMap.subscribe((params) => {
       this.destination = params.get('destination');
       this.departure = params.get('departure');
       this.depDateTime=params.get('depDateTime');
     });
-  //     let param = new HttpParams();
-  // param = param.append('destination', this.destination);
-  // param = param.append('departure',  this.departure);
-  // param = param.append('date', this.date);
-  //  this.http.get(this.baseUrl+'/flight', { param }).subscribe(
-  //   response => console.log('Search results:', response),
-  //   error => console.error('Error searching:', error)
-  // );
+  
   let params = new HttpParams().set('destination', this.destination);
   params = params.append('departure', this.departure)
   .append('depDateTime',this.depDateTime);

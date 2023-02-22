@@ -7,10 +7,24 @@ import { environment } from "src/environments/environment";
   providedIn: "root",
 })
 export class ApiService {
+  getTwoRandom() {
+    return this.httpClient.get(this.baseUrl+"/flight/getTwoRandom",this.getHeader());
+  }
+  getSeatPrice(seatId: any,index:any) {
+    console.log(this.baseUrl+'/seat/getPrice');
+   return this.httpClient.get(this.baseUrl+'/seat/getPrice/'+seatId);
+  }
+  getFlightDetail(flightId: any) {
+    return this.httpClient.get(this.baseUrl+"/flight/"+flightId,this.getHeader());
+  }
   flightSearch(params: HttpParams) {
     
 
  return this.httpClient.get(this.baseUrl+'/flight/search', { params });
+  }
+
+  getSeatIdAndTypeId(flightId:any){
+    return this.httpClient.get(this.baseUrl+'/seat/'+flightId);
   }
   searchFlight(formValue: any) {
    return this.httpClient.get(this.baseUrl+"/flight")
@@ -38,7 +52,7 @@ export class ApiService {
     );
   }
   getRandom(){
-    console.log(this.baseUrl+"/flight/random");
+    
     return this.httpClient.get(this.baseUrl+"/flight/getRandom",this.getHeader());
   }
  

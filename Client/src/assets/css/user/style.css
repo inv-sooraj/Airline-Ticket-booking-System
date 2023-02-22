@@ -2198,6 +2198,7 @@ label.custom-checkbox .checkmark:after {
 }
 .listing-details-inner .listing-meta-sec .hotel-type ul li{
     text-transform: uppercase;
+    padding-top: 7px;
     font-size: 12px;
     display: flex;
     align-items: center;

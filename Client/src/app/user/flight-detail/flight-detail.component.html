@@ -24,7 +24,7 @@
         <div
           class="listing-details-inner bx-wrapper bg-custom-white padding-20"
         >
-          <div class="row">
+          <div class="row" >
             <div class="col-lg-8">
               <hr />
               <div class="listing-meta-sec mb-md-80">
@@ -57,11 +57,7 @@
                                         >
                                       </h4>
                                     </div>
-                                    <div class="right-side">
-                                      <span class="price"
-                                        ><small>From</small>$620</span
-                                      >
-                                    </div>
+                                     
                                   </div>
                                 </div>
                               </div>
@@ -75,52 +71,48 @@
                                 <li class="text-light-dark">
                                   <label class="no-margin text-custom-blue">
                                     Flight Name : </label
-                                  >Delta
+                                  >{{items.flightNumber}}
                                 </li>
                                 <li class="text-light-dark">
                                   <label class="no-margin text-custom-blue">
                                     Company: </label
-                                  >Indigo
+                                  >{{items.user.fullName}}
                                 </li>
                                 <li class="text-light-dark">
                                   <label class="no-margin text-custom-blue">
                                     Flight Number: </label
-                                  >7232
+                                  >{{items.flightNumber}}
                                 </li>
-                                <li class="text-light-dark">
-                                  <label class="no-margin text-custom-blue">
-                                    Model Number: </label
-                                  >ME312
-                                </li>
+                               
                                 <li class="text-light-dark">
                                   <label class="no-margin text-custom-blue">
                                     Departing From : </label
-                                  >Kochi
+                                  >{{items.departure}}
                                 </li>
                                 <li class="text-light-dark">
                                   <label class="no-margin text-custom-blue">
                                     Destination: </label
-                                  >Chennai
+                                  >{{items.destination}}
                                 </li>
                                 <li class="text-light-dark">
                                   <label class="no-margin text-custom-blue">
                                     Date of Departing: </label
-                                  >1994-11-05
+                                  >{{depDateTime}}
                                 </li>
                                 <li class="text-light-dark">
                                   <label class="no-margin text-custom-blue">
                                     Time of Departing: </label
-                                  >12:50
+                                  >{{depTime}}
                                 </li>
                                 <li class="text-light-dark">
                                   <label class="no-margin text-custom-blue">
                                     Dateof Arrival: </label
-                                  >1994-11-05
+                                  >{{destDateTime}}
                                 </li>
                                 <li class="text-light-dark">
                                   <label class="no-margin text-custom-blue">
                                     Time of Arrival: </label
-                                  >12:50
+                                  >{{destTime}}
                                 </li>
                               </ul>
                             </div>
@@ -128,76 +120,98 @@
                         </div>
                         <div class="row">
                           <div class="col-12">
-                            <div
-                              class="quick-quote bx-wrapper padding-20 mb-xl-30"
-                            >
-                              <h5 class="text-custom-black">Checkout</h5>
-                              <form>
-                                <div class="row">
-                                  <div class="col-lg-3 col-md-6">
-                                    <div class="form-group">
-                                      <label
-                                        class="fs-14 text-custom-black fw-500"
-                                        >Select Class</label
-                                      >
-                                      <select
-                                        class="custom-select form-control form-control-custom"
-                                      >
-                                        <option>Business</option>
-                                        <option>Economy</option>
-                                      </select>
+                             <div class="quick-quote bx-wrapper padding-20 mb-xl-30">
+                                <h5 class="text-custom-black">Checkout</h5>
+                                <form [formGroup]="myForm">
+                                  <div formArrayName="seats">
+                                    <div class="row" *ngFor="let seat of seats.controls; let i=index" [formGroupName]="i">
+                                      <div class="col-lg-3 col-md-6">
+                                        <div class="form-group">
+                                          <label for="seatId{{i}}">Select Class</label>
+                                          <select id="seatId{{i}}" formControlName="seatId"  (change)="changed($event, i)" class="form-control form-control-custom" name="seatId" >
+                                            <!-- <option value="" disabled selected>Select Class</option> -->
+                                            <option *ngFor="let seatType of seatTypes" [value]="seatType.seatId">{{ seatType.seatType }}</option>
+                                          </select>
+                                        </div>
+                                      </div>
+                                      <div class="col-lg-3 col-md-6">
+                                        <div class="form-group">
+                                          <label for="price{{i}}">Seat Price </label>
+                                          <!-- <input id="price{{i}}" [value]="getSeatPrice(seats?.get('seatId')?.value, i)" type="number" formControlName="price" name="price" [readonly]="true" class="form-control form-control-custom" placeholder="Price"> -->
+                                          <input id="price{{i}}" [value]="getSeatPrice(seats?.get('seatId')?.value, i)" type="number" formControlName="price" name="price" [readonly]="true" class="form-control form-control-custom" placeholder="Price">
+
+                                        </div>
+                                      </div>
+                                      <div class="col-lg-3 col-md-6">
+                                        <div class="form-group">
+                                          <label for="number{{i}}" class="fs-14 text-custom-black fw-500">No . of Seats </label>
+                                          <input id="number{{i}}" type="number"  formControlName="number" type="number" name="count" class="form-control form-control-custom" placeholder=" No of Seat ">
+                                        </div>
+                                      </div>
+                                      <div class="col-lg-1 col-md-6">
+                                        <label class="submit"></label>
+                                        <button (click)="addSeat()" [disabled]="seats.invalid" class="btn-first btn-submit full-width btn-height">+</button>
+                                      </div>
+                                      <div class="col-lg-1 col-md-6">
+                                        <label class="submit"></label>
+                                        <button (click)="removeSeat(i)" class="btn-first btn-submit full-width btn-height">-</button>
+                                      </div>
                                     </div>
+                                    <button type="submit" (click)="onSubmit()" class="btn-first btn-submit full-width btn-height">Checkout</button>
                                   </div>
-                                  <div class="col-lg-3 col-md-6">
-                                    <div class="form-group">
-                                      <label
-                                        class="fs-14 text-custom-black fw-500"
-                                        >Seat Price
-                                      </label>
-                                      <input
-                                        type="text"
-                                        name="#"
-                                        disabled
-                                        class="form-control form-control-custom"
-                                        placeholder=" Price "
-                                      />
-                                    </div>
-                                  </div>
-                                  <div class="col-lg-3 col-md-6">
-                                    <div class="form-group">
-                                      <label
-                                        class="fs-14 text-custom-black fw-500"
-                                        >No. of Seats</label
-                                      >
-                                      <select
-                                        class="custom-select form-control form-control-custom"
-                                      >
-                                        <option>1</option>
-                                        <option>10</option>
-                                      </select>
-                                    </div>
-                                  </div>
-                                  <div class="col-lg-3 col-md-6">
-                                    <label class="submit"></label>
-                                    <button
-                                      type="submit"
-                                      onclick="window.location.href='flights.html';"
-                                      class="btn-first btn-submit full-width btn-height"
-                                    >
-                                      Add
-                                    </button>
-                                  </div>
-                                </div>
-                              </form>
-                              <button
-                                type="submit"
-                                class="btn-first btn-submit full-width btn-height"
-                              >
-                                Checkout
-                              </button>
-                            </div>
-                          </div>
+                                </form>
+                                
+                                
+                    </div>
+                  </div>
+                       </div>
+                     <!-- //fetch and update price -->
+                     <!-- <div class="row">
+                      <div class="col-12">
+                         <div class="quick-quote bx-wrapper padding-20 mb-xl-30">
+                            <h5 class="text-custom-black">Checkout</h5>
+                            <form [formGroup]="myForm" >
+                              <div formArrayName="seats"> 
+                                <div class="row"  *ngFor="let seat of seatData; let i = index" [formGroupName]="i">
+                  
+                      <div class="col-lg-3 col-md-6">
+                         <div class="form-group">
+                            <label for="class{{i}}"  >Select Class</label>
+                            <select  id="class{{i}}" formControlName="seatType" class="form-control form-control-custom" name="seatType"> 
+                              <option *ngFor="let type of seatData" value="{{type.seatType}}">{{ type.seatType }}</option>
+                          <option value=1>Business</option>
+                              <option value=2>Economy</option> 
+                            </select>
+                         </div>
+                      </div>
+                      <div class="col-lg-3 col-md-6">
+                         <div class="form-group">
+                            <label  class="fs-14 text-custom-black fw-500">Seat Price </label>
+                            <input  id="price{{i}}" type="text" formControlName="price"  [attr.disabled]="true" class="form-control form-control-custom" placeholder=" Price ">
+                         </div>
+                      </div>
+                      <div class="col-lg-3 col-md-6">
+                        <div class="form-group">
+                           <label for="count{{i}}"  class="fs-14 text-custom-black fw-500">No . of Seats </label>
+                           <input id="count{{i}}" type="number" formControlName="number" type="number" name="number"  class="form-control form-control-custom" placeholder=" No of Seat ">
                         </div>
+                     </div>
+                      <div class="col-lg-1 col-md-6">
+                         <label class="submit"></label>
+                         <button  (click)="addSeat()" [disabled]="seats.invalid" class="btn-first btn-submit full-width btn-height" >+</button>
+                         
+                      </div>
+                      <div class="col-lg-1 col-md-6">
+                        <label class="submit"></label>
+                        <button  (click)="removeSeat(i)" class="btn-first btn-submit full-width btn-height">-</button>
+                      </div>
+                      
+                               </div>
+                               <button type="submit" (click)="onSubmit()" class="btn-first btn-submit full-width btn-height">Checkout</button>
+                              </div></form>
+                </div>
+              </div>
+                   </div>    -->
                       </div>
                     </div>
                     <div class="tab-pane fade" id="amenities">
@@ -527,9 +541,9 @@
               </div>
             </div>
             <div class="col-lg-4">
-              <div class="flights-grid mb-xl-30">
+              <div class="flights-grid mb-xl-30" >
                 <h4 class="text-center">Recommended Flights</h4>
-                <div class="flights-grid-wrapper bx-wrapper">
+                <div class="flights-grid-wrapper bx-wrapper" *ngFor="let flights of randomFlights" >
                   <div class="image-sec animate-img">
                     <a href="#">
                       <img
@@ -548,52 +562,20 @@
                         <div class="title">
                           <h4 class="fs-16">
                             <a href="#" class="text-custom-black"
-                              >London to Paris</a
+                              >{{flights.departure}} to {{flights.destination}}</a
                             >
                             <span class="text-light-dark">Oneway Flight</span>
                           </h4>
                         </div>
                       </div>
                       <div class="right-side">
-                        <span class="price"><small>From</small>$620</span>
+                        <span class="price"><small>From</small>₹{{flights.min_price}}</span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="flights-grid mb-xl-30">
-                <div class="flights-grid-wrapper bx-wrapper">
-                  <div class="image-sec animate-img">
-                    <a href="#">
-                      <img
-                        src="/assets/img/user/flights/1.jpg"
-                        class="full-width"
-                        alt="img"
-                      />
-                    </a>
-                  </div>
-                  <div
-                    class="flights-grid-caption padding-20 bg-custom-white p-relative"
-                  >
-                    <div class="heading-sec">
-                      <div class="left-side">
-                        <i class="fa fa-plane text-yellow"></i>
-                        <div class="title">
-                          <h4 class="fs-16">
-                            <a href="#" class="text-custom-black"
-                              >London to Paris</a
-                            >
-                            <span class="text-light-dark">Oneway Flight</span>
-                          </h4>
-                        </div>
-                      </div>
-                      <div class="right-side">
-                        <span class="price"><small>From</small>$620</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              
             </div>
           </div>
         </div>
