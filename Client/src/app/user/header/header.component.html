@@ -73,19 +73,140 @@
                                        <div class="form-outline">
                                           <input  name="currentPwd" formControlName="currentPwd" placeholder="Enter Current Password" type="password" id="form3Examplev4" class="form-control form-control-lg" />
                                        </div>
+                                       <div>
+                                          <span
+                                            class="errorMsg"
+                                            *ngIf="
+                                              changePasswordForm.controls['currentPwd']
+                                                .touched &&
+                                              changePasswordForm.hasError(
+                                                'required',
+                                                'currentPwd'
+                                              )
+                                            "
+                                            ><i>Please enter your current password</i></span
+                                          >
+                                        </div>
+                                        <div>
+                                          <span
+                                            class="errorMsg"
+                                            *ngIf="
+                                              changePasswordForm.controls['currentPwd']
+                                                .touched &&
+                                              changePasswordForm.hasError(
+                                                'pattern',
+                                                'currentPwd'
+                                              )
+                                            "
+                                            ><i>Invalid Format</i></span
+                                          >
+                                        </div>
+                                        <div class="errorMsg"> 
+                                          <span
+                                            
+                                            *ngIf="
+                                              changePasswordForm.controls['currentPwd']
+                                                .touched &&
+                                              changePasswordForm.hasError(
+                                                'minlength',
+                                                'currentPwd'
+                                              )|| changePasswordForm.hasError(
+                                                'maxlength',
+                                                'currentPwd'
+                                              )
+                                            "
+                                            ><i>Password should be between 8 and 25 letters</i></span
+                                          >
+                                        </div>
+                                        <!-- <div>
+                                          <span
+                                            class="errorMsg"
+                                            *ngIf="
+                                              changePasswordForm.controls['currentPass']
+                                                .touched &&
+                                              changePasswordForm.hasError(
+                                                'maxlength',
+                                                'currentPass'
+                                              )
+                                            "
+                                            ><i>Current password is too long</i></span
+                                          >
+                                        </div> -->
                                     </div>
                                     <div class="mb-4 pb-2">
                                        <div class="form-outline">
                                           <input  name="newPwd" formControlName="newPwd" placeholder="Enter New Password" type="password" id="form3Examplev4" class="form-control form-control-lg" />
                                        </div>
+                                       <div>
+                                          <span
+                                            class="errorMsg"
+                                            *ngIf="
+                                              changePasswordForm.controls['newPwd']
+                                                .touched &&
+                                              changePasswordForm.hasError(
+                                                'required',
+                                                'newPwd'
+                                              )
+                                            "
+                                            ><i>Please enter your new password</i></span
+                                          >
+                                        </div>
+                                        <div>
+                                          <span
+                                            class="errorMsg"
+                                            *ngIf="
+                                              changePasswordForm.controls['newPwd']
+                                                .touched &&
+                                              changePasswordForm.hasError(
+                                                'pattern',
+                                                'newPwd'
+                                              )
+                                            "
+                                            ><i>Invalid Format</i></span
+                                          >
+                                        </div>
+                                        <div class="errorMsg"> 
+                                          <span
+                                            
+                                            *ngIf="
+                                              changePasswordForm.controls['newPwd']
+                                                .touched &&
+                                              changePasswordForm.hasError(
+                                                'minlength',
+                                                'newPwd'
+                                              )|| changePasswordForm.hasError(
+                                                'maxlength',
+                                                'newPwd'
+                                              )
+                                            "
+                                            ><i>Password should be between 8 and 25 letters</i></span
+                                          >
+                                        </div>
                                     </div>
                                     <div class="mb-4 pb-2">
                                        <div class="form-outline" >
                                      
                                           <input  formControlName="cPwd" name="cPwd" placeholder="Confirm Password" type="password" id="form3Examplev4" class="form-control form-control-lg" />
-                                       <span  *ngIf="(changePasswordForm.controls['cPwd'].touched) && (changePasswordForm.hasError('confirmPasswordValidator','cPassword'))">
-                                          Passsword and
-                                          Confirm Password didn't match. </span>
+                                          <div>
+                                             <span
+                                               class="sp"
+                                               *ngIf="
+                                                 changePasswordForm.controls['cPwd']
+                                                   .touched &&
+                                                 changePasswordForm.hasError(
+                                                   'required',
+                                                   'cPwd'
+                                                 )
+                                               "
+                                               ><i>Please re-enter your new password</i></span
+                                             >
+                                           </div>
+                                          <div>
+                                             <span  *ngIf="(changePasswordForm.controls['cPwd'].touched) && (changePasswordForm.hasError('confirmPasswordValidator','cPwd'))">
+                                                Passsword and
+                                                Confirm Password didn't match. </span>
+                                          </div>
+                                       
                                        </div>
                                     </div>
                                  
