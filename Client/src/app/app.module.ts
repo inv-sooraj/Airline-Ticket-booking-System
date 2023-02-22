@@ -41,6 +41,7 @@ import { UserFlightListComponent } from './user/user-flight-list/user-flight-lis
 import { FlightEditComponent } from './company/flight-edit/flight-edit.component';
 import { CommonModule, DatePipe } from "@angular/common";
 import { CompanyListComponent } from "./admin/company-list/company-list.component";
+import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { CompanyListComponent } from "./admin/company-list/company-list.componen
     UserFlightListComponent,
     FlightEditComponent,
     CompanyListComponent,
+    AdminDashboardComponent,
   ],
   imports: [
     BrowserModule,
