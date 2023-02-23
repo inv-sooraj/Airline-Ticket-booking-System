@@ -18,19 +18,20 @@ interface Seat {
 })
 export class FlightDetailComponent implements OnInit {
   items: any;
+  selectedSeatPrice!: number;
   depDateTime: any;
   flightId: any;
   randomFlights: any;
   seatBookingFormArray:any;
   destDateTime: any;
   depTime: any;
-  seatList: Seat[] = [];
-  seatData: any;
-  seatPrice!: string;
-  sPrice:any
+  seatPrice:any;
+  seatList:any
+  
+
   myForm!: FormGroup;
   destTime: any;
-  seatTypes: any;
+  
 
   constructor(
     private fb: FormBuilder,
@@ -40,13 +41,7 @@ export class FlightDetailComponent implements OnInit {
     private apiService: ApiService
   ) {}
 
-  createSeatFormGroup(): FormGroup {
-    return this.fb.group({
-      seatId: [''],
-      price: [''],
-      number: ['']
-    });
-  }
+ 
 
   getRandom() {
     this.apiService.getTwoRandom().subscribe({
@@ -65,11 +60,17 @@ export class FlightDetailComponent implements OnInit {
     this.getRandom();
 
     this.myForm = this.fb.group({
-      seats: this.fb.array([])
+      seats: this.fb.array([
+        this.fb.group({
+          seatId: ['', Validators.required],
+          price: ['', Validators.required],
+          number: ['', Validators.required]
+        })
+      ])
     });
-    this.addSeat();
+  
     console.log('SEAT DATA : ');
-    console.log(this.seatData);
+  
   }
 
   // Form Array Adding, Removing, Submitting Functions
@@ -113,49 +114,57 @@ export class FlightDetailComponent implements OnInit {
 });
   }
   addSeat() {
-    const seats = this.seats
-    // this.seatList.forEach(seat => {
-    const seatGroup = this.fb.group({
-      seatId: new FormControl(''),
-      price: new FormControl(''),
-      number: new FormControl('')
-    });
-  
-    seats.push(seatGroup);
-    this.setSeatOptions(seats.length - 1);
-  // });
+    this.seats.push(this.fb.group({
+      seatId: ['', Validators.required],
+      price: ['', Validators.required],
+      number: ['', Validators.required]
+    }));
   }
   
   removeSeat(index: number) {
     const seats = this.seats;
     seats.removeAt(index);
   }
+  onChange(formArrayId:any,seatId:any){
+    console.log("Form array id = "+formArrayId+" and Seat Id ="+seatId)
+    // const seatGroup = (this.myForm.get('seats') as FormArray).at(formArrayId) as FormGroup;
+    // seatGroup.get('price')?.setValue(10)
+    // console.log(seatGroup.value)
+
+    // const seats = this.myForm.get('seats') as FormArray;
+    //   const seat = seats.at(seatId);
+    //   seat.get('price')?.setValue(10);
+      // seat.get('price').setValue(price);
+      if(seatId==2){
+        this.selectedSeatPrice=42;
+      }else{
+        this.selectedSeatPrice=800;
+      }
+// Assuming your FormArray is called "rowsFormArray"
+const rowFormGroup = this.seats.at(formArrayId) as FormGroup;
+rowFormGroup.patchValue({
+  price: this.selectedSeatPrice
+});
+
+      const seatControl=this.seats.controls[formArrayId];
+      seatControl.get('price')?.setValue(this.selectedSeatPrice)
+  }
+// change(i:any,f:any){
+//   alert(f)
+//   let currentarray= this.seatBookingFormArray.at(f)as FormGroup;
+//   currentarray.patchValue({price:this.seatList[i].price})
+//   console.log(currentarray.value);
   
-change(i:any,f:any){
-  alert(f)
-  let currentarray= this.seatBookingFormArray.at(f)as FormGroup;
-  currentarray.patchValue({price:this.seatList[i].price})
-  console.log(currentarray.value);
-  
-  this.myForm.get('seats')?.patchValue({price:this.seatList[i].price})
-  console.log(this.myForm.value);
-  this.myForm.controls['price'].patchValue(this.seatList[i].price)
-}
+//   this.myForm.get('seats')?.patchValue({price:this.seatList[i].price})
+//   console.log(this.myForm.value);
+//   this.myForm.controls['price'].patchValue(this.seatList[i].price)
+// }
   onSubmit() {
     const seats = this.seats  ;
     for (let i = 0; i < seats.length; i++) {
       const seat = seats.at(i);
       seat.get('price')?.setValue(this.seatPrice);
     }
-    console.log(this.myForm);
-  }
-  
-  setSeatOptions(index: number) {
-    // Fetch seat data from backend or any other data source
-    const seats = [
-      { id: 1, name: 'First Class', price: 100 },
-      { id: 2, name: 'Business Class', price: 50 },
-      { id: 3, name: 'Economy Class', price: 25 }
-    ];
+    console.log(this.myForm.value);
   }
 }
