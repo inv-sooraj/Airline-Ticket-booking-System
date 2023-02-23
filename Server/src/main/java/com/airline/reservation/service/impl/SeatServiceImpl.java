@@ -59,6 +59,15 @@ public class SeatServiceImpl implements SeatService {
 
 
 
+
+    @Override
+    public List<Integer> getId(Integer flightId) {
+        return seatRepository.getseatId(flightId);
+     }
+
+
+
+
  
     }
 

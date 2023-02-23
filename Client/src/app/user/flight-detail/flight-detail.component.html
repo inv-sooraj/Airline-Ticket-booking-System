@@ -52,8 +52,8 @@
                                     <div class="title">
                                       <h4 class="fs-16">
                                         <a href="#" class="text-custom-black"
-                                          >London
-                                          <i class="fa fa-plane"></i> Paris</a
+                                          >{{items.departure}}
+                                          <i class="fa fa-plane"></i> {{items.destination}}</a
                                         >
                                       </h4>
                                     </div>
@@ -124,42 +124,47 @@
                                 <h5 class="text-custom-black">Checkout</h5>
                                 <form [formGroup]="myForm">
                                   <div formArrayName="seats">
-                                    <div class="row" *ngFor="let seat of seats.controls; let i=index" [formGroupName]="i">
+                                    <div class="row"  *ngFor="let seat of seats.controls; let f=index">
                                       <div class="col-lg-3 col-md-6">
                                         <div class="form-group">
-                                          <label for="seatId{{i}}">Select Class</label>
-                                          <select id="seatId{{i}}" formControlName="seatId"  (change)="changed($event, i)" class="form-control form-control-custom" name="seatId" >
-                                            <!-- <option value="" disabled selected>Select Class</option> -->
-                                            <option *ngFor="let seatType of seatTypes" [value]="seatType.seatId">{{ seatType.seatType }}</option>
+                                          <label >Select Class</label>
+                                          <select  #mySelect (change)="onChange(f,mySelect.value)" id="seatType" class="form-control form-control-custom" name="seatId" formControlName="seatId" >
+                                           <option  *ngFor="let id of seatIds; let i = index" [value]="id" > {{id}}</option>
                                           </select>
                                         </div>
                                       </div>
                                       <div class="col-lg-3 col-md-6">
                                         <div class="form-group">
-                                          <label for="price{{i}}">Seat Price </label>
-                                          <!-- <input id="price{{i}}" [value]="getSeatPrice(seats?.get('seatId')?.value, i)" type="number" formControlName="price" name="price" [readonly]="true" class="form-control form-control-custom" placeholder="Price"> -->
-                                          <input id="price{{i}}" [value]="getSeatPrice(seats?.get('seatId')?.value, i)" type="number" formControlName="price" name="price" [readonly]="true" class="form-control form-control-custom" placeholder="Price">
+                                          <label >Seat Price </label>
+                                          
+                                          <input type="number" name="price" formControlName="price" [value]="seat?.get('price')?.value" [readonly]="true" class="form-control form-control-custom" placeholder="Price">
+                                          <!-- <input type="number" name="price" [formControl]="seat.get('price')?.value" [readonly]="true" class="form-control form-control-custom" placeholder="Price"> -->
+
+                                          <!-- <span>Price: <span>Price: {{seat?.get('price')?.value}}</span> -->
+                                        <!-- </span> -->
 
                                         </div>
                                       </div>
                                       <div class="col-lg-3 col-md-6">
                                         <div class="form-group">
-                                          <label for="number{{i}}" class="fs-14 text-custom-black fw-500">No . of Seats </label>
-                                          <input id="number{{i}}" type="number"  formControlName="number" type="number" name="count" class="form-control form-control-custom" placeholder=" No of Seat ">
+                                          <label class="fs-14 text-custom-black fw-500">No . of Seats </label>
+                                          <input formControlName="number" name="count" class="form-control form-control-custom" placeholder=" No of Seat ">
+
                                         </div>
                                       </div>
                                       <div class="col-lg-1 col-md-6">
                                         <label class="submit"></label>
-                                        <button (click)="addSeat()" [disabled]="seats.invalid" class="btn-first btn-submit full-width btn-height">+</button>
+                                        <button (click)="addSeat()" class="btn-first btn-submit full-width btn-height">+</button>
                                       </div>
                                       <div class="col-lg-1 col-md-6">
                                         <label class="submit"></label>
-                                        <button (click)="removeSeat(i)" class="btn-first btn-submit full-width btn-height">-</button>
+                                        <button (click)="removeSeat(f)" class="btn-first btn-submit full-width btn-height">-</button>
                                       </div>
                                     </div>
                                     <button type="submit" (click)="onSubmit()" class="btn-first btn-submit full-width btn-height">Checkout</button>
                                   </div>
                                 </form>
+                                <pre>{{ myForm.value | json }}</pre>
                                 
                                 
                     </div>

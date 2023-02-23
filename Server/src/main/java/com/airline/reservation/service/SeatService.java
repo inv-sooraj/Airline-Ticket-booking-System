@@ -11,5 +11,6 @@ public interface SeatService {
     public List<Seat> getSeatInfo(Integer flightId);
     public Integer getPrice(Integer seatId);
 //    public SeatView updateSeat(Integer seatId, SeatForm form);
+    public List<Integer> getId(Integer flightId);
    
 }

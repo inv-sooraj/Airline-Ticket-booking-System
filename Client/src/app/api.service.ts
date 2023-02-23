@@ -7,6 +7,9 @@ import { environment } from "src/environments/environment";
   providedIn: "root",
 })
 export class ApiService {
+  addBooking(param: any) {
+    return this.httpClient.post(this.baseUrl+'/bookings/addBooking',param)
+  }
   getTwoRandom() {
     return this.httpClient.get(this.baseUrl+"/flight/getTwoRandom",this.getHeader());
   }
@@ -23,8 +26,11 @@ export class ApiService {
  return this.httpClient.get(this.baseUrl+'/flight/search', { params });
   }
 
-  getSeatIdAndTypeId(flightId:any){
-    return this.httpClient.get(this.baseUrl+'/seat/'+flightId);
+  // getSeatIdAndTypeId(flightId:any){
+  //   return this.httpClient.get(this.baseUrl+'/seat/'+flightId);
+  // }
+  getSeatId(flightId:any){
+    return this.httpClient.get(this.baseUrl+'/seat/getId/'+flightId);
   }
   searchFlight(formValue: any) {
    return this.httpClient.get(this.baseUrl+"/flight")
