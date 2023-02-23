@@ -15,6 +15,8 @@ public interface SeatRepository extends JpaRepository<Seat,Integer>{
     List<Seat> findByFlightId(Integer flightId);
     @Query(value ="SELECT price from seat WHERE seat_id=?1",nativeQuery=true)
     Integer getPrice(Integer seatId);
+    @Query(value ="SELECT seat_id from seat WHERE cp_fk=?1",nativeQuery=true)
+    List<Integer> getseatId(Integer flightId);
     
 //    @Query("select * from Seat s  where s.seatId in(:seats)")
 //    Optional<Seat> findAllSeats(List<Seat> seats);

@@ -41,18 +41,16 @@
                 </a>
             </div>
             <div style="display: inline-flex;">
-                <p class="col-md-4">
-                    Registration,
-                    new company can register here..
+                <p class="col-md-4" [routerLink]="['/companyreg']">
+                 Company Registration
                 </p>
 
-                <p class="col-md-4">
-                    All of the Registered
-                    companies are Here..
+                <p class="col-md-4" [routerLink]="['/company-list']">
+                    Company List
                 </p>
 
-                <p class="col-md-4">
-                    Registered Users are Here..
+                <p class="col-md-4" [routerLink]="['/user-list']">
+                    User List
                 </p>
             </div>
             <div style="display: inline-flex;" class="mt-5">
@@ -72,17 +70,17 @@
                 </a>
             </div>
             <div style="display: inline-flex;">
-                <p class="col-md-4">
-                    Cancel Reservation
-                    list here and see on the reason....
+                <p class="col-md-4" [routerLink]="['/cancelled-list']">
+                    Cancelled Reservation
+                    
                 </p>
 
-                <p class="col-md-4">
-                    Company registered Aeroplane are here..
+                <p class="col-md-4" [routerLink]="['/plane-list']">
+                    Airplane List
                 </p>
 
-                <p class="col-md-4">
-                    company registered Flight are here..
+                <p class="col-md-4" [routerLink]="['/flight-list']">
+                    Flight List
                 </p>
             </div>
         </div>

@@ -92,4 +92,8 @@ public class UsersController {
         System.out.println("deleting");
         userService.deleteAllBYIds(ids);
     }
+    @GetMapping("/getCurrentUserId")
+    public Integer getCurrent(){
+        return userService.getCurrent();
+    }
 }
