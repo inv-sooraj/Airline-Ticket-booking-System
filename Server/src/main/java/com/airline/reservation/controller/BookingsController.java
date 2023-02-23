@@ -35,12 +35,12 @@ public class BookingsController {
     CSVService fileService;
 
     @PostMapping("/addBooking")
-    public void addBooking(@RequestBody BookingForm form) {
-        bookingService.addBooking(form);
-    }
+    public ResponseEntity<Void> bookSeats(@RequestBody List<BookingForm> bookingForms) {
+        bookingService.bookSeats(bookingForms);
+        return ResponseEntity.ok().build();
+      }
     
     //list all booking details(for admin)
-    
     @GetMapping("/status/{flag}")
     public List<Bookings> list(@RequestBody @PathVariable Byte flag) {
 

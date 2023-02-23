@@ -160,4 +160,18 @@ public class BookingServiceImpl implements BookingService {
             return new ResponseEntity<>(body, HttpStatus.OK);
         }
     }
+
+   
+    @Override
+    public void bookSeats(List<BookingForm> bookingForms) {
+        List<Bookings> bookingsList = new ArrayList<>();
+
+        for (BookingForm bookingForm : bookingForms) {
+            Bookings booking = new Bookings(bookingForm, null);
+            bookingsList.add(booking);
+        }
+
+        bookingRepository.saveAll(bookingsList);
+    }
+    
 }
