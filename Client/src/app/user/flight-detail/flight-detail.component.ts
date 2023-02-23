@@ -68,7 +68,6 @@ export class FlightDetailComponent implements OnInit {
         })
       ])
     });
-  
     console.log('SEAT DATA : ');
   
   }
@@ -90,7 +89,7 @@ export class FlightDetailComponent implements OnInit {
           this.items = response;
           this.seatList = this.items.seats;
           console.log(' SEAT DATA :');
-          console.log(this.items.seats);
+          console.log(this.seatList);
           this.depDateTime = this.items.depDateTime.slice(0, 10);
           this.destDateTime = this.items.destDateTime.slice(0, 10);
           let formattedDepTime = this.datePipe.transform(
@@ -120,7 +119,6 @@ export class FlightDetailComponent implements OnInit {
       number: ['', Validators.required]
     }));
   }
-  
   removeSeat(index: number) {
     const seats = this.seats;
     seats.removeAt(index);
@@ -135,19 +133,29 @@ export class FlightDetailComponent implements OnInit {
     //   const seat = seats.at(seatId);
     //   seat.get('price')?.setValue(10);
       // seat.get('price').setValue(price);
-      if(seatId==2){
-        this.selectedSeatPrice=42;
-      }else{
-        this.selectedSeatPrice=800;
-      }
-// Assuming your FormArray is called "rowsFormArray"
+    
+      this.apiService.getSeatPrice(seatId,formArrayId).subscribe({
+        next: (response: any) => {
+          this.selectedSeatPrice = response;
+         
+          
+
 const rowFormGroup = this.seats.at(formArrayId) as FormGroup;
 rowFormGroup.patchValue({
   price: this.selectedSeatPrice
 });
 
       const seatControl=this.seats.controls[formArrayId];
+      
       seatControl.get('price')?.setValue(this.selectedSeatPrice)
+    },
+    error: (err: any) => {
+      alert("Failed");
+    },
+    complete: () => {},
+  });
+   
+    
   }
 // change(i:any,f:any){
 //   alert(f)
