@@ -51,7 +51,7 @@ console.log(" URL = "+this.DownloadURL);
 
   getBooking() {
 
-    return this.http.get(this.baseUrl + '/status/1', this.getHeader());
+    return this.http.get(this.baseUrl + '/status/1');
      
      
      }

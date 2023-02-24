@@ -1,3 +1,4 @@
+import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { FormArray, FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { AlertService } from "src/app/alert.service";
@@ -19,7 +20,7 @@ export class ReservationListComponent implements OnInit {
   constructor(
     private formbuilder: FormBuilder,
     private alertservice: AlertService,
-    private bookingService: BookingServiceService
+    private bookingService: BookingServiceService,private http: HttpClient
   ) {
     this.bookingListForm = this.formbuilder.group({
       search: [""],
@@ -117,7 +118,21 @@ export class ReservationListComponent implements OnInit {
   }
 
   export() {
-    console.log("export function");
-    window.open("http://localhost:9091/bookings/download");
+    console.log("Export");
+    
+    // console.log("export function");
+    // window.open("http://localhost:9091/bookings/download");
+    this.http.get('http://localhost:9091/bookings/download', { responseType: 'blob' })
+      .subscribe(blob => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'my-csv-file.csv';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+      });
   }
+  
 }
