@@ -55,6 +55,7 @@ export class LoginComponent implements OnInit {
         next: (result: any) => {
           this.listData = result.accessToken.value;
           this.role = result.role;
+          console.log(typeof this.role)
           this.userid = result.userId;
           localStorage.setItem("accessToken", this.listData);
           localStorage.setItem("Role", this.role);

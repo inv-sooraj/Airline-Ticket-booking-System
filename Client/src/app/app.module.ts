@@ -43,6 +43,8 @@ import { CommonModule, DatePipe } from "@angular/common";
 import { CompanyListComponent } from "./admin/company-list/company-list.component";
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { MyInterceptor } from "./shared/my-interceptor";
+import { ForbiddenComponent } from './shared/forbidden/forbidden/forbidden.component';
+
 
 @NgModule({
   declarations: [
@@ -80,6 +82,7 @@ import { MyInterceptor } from "./shared/my-interceptor";
     FlightEditComponent,
     CompanyListComponent,
     AdminDashboardComponent,
+    ForbiddenComponent,
   ],
   imports: [
     BrowserModule,

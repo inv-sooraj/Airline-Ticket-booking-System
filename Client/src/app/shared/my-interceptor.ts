@@ -10,8 +10,8 @@ export class MyInterceptor implements HttpInterceptor{
               Authorization: `Airline ${this.accessToken}`
             }
           });
-          alert("interceptor")
           console.log(localStorage.getItem("userid"));
+          console.log("role = ",(localStorage.getItem("userid")));
           console.log(this.accessToken)
           return next.handle(authRequest);
     }

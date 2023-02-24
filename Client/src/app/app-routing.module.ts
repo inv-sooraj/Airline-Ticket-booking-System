@@ -26,6 +26,8 @@ import { UserFlightListComponent } from "./user/user-flight-list/user-flight-lis
 import { FlightEditComponent } from "./company/flight-edit/flight-edit.component";
 import { CompanyListComponent } from "./admin/company-list/company-list.component";
 import { AdminDashboardComponent } from "./admin/admin-dashboard/admin-dashboard.component";
+import { ForbiddenComponent } from "./shared/forbidden/forbidden/forbidden.component";
+import { AuthGuard } from "./shared/auth-guard";
 const routes: Routes = [
   { path: "", component: LoginComponent },
   { path: "companyreg", component: CompanyRegistrationComponent },
@@ -36,7 +38,7 @@ const routes: Routes = [
   { path: "plane-list", component: PlaneListComponent },
   { path: "change-pass", component: ChangePasswordComponent },
   { path: "plane-edit/:airplaneId", component: PlaneEditComponent },
-  { path: "home", component: HomeComponent },
+  { path: "home", component: HomeComponent,canActivate:[AuthGuard],data:{allowedRoles:[2]} }, // example protected route with allowed roles [1, 2]
   { path: "header", component: HeaderComponent },
   { path: "user-booking-list", component: UserBookingListComponent },
   { path: "flight-detail/:flightId", component: FlightDetailComponent },
@@ -53,15 +55,15 @@ const routes: Routes = [
     component: ReservationDetailsComponent,
   },
 
-  {path:"flight-edit/:flightId",component:FlightEditComponent},
-  {path:"company-list",component:CompanyListComponent},
+  { path: "flight-edit/:flightId", component: FlightEditComponent },
+  { path: "company-list", component: CompanyListComponent },
 
-  {path:"user-flight-list",component:UserFlightListComponent},
-  {path:"admin-dashboard",component:AdminDashboardComponent}
-
+  { path: "user-flight-list", component: UserFlightListComponent },
+  { path: "admin-dashboard", component: AdminDashboardComponent },
+  { path: "forbidden", component: ForbiddenComponent },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
