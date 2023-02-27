@@ -11,6 +11,7 @@ import { BookingServiceService } from "../services/booking-service.service";
 })
 export class CancelledReservationListComponent {
   items: any;
+  userId:any;
   itemName: any;
   cancelledListForm!: FormGroup;
   public searchData: any[] = [];
@@ -22,6 +23,7 @@ export class CancelledReservationListComponent {
     private bookingService: BookingServiceService
   ) {}
   ngOnInit(): void {
+    alert(localStorage.getItem("userid"))
     this.getPendingBookings();
     this.cancelledListForm = this.formbuilder.group({
       search: [""],
@@ -40,7 +42,8 @@ export class CancelledReservationListComponent {
     }
   }
   getPendingBookings() {
-    this.bookingService.getPending().subscribe({
+    this.userId=localStorage.getItem("userid")
+    this.bookingService.getPending(this.userId).subscribe({
       next: (response: any) => {
         this.items = response;
         console.log(typeof this.items);

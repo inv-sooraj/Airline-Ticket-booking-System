@@ -48,7 +48,7 @@ export class ReservationDetailsComponent implements OnInit {
           "Status changed Successfully!!!",
           "success"
         );
-        this.router.navigate(["/reservation-list"]);
+        this.router.navigate(["/pending-list"]);
       },
       error: (err: any) => {
         this.alertservice.showError("Failed to Change Status!!!", "error");

@@ -64,7 +64,7 @@
                         <th scope="col">Departing From</th>
                         <th scope="col">Destination</th>
                         <th scope="col">Departing Date</th>
-                        
+                        <th scope="col">View</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -89,7 +89,16 @@
                         <td>
                           {{ bookings.flight.depDateTime | date : "fullDate" }}
                         </td>
-                    
+                    <td>
+                          <a
+                            class="status_btn"
+                            [routerLink]="[
+                              '/reservation-details',
+                              bookings.bookingId
+                            ]"
+                            >View</a
+                          >
+                        </td>
                       </tr>
                     </tbody>
                   </table>

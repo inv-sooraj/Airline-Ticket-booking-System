@@ -16,7 +16,8 @@ export class HomeComponent implements OnInit {
 items:any;
 baseUrl = environment.baseUrl;
    
-  constructor(private http:HttpClient,private apiservce: ApiService,private alertservice: AlertService,private formBuilder:FormBuilder) { 
+  constructor(private http:HttpClient,private apiservce: ApiService,private alertservice: AlertService,private formBuilder:FormBuilder) {
+    
     this.searchForm = this.formBuilder.group({
       departure: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
       destination: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
@@ -25,7 +26,7 @@ baseUrl = environment.baseUrl;
   }
 
   ngOnInit(): void {
-    this.getRandomFlight();
+this.getRandomFlight();
     this.today = new Date().toISOString().split('T')[0];
   }
   isBeforeToday() {

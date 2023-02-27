@@ -24,7 +24,7 @@ public interface BookingService {
     void deleteAllBYIds(List<Integer> ids);
 
     List<Bookings> findByUserUserId(Byte flag);
-    List<Bookings> findByStatus(Byte flag,Byte deleteFlag);
+    List<Bookings> findByStatus(Byte flag,Byte deleteFlag,Integer flightId);
 
     public BookingListView getBooking(Integer bookingId, Byte flag);
 

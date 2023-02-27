@@ -72,6 +72,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(DELETE,"/bookings").access("hasRole('ROLE_ADMIN')or hasRole('ROLE_COMPANY')")
                 .antMatchers(PUT,"/bookings/changeStatus/**/**").access("hasRole('ROLE_ADMIN')or hasRole('ROLE_COMPANY')")
                 .antMatchers(PUT,"/bookings/cancelBooking/**").access("hasRole('ROLE_PASSENGER')")
+                .antMatchers(GET,"/bookings/cancelBooking/**").access("hasRole('ROLE_PASSENGER')")
                 .antMatchers(GET,"/bookings/getById/**").access("hasRole('ROLE_PASSENGER')")
                 .antMatchers(GET,"/bookings/getByCompany/**").access("hasRole('ROLE_COMPANY')")
                 .antMatchers(OPTIONS,"/company/**").access("hasRole('ROLE_ADMIN')")
