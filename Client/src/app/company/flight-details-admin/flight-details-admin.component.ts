@@ -1,3 +1,92 @@
+<<<<<<< HEAD
+import { Component, OnInit } from "@angular/core";
+import { FormGroup, FormBuilder, Validators, FormArray } from "@angular/forms";
+import { Router } from "@angular/router";
+import { ApiService } from "src/app/api.service";
+@Component({
+  selector: "app-flight-details-admin",
+  templateUrl: "./flight-details-admin.component.html",
+  styleUrls: ["./flight-details-admin.component.css"],
+})
+export class FlightDetailsAdminComponent implements OnInit {
+  FlightRegForm!: FormGroup;
+  plane: any = ["ABCD", "EFGH", "JKLM", "NOPQ", "RST", "GHD", "AQS", "XSER"];
+  seats: any = ["Economy", "Business", "First Class"];
+  status: any = false;
+  constructor(
+    private formbuilder: FormBuilder,
+    private router: Router,
+    private apiservice: ApiService
+  ) {
+    this.FlightRegForm = this.formbuilder.group({
+      airplane: ["", Validators.required],
+      flightno: [
+        "",
+        [Validators.required, Validators.pattern("^[a-zA-Z0-9]*$")],
+      ],
+      departure: [
+        "",
+        [Validators.required, Validators.pattern("^[a-zA-Z][a-zA-Z ]+$")],
+      ],
+      departureDT: ["", Validators.required],
+      destination: [
+        "",
+        [Validators.required, Validators.pattern("^[a-zA-Z][a-zA-Z ]+$")],
+      ],
+      ariivalDT: ["", Validators.required],
+      seatDetails: this.formbuilder.array([]),
+    });
+  }
+
+  ngOnInit(): void {}
+  changePlane(e: any) {
+    console.log(e.value);
+    this.plane.setValue(e.target.value, {
+      onlySelf: true,
+    });
+  }
+  changeSeat(e: any) {
+    console.log(e.value);
+    this.seats.setValue(e.target.value, {
+      onlySelf: true,
+    });
+  }
+  seatDetails(): FormArray {
+    return this.FlightRegForm.get("seatDetails") as FormArray;
+  }
+  addCreds() {
+    this.seatDetails().push(this.newData());
+  }
+  newData(): FormGroup {
+    return this.formbuilder.group({
+      seat: ["", Validators.required],
+
+      seatNo: ["", Validators.required],
+
+      price: ["", Validators.required],
+    });
+  }
+  addFlight() {
+    if (this.FlightRegForm.valid) {
+      this.apiservice.createFlight(this.FlightRegForm.value).subscribe({
+        next: (result: any) => {
+          alert("Created successfully");
+          //  this.router.navigate(['/login'])
+        },
+        error: (err: any) => {
+          alert(err.name);
+          console.log(err);
+        },
+      });
+    } else {
+      this.status = true;
+    }
+  }
+  cancel() {
+    this.FlightRegForm.reset();
+  }
+}
+=======
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -82,3 +171,4 @@ addFlight()
     this.FlightRegForm.reset();
   }
 }
+>>>>>>> 4811df5aacee65ea25f7b2324b95b1b61b76d091

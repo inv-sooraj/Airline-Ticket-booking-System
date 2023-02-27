@@ -250,4 +250,15 @@ export class ApiService {
       this.baseUrl + "/users?ids=" + ids
     );
   }
+  getSeatById(id: any) {
+    return this.httpClient.get(
+      this.baseUrl + "/seat/getSeatById/" + id
+    );
+  }
+  updateCompany(companyId: any, companyEditform: any) {
+    return this.httpClient.put(
+      this.baseUrl + "/company/" + companyId,
+      companyEditform
+    );
+  }
 }

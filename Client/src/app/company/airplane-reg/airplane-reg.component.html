@@ -1,3 +1,185 @@
+<<<<<<< HEAD
+<app-company-nav></app-company-nav><br /><br />
+
+<body>
+  <div class="main_content_iner">
+    <div class="container-fluid p-0">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <div class="white_card card_height_100 mb_30">
+            <div class="white_card_header">
+              <div class="box_header m-0">
+                <div class="main-title">
+                  <h3 class="m-0">Airplane Registration</h3>
+                </div>
+              </div>
+            </div>
+            <div class="white_card_body">
+              <form [formGroup]="planeRegForm">
+                <div class="mb-3">
+                  <label class="form-label" for="exampleInputEmail1"
+                    >Name</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="exampleInputEmail"
+                    formControlName="airplaneName"
+                    aria-describedby="emailHelp"
+                    placeholder=""
+                  />
+
+                  <!--Validations-->
+                  <div>
+                    <span
+                      class="sp"
+                      *ngIf="
+                        planeRegForm.controls['airplaneName'].touched &&
+                        planeRegForm.hasError('required', 'airplaneName')
+                      "
+                      ><i>*Please ener airplane name*</i></span
+                    >
+                    <span
+                      class="sp"
+                      *ngIf="
+                        planeRegForm.controls['airplaneName'].touched &&
+                        planeRegForm.hasError('pattern', 'airplaneName')
+                      "
+                      ><i>*Invalid Format*</i></span
+                    >
+                    <span
+                      class="sp"
+                      *ngIf="
+                        planeRegForm.controls['airplaneName'].touched &&
+                        planeRegForm.hasError('minlength', 'airplaneName')
+                      "
+                      ><i>*Airplane name should be atleast 5 letters*</i></span
+                    >
+                    <span
+                      class="sp"
+                      *ngIf="
+                        planeRegForm.controls['airplaneName'].touched &&
+                        planeRegForm.hasError('maxlength', 'airplaneName')
+                      "
+                      ><i>*Airplane name should be atmost 30 letters*</i></span
+                    >
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" for="exampleInputEmail"
+                    >Model Number</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="exampleInputEmail"
+                    formControlName="modelNo"
+                    aria-describedby="emailHelp"
+                    placeholder=""
+                  />
+
+                  <!--Validations-->
+                  <div>
+                    <span
+                      class="sp"
+                      *ngIf="
+                        planeRegForm.controls['modelNo'].touched &&
+                        planeRegForm.hasError('required', 'modelNo')
+                      "
+                      ><i>*Please enter the model number*</i></span
+                    >
+                    <span
+                      class="sp"
+                      *ngIf="
+                        planeRegForm.controls['modelNo'].touched &&
+                        planeRegForm.hasError('pattern', 'modelNo')
+                      "
+                      ><i>*Invalid Format*</i></span
+                    >
+                    <span
+                      class="sp"
+                      *ngIf="
+                        planeRegForm.controls['modelNo'].touched &&
+                        planeRegForm.hasError('minlength', 'modelNo')
+                      "
+                      ><i>*model number should be atleast 5 letters*</i></span
+                    >
+                    <span
+                      class="sp"
+                      *ngIf="
+                        planeRegForm.controls['modelNo'].touched &&
+                        planeRegForm.hasError('maxlength', 'modelNo')
+                      "
+                      ><i>*model number should be atmost 30 letters*</i></span
+                    >
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" for="exampleInputPassword"
+                    >Total Seats</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="exampleInputPassword"
+                    formControlName="totalSeats"
+                    placeholder=""
+                  />
+
+                  <!--Validations-->
+                  <div>
+                    <span
+                      class="sp"
+                      *ngIf="
+                        planeRegForm.controls['totalSeats'].touched &&
+                        planeRegForm.hasError('required', 'totalSeats')
+                      "
+                      ><i>*Please enter the total seats*</i></span
+                    >
+                    <span
+                      class="sp"
+                      *ngIf="
+                        planeRegForm.controls['totalSeats'].touched &&
+                        planeRegForm.hasError('pattern', 'totalSeats')
+                      "
+                      ><i>*Invalid Format*</i></span
+                    >
+                    <span
+                      class="sp"
+                      *ngIf="
+                        planeRegForm.controls['totalSeats'].touched &&
+                        planeRegForm.hasError('maxlength', 'totalSeats')
+                      "
+                      ><i>*number is too long*</i></span
+                    >
+                  </div>
+                </div>
+                <button
+                  type="submit"
+                  class="btn btn-secondary"
+                  style="float: left"
+                  id="btncancel"
+                  (click)="cancel()"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  class="btn btn-success"
+                  id="btnADD"
+                  (click)="addPlane()"
+                >
+                  Submit
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+=======
 <app-company-nav></app-company-nav><br /><br />
 <body>
   <div class="main_content_iner">
@@ -177,3 +359,4 @@
     </div>
   </div>
 </body>
+>>>>>>> 4811df5aacee65ea25f7b2324b95b1b61b76d091

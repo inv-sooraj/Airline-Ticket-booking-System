@@ -1,3 +1,130 @@
+<<<<<<< HEAD
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+/><app-company-nav></app-company-nav>
+<section class="main_content dashboard_part large_header_bg">
+  <body>
+    <div class="row">
+      <div class="main_content_iner">
+        <div class="container-fluid p-0">
+          <div class="row justify-content-center">
+            <div class="col-lg-12">
+              <div class="white_card card_height_100 mb_30">
+                <div class="white_card_header">
+                  <div class="box_header m-0">
+                    <div class="main-title"></div>
+                  </div>
+                </div>
+
+                <div class="white_card_body">
+                  <h4>Flight Details</h4>
+                  <div class="QA_section">
+                    <div class="white_box_tittle list_header">
+                      <div class="box_right d-flex lms_block">
+                        <div class="serach_field_2">
+                          <div class="search_inner">
+                            <form [formGroup]="FlightListForm">
+                              <div class="search-hero col-lg-12">
+                                <input
+                                  type="text"
+                                  formControlName="search"
+                                  placeholder="Search flight details"
+                                  [(ngModel)]="searchText"
+                                  autocomplete="off"
+                                />
+                              </div>
+                              <ng-container *ngIf="status">
+                                <select
+                                  class="form-control"
+                                  (change)="changeCompany()"
+                                  formControlName="company"
+                                  id="Companydropdown"
+                                >
+                                  <option value="">Select Company</option>
+                                  <option
+                                    *ngFor="let name of Company"
+                                    [value]="name.userId"
+                                  >
+                                    {{ name.fullName }}
+                                  </option>
+                                </select>
+                              </ng-container>
+                            </form>
+                          </div>
+                        </div>
+                        <div class="add_button ms-2">
+                          <a
+                            [routerLink]="['/flight-reg']"
+                            data-bs-toggle=""
+                            data-bs-target=""
+                            class="btn_1"
+                            >Add New</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="QA_table mb_30">
+                      <br /><br />
+                      <a
+                        class="delete"
+                        title="Delete"
+                        data-toggle="tooltip"
+                        (click)="deleteData()"
+                        ><i class="material-icons">&#xE872;</i></a
+                      >
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th></th>
+                            <th scope="col">Flight Id</th>
+                            <th scope="col">Flight Number</th>
+                            <th scope="col">Departure city</th>
+                            <th scope="col">Destination City</th>
+                            <th scope="col">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr
+                            *ngFor="
+                              let flight of items | filter : searchText;
+                              let i = index
+                            "
+                          >
+                            <th scope="row">
+                              <label for="sel"></label>
+                              <input
+                                type="checkbox"
+                                [value]="flight.flightId"
+                                (change)="onCheckboxChange($event)"
+                              />
+                            </th>
+                            <td>{{ flight.flightId }}</td>
+                            <td>{{ flight.flightNumber }}</td>
+                            <td>{{ flight.departure }}</td>
+                            <td>{{ flight.destination }}</td>
+                            <td>
+                              <a
+                                class="btn btn-info mr-2"
+                                class="fas fa-edit"
+                                [routerLink]="['/flight-edit', flight.flightId]"
+                              ></a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</section>
+=======
 
 <link
 rel="stylesheet"
@@ -124,3 +251,4 @@ href="https://fonts.googleapis.com/icon?family=Material+Icons"
     </div>
   </body>
 </section>
+>>>>>>> 4811df5aacee65ea25f7b2324b95b1b61b76d091

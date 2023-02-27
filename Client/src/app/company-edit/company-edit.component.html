@@ -1,0 +1,142 @@
+<app-company-nav></app-company-nav>
+<div
+  class="main_content_iner"
+  style="margin-top: -75px; position: relative; margin-left: 215px"
+>
+  <div class="container-fluid p-0 sm_padding_15px">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="white_card card_height_100 mb_30">
+          <div class="white_card_header">
+            <div class="box_header m-0"></div>
+          </div>
+          <br /><br />
+
+          <div class="white_card_body">
+            <div class="main-title">
+              <h3 class="m-0">Company Details</h3>
+            </div>
+            <br />
+            <form [formGroup]="companyEditForm">
+              <div class="mb-3">
+                <label class="form-label" for="fullName">Company Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="fullName"
+                  formControlName="fullName"
+                  aria-describedby="fullName"
+                  placeholder=""
+                  required="fullName"
+                  [(ngModel)]="CompanyById.fullName"
+                />
+                <div>
+                  <span
+                    class="sp"
+                    style="color: brown"
+                    *ngIf="
+                      companyEditForm.controls['fullName'].touched &&
+                      companyEditForm.hasError('required', 'fullName')
+                    "
+                    ><i>Please enter the company name</i></span
+                  >
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="phone">Contact Number</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="phone"
+                  formControlName="phone"
+                  aria-describedby="phone"
+                  placeholder=""
+                  [(ngModel)]="CompanyById.phone"
+                />
+                <div>
+                  <span
+                    class="sp"
+                    style="color: brown"
+                    *ngIf="
+                      companyEditForm.controls['phone'].touched &&
+                      companyEditForm.hasError('required', 'phone')
+                    "
+                    ><i>Please enter the phone number</i></span
+                  >
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="address">Company Address</label>
+                <textarea
+                  class="form-control"
+                  id="address"
+                  formControlName="address"
+                  aria-describedby="Address"
+                  placeholder=""
+                  [(ngModel)]="CompanyById.address"
+                ></textarea>
+                <div>
+                  <span
+                    class="sp"
+                    style="color: brown"
+                    *ngIf="
+                      companyEditForm.controls['address'].touched &&
+                      companyEditForm.hasError('required', 'address')
+                    "
+                    ><i>Please enter the address</i></span
+                  >
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="email">Company Email</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="email"
+                  formControlName="email"
+                  aria-describedby="email"
+                  placeholder=""
+                  [(ngModel)]="CompanyById.email"
+                />
+                <div>
+                  <span
+                    class="sp"
+                    style="color: brown"
+                    *ngIf="
+                      companyEditForm.controls['email'].touched &&
+                      companyEditForm.hasError('required', 'email')
+                    "
+                    ><i>Please enter your email</i></span
+                  >
+                  <span
+                    class="sp"
+                    style="color: brown"
+                    *ngIf="
+                      companyEditForm.controls['email'].touched &&
+                      companyEditForm.hasError('pattern', 'email')
+                    "
+                    ><i>*Invalid Format*</i></span
+                  >
+                </div>
+              </div>
+              <button
+                class="btn btn-secondary"
+                style="position: relative; margin-left: 210px"
+                (click)="cancel()"
+              >
+                Cancel
+              </button>
+              <button
+                class="btn btn-success"
+                style="position: relative; margin-left: 10px"
+                (click)="companyUpdate()"
+              >
+                Update
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

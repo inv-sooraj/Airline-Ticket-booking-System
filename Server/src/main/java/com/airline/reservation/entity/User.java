@@ -1,5 +1,6 @@
 package com.airline.reservation.entity;
 import com.airline.reservation.form.CompanyForm;
+import com.airline.reservation.form.CompanyUpdateForm;
 import com.airline.reservation.form.UserUpdateForm;
 import java.util.Date;
 import javax.persistence.Column;
@@ -163,6 +164,15 @@ public Integer getUserId() {
         Date dt = new Date();
         this.updateDate = dt;
         return this;
+    }
+    public User updateCompany(CompanyUpdateForm form) {
+        this.fullName = form.getFullName();
+        this.email = form.getEmail();
+        this.phone = form.getPhone();
+        this.address = form.getAddress();
+        Date dt = new Date();
+        this.updateDate = dt;
+         return this;
     }
     
     public User(CompanyForm form) {
