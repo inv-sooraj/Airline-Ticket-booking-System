@@ -13,6 +13,8 @@ export class CompanyNavComponent implements OnInit {
   ngOnInit(): void {
   }
   logOut(){
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("Role");
     localStorage.clear();
     this.router.navigate(['/login']);
   }
