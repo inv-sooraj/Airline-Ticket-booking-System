@@ -21,18 +21,20 @@ export class BookingServiceService {
     let params = new HttpParams()
       .set('ids', ids);
       console.log(this.baseUrl + '?' + 'ids' + '=' + ids);
-    return this.http.delete(this.baseUrl + '?' + 'ids' + '=' + ids, this.getHeader())
+    return this.http.delete(this.baseUrl + '?' + 'ids' + '=' + ids)
 
   }
   changeStatus(id: any, status: any) {
-    return this.http.put(this.baseUrl + '/changeStatus/'+id + '/' + status, this.getHeader())
+    // return this.http.put(this.baseUrl + '/'+changeStatus+'/'+id + '/' + status);
+    console.log(this.baseUrl + '/changeStatus/'+id + '/' + status, {})
+    return this.http.put(this.baseUrl + '/changeStatus/'+id + '/' + status, {});
+
   }
    getHeader(): any {
     return {
       headers: {
         Authorization: 'Airline ' + this.getAccessToken(),
       },
-
     };
   }
   getAccessToken(): any {
@@ -51,20 +53,20 @@ console.log(" URL = "+this.DownloadURL);
 
   getBooking() {
 
-    return this.http.get(this.baseUrl + '/status/1', this.getHeader());
+    return this.http.get(this.baseUrl + '/status/1');
      
      
      }
 
      getFlight(){
-      return this.http.get(this.baseUrl + '/status/1', this.getHeader());
+      return this.http.get(this.baseUrl + '/status/1');
      }
 
      //method to get booking details of passengers based on company(for company)
      
      getBookingByCompany(){
 
-      return this.http.get(this.baseUrl + '/getByCompany/1', this.getHeader());
+      return this.http.get(this.baseUrl + '/getByCompany/1');
      
      }
 }

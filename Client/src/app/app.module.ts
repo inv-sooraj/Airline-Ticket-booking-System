@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { AdminHomeComponent } from "./admin/admin.component";
@@ -42,6 +42,9 @@ import { FlightEditComponent } from './company/flight-edit/flight-edit.component
 import { CommonModule, DatePipe } from "@angular/common";
 import { CompanyListComponent } from "./admin/company-list/company-list.component";
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
+import { MyInterceptor } from "./shared/my-interceptor";
+import { ForbiddenComponent } from './shared/forbidden/forbidden/forbidden.component';
+
 
 @NgModule({
   declarations: [
@@ -79,6 +82,7 @@ import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard
     FlightEditComponent,
     CompanyListComponent,
     AdminDashboardComponent,
+    ForbiddenComponent,
   ],
   imports: [
     BrowserModule,
@@ -94,7 +98,7 @@ import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard
     NgbModule,
     FontAwesomeModule,
   ],
-  providers: [DatePipe],
+  providers: [DatePipe,{ provide: HTTP_INTERCEPTORS, useClass:MyInterceptor, multi: true }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

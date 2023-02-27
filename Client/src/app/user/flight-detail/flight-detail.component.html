@@ -122,14 +122,14 @@
                           <div class="col-12">
                              <div class="quick-quote bx-wrapper padding-20 mb-xl-30">
                                 <h5 class="text-custom-black">Checkout</h5>
-                                <form [formGroup]="myForm">
+                                <form [formGroup]="myForm" >
                                   <div formArrayName="seats">
-                                    <div class="row"  *ngFor="let seat of seats.controls; let f=index">
+                                    <div class="row"   *ngFor="let seat of seats.controls; let f=index">
                                       <div class="col-lg-3 col-md-6">
                                         <div class="form-group">
                                           <label >Select Class</label>
-                                          <select  #mySelect (change)="onChange(f,mySelect.value)" id="seatType" class="form-control form-control-custom" name="seatId" formControlName="seatId" >
-                                           <option  *ngFor="let id of seatIds; let i = index" [value]="id" > {{id}}</option>
+                                          <select    #mySelect (change)="onChange(f,mySelect.value)" id="seatType" class="form-control form-control-custom" name="seatId" formControlName="seatId" >
+                                           <option  *ngFor="let id of seatList; let i = index" [value]="id.seatId" > {{id.seatType}}</option>
                                           </select>
                                         </div>
                                       </div>
@@ -137,18 +137,22 @@
                                         <div class="form-group">
                                           <label >Seat Price </label>
                                           
-                                          <input type="number" name="price" formControlName="price" [value]="seat?.get('price')?.value" [readonly]="true" class="form-control form-control-custom" placeholder="Price">
-                                          <!-- <input type="number" name="price" [formControl]="seat.get('price')?.value" [readonly]="true" class="form-control form-control-custom" placeholder="Price"> -->
-
-                                          <!-- <span>Price: <span>Price: {{seat?.get('price')?.value}}</span> -->
-                                        <!-- </span> -->
-
+                                          <input type="number" [value]="seat?.get('price')?.value" [readonly]="true" name="price" formControlName="price" [value]="seat?.get('price')?.value" [readonly]="false" class="form-control form-control-custom" placeholder="Price">
                                         </div>
                                       </div>
-                                      <div class="col-lg-3 col-md-6">
+                                      <!-- <div class="col-lg-3 col-md-6">
                                         <div class="form-group">
                                           <label class="fs-14 text-custom-black fw-500">No . of Seats </label>
                                           <input formControlName="number" name="count" class="form-control form-control-custom" placeholder=" No of Seat ">
+
+                                        </div>
+                                      </div> -->
+                                      <div class="col-lg-3 col-md-6">
+                                        <div class="form-group">
+                                          <label >Seat Quantity </label>
+                                          
+                                          <input formControlName="qty" name="qty" type="text"  class="form-control form-control-custom">
+
 
                                         </div>
                                       </div>
@@ -164,7 +168,7 @@
                                     <button type="submit" (click)="onSubmit()" class="btn-first btn-submit full-width btn-height">Checkout</button>
                                   </div>
                                 </form>
-                                <pre>{{ myForm.value | json }}</pre>
+                                <!-- <pre>{{ myForm.value | json }}</pre> -->
                                 
                                 
                     </div>
