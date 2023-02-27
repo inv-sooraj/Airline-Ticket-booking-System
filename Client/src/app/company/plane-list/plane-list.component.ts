@@ -38,6 +38,10 @@ export class PlaneListComponent implements OnInit {
     }
   }
 
+  ngOnInit(): void {
+    this.getPlane();
+    this.getCompanyName();
+  }
   /**For storing the id of selected airplanes in formarray */
 
   onCheckboxChange(e: any) {
@@ -70,10 +74,7 @@ export class PlaneListComponent implements OnInit {
 
   /**For fetching airplane details based on  a spacific company id */
 
-  ngOnInit(): void {
-    this.getPlane();
-    this.getCompanyName();
-  }
+  
 
   /**To get company name from the user table */
 
