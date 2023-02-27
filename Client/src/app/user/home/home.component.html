@@ -1,111 +1,44 @@
-<app-header></app-header>
-<head>
-  <script
-    type="text/javascript"
-    src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"
-  ></script>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="keywords" content="#" />
-  <meta name="description" content="#" />
-  <title>Homepage</title>
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-  />
-</head>
-<div class="slider p-relative">
-  <div class="main-banner arrow-layout-1">
-    <div class="slide-item">
-      <img src="/assets/img/user/flight-2.jpg" class="image-fit" alt="Slider" />
-      <div class="transform-center">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-7">
-              <div class="slider-content">
-                <h1 class="text-custom-white">
-                  Let's Discover the
-                  <span class="text-custom-blue">world</span> together!
-                </h1>
-                <ul class="custom">
-                  <li class="text-custom-white">
-                    <i class="fa fa-plane"></i>
-                    Over 500 Airlines
-                  </li>
-                  <li class="text-custom-white">
-                    <i class="fas fa-map-marker-alt"></i>
-                    More than 13,000 places
-                  </li>
-                  <li class="text-custom-white">
-                    <i class="fas fa-dollar-sign"></i>
-                    Best Price Guarantee
-                  </li>
-                  <li class="text-custom-white">
-                    <i class="fas fa-comments"></i>
-                    Customer Care
-                  </li>
-                </ul>
-                <a href="flights.html" class="btn-first btn-small"
-                  >Find Out More</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="banner-tabs">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="tabs">
-          <ul class="custom-flex nav nav-tabs">
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="tab" href="#flights">Flights</a>
-            </li>
-          </ul>
-          <div class="tab-content bg-custom-white bx-wrapper padding-20">
-            <div class="tab-pane active" id="hotel">
-              <div class="tab-inner">
-                <form [formGroup]="searchForm">
-                  <div class="row">
-                    <div class="col-lg-3 col-md-6">
-                      <div class="form-group">
-                        <label class="fs-14 text-custom-black fw-500"
-                          >Departing From</label
-                        >
-                        <input
-                          type="text"
-                          name="departure"
-                          formControlName="departure"
-                          class="form-control form-control-custom"
-                          placeholder=" Departing Place"
-                        />
-                        <div
-                          *ngIf="
-                            searchForm.get('departure')?.invalid &&
-                            (searchForm.get('departure')?.dirty ||
-                              searchForm.get('departure')?.touched)
-                          "
-                          class="text-danger"
-                        >
-                          <div
-                            class="errorMsg"
-                            *ngIf="searchForm.get('departure')?.errors?.['required']"
-                          >
-                            Departing From is required.
-                          </div>
-                          <div
-                            class="errorMsg"
-                            *ngIf="
-                              searchForm.get('departure')?.hasError('pattern')
-                            "
-                          >
-                            Invalid input. Please enter only text.
-                          </div>
+<app-header></app-header> 
+    <head>
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="keywords" content="#">
+        <meta name="description" content="#">
+        <title> Homepage</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      </head> 
+  <div class="slider p-relative">
+         <div class="main-banner arrow-layout-1 ">
+            <div class="slide-item">
+               <img src="/assets/img/user/flight-2.jpg" class="image-fit" alt="Slider">
+               <div class="transform-center">
+                  <div class="container">
+                     <div class="row">
+                        <div class="col-lg-7">
+                           <div class="slider-content">
+                              <h1 class="text-custom-white">Let's Discover the <span class="text-custom-blue">world</span> together!</h1>
+                              <ul class="custom">
+                                 <li class="text-custom-white">
+                                    <i class="fa fa-plane"></i>
+                                    Over 500 Airlines
+                                 </li>
+                                 <li class="text-custom-white">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    More than 13,000 places
+                                 </li>
+                                 <li class="text-custom-white">
+                                    <i class="fas fa-dollar-sign"></i>
+                                    Best Price Guarantee
+                                 </li>
+                                 <li class="text-custom-white">
+                                    <i class="fas fa-comments"></i>
+                                    Customer Care
+                                 </li>
+                              </ul>
+                              <a href="flights.html" class="btn-first btn-small">Find Out More</a>
+                           </div>
                         </div>
                      </div>
                   </div>
@@ -176,12 +109,6 @@
             </div>
          </div>
       </div>
-<<<<<<< HEAD
-    </div>
-  </div>
-</section>
-<app-footer></app-footer>
-=======
       </div>
       </div>
       <section class="section-padding flights-sec bg-light-white">
@@ -236,4 +163,3 @@
          </div>
       </section>
       <app-footer></app-footer> 
->>>>>>> a624b73ec8358c04e304886f2d1651551746d929

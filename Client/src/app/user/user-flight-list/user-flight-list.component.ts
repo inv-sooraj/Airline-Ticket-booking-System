@@ -1,10 +1,10 @@
-import { HttpClient, HttpParams } from "@angular/common/http";
-import { Component } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
-import { ActivatedRoute, Router } from "@angular/router";
-import { AlertService } from "src/app/alert.service";
-import { ApiService } from "src/app/api.service";
-import { environment } from "src/environments/environment";
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AlertService } from 'src/app/alert.service';
+import { ApiService } from 'src/app/api.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-user-flight-list',

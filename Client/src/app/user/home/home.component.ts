@@ -1,14 +1,9 @@
-import { HttpClient, HttpParams } from "@angular/common/http";
-import { Component, OnInit } from "@angular/core";
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from "@angular/forms";
-import { AlertService } from "src/app/alert.service";
-import { ApiService } from "src/app/api.service";
-import { environment } from "src/environments/environment";
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AlertService } from 'src/app/alert.service';
+import { ApiService } from 'src/app/api.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -49,17 +44,4 @@ getRandomFlight(){
     },
     complete: () => {},
   });
-}
-// onSubmit(){
-//   const formValue = this.searchForm.value;
-//   // console.log(formValue);
-//   let params = new HttpParams();
-//   params = params.append('destination', formValue.destination);
-//   params = params.append('departure', formValue.departure);
-//   params = params.append('depDateTime',formValue.depDateTime);
-//   this.http.get(this.baseUrl+'/flight', { params }).subscribe(
-//     response => console.log('Search results:', response),
-//     error => console.error('Error searching:', error)
-//   );
-// }
-}
+}}

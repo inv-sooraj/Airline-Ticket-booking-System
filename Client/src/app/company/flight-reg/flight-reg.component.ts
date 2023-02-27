@@ -57,7 +57,7 @@ export class FlightRegComponent implements OnInit {
   addCreds() {
     this.seatDetails().push(this.newData());
   }
-  delete(index:any){
+  delete(index: any) {
     this.seatDetails().removeAt(index);
   }
   newData(): FormGroup {
@@ -86,11 +86,17 @@ export class FlightRegComponent implements OnInit {
       console.log("seats array", this.seats);
       this.apiservice.createFlight(param).subscribe({
         next: (result: any) => {
-          this.alertservice.showSuccess("Flight details added successfully","Success")
-          this.router.navigate(['/flight-list'])
+          this.alertservice.showSuccess(
+            "Flight details added successfully",
+            "Success"
+          );
+          this.router.navigate(["/flight-list"]);
         },
         error: (err: any) => {
-          this.alertservice.showError("Error adding flight details.Please try again","Error")
+          this.alertservice.showError(
+            "Error adding flight details.Please try again",
+            "Error"
+          );
           console.log(err);
         },
       });
