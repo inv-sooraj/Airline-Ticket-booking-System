@@ -83,5 +83,3 @@ export class AirplaneRegComponent implements OnInit {
     this.planeRegForm.reset();
   }
 }
-
-

@@ -37,10 +37,13 @@ import { AdminProfileComponent } from "./admin-profile/admin-profile.component";
 import { CancelledReservationListComponent } from "./admin/cancelled-reservation-list/cancelled-reservation-list.component";
 import { UserListComponent } from "./user-list/user-list.component";
 import { ReservationDetailsComponent } from "./reservation-details/reservation-details.component";
-import { UserFlightListComponent } from './user/user-flight-list/user-flight-list.component';
-import { FlightEditComponent } from './company/flight-edit/flight-edit.component';
+import { UserFlightListComponent } from "./user/user-flight-list/user-flight-list.component";
+import { FlightEditComponent } from "./company/flight-edit/flight-edit.component";
 import { CommonModule, DatePipe } from "@angular/common";
 import { CompanyListComponent } from "./admin/company-list/company-list.component";
+import { SeatDetailsComponent } from "./seat-details/seat-details.component";
+import { SeatListComponent } from "./seat-list/seat-list.component";
+import { CompanyEditComponent } from "./company-edit/company-edit.component";
 
 @NgModule({
   declarations: [
@@ -77,6 +80,9 @@ import { CompanyListComponent } from "./admin/company-list/company-list.componen
     UserFlightListComponent,
     FlightEditComponent,
     CompanyListComponent,
+    SeatDetailsComponent,
+    SeatListComponent,
+    CompanyEditComponent,
   ],
   imports: [
     BrowserModule,

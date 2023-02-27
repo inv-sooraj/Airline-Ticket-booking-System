@@ -25,19 +25,21 @@
                         <div class="serach_field_2">
                           <div class="search_inner">
                             <form [formGroup]="companyListForm">
-                                <div class="search-hero "><!--col-lg-12-->
-                                  <input
-                                    type="text"
-                                    formControlName="search"
-                                    placeholder="Search plane details..."
-                                    [(ngModel)]="searchText"
-                                    autocomplete="off"
-                                  />
-                                </div>
-                              </form>
+                              <div class="search-hero">
+                                <!--col-lg-12-->
+                                <input
+                                  type="text"
+                                  formControlName="search"
+                                  placeholder="Search company details..."
+                                  [(ngModel)]="searchText"
+                                  autocomplete="off"
+                                />
+                              </div>
+                            </form>
                           </div>
                         </div>
-                        <div class="add_button "><!--ms-2-->
+                        <div class="add_button">
+                          <!--ms-2-->
                           <a
                             [routerLink]="['/companyreg']"
                             data-bs-toggle="modal"
@@ -84,7 +86,7 @@
                                 (change)="onCheckboxChange($event)"
                               />
                             </th>
-                            <td>{{data.userId }}</td>
+                            <td>{{ data.userId }}</td>
                             <td>{{ data.fullName }}</td>
                             <td>{{ data.email }}</td>
                             <td>{{ data.phone }}</td>
@@ -93,7 +95,7 @@
                               <a
                                 class="btn btn-info mr-2"
                                 class="fas fa-edit"
-                                [routerLink]="['/company-edit', data.userId ]"
+                                [routerLink]="['/company-edit', data.userId]"
                               ></a>
                             </td>
                           </tr>

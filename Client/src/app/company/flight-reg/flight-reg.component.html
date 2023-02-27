@@ -203,11 +203,15 @@
                     [formGroupName]="i"
                   >
                     <br /><ng-container [formGroupName]="i">
-                      
                       <div class="mb-4 pb-2">
-                        <button type="button" class="close" aria-label="Close" (click)="delete(i)">
-                          <span aria-hidden="true">&times;</span>
-                        </button><br>
+                        <button
+                          type="button"
+                          class="close"
+                          aria-label="Close"
+                          (click)="delete(i)"
+                        >
+                          <span aria-hidden="true">&times;</span></button
+                        ><br />
                         <select
                           class="form-control"
                           formControlName="seatType"
@@ -233,7 +237,6 @@
                           formControlName="price"
                           id="exampleInputPassword2"
                         />
-                        
                       </div>
                     </ng-container>
                   </div>

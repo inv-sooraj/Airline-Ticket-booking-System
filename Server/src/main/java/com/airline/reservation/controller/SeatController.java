@@ -7,6 +7,7 @@ import com.airline.reservation.service.SeatService;
 import com.airline.reservation.view.SeatView;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,5 +48,11 @@ private SeatService seatService;
     public Integer getPrice(@PathVariable Integer seatId){
         return seatService.getPrice(seatId);
     }
+    
+    @GetMapping("/getSeatById/{seatId}")
+    Optional <Seat> getSeatById(@PathVariable Integer seatId){
+        return seatService.getSeatById(seatId);
+    }
+   
 }
 

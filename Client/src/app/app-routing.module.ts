@@ -25,6 +25,7 @@ import { ReservationDetailsComponent } from "./reservation-details/reservation-d
 import { UserFlightListComponent } from "./user/user-flight-list/user-flight-list.component";
 import { FlightEditComponent } from "./company/flight-edit/flight-edit.component";
 import { CompanyListComponent } from "./admin/company-list/company-list.component";
+import { CompanyEditComponent } from "./company-edit/company-edit.component";
 const routes: Routes = [
   { path: "", component: LoginComponent },
   { path: "companyreg", component: CompanyRegistrationComponent },
@@ -52,11 +53,11 @@ const routes: Routes = [
     component: ReservationDetailsComponent,
   },
 
-  {path:"flight-edit/:flightId",component:FlightEditComponent},
-  {path:"company-list",component:CompanyListComponent},
+  { path: "flight-edit/:flightId", component: FlightEditComponent },
+  { path: "company-list", component: CompanyListComponent },
 
-  {path:"user-flight-list",component:UserFlightListComponent}
-
+  { path: "user-flight-list", component: UserFlightListComponent },
+  { path: "company-edit/:userId", component: CompanyEditComponent },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

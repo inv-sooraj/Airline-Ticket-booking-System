@@ -12,7 +12,7 @@ import { ApiService } from "src/app/api.service";
 export class UserBookingListComponent {
   bookingListForm!: FormGroup;
   items: any[] = [];
-  cancellationForm!:FormGroup;
+  cancellationForm!: FormGroup;
   itemName: any;
   item: any;
   public searchData: any[] = [];
@@ -23,15 +23,11 @@ export class UserBookingListComponent {
     private alertservice: AlertService,
     private modalService: NgbModal,
     private apiService: ApiService
-  
-  ) { 
-     this.cancellationForm=new FormGroup(
-    {
-        reason:new FormControl(''),
-        
-
-      }
-    )}
+  ) {
+    this.cancellationForm = new FormGroup({
+      reason: new FormControl(""),
+    });
+  }
   ngOnInit(): void {
     this.getUserBookingList();
     this.bookingListForm = this.formbuilder.group({
@@ -51,7 +47,6 @@ export class UserBookingListComponent {
       });
     }
   }
-  
 
   /**To fetch the user data of the spacific id from db */
 
@@ -85,9 +80,9 @@ export class UserBookingListComponent {
     });
   }
   changeStaus() {
-    const reason = this.cancellationForm.get('reason')?.value;
-    console.log("Reason = "+reason)
-    this.apiService.cancelBooking(this.item.bookingId,reason).subscribe({
+    const reason = this.cancellationForm.get("reason")?.value;
+    console.log("Reason = " + reason);
+    this.apiService.cancelBooking(this.item.bookingId, reason).subscribe({
       next: (response: any) => {
         this.alertservice.showSuccess(
           "Reservation cancelled sussessfully!!!",
@@ -97,11 +92,11 @@ export class UserBookingListComponent {
       error: (err: any) => {
         this.alertservice.showError("Failed to cancel reservation", "Error");
       },
- 
-      complete: () => {this.getUserBookingList();
+
+      complete: () => {
+        this.getUserBookingList();
         this.cancellationForm.reset();
       },
-
     });
   }
 }

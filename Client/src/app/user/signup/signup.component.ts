@@ -151,9 +151,7 @@ export class SignupComponent implements OnInit {
       );
     }
   }
-  getToday(){
-    return new Date().toISOString().split('T')[0];
+  getToday() {
+    return new Date().toISOString().split("T")[0];
   }
-  
 }
-

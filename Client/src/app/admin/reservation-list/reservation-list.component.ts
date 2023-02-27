@@ -50,7 +50,7 @@ export class ReservationListComponent implements OnInit {
       },
     });
   }
-//delete booking details of selected ids
+  //delete booking details of selected ids
   deleteData() {
     this.bookingService.deletebooking(this.site).subscribe({
       next: (response: any) => {
@@ -68,7 +68,8 @@ export class ReservationListComponent implements OnInit {
     });
   }
 
-  onCheckboxChange(e: any) {//store ids of selected booking details
+  onCheckboxChange(e: any) {
+    //store ids of selected booking details
     if (e.target.checked) {
       this.site.push(e.target.value);
       console.log("ids are : " + this.site);
@@ -83,7 +84,7 @@ export class ReservationListComponent implements OnInit {
     console.log("inside get", this.role);
 
     switch (this.role) {
-      case "1"://for admin
+      case "1": //for admin
         this.bookingService.getBooking().subscribe({
           next: (response: any) => {
             this.items = response;
@@ -98,7 +99,7 @@ export class ReservationListComponent implements OnInit {
           complete: () => {},
         });
         break;
-      case "2"://for company
+      case "2": //for company
         this.bookingService.getBookingByCompany().subscribe({
           next: (response: any) => {
             this.items = response;

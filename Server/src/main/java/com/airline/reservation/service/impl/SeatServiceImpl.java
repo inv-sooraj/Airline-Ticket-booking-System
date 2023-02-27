@@ -10,6 +10,7 @@ import com.airline.reservation.service.SeatService;
 import com.airline.reservation.view.SeatView;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 @Service
@@ -18,14 +19,14 @@ public class SeatServiceImpl implements SeatService {
      @Autowired
     private SeatRepository seatRepository;
 
-//    @Override
-//    public SeatView updateSeat(Integer seatId, SeatForm form) {
-//        
-//        return seatRepository.findBySeatId(seatId)
-//                .map((Seat) -> {
-//                    return new SeatView(seatRepository.save(Seat.update(form)));
-//                }).orElseThrow(NotFoundException::new);
-//    }
+    @Override
+    public SeatView updateSeat(Integer seatId, SeatForm form) {
+        
+        return seatRepository.findBySeatId(seatId)
+                .map((Seat) -> {
+                    return new SeatView(seatRepository.save(Seat.update(form)));
+                }).orElseThrow(NotFoundException::new);
+    }
 
     
    
@@ -46,15 +47,19 @@ public class SeatServiceImpl implements SeatService {
         return seatRepository.getPrice(seatId);
     }
 
-
-
-
-
     @Override
-    public SeatView updateSeat(Integer seatId, SeatForm form) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateSeat'");
+    public Optional<Seat> getSeatById(Integer seatId) {
+        
+        return seatRepository.findBySeatId(seatId);
     }
+
+    
+
+
+
+
+
+   
 
 
 

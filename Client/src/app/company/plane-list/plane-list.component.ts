@@ -41,7 +41,6 @@ export class PlaneListComponent implements OnInit {
   /**For storing the id of selected airplanes in formarray */
 
   onCheckboxChange(e: any) {
-
     if (e.target.checked) {
       this.website.push(e.target.value);
       console.log("Arrayyyy " + this.website);

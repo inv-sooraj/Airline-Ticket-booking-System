@@ -20,7 +20,7 @@ export class PlaneEditComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private alertservice: AlertService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.route.params.forEach((params: Params) => {
@@ -71,7 +71,7 @@ export class PlaneEditComponent implements OnInit {
       error: (err: any) => {
         this.alertservice.showError("Failed to load airplane details", "Error");
       },
-      complete: () => {},
+      complete: () => { },
     });
   }
 
@@ -82,9 +82,6 @@ export class PlaneEditComponent implements OnInit {
       .sendUpdatePlane(this.planeEditForm.value, this.airplaneId)
       .subscribe((confirmation: any) => {
         console.log(confirmation);
-        if (confirmation.alert === "Sucess") {
-          location.reload();
-        }
         this.alertservice.showSuccess("Updated successfully!!!", "Success");
         this.router.navigate(["/plane-list"]);
       });
