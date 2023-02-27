@@ -9,7 +9,7 @@
             <div class="white_card_header">
               <div class="box_header m-0">
                 <div class="main-title">
-                  <h3 class="m-0">Cancelled Reservation</h3>
+                  <h3 class="m-0">Pending Reservation</h3>
                 </div>
               </div>
             </div>
@@ -51,20 +51,20 @@
                   <table class="table lms_table_active3">
                     <thead>
                       <tr>
-                        <th></th>
-                        <th scope="col">Full Name</th>
-                        <th scope="col">Flight Number</th>
-                        <th scope="col">Departing From</th>
-                        <th scope="col">Destination</th>
-                        <th scope="col">Departing Date</th>
                         <th scope="col">
-                          Reason
+                         
                           <button
                             class="fa fa-trash deleteButton"
                             [disabled]="checkList.length == 0 ? true : false"
                             (click)="deleteData()"
                           ></button>
                         </th>
+                        <th scope="col">Full Name</th>
+                        <th scope="col">Flight Number</th>
+                        <th scope="col">Departing From</th>
+                        <th scope="col">Destination</th>
+                        <th scope="col">Departing Date</th>
+                        
                       </tr>
                     </thead>
                     <tbody>
@@ -89,7 +89,7 @@
                         <td>
                           {{ bookings.flight.depDateTime | date : "fullDate" }}
                         </td>
-                        <td>{{ bookings.cancellation }}</td>
+                    
                       </tr>
                     </tbody>
                   </table>

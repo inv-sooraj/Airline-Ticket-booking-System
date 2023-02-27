@@ -127,7 +127,7 @@ export class ReservationListComponent implements OnInit {
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'my-csv-file.csv';
+        a.download = 'reservation-list.csv';
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);

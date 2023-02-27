@@ -98,8 +98,9 @@ public class UserServiceImpl implements UserService {
     public ResponseEntity<ResBody> add(@Valid UserForm form) {
         ResBody body = new ResBody();
         Optional<User> usernameEntry = userRepository.findByEmail(form.getEmail());
+    
         if (!usernameEntry.isEmpty()) {
-            body.getErrors().add(new ApplicationError("200", "User already exist"));
+            body.getErrors().add(new ApplicationError("1015", "User already exist"));
             return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
         }
         UserView uview = new UserView(userRepository.save(new User(

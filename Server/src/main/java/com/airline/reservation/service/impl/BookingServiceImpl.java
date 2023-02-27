@@ -120,8 +120,8 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public List<Bookings> findByStatus(Byte status) {
-        return bookingRepository.findByStatus(status);
+    public List<Bookings> findByStatus(Byte status,Byte deleteFlag) {
+        return bookingRepository.findByStatusAndDeleteFlag(status,deleteFlag);
     }
 
     @Override

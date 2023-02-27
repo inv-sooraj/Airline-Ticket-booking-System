@@ -57,10 +57,10 @@ public class BookingsController {
     }
 //downloadCancelled
 
-@GetMapping("/download/{status}")
-public ResponseEntity<Resource> getByStatus(@PathVariable byte status) {
+@GetMapping("/download/{status}/{deleteFlag}")
+public ResponseEntity<Resource> getByStatus(@PathVariable byte status,@PathVariable byte deleteFlag) {
     String filename = "cancelled_Bookings.csv";
-    InputStreamResource file = new InputStreamResource(fileService.loadCancelledBookings(status));
+    InputStreamResource file = new InputStreamResource(fileService.loadCancelledBookings(status,deleteFlag));
     return ResponseEntity.ok()
             .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + filename)
             .contentType(MediaType.parseMediaType("application/csv"))
@@ -110,9 +110,9 @@ public ResponseEntity<Resource> getByStatus(@PathVariable byte status) {
     
     //To get cancelled booking details
     
-    @GetMapping("/getCancelled/{status}")
-    public List<Bookings> getCancelled(@PathVariable("status") Byte status) {
-        return bookingService.findByStatus(status);
+    @GetMapping("/getCancelled/{status}/{deleteFlag}")
+    public List<Bookings> getCancelled(@PathVariable("status") Byte status,@PathVariable("deleteFlag") Byte deleteFlag) {
+        return bookingService.findByStatus(status,deleteFlag);
     }
     
     //Get booking details of an id

@@ -57,7 +57,12 @@ console.log(" URL = "+this.DownloadURL);
      
      
      }
+     getPending() {
 
+      return this.http.get(this.baseUrl + '/getCancelled/2/1');
+       
+       
+       }
      getFlight(){
       return this.http.get(this.baseUrl + '/status/1');
      }
