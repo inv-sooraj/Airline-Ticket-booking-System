@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <link
   rel="apple-touch-icon-precomposed"
   sizes="144x144"
@@ -454,3 +455,434 @@
     </div>
   </section>
 </body>
+=======
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="144x144"
+  href="/assets/img/user/favicon.ico"
+/>
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="114x114"
+  href="/assets/img/user/favicon.ico"
+/>
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="72x72"
+  href="/assets/img/user/favicon.ico"
+/>
+<link rel="apple-touch-icon-precomposed" href="/assets/img/user/favicon.ico" />
+<link rel="shortcut icon" href="/assets/img/user/favicon.ico" />
+<link href="/assets/css/user/bootstrap.min.css" rel="stylesheet" />
+<link href="/assets/css/user/font-awesome.css" rel="stylesheet" />
+<link href="/assets/css/user/font/flaticon.css" rel="stylesheet" />
+<link href="/assets/css/user/slick.css" rel="stylesheet" />
+<link href="/assets/css/user/ion.rangeSlider.min.css" rel="stylesheet" />
+<link href="/assets/css/user/datepicker.css" rel="stylesheet" />
+<link href="/assets/css/user/magnific-popup.css" rel="stylesheet" />
+<link href="/assets/css/user/nice-select.css" rel="stylesheet" />
+<link href="/assets/css/user/style.css" rel="stylesheet" />
+<link href="/assets/css/user/responsive.css" rel="stylesheet" />
+<link
+  href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&amp;display=swap"
+  rel="stylesheet"
+/>
+<link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap"
+  rel="stylesheet"
+/>
+<body>
+  <section class="h-50 h-custom gradient-custom-2">
+    <div class="container py-5 h-100">
+      <h3 class="text-center">Sign Up</h3>
+      <form [formGroup]="signupForm">
+        <div
+          class="row d-flex justify-content-center align-items-center h-100 border"
+        >
+          <div class="col-12">
+            <div class="card-body p-0">
+              <div class="row g-0">
+                <div class="col-lg-6 bg-light">
+                  <div class="p-5">
+                    <div class="mb-4 pb-2">
+                      <div class="form-outline">
+                        <input
+                          placeholder="Enter Full Name"
+                          type="text"
+                          formControlName="fullname"
+                          id="form3Examplev4"
+                          class="form-control form-control-lg"
+                        />
+                      </div>
+                      <div>
+                        <span
+                          class="sp"
+                          *ngIf="
+                            signupForm.controls['fullname'].touched &&
+                            signupForm.hasError('required', 'fullname')
+                          "
+                          ><i class="errorMsg">Please enter your fullname</i></span
+                        >
+                        <span
+                          class="sp"
+                          *ngIf="
+                            signupForm.controls['fullname'].touched &&
+                            signupForm.hasError('pattern', 'fullname')
+                          "
+                          ><i class="errorMsg">*Name must contain alphabets only*</i></span
+                        >
+                        <span
+                          class="sp"
+                          *ngIf="
+                            signupForm.controls['fullname'].touched &&
+                            signupForm.hasError('minlength', 'fullname')
+                          "
+                          ><i class="errorMsg">*Name should be atleast 8 characters*</i></span
+                        >
+                        <span
+                          class="sp"
+                          *ngIf="
+                            signupForm.controls['fullname'].touched &&
+                            signupForm.hasError('maxlength', 'fullname')
+                          "
+                          ><i class="errorMsg">*Name is too long*</i></span
+                        >
+                      </div>
+                    </div>
+                    <div class="mb-4 pb-2">
+                      <div class="form-outline">
+                        <input
+                          placeholder="Date of Birth"
+                          type="date"
+                          formControlName="dob"
+                          id="form3Examplev4"
+                          class="form-control form-control-lg"
+                          [max]="getToday()"
+                        />
+                      </div>
+                      <div>
+                        <span
+                          class="sp"
+                          *ngIf="
+                            signupForm.controls['dob'].touched &&
+                            signupForm.hasError('required', 'dob')
+                          "
+                          ><i class="errorMsg">Please select your date of birth</i></span
+                        >
+                      </div>
+                    </div>
+                    <div class="mb-4 pb-2">
+                      <div class="form-outline">
+                        <input
+                          placeholder="Enter Email"
+                          type="text"
+                          formControlName="email"
+                          id="form3Examplev4"
+                          class="form-control form-control-lg"
+                        />
+                      </div>
+                      <div>
+                        <span
+                          class="sp"
+                          *ngIf="
+                            signupForm.controls['email'].touched &&
+                            signupForm.hasError('required', 'email')
+                          "
+                          ><i class="errorMsg">Please enter your email</i></span
+                        >
+                        <span
+                          class="sp"
+                          *ngIf="
+                            signupForm.controls['email'].touched &&
+                            signupForm.hasError('pattern', 'email')
+                          "
+                          ><i class="errorMsg">*Invalid email Format*</i></span
+                        >
+                        <span
+                          class="sp"
+                          *ngIf="
+                            signupForm.controls['email'].touched &&
+                            signupForm.hasError('maxlength', 'email')
+                          "
+                          ><i class="errorMsg">*Email is too long*</i></span
+                        >
+                      </div>
+                    </div>
+                    <div class="mb-4 pb-2">
+                      <div class="form-outline">
+                        <input
+                          placeholder="Enter Password"
+                          type="password"
+                          formControlName="password"
+                          id="form3Examplev4"
+                          class="form-control form-control-lg"
+                        />
+                      </div>
+                      <div>
+                        <span
+                          class="sp"
+                          *ngIf="
+                            signupForm.controls['password'].touched &&
+                            signupForm.hasError('required', 'password')
+                          "
+                          ><i class="errorMsg">Please enter your password</i></span
+                        >
+                        <span
+                          class="sp"
+                          *ngIf="
+                            signupForm.controls['password'].touched &&
+                            signupForm.hasError('minlength', 'password')
+                          "
+                          ><i class="errorMsg">*Password is too short*</i></span
+                        >
+                        <span
+                          class="sp"
+                          *ngIf="
+                            signupForm.controls['password'].touched &&
+                            signupForm.hasError('maxlength', 'password')
+                          "
+                          ><i class="errorMsg">*Password is too long*</i></span
+                        >
+                        <span
+                          class="sp"
+                          *ngIf="
+                            signupForm.controls['password'].touched &&
+                            signupForm.hasError('pattern', 'password')
+                          "
+                          ><i class="errorMsg">*Password is invalid*</i></span
+                        >
+                      </div>
+                    </div>
+                    <div class="mb-4 pb-2">
+                      <div class="form-outline">
+                        <input
+                          placeholder="Confirm Password"
+                          type="password"
+                          formControlName="cPassword"
+                          id="form3Examplev4"
+                          class="form-control form-control-lg"
+                        />
+                      </div>
+                      <div>
+                        <span
+                          class="sp"
+                          *ngIf="
+                            signupForm.controls['cPassword'].touched &&
+                            signupForm.hasError('required', 'cPassword')
+                          "
+                          ><i class="errorMsg">*Please re-enter your password*</i></span
+                        >
+                        <span
+                          class="sp"
+                          *ngIf="
+                            signupForm.controls['cPassword'].touched &&
+                            signupForm.hasError('minlength', 'cPassword')
+                          "
+                          ><i class="errorMsg">*Password is too short*</i></span
+                        >
+                        <span
+                          class="sp"
+                          *ngIf="
+                            signupForm.controls['cPassword'].touched &&
+                            signupForm.hasError('maxlength', 'cPassword')
+                          "
+                          ><i class="errorMsg">*Password is too long*</i></span
+                        >
+                      </div>
+                      <div
+                        class="cpass errorMsg"
+                        *ngIf="
+                          signupForm.controls['cPassword'].touched &&
+                          signupForm.hasError(
+                            'confirmPasswordValidator',
+                            'cPassword'
+                          )
+                        "
+                      >
+                        Passsword and Confirm Password didn't match.
+                      </div>
+                    </div>
+                    <div class="mb-4 pb-2">
+                      <div class="form-outline">
+                        <input
+                          placeholder="Passport No."
+                          type="text"
+                          formControlName="passportNo"
+                          id="form3Examplev4"
+                          class="form-control form-control-lg"
+                        />
+                      </div>
+                      <div>
+                        <span
+                          class="sp"
+                          *ngIf="
+                            signupForm.controls['passportNo'].touched &&
+                            signupForm.hasError('required', 'passportNo')
+                          "
+                          ><i class="errorMsg">Please enter your passport number</i></span
+                        >
+                        <span
+                          class="sp errorMsg"
+                          *ngIf="
+                            signupForm.controls['passportNo'].touched &&
+                            signupForm.hasError('pattern', 'passportNo')
+                          "
+                          >Invalid passport number</span
+                        >
+                        <span
+                          class="sp errorMsg"
+                          *ngIf="
+                            signupForm.controls['passportNo'].touched &&
+                            signupForm.hasError('minlength', 'passportNo')
+                          "
+                          >*Passport number should be 8 characters</span
+                        >
+                        <span
+                          class="sp errorMsg"
+                          *ngIf="
+                            signupForm.controls['passportNo'].touched &&
+                            signupForm.hasError('maxlength', 'passportNo')
+                          "
+                          >*Passport number should be 8 characters*</span
+                        >
+                      </div>
+                    </div>
+                    <div class="mb-4 pb-2">
+                      <div class="form-outline">
+                        <input
+                          placeholder="Enter Phone Number"
+                          type="text"
+                          formControlName="phone"
+                          id="form3Examplev4"
+                          class="form-control form-control-lg"
+                        />
+                      </div>
+                      <div>
+                        <span
+                          class="sp"
+                          *ngIf="
+                            signupForm.controls['phone'].touched &&
+                            signupForm.hasError('required', 'phone')
+                          "
+                          ><i  class="errorMsg">Please enter your phone number</i></span
+                        >
+                        <span
+                          class="sp"
+                          *ngIf="
+                            signupForm.controls['phone'].touched &&
+                            signupForm.hasError('minlength', 'phone')
+                          "
+                          ><i  class="errorMsg">*phone number should be 10 characters*</i></span
+                        >
+                        <span
+                          class="sp"
+                          *ngIf="
+                            signupForm.controls['phone'].touched &&
+                            signupForm.hasError('maxlength', 'phone')
+                          "
+                          ><i  class="errorMsg">*phone number should be 10 characters*</i></span
+                        >
+                        <span
+                          class="sp"
+                          *ngIf="
+                            signupForm.controls['phone'].touched &&
+                            signupForm.hasError('pattern', 'phone')
+                          "
+                          ><i  class="errorMsg">Invalid phone number</i></span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 bg-indigo text-white">
+                  <div class="p-5">
+                    <div class="mb-4 pb-2">
+                      <div class="form-outline form-white">
+                        <textarea
+                          rows="6"
+                          placeholder="Enter Address"
+                          formControlName="address"
+                          class="form-control form-control-lg"
+                        ></textarea>
+                      </div>
+                      <div>
+                        <span
+                          class="sp"
+                          *ngIf="
+                            signupForm.controls['address'].touched &&
+                            signupForm.hasError('required', 'address')
+                          "
+                          ><i  class="errorMsg">Please enter your address</i></span
+                        >
+                      </div>
+                    </div>
+                    <div class="mb-4 pb-2">
+                      <div class="form-outline form-white">
+                        <input
+                          placeholder="Enter City "
+                          type="text"
+                          id="form3Examplea9"
+                          formControlName="city"
+                          class="form-control form-control-lg"
+                        />
+                      </div>
+                      <div>
+                        <span
+                          class="sp"
+                          *ngIf="
+                            signupForm.controls['city'].touched &&
+                            signupForm.hasError('required', 'city')
+                          "
+                          ><i  class="errorMsg">Please enter your city name</i></span
+                        >
+                      </div>
+                    </div>
+
+                    <div class="mb-4 pb-2">
+                      <select
+                        class="form-control"
+                        (change)="changeCountry($event)"
+                        formControlName="country"
+                      >
+                        <option value="">Select Country</option>
+                        <option
+                          *ngFor="let country of country"
+                          [value]="country"
+                        >
+                          {{ country }}
+                        </option>
+                      </select>
+                      <div>
+                        <span
+                          id="sp"
+                          *ngIf="
+                            signupForm.controls['country'].touched &&
+                            signupForm.hasError('required', 'country')
+                          "
+                          ><i  class="errorMsg">Please select your country</i></span
+                        >
+                      </div>
+                    </div>
+
+                    <button
+                      type="button"
+                      class="btn2"
+                      (click)="register()"
+                      [disabled]="signupForm.invalid"
+                    >
+                      Register
+                    </button>
+                    <p class="text-center text-white">
+                      Already Registered ? <a [routerLink]="['/login']" class="text-white"> Login</a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+</body>
+>>>>>>> 4811df5aacee65ea25f7b2324b95b1b61b76d091

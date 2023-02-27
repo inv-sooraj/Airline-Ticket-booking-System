@@ -7,10 +7,12 @@ import { environment } from "src/environments/environment";
   providedIn: "root",
 })
 export class ApiService {
+  addBooking(param: any) {
+    return this.httpClient.post(this.baseUrl + "/bookings/addBooking", param);
+  }
   getTwoRandom() {
     return this.httpClient.get(
-      this.baseUrl + "/flight/getTwoRandom",
-      this.getHeader()
+      this.baseUrl + "/flight/getTwoRandom"
     );
   }
   getSeatPrice(seatId: any, index: any) {
@@ -19,16 +21,18 @@ export class ApiService {
   }
   getFlightDetail(flightId: any) {
     return this.httpClient.get(
-      this.baseUrl + "/flight/" + flightId,
-      this.getHeader()
+      this.baseUrl + "/flight/" + flightId
     );
   }
   flightSearch(params: HttpParams) {
     return this.httpClient.get(this.baseUrl + "/flight/search", { params });
   }
 
-  getSeatIdAndTypeId(flightId: any) {
-    return this.httpClient.get(this.baseUrl + "/seat/" + flightId);
+  // getSeatIdAndTypeId(flightId:any){
+  //   return this.httpClient.get(this.baseUrl+'/seat/'+flightId);
+  // }
+  getSeatId(flightId: any) {
+    return this.httpClient.get(this.baseUrl + "/seat/getId/" + flightId);
   }
   searchFlight(formValue: any) {
     return this.httpClient.get(this.baseUrl + "/flight");
@@ -51,37 +55,33 @@ export class ApiService {
   }
   getAllUsers() {
     return this.httpClient.get(
-      this.baseUrl + "/users/GetUsers",
-      this.getHeader()
+      this.baseUrl + "/users/GetUsers"
     );
   }
   getRandom() {
+    console.log(this.baseUrl + "/flight/getRandom")
     return this.httpClient.get(
-      this.baseUrl + "/flight/getRandom",
-      this.getHeader()
+      this.baseUrl + "/flight/getRandom"
     );
   }
 
   getUserBookingList() {
     console.log(this.baseUrl + "/bookings/getById/1");
-    return this.httpClient.get(
-      this.baseUrl + "/bookings/getById/1",
-      this.getHeader()
-    );
+    return this.httpClient.get(this.baseUrl + "/bookings/getById/1");
   }
   updateUser(userid: any, updateForm: any) {
     return this.httpClient.put(
       this.baseUrl + "/" + "users/" + userid,
-      updateForm,
-      this.getHeader()
+      updateForm
     );
   }
 
   deleteUser(id: any) {
-    return this.httpClient.put(
-      this.baseUrl + "/" + "users/changeStatus/" + id,
-      this.getHeader()
-    );
+    // return this.httpClient.put(
+    //   this.baseUrl + "/" + "users/changeStatus/" + id
+    // );
+    console.log(this.baseUrl + '/users/changeStatus/'+id,);
+    return this.httpClient.put(this.baseUrl + '/users/changeStatus/'+id,"");
   }
   /** Method to login users */
 
@@ -92,21 +92,13 @@ export class ApiService {
   /** Method to create plane */
 
   createPlane(userForm: any) {
-    return this.httpClient.post(
-      this.baseUrl + "/" + "airplane",
-      userForm,
-      this.getHeader()
-    );
+    return this.httpClient.post(this.baseUrl + "/" + "airplane", userForm);
   }
 
   /** Method to create flight */
 
   createFlight(userForm: any) {
-    return this.httpClient.post(
-      this.baseUrl + "/" + "flight",
-      userForm,
-      this.getHeader()
-    );
+    return this.httpClient.post(this.baseUrl + "/" + "flight", userForm);
   }
 
   /** Method to check whether the email id entered by the user is unique or not */
@@ -129,8 +121,7 @@ export class ApiService {
 
   getAirPlane() {
     return this.httpClient.get(
-      this.baseUrl + "/" + "airplane",
-      this.getHeader()
+      this.baseUrl + "/" + "airplane"
     );
   }
 
@@ -138,8 +129,7 @@ export class ApiService {
 
   getAirPlaneById(id: any) {
     return this.httpClient.get(
-      this.baseUrl + "/" + "airplane" + "/" + id,
-      this.getHeader()
+      this.baseUrl + "/" + "airplane" + "/" + id
     );
   }
 
@@ -148,8 +138,7 @@ export class ApiService {
   sendUpdatePlane(responseBody: any, airplaneId: any) {
     return this.httpClient.put(
       this.baseUrl + "/" + "airplane" + "/" + airplaneId,
-      responseBody,
-      this.getHeader()
+      responseBody
     );
   }
 
@@ -157,23 +146,20 @@ export class ApiService {
 
   deletePlane(ids: any) {
     return this.httpClient.delete(
-      this.baseUrl + "/" + "airplane" + "?" + "ids" + "=" + ids,
-      this.getHeader()
+      this.baseUrl + "/" + "airplane" + "?" + "ids" + "=" + ids
     );
   }
   /* multi deletion of flights */
   deleteFlight(ids: any) {
     return this.httpClient.delete(
-      this.baseUrl + "/flight?ids=" + ids,
-      this.getHeader()
+      this.baseUrl + "/flight?ids=" + ids
     );
   }
   /** Method to get the users of role 2(company users) */
 
   getCompany() {
     return this.httpClient.get(
-      this.baseUrl + "/" + "users" + "/" + "GetCompany",
-      this.getHeader()
+      this.baseUrl + "/" + "users" + "/" + "GetCompany"
     );
   }
 
@@ -181,8 +167,7 @@ export class ApiService {
 
   getPlaneByCompany(id: any) {
     return this.httpClient.get(
-      this.baseUrl + "/" + "airplane" + "/" + "getbyCompany" + "/" + id,
-      this.getHeader()
+      this.baseUrl + "/" + "airplane" + "/" + "getbyCompany" + "/" + id
     );
   }
 
@@ -190,8 +175,7 @@ export class ApiService {
 
   getUserById(id: any) {
     return this.httpClient.get(
-      this.baseUrl + "/" + "users" + "/" + id,
-      this.getHeader()
+      this.baseUrl + "/" + "users" + "/" + id
     );
   }
 
@@ -200,8 +184,7 @@ export class ApiService {
   editUserData(requestbody: any) {
     return this.httpClient.put(
       this.baseUrl + "/" + "users",
-      requestbody,
-      this.getHeader()
+      requestbody
     );
   }
 
@@ -211,8 +194,7 @@ export class ApiService {
     console.log("Form Data" + requestbody);
     return this.httpClient.put(
       this.baseUrl + "/" + "users" + "/" + "changePwd",
-      requestbody,
-      this.getHeader()
+      requestbody
     );
   }
 
@@ -221,38 +203,21 @@ export class ApiService {
   bookingDetailsById(id: any) {
     console.log(this.baseUrl + "/" + "bookings" + "/" + id + "/" + "1");
     return this.httpClient.get(
-      this.baseUrl + "/" + "bookings" + "/" + id + "/" + "1",
-      this.getHeader()
-    );
+      this.baseUrl + "/" + "bookings" + "/" + id + "/" + "1"
+      );
   }
 
   cancelBooking(id: any, reason: any) {
     const cancelStatus = 3;
-    console.log(
-      this.baseUrl +
-        "/bookings/cancelBooking/" +
-        id +
-        "/" +
-        reason +
-        cancelStatus
-    );
-    return this.httpClient.put(
-      this.baseUrl +
-        "/bookings/cancelBooking/" +
-        id +
-        "/" +
-        reason +
-        "/" +
-        cancelStatus,
-      this.getHeader()
-    );
+    console.log(this.baseUrl + 'bookings/changeStatus/'+id +reason + status, {});
+    return this.httpClient.put(this.baseUrl + '/bookings/cancelBooking/'+id +'/'+reason+'/'+3,+ status, {});
+
   }
 
   //method to get all flight details(for admin)
   getAllFlight() {
     return this.httpClient.get(
-      this.baseUrl + "/flight/findAll",
-      this.getHeader()
+      this.baseUrl + "/flight/findAll"
     );
   }
 
@@ -260,16 +225,14 @@ export class ApiService {
 
   getFlightByCompany(id: any) {
     return this.httpClient.get(
-      this.baseUrl + "/flight/findAll/" + id,
-      this.getHeader()
+      this.baseUrl + "/flight/findAll/" + id
     );
   }
 
   /* method to get flight details by id(flightid) */
   getPlaneDataById(flightId: any) {
     return this.httpClient.get(
-      this.baseUrl + "/flight/" + flightId,
-      this.getHeader()
+      this.baseUrl + "/flight/" + flightId
     );
   }
 
@@ -278,28 +241,24 @@ export class ApiService {
   sendUpdateflight(flightform: any, flightId: any) {
     return this.httpClient.put(
       this.baseUrl + "/flight/" + flightId,
-      flightform,
-      this.getHeader()
+      flightform
     );
   }
   //delete company
   deleteCompany(ids: any) {
     return this.httpClient.delete(
-      this.baseUrl + "/users?ids=" + ids,
-      this.getHeader()
+      this.baseUrl + "/users?ids=" + ids
     );
   }
   getSeatById(id: any) {
     return this.httpClient.get(
-      this.baseUrl + "/seat/getSeatById/" + id,
-      this.getHeader()
+      this.baseUrl + "/seat/getSeatById/" + id
     );
   }
   updateCompany(companyId: any, companyEditform: any) {
     return this.httpClient.put(
       this.baseUrl + "/company/" + companyId,
-      companyEditform,
-      this.getHeader()
+      companyEditform
     );
   }
 }

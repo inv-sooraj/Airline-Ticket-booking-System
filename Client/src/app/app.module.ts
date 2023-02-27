@@ -1,6 +1,7 @@
+
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { AdminHomeComponent } from "./admin/admin.component";
@@ -44,7 +45,9 @@ import { CompanyListComponent } from "./admin/company-list/company-list.componen
 import { SeatDetailsComponent } from "./seat-details/seat-details.component";
 import { SeatListComponent } from "./seat-list/seat-list.component";
 import { CompanyEditComponent } from "./company-edit/company-edit.component";
-
+import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
+import { MyInterceptor } from "./shared/my-interceptor";
+import { ForbiddenComponent } from './shared/forbidden/forbidden/forbidden.component';
 @NgModule({
   declarations: [
     AdminHomeComponent,
@@ -83,6 +86,8 @@ import { CompanyEditComponent } from "./company-edit/company-edit.component";
     SeatDetailsComponent,
     SeatListComponent,
     CompanyEditComponent,
+    AdminDashboardComponent,
+    ForbiddenComponent,
   ],
   imports: [
     BrowserModule,
@@ -98,7 +103,7 @@ import { CompanyEditComponent } from "./company-edit/company-edit.component";
     NgbModule,
     FontAwesomeModule,
   ],
-  providers: [DatePipe],
+  providers: [DatePipe,{ provide: HTTP_INTERCEPTORS, useClass:MyInterceptor, multi: true }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

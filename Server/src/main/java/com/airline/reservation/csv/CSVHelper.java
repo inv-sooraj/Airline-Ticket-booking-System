@@ -18,17 +18,20 @@ public class CSVHelper {
             CSVPrinter csvPrinter = new CSVPrinter(new PrintWriter(out), format);
             ) {
               csvPrinter.printRecord("Booking ID"	,"Flight Number"	,"Departing From	","Destination",	"Status"	);
-          for (Bookings tutorial : tutorials) 
-     
-            {
-            List<String> data = Arrays.asList(   
-                  String.valueOf(tutorial.getUser().getUserId()),
-                  tutorial.getFlight().getFlightNumber(),
-                  tutorial.getFlight().getDeparture(),
-                  tutorial.getFlight().getDestination(),
-                  String.valueOf(tutorial.getStatus()));
-        csvPrinter.printRecord(data);
-          }
+              for (Bookings tutorial : tutorials) {
+                String statusStr = (tutorial.getStatus() == 1) ? "approved" :
+                                   (tutorial.getStatus() == 2) ? "pending" :
+                                   (tutorial.getStatus() == 3) ? "cancelled" : "";
+                List<String> data = Arrays.asList(   
+                    String.valueOf(tutorial.getUser().getUserId()),
+                    tutorial.getFlight().getFlightNumber(),
+                    tutorial.getFlight().getDeparture(),
+                    tutorial.getFlight().getDestination(),
+                    statusStr
+                );
+                csvPrinter.printRecord(data);
+            }
+            
           csvPrinter.flush();
           return new ByteArrayInputStream(out.toByteArray());
         } catch (IOException e) {

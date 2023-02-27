@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #btnadd{
     margin-left: 20%;
 }
@@ -50,3 +51,21 @@ form{
 tr{
     background-color: rgb(244, 244, 253);
 }
+=======
+#btnadd{
+    margin-left: 20%;
+}
+form{
+    margin-left: 25%;
+}
+#btn1{
+    margin-right: 60%;
+}
+.sp1{
+    color: red;
+    margin-left: 25%;
+}
+.span1{
+    color: rgb(240, 87, 87) !important;
+}
+>>>>>>> 4811df5aacee65ea25f7b2324b95b1b61b76d091

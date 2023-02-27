@@ -217,4 +217,10 @@ public class UserServiceImpl implements UserService {
     public void deleteAllBYIds(ArrayList<Integer> ids) {
         userRepository.softDeleteAllIds(ids);
     }
+
+    @Override
+    public Integer getCurrent() {
+        System.out.println(SecurityUtil.getCurrentUserId());
+        return SecurityUtil.getCurrentUserId();
+    }
 }

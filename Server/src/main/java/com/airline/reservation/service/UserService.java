@@ -44,4 +44,6 @@ public interface UserService {
     ResponseEntity<ResBody> changeStatus(Integer userId);
 
     public void deleteAllBYIds(ArrayList<Integer> ids);
+
+    Integer getCurrent();
 }
