@@ -82,7 +82,7 @@ export class PlaneListComponent implements OnInit {
         this.Company = response;
       },
       error: (err: any) => {
-        this.alertservice.showError("Couldnt fetch company details", "error");
+        // this.alertservice.showError("Couldnt fetch company details", "error");
       },
       complete: () => {},
     });
@@ -98,7 +98,7 @@ export class PlaneListComponent implements OnInit {
           console.log(this.items);
         },
         error: (err: any) => {
-          this.alertservice.showError("Failed to load airplane data", "Error");
+          // this.alertservice.showError("Failed to load airplane data", "Error");
         },
         complete: () => {},
       });
@@ -109,7 +109,7 @@ export class PlaneListComponent implements OnInit {
           console.log("airplane by  company", this.items);
         },
         error: (err: any) => {
-          this.alertservice.showError("Failed to load airplane data", "Error");
+          // this.alertservice.showError("Failed to load airplane data", "Error");
         },
         complete: () => {},
       });
