@@ -69,5 +69,11 @@ cPwd:['',Validators.required]
       }
     }  
     });
-    }}}
+    }}
+  logout(){
+    alert("logout")
+    localStorage.removeItem("Role");
+    this.router.navigate(["/login"])
+  }
+}
 

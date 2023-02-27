@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.airline.reservation.entity.Bookings;
 import com.airline.reservation.entity.Flight;
+import com.airline.reservation.entity.Seat;
 import com.airline.reservation.entity.User;
 
 public class BookingListView {
@@ -12,9 +13,28 @@ public class BookingListView {
     private Integer userId;
     private String flightNumber;
     private String departure;
-    ;
+    private Seat seat;
     private String destination;
     private User user;
+    public void setBookingId(Integer bookingId) {
+        this.bookingId = bookingId;
+    }
+
+    public Seat getSeat() {
+        return seat;
+    }
+
+    public void setSeat(Seat seat) {
+        this.seat = seat;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setFlight(Flight flight) {
+        this.flight = flight;
+    }
     private Flight flight;
 
     public Integer getUserId() {
@@ -61,6 +81,7 @@ public class BookingListView {
     public BookingListView(Bookings bookings) {
         this.userId = bookings.getUser().getUserId();
         this.user = bookings.getUser();
+        this.seat=bookings.getSeat();
         this.flight = bookings.getFlight();
         this.flightNumber = bookings.getFlight().getFlightNumber();
         this.departure = bookings.getFlight().getDeparture();

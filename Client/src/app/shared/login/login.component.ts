@@ -43,7 +43,28 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if(Number(localStorage.getItem('Role'))){
+      alert("role Found")
+      alert(Number(localStorage.getItem('Role')))
+      if(Number(localStorage.getItem('Role'))===1){
+        alert("Admin");
+        this.router.navigate(["/admin-dashboard"]);
+      }
+      else if(Number(localStorage.getItem('Role'))===2){
+        alert("Company");
+        this.router.navigate(["/plane-list"]);
+      }
+      else if(Number(localStorage.getItem('Role'))===3){
+        alert("Passenger");
+        this.router.navigate(["/home"]);
+      }
+    }
+    else{
+      alert("No Role Found");
+    }
+
+  }
 
   onSubmit() {
     if (this.loginForm.valid) {
@@ -60,7 +81,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem("accessToken", this.listData);
           localStorage.setItem("Role", this.role);
           localStorage.setItem("userid", this.userid);
-          console.log("Role login", this.role);
+          console.log("Role =", this.role);
           console.log("access token =" + localStorage.getItem("accessToken"));
           console.log("user id = "+localStorage.getItem("userid"));
           this.status = true;

@@ -59,6 +59,7 @@ export class ApiService {
     );
   }
   getRandom() {
+    console.log(this.baseUrl + "/flight/getRandom")
     return this.httpClient.get(
       this.baseUrl + "/flight/getRandom"
     );
