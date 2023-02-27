@@ -1,3 +1,4 @@
+
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { FormArray, FormBuilder, FormControl, FormGroup } from "@angular/forms";
@@ -17,10 +18,10 @@ export class ReservationListComponent implements OnInit {
   role: any;
   public data: any;
   status: boolean = false;
-  constructor(
+  constructor(private http:HttpClient,
     private formbuilder: FormBuilder,
     private alertservice: AlertService,
-    private bookingService: BookingServiceService,private http: HttpClient
+    private bookingService: BookingServiceService
   ) {
     this.bookingListForm = this.formbuilder.group({
       search: [""],
@@ -51,7 +52,7 @@ export class ReservationListComponent implements OnInit {
       },
     });
   }
-//delete booking details of selected ids
+  //delete booking details of selected ids
   deleteData() {
     this.bookingService.deletebooking(this.site).subscribe({
       next: (response: any) => {
@@ -69,7 +70,8 @@ export class ReservationListComponent implements OnInit {
     });
   }
 
-  onCheckboxChange(e: any) {//store ids of selected booking details
+  onCheckboxChange(e: any) {
+    //store ids of selected booking details
     if (e.target.checked) {
       this.site.push(e.target.value);
       console.log("ids are : " + this.site);
@@ -84,7 +86,7 @@ export class ReservationListComponent implements OnInit {
     console.log("inside get", this.role);
 
     switch (this.role) {
-      case "1"://for admin
+      case "1": //for admin
         this.bookingService.getBooking().subscribe({
           next: (response: any) => {
             this.items = response;
@@ -99,7 +101,7 @@ export class ReservationListComponent implements OnInit {
           complete: () => {},
         });
         break;
-      case "2"://for company
+      case "2": //for company
         this.bookingService.getBookingByCompany().subscribe({
           next: (response: any) => {
             this.items = response;
@@ -116,6 +118,8 @@ export class ReservationListComponent implements OnInit {
         break;
     }
   }
+
+
 
   export() {
     console.log("Export");
@@ -136,3 +140,4 @@ export class ReservationListComponent implements OnInit {
   }
   
 }
+

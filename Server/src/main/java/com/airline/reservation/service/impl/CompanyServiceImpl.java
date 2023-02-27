@@ -18,6 +18,7 @@ import com.airline.reservation.entity.Company;
 import com.airline.reservation.entity.User;
 import com.airline.reservation.exception.NotFoundException;
 import com.airline.reservation.form.CompanyForm;
+import com.airline.reservation.form.CompanyUpdateForm;
 import com.airline.reservation.repository.CompanyRepository;
 import com.airline.reservation.repository.UserRepository;
 import com.airline.reservation.service.CompanyService;
@@ -84,10 +85,10 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     @Transactional
-    public CompanyView update(Integer userId, CompanyForm form) throws NotFoundException {
-        return companyRepository.findByUserId(userId)
+    public UserView update(Integer userId, CompanyUpdateForm form) throws NotFoundException {
+        return userRepository.findByUserId(userId)
                 .map((company) -> {
-                    return new CompanyView(companyRepository.save(company.update(form)));
+                    return new UserView(userRepository.save(company.updateCompany(form)));
                 }).orElseThrow(NotFoundException::new);
     }
 }

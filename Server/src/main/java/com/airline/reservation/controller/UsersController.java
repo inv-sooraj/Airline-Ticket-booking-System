@@ -37,38 +37,49 @@ public class UsersController {
         return userService.emailCheck(email);
     }
 
+    //METHOD TO GET ALL USERS(FOR ADMIN)
+    
     @GetMapping("/GetUsers")
     public Collection<User> list() {
         return userService.list();
     }
 
+    
     @GetMapping("/search/{userName}")
     public Collection<User> get(@PathVariable String userName) {
         return userService.Search(userName);
     }
 
+    //Method to get all users with role 2(company)
+    
     @GetMapping("/GetCompany")
     public Collection<User> getByRole(Principal p) {
         return userService.getCompany();
     }
 
+    //update currently logged in users details
     @PutMapping
     public UserView update(@Valid @RequestBody UserUpdateForm form
     ) {
         return userService.update(form);
     }
 
+    
+    //Update details of the spacified userid
+    
     @PutMapping("/{userId}")
     public UserView updateById(@PathVariable("userId") Integer userId, @RequestBody UserForm form) {
 
         return userService.updateById(userId, form);
     }
 
+    //delete(soft delete) the details of spacified user id
     @PutMapping("/changeStatus/{userId}")
     public ResponseEntity<ResBody> changeStatus(@PathVariable("userId") Integer userId) {
         return userService.changeStatus(userId);
     }
 
+    //Method to add user details(signup for passenger)
     @PostMapping("/signup")
     public ResponseEntity<ResBody> add(@Valid @RequestBody UserForm form) {
         return userService.add(form);

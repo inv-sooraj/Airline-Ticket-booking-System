@@ -26,6 +26,7 @@ import org.supercsv.io.ICsvBeanWriter;
 import org.supercsv.prefs.CsvPreference;
 import com.airline.reservation.entity.Company;
 import com.airline.reservation.form.CompanyForm;
+import com.airline.reservation.form.CompanyUpdateForm;
 import com.airline.reservation.service.CompanyService;
 import com.airline.reservation.view.CompanyView;
 import com.airline.reservation.view.UserView;
@@ -97,9 +98,9 @@ public class CompanyController {
     }
 
     @PutMapping("/{userId}")
-    public CompanyView update(
+    public UserView update(
             @PathVariable("userId") Integer userId,
-            @Valid @RequestBody CompanyForm form
+            @Valid @RequestBody CompanyUpdateForm form
     ) {
         return CompanyService.update(userId, form);
     }

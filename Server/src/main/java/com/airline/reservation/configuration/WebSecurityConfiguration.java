@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,10 +13,12 @@ import com.airline.reservation.security.util.TokenGenerator;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
+import static org.springframework.http.HttpMethod.DELETE;
+import static org.springframework.http.HttpMethod.GET;
 
 import static org.springframework.http.HttpMethod.OPTIONS;
 import static org.springframework.http.HttpMethod.POST;
+import static org.springframework.http.HttpMethod.PUT;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -49,18 +52,48 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .securityContext().and()
                 .anonymous().and()
                 .authorizeRequests()
-                // .antMatchers("/**").permitAll()
-                .antMatchers(OPTIONS, "/**").anonymous()
-                .antMatchers("/users/signup").permitAll()
-                .antMatchers("/company/**").permitAll()
+//                .antMatchers("/**").permitAll()
+                .antMatchers(GET,"/users/GetUsers").access("hasRole('ROLE_ADMIN')")
+                .antMatchers(PUT,"/users/changeStatus/**").access("hasRole('ROLE_ADMIN')")
+                .antMatchers(GET,"/users/GetCompany").access("hasRole('ROLE_ADMIN')")
+                .antMatchers(PUT,"/users").access("hasRole('ROLE_PASSENGER')")
+                .antMatchers(PUT,"/users/changePwd").access("hasRole('ROLE_PASSENGER')or hasRole('ROLE_ADMIN')or hasRole('ROLE_COMPANY')")
+                .antMatchers(GET,"/users/**").access("hasRole('ROLE_PASSENGER')or hasRole('ROLE_ADMIN')or hasRole('ROLE_COMPANY')")
+                .antMatchers("/users/signup").anonymous()
+                .antMatchers(POST,"/airplane").access("hasRole('ROLE_COMPANY')")
+                .antMatchers(GET,"/airplane").access("hasRole('ROLE_ADMIN')")
+                .antMatchers(GET,"/airplane/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_COMPANY')")
+                .antMatchers(PUT,"/airplane/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_COMPANY')")
+                .antMatchers(DELETE,"/airplane/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_COMPANY')")
+                .antMatchers(POST,"/bookings/**").access("hasRole('ROLE_PASSENGER')")
+                .antMatchers(DELETE,"/bookings").access("hasRole('ROLE_PASSENGER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_COMPANY')")
+                .antMatchers(GET,"/bookings/status/**").access("hasRole('ROLE_ADMIN')")
+                .antMatchers(GET,"/bookings/download/**").access("hasRole('ROLE_ADMIN')or hasRole('ROLE_COMPANY')")
+                .antMatchers(DELETE,"/bookings").access("hasRole('ROLE_ADMIN')or hasRole('ROLE_COMPANY')")
+                .antMatchers(PUT,"/bookings/changeStatus/**/**").access("hasRole('ROLE_ADMIN')or hasRole('ROLE_COMPANY')")
+                .antMatchers(PUT,"/bookings/cancelBooking/**").access("hasRole('ROLE_PASSENGER')")
+                .antMatchers(GET,"/bookings/getById/**").access("hasRole('ROLE_PASSENGER')")
+                .antMatchers(GET,"/bookings/getByCompany/**").access("hasRole('ROLE_COMPANY')")
+                .antMatchers(OPTIONS,"/company/**").access("hasRole('ROLE_ADMIN')")
+                .antMatchers(POST,"/flight").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_COMPANY')")
+                .antMatchers(GET,"/flight/findAll").access("hasRole('ROLE_ADMIN')")
+                .antMatchers(GET,"/flight/findAll/**").access("hasRole('ROLE_ADMIN')or hasRole('ROLE_COMPANY')")
+                .antMatchers(GET,"/flight/**").access("hasRole('ROLE_ADMIN')or hasRole('ROLE_COMPANY') or hasRole('ROLE_PASSENGER')")
+                .antMatchers(GET,"/flight/random").access(" hasRole('ROLE_PASSENGER')")
+                .antMatchers(PUT,"/flight/**").access("hasRole('ROLE_ADMIN')or hasRole('ROLE_COMPANY')")
+                .antMatchers(DELETE,"/flight/**").access("hasRole('ROLE_ADMIN')or hasRole('ROLE_COMPANY')")
+
+                
+
+//                .antMatchers("/company/**").permitAll()
                 .antMatchers("/seat/**").permitAll()
                 .antMatchers(OPTIONS, "/login").anonymous()
-                // .antMatchers("/bookings/**").permitAll()
-                .antMatchers( "/flight/").anonymous()
-                .antMatchers( "/bookings/").anonymous()
-                .antMatchers(POST, "/login").permitAll()
-                .antMatchers(POST, "/airplane").permitAll()
-                .antMatchers(POST, "/airplane").permitAll()  
+//                .antMatchers("/bookings/**").permitAll()
+                .antMatchers(POST, "/login").anonymous()
+//                .antMatchers(POST, "/airplane").permitAll()
+//                .antMatchers(POST, "/airplane").permitAll()
+                .antMatchers(OPTIONS, "/**").anonymous() 
+       
                 .anyRequest().authenticated();
     }
     @Bean
@@ -94,3 +127,4 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         return new TokenGenerator(securityConfig.getTokenGeneratorPassword(), securityConfig.getTokenGeneratorSalt());
     }
 }
+
