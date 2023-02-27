@@ -107,174 +107,133 @@
                             Invalid input. Please enter only text.
                           </div>
                         </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                      <div class="form-group">
-                        <label class="fs-14 text-custom-black fw-500"
-                          >Destination To</label
-                        >
-                        <input
-                          type="text"
-                          name="destination"
-                          formControlName="destination"
-                          class="form-control form-control-custom"
-                          placeholder=" Departing Place"
-                        />
-                        <div
-                          *ngIf="
-                            searchForm.get('destination')?.invalid &&
-                            (searchForm.get('destination')?.dirty ||
-                              searchForm.get('destination')?.touched)
-                          "
-                          class="text-danger"
-                        >
-                          <div
-                            class="errorMsg"
-                            *ngIf="searchForm.get('destination')?.errors?.['required']"
-                          >
-                            destination To is required.
-                          </div>
-                          <div
-                            class="errorMsg"
-                            *ngIf="
-                              searchForm.get('destination')?.hasError('pattern')
-                            "
-                          >
-                            Invalid input. Please enter only text.
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                      <div class="form-group">
-                        <label class="fs-14 text-custom-black fw-500"
-                          >Departure Date</label
-                        >
-
-                        <input
-                          type="date"
-                          [min]="today"
-                          [disabled]="isBeforeToday()"
-                          name="depDateTime"
-                          formControlName="depDateTime"
-                          class="form-control form-control-custom"
-                          placeholder="mm/dd/yy"
-                        />
-                        <div
-                          *ngIf="
-                            searchForm.get('depDateTime')?.invalid &&
-                            (searchForm.get('depDateTime')?.dirty ||
-                              searchForm.get('depDateTime')?.touched)
-                          "
-                          class="text-danger"
-                        >
-                          <div
-                            class="errorMsg"
-                            *ngIf="searchForm.get('depDateTime')?.errors?.['required']"
-                          >
-                            Departure date is required.
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                      <label class="submit"></label>
-                      <button
-                        type="submit"
-                        [disabled]="!searchForm.valid"
-                        class="btn-first btn-submit full-width btn-height"
-                        [routerLink]="[
-                          '/user-flight-list',
-                          {
-                            destination: searchForm.value.destination,
-                            departure: searchForm.value.departure,
-                            depDateTime: searchForm.value.depDateTime
-                          }
-                        ]"
-                      >
-                        Search Flight
-                      </button>
-                    </div>
+                     </div>
                   </div>
-                </form>
-              </div>
+               </div>
             </div>
-          </div>
-        </div>
+         </div>
       </div>
-    </div>
-  </div>
-</div>
-<section class="section-padding flights-sec bg-light-white">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-heading">
-        <h3 class="text-custom-black">Recommended Flights</h3>
-        <div class="section-description">
-          <p class="text-light-dark">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <div class="flights-slider arrow-layout-2 row">
-          <!-- Flight Item - Start -->
-          <div
-            class="slide-item col-lg-4 col-md-12"
-            *ngFor="let flights of items"
-          >
-            <div class="flights-grid">
-              <div class="flights-grid-wrapper bx-wrapper">
-                <div class="image-sec animate-img">
-                  <a href="flight-detail.html">
-                    <img
-                      src="/assets/img/user/flights/5.png"
-                      class="full-width"
-                      alt="img"
-                    />
-                  </a>
-                </div>
-                <div
-                  class="flights-grid-caption padding-20 bg-custom-white p-relative"
-                >
-                  <div class="heading-sec">
-                    <div class="left-side">
-                      <i class="fa fa-plane text-gray"></i>
-                      <div class="title">
-                        <h4 class="fs-16">
-                          <a href="flight-detail.html" class="text-custom-black"
-                            >{{ flights.departure }} to
-                            {{ flights.destination }}</a
-                          >
-                          <span class="text-light-dark">Oneway Flight</span>
-                        </h4>
-                      </div>
-                    </div>
-                    <div class="right-side">
-                      <span class="price"
-                        ><small>From</small>₹{{ flights.min_price }}</span
-                      >
-                    </div>
+      <div class="banner-tabs">
+         <div class="container">
+            <div class="row">
+               <div class="col-12">
+                  <div class="tabs">
+                     <ul class="custom-flex nav nav-tabs">
+                        <li class="nav-item">
+                           <a class="nav-link" data-toggle="tab" href="#flights">Flights</a>
+                        </li>
+                     </ul>
+                     <div class="tab-content bg-custom-white bx-wrapper padding-20">
+                        <div class="tab-pane active" id="hotel">
+                           <div class="tab-inner">
+                              <form [formGroup]="searchForm">
+                                 <div class="row">
+                                    <div class="col-lg-3 col-md-6">
+                                       <div class="form-group">
+                                          <label class="fs-14 text-custom-black fw-500">Departing From</label>
+                                          <input type="text" name="departure" formControlName="departure"  class="form-control form-control-custom" placeholder=" Departing Place">
+                                          <div *ngIf="searchForm.get('departure')?.invalid && (searchForm.get('departure')?.dirty || searchForm.get('departure')?.touched)" class="text-danger">
+                                             <div class="errorMsg" *ngIf="searchForm.get('departure')?.errors?.['required']">Departing From is required.</div>
+                                             <div class="errorMsg" *ngIf="searchForm.get('departure')?.hasError('pattern')">Invalid input. Please enter only text.</div>
+                                          </div> 
+                                       </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6">
+                                       <div class="form-group">
+                                          <label class="fs-14 text-custom-black fw-500">Destination To</label>
+                                          <input type="text" name="destination" formControlName="destination" class="form-control form-control-custom" placeholder=" Departing Place">
+                                          <div *ngIf="searchForm.get('destination')?.invalid && (searchForm.get('destination')?.dirty || searchForm.get('destination')?.touched)" class="text-danger">
+                                             <div class="errorMsg" *ngIf="searchForm.get('destination')?.errors?.['required']">destination To is required.</div>
+                                             <div class="errorMsg" *ngIf="searchForm.get('destination')?.hasError('pattern')">Invalid input. Please enter only text.</div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6">
+                                       <div class="form-group">
+                                          <label class="fs-14 text-custom-black fw-500">Departure Date</label>
+                                         
+                                             <input  type="date" [min]="today" [disabled]="isBeforeToday()" 
+                                             name="depDateTime" formControlName="depDateTime" class="form-control form-control-custom " placeholder="mm/dd/yy" >
+                                             <div *ngIf="searchForm.get('depDateTime')?.invalid && (searchForm.get('depDateTime')?.dirty || searchForm.get('depDateTime')?.touched)" class="text-danger">
+                                                <div class="errorMsg" *ngIf="searchForm.get('depDateTime')?.errors?.['required']">Departure date is required.</div>
+                                              </div>
+                                            
+                                          
+                                          
+                                       </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6">
+                                       <label class="submit"></label>
+                                       <button  type="submit" [disabled]="!searchForm.valid"  class="btn-first btn-submit full-width btn-height" [routerLink]="['/user-flight-list', {destination: searchForm.value.destination,departure:searchForm.value.departure,depDateTime:searchForm.value.depDateTime}]" >Search Flight </button>
+                                    </div>
+                                 </div>
+                           
+                         
+                        </form>
+                     </div>
                   </div>
-                  <div class="action">
-                    <a
-                      class="btn-second btn-small"
-                      href="flight-detail.html"
-                      tabindex="-1"
-                      >View</a
-                    >
-                  </div>
-                </div>
-              </div>
+               </div>
             </div>
-          </div>
-        </div>
+         </div>
       </div>
+<<<<<<< HEAD
     </div>
   </div>
 </section>
 <app-footer></app-footer>
+=======
+      </div>
+      </div>
+      <section class="section-padding flights-sec bg-light-white">
+         <div class="container">
+            <div class="section-header">
+               <div class="section-heading">
+                  <h3 class="text-custom-black">Recommended Flights</h3>
+                  <div class="section-description">
+                     <p class="text-light-dark">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</p>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-12" >
+                  <div class="flights-slider arrow-layout-2 row">
+                     <!-- Flight Item - Start -->
+                     <div class="slide-item col-lg-4 col-md-12" *ngFor="let flights of items" >
+                        <div class="flights-grid">
+                           <div class="flights-grid-wrapper bx-wrapper">
+                              <div class="image-sec animate-img">
+                                 <a href="flight-detail.html">
+                                 <img src="/assets/img/user/flights/5.png" class="full-width" alt="img">
+                                 </a>
+                              </div>
+                              <div class="flights-grid-caption padding-20 bg-custom-white p-relative">
+                                 <div class="heading-sec">
+                                    <div class="left-side">
+                                       <i class="fa fa-plane text-gray"></i>
+                                       <div class="title">
+                                          <h4 class="fs-16">
+                                             <a href="flight-detail.html" class="text-custom-black">{{flights.departure}} to {{flights.destination}}</a>
+                                             <span class="text-light-dark">Oneway Flight</span>
+                                          </h4>
+                                       </div>
+                                    </div>
+                                    <div class="right-side">
+                                       <span class="price"><small>From</small>₹{{flights.min_price}}</span>
+                                    </div>
+                                 </div>
+                                 <div class="action">
+                                    <a class="btn-second btn-small" [routerLink]="['/flight-detail',flights.flight_id]" href="flight-detail.html" tabindex="-1">View</a>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                      
+                 </div>
+                 
+               </div>
+            </div>
+         </div>
+      </section>
+      <app-footer></app-footer> 
+>>>>>>> a624b73ec8358c04e304886f2d1651551746d929

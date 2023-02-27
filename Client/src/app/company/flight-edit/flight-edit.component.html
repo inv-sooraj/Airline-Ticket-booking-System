@@ -269,5 +269,97 @@
         </div>
       </div>
     </div>
-  </form>
-</body>
+  </div>
+  <div
+    class="modal"
+    tabindex="-1"
+    role="dialog"
+    [ngStyle]="{ display: displayStyle }"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Seat Details</h4>
+        </div>
+        <div class="modal-body">
+          <div class="mb-4 pb-2">
+            <div class="form-outline">
+              <input
+                name="seatid"
+                formControlName="seatid"
+                type="text"
+                class="form-control form-control-lg"
+                [(ngModel)]="seatResponse.seatId"
+              />
+            </div>
+          </div>
+          <!-- <div class="mb-4 pb-2">
+                       <div class="form-outline">
+                          <input  name="seattype" formControlName="seatType"  type="text"  class="form-control form-control-lg" [(ngModel)]="seatResponse.seatType" />
+                       </div>
+                    </div> -->
+          <div class="mb-4 pb-2">
+            <div class="form-outline">
+              <select
+                class="form-control form-control-lg"
+                formControlName="seatType"
+                id="dropdownMenuButton1"
+                [(ngModel)]="seatResponse.seatType"
+              >
+                <option value="">{{ seatResponse.seatType }}</option>
+                <option value="economy">economy</option>
+                <option value=" premium economy">premium economy</option>
+                <option value="business">business</option>
+                <option value="first class">first class</option>
+              </select>
+            </div>
+          </div>
+          <br /><br />
+
+          <div class="mb-4 pb-2">
+            <div class="form-outline">
+              <input
+                formControlName="number"
+                name="number"
+                type="text"
+                class="form-control form-control-lg"
+                [(ngModel)]="seatResponse.number"
+              />
+            </div>
+          </div>
+          <div class="mb-4 pb-2">
+            <div class="form-outline">
+              <input
+                formControlName="price"
+                name="price"
+                type="text"
+                class="form-control form-control-lg"
+                [(ngModel)]="seatResponse.price"
+              />
+            </div>
+          </div>
+          <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                 </div> -->
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="updateSeat()"
+            >
+              Update
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="closePopup()"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { AlertService } from 'src/app/alert.service';
-import { ApiService } from 'src/app/api.service';
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup } from "@angular/forms";
+import { AlertService } from "src/app/alert.service";
+import { ApiService } from "src/app/api.service";
 
 @Component({
   selector: 'app-company-list',

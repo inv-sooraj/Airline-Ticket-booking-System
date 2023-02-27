@@ -12,63 +12,7 @@ import { ServiceService } from "src/app/service.service";
   styleUrls: ["./company-registration.component.css"],
 })
 export class CompanyRegistrationComponent implements OnInit {
-//   companyreg!: FormGroup;
-//   constructor(private service: ServiceService, public router: Router) {}
-
-//   ngOnInit(): void {
-//     this.Initform();
-//     this.CompanyReg();
-//   }
-
-//   Initform() {
-//     this.companyreg = new FormGroup({
-//       companyname: new FormControl("", [
-//         Validators.required,
-//         Validators.pattern("^[a-zA-Z][a-zA-Z ]+$"),
-//         Validators.minLength(8),
-//         Validators.maxLength(18),
-//       ]),
-//       companycontact: new FormControl("", [
-//         Validators.required,
-//         Validators.pattern("^[0-9]*$"),
-//         Validators.minLength(10),
-//         Validators.maxLength(10),
-//       ]),
-//       companyaddress: new FormControl("", [Validators.required]),
-//       email: new FormControl("", [
-//         Validators.required,
-//         Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"),
-//         Validators.maxLength(30),
-//       ]),
-//       password: new FormControl("", [
-//         Validators.required,
-//         Validators.minLength(8),
-//         Validators.maxLength(25),
-//         Validators.pattern(
-//           "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}"
-//         ),
-//       ]),
-//       conformpassword: new FormControl("", [Validators.required]),
-//     });
-//   }
-
-//   CompanyReg() {
-//     if (this.companyreg.valid) {
-//       this.service
-//         .addcompany(this.companyreg.value)
-//         .subscribe((result: any) => {
-//           if (result) {
-//             console.log(result);
-
-//             alert("Success");
-//             this.companyreg.reset();
-//           } else {
-//             alert("False");
-//           }
-//         });
-//     }
-//   }
-// }
+  
 companyreg!: FormGroup;
   status: any = false;
   password = '';
@@ -130,7 +74,4 @@ companyreg!: FormGroup;
   else{
     this.alertservice.showError("Please fill the form correctly","Invalid form");
   }
-}
-}
-
-
+}}

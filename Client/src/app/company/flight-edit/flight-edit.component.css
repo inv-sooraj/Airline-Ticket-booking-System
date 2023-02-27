@@ -14,3 +14,39 @@ form{
 .span1{
     color: rgb(240, 87, 87) !important;
 }
+#dropdownMenuButton1 {
+    width: 467px;
+   
+}
+#selectedSeatType{
+    margin-right: 100px;
+}
+#exampleInput1 {
+    width: 40px;
+    float: left;
+    margin-left: 35px;
+    margin-right: 35px;
+}
+#exampleInput2 {
+    width: 80px;
+    float: left;
+    margin-left: 35px;
+    margin-right: 35px;
+}
+#exampleInput3 {
+    width: 80px;
+    float: left;
+    /* margin-left: 35px;*/
+    margin-right: 5px;
+}
+
+#dropdownMenu1{
+    width: 80px;
+    float: left;
+}
+ table,td,th{
+    border: none;
+}
+tr{
+    background-color: rgb(244, 244, 253);
+}
