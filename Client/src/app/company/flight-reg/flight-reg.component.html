@@ -118,6 +118,7 @@
                     id="exampleInputPassword"
                     formControlName="departureDT"
                     placeholder=""
+                    (change)="setDate($event)"
                   />
                   <div>
                     <span
@@ -166,7 +167,7 @@
                   >
                   <input
                     type="datetime-local"
-                    min="{{ today }}"
+                    min="{{ minDate }}"
                     class="form-control"
                     id="exampleInputPassword"
                     formControlName="ariivalDT"
