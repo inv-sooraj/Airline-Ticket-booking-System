@@ -20,7 +20,8 @@ export class ReservationListComponent implements OnInit {
   constructor(
     private formbuilder: FormBuilder,
     private alertservice: AlertService,
-    private bookingService: BookingServiceService,private http: HttpClient
+    private bookingService: BookingServiceService,
+    private http: HttpClient
   ) {
     this.bookingListForm = this.formbuilder.group({
       search: [""],
@@ -51,7 +52,7 @@ export class ReservationListComponent implements OnInit {
       },
     });
   }
-//delete booking details of selected ids
+  //delete booking details of selected ids
   deleteData() {
     this.bookingService.deletebooking(this.site).subscribe({
       next: (response: any) => {
@@ -69,7 +70,8 @@ export class ReservationListComponent implements OnInit {
     });
   }
 
-  onCheckboxChange(e: any) {//store ids of selected booking details
+  onCheckboxChange(e: any) {
+    //store ids of selected booking details
     if (e.target.checked) {
       this.site.push(e.target.value);
       console.log("ids are : " + this.site);
@@ -84,7 +86,7 @@ export class ReservationListComponent implements OnInit {
     console.log("inside get", this.role);
 
     switch (this.role) {
-      case "1"://for admin
+      case "1": //for admin
         this.bookingService.getBooking().subscribe({
           next: (response: any) => {
             this.items = response;
@@ -99,7 +101,7 @@ export class ReservationListComponent implements OnInit {
           complete: () => {},
         });
         break;
-      case "2"://for company
+      case "2": //for company
         this.bookingService.getBookingByCompany().subscribe({
           next: (response: any) => {
             this.items = response;
@@ -119,20 +121,20 @@ export class ReservationListComponent implements OnInit {
 
   export() {
     console.log("Export");
-    
+
     // console.log("export function");
     // window.open("http://localhost:9091/bookings/download");
-    this.http.get('http://localhost:9091/bookings/download', { responseType: 'blob' })
-      .subscribe(blob => {
+    this.http
+      .get("http://localhost:9091/bookings/download", { responseType: "blob" })
+      .subscribe((blob) => {
         const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
+        const a = document.createElement("a");
         a.href = url;
-        a.download = 'my-csv-file.csv';
+        a.download = "my-csv-file.csv";
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
         window.URL.revokeObjectURL(url);
       });
   }
-  
 }

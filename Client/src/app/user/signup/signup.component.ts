@@ -128,7 +128,7 @@ export class SignupComponent implements OnInit {
         phone: this.signupForm.value.phone,
         country: this.signupForm.value.country,
         status: 1,
-        role: 3,
+        role: 3
       };
       this.apiservice.createUser(param).subscribe({
         next: (result: any) => {
@@ -141,7 +141,11 @@ export class SignupComponent implements OnInit {
         error: (err: any) => {
           this.status = false;
           console.log(err);
-          this.alertservice.showError("Failed to signup", "Error");
+          if(err.error.errors[0].code == 1015){
+
+          this.alertservice.showError("Email already exist!!Please try again with another email id", "Error");
+
+          }
         },
       });
     } else {

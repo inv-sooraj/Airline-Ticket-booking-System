@@ -115,9 +115,13 @@ export class FlightRegComponent implements OnInit {
         this.AirplaneDetails = response;
       },
       error: (err: any) => {
-        this.alertservice.showError("Couldnt fetch airplane details", "error");
+        // this.alertservice.showError("Couldnt fetch airplane details", "error");
       },
       complete: () => {},
     });
+  }
+  dateMin(){
+    console.log("this is datehuygfuytfdutrdtf");
+    
   }
 }
