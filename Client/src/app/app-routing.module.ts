@@ -59,7 +59,7 @@ const routes: Routes = [
   { path: "flight-list", component: FlightListCompanyComponent ,canActivate:[AuthGuard],data:{allowedRoles:[1,2]}},
   { path: "profile-edit", component: UserProfileEditComponent ,canActivate:[AuthGuard],data:{allowedRoles:[3]}},
   { path: "profile", component: AdminProfileComponent,canActivate:[AuthGuard],data:{allowedRoles:[1,2]} },
-  { path: "cancelled-list", component: CancelledReservationListComponent ,canActivate:[AuthGuard],data:{allowedRoles:[1,2]}},
+  { path: "pending-list", component: CancelledReservationListComponent ,canActivate:[AuthGuard],data:{allowedRoles:[1,2]}},
   { path: "user-list", component: UserListComponent,canActivate:[AuthGuard],data:{allowedRoles:[1]} },
   { path: "reservation-details/:bookingId",component: ReservationDetailsComponent,canActivate:[AuthGuard],data:{allowedRoles:[1,2]}},
   { path: "flight-edit/:flightId", component: FlightEditComponent ,canActivate:[AuthGuard],data:{allowedRoles:[2]}},

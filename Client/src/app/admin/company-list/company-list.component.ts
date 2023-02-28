@@ -4,42 +4,31 @@ import { AlertService } from "src/app/alert.service";
 import { ApiService } from "src/app/api.service";
 
 @Component({
-  selector: "app-company-list",
-  templateUrl: "./company-list.component.html",
-  styleUrls: ["./company-list.component.css"],
+  selector: 'app-company-list',
+  templateUrl: './company-list.component.html',
+  styleUrls: ['./company-list.component.css']
 })
 export class CompanyListComponent implements OnInit {
-  Company: any[] = [];
+  Company:any[]=[];
   companyIds: any[] = [];
   searchText: any;
-  companyListForm!: FormGroup;
-  companyEditForm!: FormGroup;
-  displayStyle = "none";
-  companyId: any;
-  CompanyById: any;
-  constructor(
-    private apiservice: ApiService,
-    private alertservice: AlertService,
-    private formbuilder: FormBuilder
-  ) {
+  companyListForm !: FormGroup;
+  constructor(private apiservice:ApiService,private alertservice:AlertService,private formbuilder:FormBuilder ){
+
     this.companyListForm = this.formbuilder.group({
-      search: [""],
-    });
-    this.companyEditForm = this.formbuilder.group({
-      fullName: [""],
-      phone: [""],
-      address: [""],
-      email: [""],
+      search: [""]
     });
   }
   ngOnInit(): void {
     this.getCompany();
   }
-  getCompany() {
+  getCompany(){
+
     this.apiservice.getCompany().subscribe({
       next: (response: any) => {
         this.Company = response;
-        console.log("Company details", this.Company);
+        console.log("Company details",this.Company);
+        
       },
       error: (err: any) => {
         this.alertservice.showError("Couldnt fetch company details", "error");
@@ -48,6 +37,7 @@ export class CompanyListComponent implements OnInit {
     });
   }
   onCheckboxChange(e: any) {
+
     if (e.target.checked) {
       this.companyIds.push(e.target.value);
       console.log("Arrayyyy " + this.companyIds);
@@ -66,44 +56,9 @@ export class CompanyListComponent implements OnInit {
         this.alertservice.showError("Failed to delete!!!", "error");
       },
       complete: () => {
-        this.getCompany();
+        this. getCompany();
       },
     });
   }
-  openPopup(id: any) {
-    this.displayStyle = "block";
-    this.companyId = id;
-    this.getCompanyById();
-  }
-  closePopup() {
-    this.displayStyle = "none";
-  }
-  getCompanyById() {
-    this.apiservice.getUserById(this.companyId).subscribe({
-      next: (response: any) => {
-        this.CompanyById = response;
-      },
-      error: (err: any) => {},
-      complete: () => {},
-    });
-  }
-  updateUser() {
-    this.apiservice
-      .updateCompany(this.companyId, this.companyEditForm.value)
-      .subscribe({
-        next: (response: any) => {
-          this.alertservice.showSuccess("Updated successfully", "Success");
-        },
-        error: (err: any) => {
-          this.alertservice.showError(
-            "Failed to updaet data.Please try again",
-            "Failed"
-          );
-        },
-        complete: () => {
-          this.closePopup();
-          this.getCompany();
-        },
-      });
-  }
+
 }

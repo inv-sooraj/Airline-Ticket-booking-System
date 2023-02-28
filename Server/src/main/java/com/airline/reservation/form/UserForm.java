@@ -1,12 +1,19 @@
 package com.airline.reservation.form;
 
 import java.util.Date;
+
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Range;
+
 import com.airline.reservation.form.validation.Password;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.deser.std.NumberDeserializers.IntegerDeserializer;
 
 public class UserForm {
 
@@ -18,7 +25,7 @@ public class UserForm {
     @Email(message = "1002")
     private String email;
 
-    @Password(message = "1003")
+    @Password
     private String password;
     private Date dob;
 
@@ -37,10 +44,11 @@ public class UserForm {
 
     @Size(max = 18)
     private String country;
+@NotNull
+@Range(min = 1, max = 3, message = "1017")
+private Integer status;
 
-    @NotNull
-    private Integer status;
-
+    @Range(min = 1, max = 3, message = "1016")
     @NotNull
     private Integer role;
 
