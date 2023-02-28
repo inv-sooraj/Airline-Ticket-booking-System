@@ -1,5 +1,6 @@
-<app-company-nav></app-company-nav>
+<app-admin-nav></app-admin-nav>
 <section class="main_content dashboard_part large_header_bg">
+  <app-admin-header></app-admin-header>
     <div class="row">
       <div class="main_content_iner">
         <div class="container-fluid p-0">
@@ -19,22 +20,22 @@
                         <div class="serach_field_2">
                           <div class="search_inner">
                             <form [formGroup]="UserListForm">
-                              <div class="search-hero col-lg-12">
-                                <input
+                             
+                                <input class="mt-3"
                                   type="text"
                                   formControlName="search"
                                   placeholder="Search plane details..."
                                   [(ngModel)]="searchText"
                                   autocomplete="off"
                                 />
-                              </div>
+                             
                             </form>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="QA_table mb_30">
-                      <br /><br />
+                    <div class="QA_table mb_30" >
+                     
                       <table class="table">
                         <thead>
                           <tr>

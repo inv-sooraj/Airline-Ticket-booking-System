@@ -2,9 +2,9 @@
   rel="stylesheet"
   href="https://fonts.googleapis.com/icon?family=Material+Icons"
 />
-<app-company-nav></app-company-nav>
+<app-admin-nav></app-admin-nav>
 <section class="main_content dashboard_part large_header_bg">
-  
+  <app-admin-header></app-admin-header>
     <div class="row">
       <div class="main_content_iner">
         <div class="container-fluid p-0">
@@ -50,23 +50,18 @@
                     </div>
                     <div class="QA_table mb_30">
                       <br /><br />
-                      <a
-                        class="delete"
-                        title="Delete"
-                        data-toggle="tooltip"
-                        (click)="deleteData()"
-                        ><i class="material-icons">&#xE872;</i></a
-                      >
+                     
                       <table class="table">
                         <thead>
                           <tr>
-                            <th></th>
+                            <th>
+                              <i (click)="deleteData()" class="material-icons">&#xE872;</i></th>
                             <th scope="col">Company Id</th>
                             <th scope="col">Company Name</th>
                             <th scope="col">Email</th>
                             <th scope="col">Phone number</th>
                             <th scope="col">Address</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">  Actions</th>
                           </tr>
                         </thead>
                         <tbody>
