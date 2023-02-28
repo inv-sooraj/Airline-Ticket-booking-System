@@ -88,9 +88,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 //                .antMatchers("/company/**").permitAll()
                 .antMatchers("/seat/**").permitAll()
-                .antMatchers(OPTIONS, "/login").anonymous()
+                // .antMatchers(OPTIONS, "/login").anonymous()
 //                .antMatchers("/bookings/**").permitAll()
-                .antMatchers(POST, "/login").anonymous()
+                .antMatchers(POST, "/login").permitAll()
 //                .antMatchers(POST, "/airplane").permitAll()
 //                .antMatchers(POST, "/airplane").permitAll()
                 .antMatchers(OPTIONS, "/**").anonymous() 

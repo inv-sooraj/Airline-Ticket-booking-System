@@ -23,7 +23,7 @@ export class CancelledReservationListComponent {
     private bookingService: BookingServiceService
   ) {}
   ngOnInit(): void {
-    alert(localStorage.getItem("userid"))
+    
     this.getPendingBookings();
     this.cancelledListForm = this.formbuilder.group({
       search: [""],

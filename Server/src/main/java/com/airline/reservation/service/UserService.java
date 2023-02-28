@@ -19,7 +19,7 @@ public interface UserService {
 
     ResponseEntity<ResBody> add(UserForm form);
 
-    LoginView login(LoginForm form, Errors errors) throws BadRequestException;
+    ResponseEntity<ResBody> login(LoginForm form);
 
     LoginView refresh(String refreshToken) throws BadRequestException;
 

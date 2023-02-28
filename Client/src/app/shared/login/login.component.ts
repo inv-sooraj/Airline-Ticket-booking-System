@@ -73,10 +73,11 @@ export class LoginComponent implements OnInit {
       };
       this.apiservice.login(param).subscribe({
         next: (result: any) => {
-          this.listData = result.accessToken.value;
-          this.role = result.role;
+          console.log(result)
+          this.listData = result.values.loginResponse.accessToken.value;
+          this.role = result.values.loginResponse.role;
           console.log(typeof this.role)
-          this.userid = result.userId;
+          this.userid = result.values.loginResponse.userId;
           localStorage.setItem("accessToken", this.listData);
           localStorage.setItem("Role", this.role);
           localStorage.setItem("userid", this.userid);
@@ -84,7 +85,7 @@ export class LoginComponent implements OnInit {
           console.log("access token =" + localStorage.getItem("accessToken"));
           console.log("user id = "+localStorage.getItem("userid"));
           this.status = true;
-          switch (result.role) {
+          switch (this.role) {
             /**For admin */
             case 1:
               this.alertservice.showSuccess("Login Successful", "Success");
