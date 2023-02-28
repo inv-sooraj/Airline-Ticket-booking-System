@@ -183,6 +183,7 @@ export class FlightEditComponent implements OnInit {
     console.log("seat id", this.seatId);
   }
   closePopup() {
+
     this.displayStyle = "none";
   }
   updateSeat() {
@@ -193,7 +194,6 @@ export class FlightEditComponent implements OnInit {
       price: this.FlightEditForm.value.price,
     };
     console.log("params of seats", this.FlightEditForm.value.seatid);
-
     this.seatDetails.push(param);
     console.log("array after editing one row", this.seatDetails);
     this.closePopup();

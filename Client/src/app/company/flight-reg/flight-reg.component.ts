@@ -18,6 +18,7 @@ export class FlightRegComponent implements OnInit {
   AirplaneDetails: any;
   userid: any;
   today: any;
+  minDate:any;
   constructor(
     private formbuilder: FormBuilder,
     private router: Router,
@@ -119,5 +120,10 @@ export class FlightRegComponent implements OnInit {
       },
       complete: () => {},
     });
+  }
+  setDate(event:any){
+    this.minDate=event.target.value;
+    console.log("This is mindate",this.minDate);
+    
   }
 }
