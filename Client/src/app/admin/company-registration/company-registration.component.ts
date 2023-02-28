@@ -12,8 +12,7 @@ import { ServiceService } from "src/app/service.service";
   styleUrls: ["./company-registration.component.css"],
 })
 export class CompanyRegistrationComponent implements OnInit {
-  
-companyreg!: FormGroup;
+  companyreg!: FormGroup;
   status: any = false;
   password = '';
   flag: any;

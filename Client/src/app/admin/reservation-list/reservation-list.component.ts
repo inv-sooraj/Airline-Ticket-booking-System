@@ -122,13 +122,14 @@ export class ReservationListComponent implements OnInit {
 
   export() {
     console.log("Export");
-    
+
     // console.log("export function");
     // window.open("http://localhost:9091/bookings/download");
-    this.http.get('http://localhost:9091/bookings/download', { responseType: 'blob' })
-      .subscribe(blob => {
+    this.http
+      .get("http://localhost:9091/bookings/download", { responseType: "blob" })
+      .subscribe((blob) => {
         const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
+        const a = document.createElement("a");
         a.href = url;
         a.download = 'reservation-list.csv';
         document.body.appendChild(a);
