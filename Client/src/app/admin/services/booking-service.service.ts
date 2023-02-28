@@ -62,4 +62,10 @@ export class BookingServiceService {
   getBookingByCompany() {
     return this.http.get(this.baseUrl + "/getByCompany/1");
   }
+  getPending(userId:any) {
+
+    return this.http.get(this.baseUrl + '/getCancelled/2/1/'+userId);
+     
+     
+     }
 }

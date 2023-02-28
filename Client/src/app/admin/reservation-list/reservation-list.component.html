@@ -24,7 +24,7 @@
                             <input
                               type="text"
                               formControlName="search"
-                              placeholder="Search bookings"
+                              placeholder="Search plane details here..."
                               [(ngModel)]="searchText"
                               autocomplete="off"
                             />
@@ -103,12 +103,12 @@
                         >
                           Approved
                         </td>
-                        <td
-                          *ngIf="bookings.status == 3"
-                          style="color: rgb(74, 68, 109)"
-                        >
-                          Cancelled
-                        </td>
+                        <!-- <td>
+                                                    <a class="status_btn"
+                                                        (click)="approve(bookings.bookingId, 1)">Approve</a>
+                                                    <a class="status_btn_rejected"
+                                                        (click)="approve(bookings.bookingId, 0)">Reject</a>
+                                                </td> -->
                         <td>
                           <a
                             class="status_btn"

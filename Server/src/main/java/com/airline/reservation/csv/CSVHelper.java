@@ -43,7 +43,7 @@ public class CSVHelper {
         final CSVFormat format = CSVFormat.DEFAULT.withQuoteMode(QuoteMode.MINIMAL);
         try (ByteArrayOutputStream out = new ByteArrayOutputStream();
             CSVPrinter csvPrinter = new CSVPrinter(new PrintWriter(out), format);) {
-              csvPrinter.printRecord("Full Name", "Flight Number ", "Departing From ", "Destination  ", "Departing Date","Reason");
+              csvPrinter.printRecord("Full Name", "Flight Number ", "Departing From ", "Destination  ", "Departing Date");
               for (Bookings tutorial : tutorials) {
             String pattern,date;
             pattern = "MM-dd-yyyy";

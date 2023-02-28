@@ -52,19 +52,34 @@ public class UserServiceImpl implements UserService {
         return userRepository.existsByEmail(email);
     }
 
-    @Override
-    public LoginView login(LoginForm form, Errors errors) throws BadRequestException {
-        if (errors.hasErrors()) {
-            throw badRequestException();
+    
+    public ResponseEntity<ResBody> login(LoginForm form) {
+        ResBody body = new ResBody();
+        Optional<User> emailEntry = userRepository.findByEmail(form.getEmail());
+        if(emailEntry.isEmpty()){
+            body.getErrors().add(new ApplicationError("1020", "Email doesn't exist"));
+            return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
         }
+        // if (errors.hasErrors()) {
+        //     body.getErrors().add(new ApplicationError("1021", "Password Doesn't Match"));
+        //     return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
+        // }
         User user = userRepository.findByEmail(form.getEmail()).orElseThrow(UserServiceImpl::badRequestException);
+
         if (!passwordEncoder.matches(form.getPassword(), user.getPassword())) {
-            throw badRequestException();
+            System.out.println("Password Doesn't match");
+            body.getErrors().add(new ApplicationError("1021", "Password Doesn't Match"));
+            return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
         }
         String id = String.format("%010d", user.getUserId());
         Token accessToken = tokenGenerator.create(PURPOSE_ACCESS_TOKEN, id, securityConfig.getAccessTokenExpiry());
         Token refreshToken = tokenGenerator.create(PURPOSE_REFRESH_TOKEN, id + user.getPassword(), securityConfig.getRefreshTokenExpiry());
-        return new LoginView(user, accessToken, refreshToken);
+        // return new LoginView(user, accessToken, refreshToken);
+        // body.getErrors().add(new ApplicationError("1021", "Password Doesn't Match"));
+        LoginView lView=new LoginView(user, accessToken, refreshToken);
+        body.getValues().put("loginResponse",lView);
+        return new ResponseEntity<ResBody>(body, HttpStatus.OK);
+        
     }
 
     @Override
@@ -98,6 +113,7 @@ public class UserServiceImpl implements UserService {
     public ResponseEntity<ResBody> add(@Valid UserForm form) {
         ResBody body = new ResBody();
         Optional<User> usernameEntry = userRepository.findByEmail(form.getEmail());
+    
         if (!usernameEntry.isEmpty()) {
             body.getErrors().add(new ApplicationError("1015", "User already exist"));
             return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);

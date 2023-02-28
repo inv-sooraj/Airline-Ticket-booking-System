@@ -120,8 +120,4 @@ export class FlightRegComponent implements OnInit {
       complete: () => {},
     });
   }
-  dateMin(){
-    console.log("this is datehuygfuytfdutrdtf");
-    
-  }
 }

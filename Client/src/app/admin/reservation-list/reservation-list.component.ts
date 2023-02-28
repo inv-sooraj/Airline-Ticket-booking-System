@@ -17,11 +17,10 @@ export class ReservationListComponent implements OnInit {
   role: any;
   public data: any;
   status: boolean = false;
-  constructor(
+  constructor(private http:HttpClient,
     private formbuilder: FormBuilder,
     private alertservice: AlertService,
-    private bookingService: BookingServiceService,
-    private http: HttpClient
+    private bookingService: BookingServiceService
   ) {
     this.bookingListForm = this.formbuilder.group({
       search: [""],
@@ -119,6 +118,8 @@ export class ReservationListComponent implements OnInit {
     }
   }
 
+
+
   export() {
     console.log("Export");
 
@@ -130,11 +131,12 @@ export class ReservationListComponent implements OnInit {
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = url;
-        a.download = "my-csv-file.csv";
+        a.download = 'reservation-list.csv';
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
         window.URL.revokeObjectURL(url);
       });
   }
+  
 }

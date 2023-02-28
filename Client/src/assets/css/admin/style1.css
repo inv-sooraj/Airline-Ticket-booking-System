@@ -13207,14 +13207,14 @@ table.lms_table_active3.dataTable thead .sorting_desc::after {
 }
 
 #exampleInputPassword1 {
-    width: 100px;
+    width: 110px;
     float: left;
     margin-left: 35px;
     margin-right: 35px;
 }
 
 #exampleInputPassword2 {
-    width: 100px;
+    width: 110px;
     float: left;
 }
 
