@@ -121,45 +121,53 @@
                           <div class="col-12">
                              <div class="quick-quote bx-wrapper padding-20 mb-xl-30">
                                 <h5 class="text-custom-black">Checkout</h5>
-                                <form [formGroup]="myForm" >
+                                <form [formGroup]="myForm">
                                   <div formArrayName="seats">
-                                    <div class="row"   *ngFor="let seat of seatsFormArray.controls; let i = index" [formGroupName]="i">
+                                    <div class="row" *ngFor="let seat of seatsFormArray.controls; let i = index" [formGroupName]="i">
                                       <div class="col-lg-3 col-md-6">
                                         <div class="form-group">
-                                          <label >Select Class</label>
-                                          <select (change)="onChange(i,mySelect.value)"  #mySelect  id="mySelect" class="form-control form-control-custom" name="seatId" formControlName="seatId" >
+                                          <label>Select Class</label>
+                                          <select (change)="onChange(i,mySelect.value)" #mySelect id="mySelect" class="form-control form-control-custom" name="seatId" formControlName="seatId">
                                             <option value="" disabled selected>Seat Type</option>
-                                            <option *ngFor="let seat of seats" [value]="seat.seatId">{{ seat.seatId }}</option>
+                                            <option *ngFor="let seat of seats" [value]="seat.seatId">{{ seat.seatType }}</option>
                                           </select>
+                                          <div *ngIf="seatsFormArray.controls[i]?.get('seatId')?.invalid && (seatsFormArray.controls[i]?.get('seatId')?.dirty || seatsFormArray.controls[i]?.get('seatId')?.touched)" class="text-danger">
+                                            <div *ngIf="seatsFormArray.controls[i]?.get('seatId')?.errors?.['required']"><span class="errorMsg">Select Seat Type</span></div>
+                                          </div>
                                         </div>
                                       </div>
                                       <div class="col-lg-3 col-md-6">
                                         <div class="form-group">
-                                          <label >Seat Price </label>
+                                          <label>Seat Price</label>
                                           <input type="text" [value]="seat?.get('price')?.value" name="price" formControlName="price" [value]="seat?.get('price')?.value" [readonly]="true" class="form-control form-control-custom" placeholder="Price">
                                         </div>
                                       </div>
                                       <div class="col-lg-3 col-md-6">
                                         <div class="form-group">
-                                          <label >Seat Quantity </label>
+                                          <label>Seat Quantity</label>
+                                          <input type="text" pattern="[0-9]*" placeholder="No.of Seats"  formControlName="quantity" name="quantity" class="form-control form-control-custom">
+                                          <div *ngIf="seatsFormArray.controls[i]?.get('quantity')?.invalid && (seatsFormArray.controls[i]?.get('quantity')?.dirty || seatsFormArray.controls[i]?.get('quantity')?.touched)" class="text-danger">
+                                            <div *ngIf="seatsFormArray.controls[i]?.get('quantity')?.errors?.['required']"><span class="errorMsg">Enter No.of Seats</span></div>
+                                            <div *ngIf="seatsFormArray.controls[i]?.get('quantity')?.errors?.['pattern']">
+                                              <span class="errorMsg">Please enter only numbers</span>
+                                            </div></div>
+                                     
                                           
-                                          <input type="number" placeholder="No.of Seats"  pattern="[0-9]" [min]=0 [max]=3 formControlName="qty" name="qty" class="form-control form-control-custom">
-                                        
-
                                         </div>
                                       </div>
                                       <div class="col-lg-1 col-md-6">
                                         <label class="submit"></label>
-                                        <button  (click)="addOption()" class="btn-first btn-submit full-width btn-height">+</button>
+                                        <button [disabled]="myForm.invalid" (click)="addOption()" class="btn-first btn-submit full-width btn-height">+</button>
                                       </div>
                                       <div class="col-lg-1 col-md-6">
                                         <label class="submit"></label>
-                                        <button (click)="removeOption(i)"  class="btn-first btn-submit full-width btn-height">-</button>
+                                        <button (click)="removeOption(i)" class="btn-first btn-submit full-width btn-height"  [disabled]="seatsFormArray.length == 1"  >-</button>
                                       </div>
                                     </div>
-                                    <button (click)="onSubmit()" type="submit" class="btn-first btn-submit full-width btn-height">Checkout</button>
+                                    <button  [disabled]="myForm.invalid" (click)="onSubmit()" type="submit" class="btn-first btn-submit full-width btn-height">Checkout</button>
                                   </div>
                                 </form>
+                                
                               </div>
                   </div>
                        </div>
@@ -213,4 +221,6 @@
     </div>
   </div>
 </section>
+
+
 <app-footer></app-footer>

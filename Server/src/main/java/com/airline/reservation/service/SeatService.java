@@ -15,5 +15,6 @@ public interface SeatService {
 
     Optional <Seat> getSeatById(Integer seatId);
     public List<Integer> getId(Integer flightId);
+    public Integer getQuantity(Integer seatId);
    
 }

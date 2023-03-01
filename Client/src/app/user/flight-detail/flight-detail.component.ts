@@ -28,6 +28,7 @@ export class FlightDetailComponent{
   items: any;
   selectedSeatPrice!: number;
   depDateTime: any;
+  selectedSeatQuantity!:number;
   flightId: any;
   randomFlights: any;
   seatBookingFormArray: any;
@@ -39,6 +40,7 @@ export class FlightDetailComponent{
   myForm!: FormGroup;
   destTime: any;
   seatdetail: any;
+  quantityControl!:FormGroup
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
@@ -67,13 +69,13 @@ export class FlightDetailComponent{
               this.items = response;
               this.seatdetail = this.items.seats;
               this.myForm = this.fb.group({
-                // Add the 'seat' form control
+                
                 seats: this.fb.array([
                   this.fb.group({
                 userId:localStorage.getItem("userid"),
                 seatId: ['', Validators.required],
                 price: ['', Validators.required],
-                qty: ['',Validators.required],
+                quantity: ['', [Validators.required, Validators.pattern(/^[0-9]+$/)]],
                 status:[1],
                 flightId:[this.flightId]
                   })
@@ -111,8 +113,6 @@ export class FlightDetailComponent{
         return this.myForm.get('seats') as FormArray;
       }
       onChange(formArrayId: any, seatId: any) {
-    
-    
         console.log("Form array id = " + formArrayId + " and Seat Id =" + seatId);
         this.apiService.getSeatPrice(seatId, formArrayId).subscribe({
           next: (response: any) => {
@@ -132,13 +132,26 @@ export class FlightDetailComponent{
           },
           complete: () => {},
         });
+        this.apiService.getSeatNumber(seatId).subscribe({
+          next:(response:any)=>{
+            this.selectedSeatQuantity=response;
+            console.log("SEAT QUANTITY = ",this.selectedSeatQuantity);
+            const rowFormGroup=this.seatsFormArray.at(formArrayId)as FormGroup;
+            const quantityControl=rowFormGroup.get('quantity');
+            if(quantityControl){
+              quantityControl.setValidators([Validators.required, Validators.pattern(/^[0-9]+$/), Validators.maxLength(10), Validators.max(this.selectedSeatQuantity)]);
+              quantityControl.updateValueAndValidity();
+            }
+            
+          }
+        })
       }
       addOption() {
         this.seatsFormArray.push(this.fb.group({
           userId:localStorage.getItem("userid"),
           seatId: ['', Validators.required],
-          price: ['', Validators.required],
-          qty: ['',Validators.required],
+          price: [''],
+          quantity: ['', [Validators.required, Validators.pattern(/^[0-9]+$/)]],
           status:[1],
           flightId:[this.flightId]
         }));

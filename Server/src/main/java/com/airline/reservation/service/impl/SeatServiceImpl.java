@@ -18,7 +18,6 @@ public class SeatServiceImpl implements SeatService {
     
      @Autowired
     private SeatRepository seatRepository;
-
     @Override
     public SeatView updateSeat(Integer seatId, SeatForm form) {
         
@@ -57,6 +56,15 @@ public class SeatServiceImpl implements SeatService {
     public List<Integer> getId(Integer flightId) {
         return seatRepository.getseatId(flightId);
      }
+
+
+
+
+
+    @Override
+    public Integer getQuantity(Integer seatId) {
+        return seatRepository.getQuantity(seatId);
+    }
 
 
 

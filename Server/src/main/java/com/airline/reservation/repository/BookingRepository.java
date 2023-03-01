@@ -30,4 +30,5 @@ public interface BookingRepository extends JpaRepository<Bookings, Integer> {
 
         List<Bookings> findByStatusAndDeleteFlagAndFlightFlightId(Byte status, Byte deleteFlag, Integer flightId);
 
+     
 }
