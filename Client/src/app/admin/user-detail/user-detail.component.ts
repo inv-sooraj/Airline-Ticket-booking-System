@@ -10,7 +10,6 @@ import { ApiService } from "src/app/api.service";
   styleUrls: ["./user-detail.component.css"],
 })
 export class UserDetailComponent implements OnInit {
-  // userEditForm!:FormGroup
   data: any;
   userId = -1;
   constructor(
@@ -31,7 +30,6 @@ export class UserDetailComponent implements OnInit {
     this.apiservice.getUserById(this.userId).subscribe({
       next: (response: any) => {
         this.data = response;
-        console.log("Editing details", response);
       },
       error: (err: any) => {
         this.alertservice.showError("Failed to load user details", "Error");

@@ -15,5 +15,5 @@ button{
     cursor: pointer;    
 }
 .errorMsg{
-    color: red;
+    color: rgb(179, 54, 54);
 }

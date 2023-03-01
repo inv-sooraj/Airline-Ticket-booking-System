@@ -39,13 +39,11 @@ export class FlightDetailsAdminComponent implements OnInit {
 
   ngOnInit(): void {}
   changePlane(e: any) {
-    console.log(e.value);
     this.plane.setValue(e.target.value, {
       onlySelf: true,
     });
   }
   changeSeat(e: any) {
-    console.log(e.value);
     this.seats.setValue(e.target.value, {
       onlySelf: true,
     });
@@ -70,11 +68,9 @@ export class FlightDetailsAdminComponent implements OnInit {
       this.apiservice.createFlight(this.FlightRegForm.value).subscribe({
         next: (result: any) => {
           alert("Created successfully");
-          //  this.router.navigate(['/login'])
         },
         error: (err: any) => {
           alert(err.name);
-          console.log(err);
         },
       });
     } else {

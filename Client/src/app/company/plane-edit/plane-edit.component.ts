@@ -26,8 +26,6 @@ export class PlaneEditComponent implements OnInit {
     this.route.params.forEach((params: Params) => {
       this.airplaneId = params["airplaneId"];
     });
-    console.log(this.airplaneId);
-
     this.planeEditForm = this.formbuilder.group({
       airplaneName: [
         "",
@@ -66,7 +64,6 @@ export class PlaneEditComponent implements OnInit {
     this.apiservice.getAirPlaneById(this.airplaneId).subscribe({
       next: (response: any) => {
         this.data = response;
-        console.log("Editing details", response);
       },
       error: (err: any) => {
         this.alertservice.showError("Failed to load airplane details", "Error");
@@ -81,7 +78,6 @@ export class PlaneEditComponent implements OnInit {
     this.apiservice
       .sendUpdatePlane(this.planeEditForm.value, this.airplaneId)
       .subscribe((confirmation: any) => {
-        console.log(confirmation);
         if (confirmation.alert === "Sucess") {
           location.reload();
         }

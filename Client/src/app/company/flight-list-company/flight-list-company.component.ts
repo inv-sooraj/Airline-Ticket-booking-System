@@ -43,11 +43,9 @@ export class FlightListCompanyComponent implements OnInit {
   onCheckboxChange(e: any) {
     if (e.target.checked) {
       this.website.push(e.target.value);
-      console.log("Arrayyyy " + this.website);
     } else {
       const index = this.website.indexOf(e.target.value);
       this.website.splice(index, 1);
-      console.log("Array after unchecked", this.website);
     }
   }
 
@@ -59,7 +57,6 @@ export class FlightListCompanyComponent implements OnInit {
       .subscribe({
         next: (response: any) => {
           this.items = response;
-          console.log("flight by  company", this.items);
         },
         error: (err: any) => {
           this.alertservice.showError("Failed to load flight data", "Error");
@@ -81,7 +78,8 @@ export class FlightListCompanyComponent implements OnInit {
         this.Company = response;
       },
       error: (err: any) => {
-        this.alertservice.showError("Couldnt fetch company details", "error");
+        console.log(err);
+        
       },
       complete: () => {},
     });
@@ -95,7 +93,6 @@ export class FlightListCompanyComponent implements OnInit {
       this.apiservice.getAllFlight().subscribe({
         next: (response: any) => {
           this.items = response;
-          console.log(this.items);
         },
         error: (err: any) => {
           this.alertservice.showError("Failed to load flight data", "Error");
@@ -107,7 +104,6 @@ export class FlightListCompanyComponent implements OnInit {
       this.apiservice.getFlightByCompany(this.userid).subscribe({
         next: (response: any) => {
           this.items = response;
-          console.log("flight by  company", this.items);
         },
         error: (err: any) => {
           this.alertservice.showError("Failed to load flight data", "Error");

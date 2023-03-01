@@ -36,12 +36,12 @@
                     </select>
                     <div>
                       <span
-                        class="span1"
+                        
                         *ngIf="
                           FlightRegForm.controls['airplane'].touched &&
                           FlightRegForm.hasError('required', 'airplane')
                         "
-                        ><i>Please select airplane name</i></span
+                        ><i class="span1">Please select airplane name</i></span
                       >
                     </div>
                   </div>
@@ -60,20 +60,20 @@
                   />
                   <div>
                     <span
-                      class="span1"
+                      
                       *ngIf="
                         FlightRegForm.controls['flightno'].touched &&
                         FlightRegForm.hasError('required', 'flightno')
                       "
-                      ><i>Please enter flight number</i></span
+                      ><i class="span1">Please enter flight number</i></span
                     >
                     <span
-                      class="span1"
+                      
                       *ngIf="
                         FlightRegForm.controls['flightno'].touched &&
                         FlightRegForm.hasError('pattern', 'flightno')
                       "
-                      ><i>Invalid format</i></span
+                      ><i class="span1">Invalid format</i></span
                     >
                   </div>
                 </div>
@@ -90,20 +90,20 @@
                   />
                   <div>
                     <span
-                      class="span1"
+                      
                       *ngIf="
                         FlightRegForm.controls['departure'].touched &&
                         FlightRegForm.hasError('required', 'departure')
                       "
-                      ><i>Please enter departure city</i></span
+                      ><i class="span1">Please enter departure city</i></span
                     >
                     <span
-                      class="span1"
+                      
                       *ngIf="
                         FlightRegForm.controls['departure'].touched &&
                         FlightRegForm.hasError('pattern', 'departure')
                       "
-                      ><i>Invalid Format</i></span
+                      ><i class="span1">Invalid Format</i></span
                     >
                   </div>
                 </div>
@@ -122,12 +122,12 @@
                   />
                   <div>
                     <span
-                      class="span1"
+                      
                       *ngIf="
                         FlightRegForm.controls['departureDT'].touched &&
                         FlightRegForm.hasError('required', 'departureDT')
                       "
-                      ><i>Please enter departing date & time</i></span
+                      ><i class="span1">Please enter departing date & time</i></span
                     >
                   </div>
                 </div>
@@ -144,20 +144,20 @@
                   />
                   <div>
                     <span
-                      class="span1"
+                      
                       *ngIf="
                         FlightRegForm.controls['destination'].touched &&
                         FlightRegForm.hasError('required', 'destination')
                       "
-                      ><i>Please enter destination city</i></span
+                      ><i class="span1">Please enter destination city</i></span
                     >
                     <span
-                      class="span1"
+                      
                       *ngIf="
                         FlightRegForm.controls['destination'].touched &&
                         FlightRegForm.hasError('pattern', 'destination')
                       "
-                      ><i>*Invalid Format*</i></span
+                      ><i class="span1">*Invalid Format*</i></span
                     >
                   </div>
                 </div>
@@ -175,12 +175,12 @@
                   />
                   <div>
                     <span
-                      class="span1"
+                      
                       *ngIf="
                         FlightRegForm.controls['ariivalDT'].touched &&
                         FlightRegForm.hasError('required', 'ariivalDT')
                       "
-                      ><i>Please enter arrival date & time</i></span
+                      ><i class="span1">Please enter arrival date & time</i></span
                     >
                   </div>
                 </div>

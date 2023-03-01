@@ -34,12 +34,12 @@
                   </select>
                   <div>
                     <span
-                      class="sp"
+                      
                       *ngIf="
                         FlightRegForm.controls['airplane'].touched &&
                         FlightRegForm.hasError('required', 'airplane')
                       "
-                      ><i>*required*</i></span
+                      ><i class="sp">*required*</i></span
                     >
                   </div>
                 </div>
@@ -58,20 +58,20 @@
                 />
                 <div>
                   <span
-                    class="sp"
+                    
                     *ngIf="
                       FlightRegForm.controls['flightno'].touched &&
                       FlightRegForm.hasError('required', 'flightno')
                     "
-                    ><i>*required*</i></span
+                    ><i class="sp">*required*</i></span
                   >
                   <span
-                    class="sp"
+                    
                     *ngIf="
                       FlightRegForm.controls['flightno'].touched &&
                       FlightRegForm.hasError('pattern', 'flightno')
                     "
-                    ><i>*Invalid Format*</i></span
+                    ><i class="sp">*Invalid Format*</i></span
                   >
                 </div>
               </div>
@@ -88,20 +88,20 @@
                 />
                 <div>
                   <span
-                    class="sp"
+                    
                     *ngIf="
                       FlightRegForm.controls['departure'].touched &&
                       FlightRegForm.hasError('required', 'departure')
                     "
-                    ><i>*required*</i></span
+                    ><i class="sp">*required*</i></span
                   >
                   <span
-                    class="sp"
+                    
                     *ngIf="
                       FlightRegForm.controls['departure'].touched &&
                       FlightRegForm.hasError('pattern', 'departure')
                     "
-                    ><i>*Invalid Format*</i></span
+                    ><i class="sp">*Invalid Format*</i></span
                   >
                 </div>
               </div>
@@ -118,12 +118,12 @@
                 />
                 <div>
                   <span
-                    class="sp"
+                    
                     *ngIf="
                       FlightRegForm.controls['departureDT'].touched &&
                       FlightRegForm.hasError('required', 'departureDT')
                     "
-                    ><i>*required*</i></span
+                    ><i class="sp">*required*</i></span
                   >
                 </div>
               </div>
@@ -140,20 +140,20 @@
                 />
                 <div>
                   <span
-                    class="sp"
+                    
                     *ngIf="
                       FlightRegForm.controls['destination'].touched &&
                       FlightRegForm.hasError('required', 'destination')
                     "
-                    ><i>*required*</i></span
+                    ><i class="sp">*required*</i></span
                   >
                   <span
-                    class="sp"
+                    
                     *ngIf="
                       FlightRegForm.controls['destination'].touched &&
                       FlightRegForm.hasError('pattern', 'destination')
                     "
-                    ><i>*Invalid Format*</i></span
+                    ><i class="sp">*Invalid Format*</i></span
                   >
                 </div>
               </div>
@@ -170,12 +170,12 @@
                 />
                 <div>
                   <span
-                    class="sp"
+                   
                     *ngIf="
                       FlightRegForm.controls['ariivalDT'].touched &&
                       FlightRegForm.hasError('required', 'ariivalDT')
                     "
-                    ><i>*required*</i></span
+                    ><i  class="sp">*required*</i></span
                   >
                 </div>
               </div>
@@ -215,12 +215,12 @@
                       />
                       <div>
                         <span
-                          class="sp"
+                          
                           *ngIf="
                             FlightRegForm.controls['seatNo'].touched &&
                             FlightRegForm.hasError('required', 'seatNo')
                           "
-                          ><i>*required*</i></span
+                          ><i class="sp">*required*</i></span
                         >
                       </div>
                       <input
@@ -230,20 +230,20 @@
                         id="exampleInputPassword2"
                       />
                       <span
-                        class="sp"
+                        
                         *ngIf="
                           FlightRegForm.controls['price'].touched &&
                           FlightRegForm.hasError('required', 'price')
                         "
-                        ><i>*required*</i></span
+                        ><i class="sp">*required*</i></span
                       >
                     </div>
                   </ng-container>
                 </div>
                 <br />
                 <div>
-                  <span class="sp1" *ngIf="status"
-                    ><i>*Please fill the form correctly*</i></span
+                  <span  *ngIf="status"
+                    ><i class="sp">*Please fill the form correctly*</i></span
                   >
                 </div>
                 <div>

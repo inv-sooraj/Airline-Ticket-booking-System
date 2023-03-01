@@ -29,11 +29,9 @@ export class UserFlightListComponent {
   let params = new HttpParams().set('destination', this.destination);
   params = params.append('departure', this.departure)
   .append('depDateTime',this.depDateTime);
-  console.log("params="+params.toString());
 this.apiService.flightSearch(params).subscribe({
   next:(response:any)=>{
     this.searchResults=response;
-console.log(this.searchResults);
   },
   error:(err:any)=>{
     this.alertService.showError("Error Fetching Search Results","Error")

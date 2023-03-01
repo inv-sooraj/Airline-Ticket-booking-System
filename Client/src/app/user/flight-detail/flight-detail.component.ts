@@ -49,9 +49,7 @@ export class FlightDetailComponent{
   getRandom() {
     this.apiService.getTwoRandom().subscribe({
       next: (response: any) => {
-        console.log("RANDOM FLIGHTS ARE : ");
         this.randomFlights = response;
-        console.log(this.randomFlights);
       },
     });
   }
@@ -65,7 +63,6 @@ export class FlightDetailComponent{
    // Call the API to get seatIds
   this.apiService.getSeatId(this.flightId).toPromise().then((response: any) => {
     this.seatIds = response;
-    console.log("SEAT IDs ARE :", this.seatIds);
 
     // Once seatIds is populated, create the form group
     this.myForm = this.fb.group({
@@ -76,7 +73,6 @@ export class FlightDetailComponent{
         next: (response: any) => {
           this.items = response;
           this.seatList = this.items.seats;
-          console.log(" SEAT DATA =", this.seatList);
           this.depDateTime = this.items.depDateTime.slice(0, 10);
           this.destDateTime = this.items.destDateTime.slice(0, 10);
           let formattedDepTime = this.datePipe.transform(
@@ -89,7 +85,6 @@ export class FlightDetailComponent{
             "h:mm a"
           );
           this.destTime = formattedDestTime;
-          console.log("Flight Detail = " + this.items.flightId);
         },
         error: (err: any) => {
           alert("Failed");
@@ -128,7 +123,6 @@ export class FlightDetailComponent{
   }
   onChange(formArrayId: any, seatId: any) {
     alert(seatId);
-    console.log("Form array id = " + formArrayId + " and Seat Id =" + seatId);
     this.apiService.getSeatPrice(seatId, formArrayId).subscribe({
       next: (response: any) => {
         this.selectedSeatPrice = response;
@@ -150,21 +144,13 @@ export class FlightDetailComponent{
   onSubmit() { 
     
 
-     console.log("on Submit");
-console.log(this.seats.value);
     const seats = this.seats;
     for (let i = 0; i < seats.length; i++) {
       const seat = seats.at(i);
       seat.get("price")?.setValue(this.seatPrice);
     }
-    // Get the form data for all seats
-    
-   // Assuming your form array is named 'seats'
-  //  const param=this.seats.value
-  //  console.log(param)
    this.apiService.addBooking(this.seats.value).subscribe({
    next:(response:any)=>{
-    console.log("Succesfully Send Data")
    }
    })
   this.seats.reset();

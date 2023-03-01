@@ -58,7 +58,6 @@ export class CompanyEditComponent implements OnInit {
     this.apiservice.getUserById(this.companyId).subscribe({
       next: (response: any) => {
         this.CompanyById = response;
-        console.log("Company details", this.CompanyById);
       },
       error: (err: any) => {},
       complete: () => {},

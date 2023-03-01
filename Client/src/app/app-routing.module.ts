@@ -31,7 +31,8 @@ import { ForbiddenComponent } from "./shared/forbidden/forbidden/forbidden.compo
 import { AuthGuard } from "./shared/auth-guard";
 const routes: Routes = [
   { path: "", component: LoginComponent },
-  { path: "companyreg", component: CompanyRegistrationComponent },
+  { path: "companyreg", component: CompanyRegistrationComponent, canActivate: [AuthGuard],
+  data: { allowedRoles: [1] } },
   { path: "signup", component: SignupComponent },
   { path: "login", component: LoginComponent },
   {
@@ -87,7 +88,7 @@ const routes: Routes = [
     path: "reservation-list",
     component: ReservationListComponent,
     canActivate: [AuthGuard],
-    data: { allowedRoles: [1] },
+    data: { allowedRoles: [1,2] },
   },
   {
     path: "user-detail/:userId",

@@ -25,7 +25,6 @@ export class AdminProfileComponent implements OnInit {
     this.apiservice.getUserById(this.userid).subscribe({
       next: (response: any) => {
         this.items = response;
-        console.log("user details response", this.items);
       },
       error: (err: any) => {
         this.alertservice.showError("Failed to load user details", "Error");

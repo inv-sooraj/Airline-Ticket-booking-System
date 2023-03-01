@@ -32,7 +32,6 @@ export class ReservationDetailsComponent implements OnInit {
     this.apiservice.bookingDetailsById(this.bookingId).subscribe({
       next: (response: any) => {
         this.response = response;
-        console.log("user booking details response", this.response);
       },
       error: (err: any) => {
         this.alertservice.showError("Failed to load user booking", "Error");
@@ -52,7 +51,6 @@ export class ReservationDetailsComponent implements OnInit {
       },
       error: (err: any) => {
         this.alertservice.showError("Failed to Change Status!!!", "error");
-        console.log("error message" + err);
       },
       complete: () => {},
     });

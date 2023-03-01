@@ -27,36 +27,36 @@
                 <!--Validations-->
                 <div>
                   <span
-                    class="sp"
+                    
                     *ngIf="
                       planeRegForm.controls['airplaneName'].touched &&
                       planeRegForm.hasError('required', 'airplaneName')
                     "
-                    ><i>*Please ener airplane name*</i></span
+                    ><i class="sp">*Please ener airplane name*</i></span
                   >
                   <span
-                    class="sp"
+                    
                     *ngIf="
                       planeRegForm.controls['airplaneName'].touched &&
                       planeRegForm.hasError('pattern', 'airplaneName')
                     "
-                    ><i>*Invalid Format*</i></span
+                    ><i class="sp">*Invalid Format*</i></span
                   >
                   <span
-                    class="sp"
+                   
                     *ngIf="
                       planeRegForm.controls['airplaneName'].touched &&
                       planeRegForm.hasError('minlength', 'airplaneName')
                     "
-                    ><i>*Airplane name should be atleast 5 letters*</i></span
+                    ><i  class="sp">*Airplane name should be atleast 5 letters*</i></span
                   >
                   <span
-                    class="sp"
+                   
                     *ngIf="
                       planeRegForm.controls['airplaneName'].touched &&
                       planeRegForm.hasError('maxlength', 'airplaneName')
                     "
-                    ><i>*Airplane name should be atmost 30 letters*</i></span
+                    ><i  class="sp">*Airplane name should be atmost 30 letters*</i></span
                   >
                 </div>
               </div>
@@ -76,36 +76,36 @@
                 <!--Validations-->
                 <div>
                   <span
-                    class="sp"
+                    
                     *ngIf="
                       planeRegForm.controls['modelNo'].touched &&
                       planeRegForm.hasError('required', 'modelNo')
                     "
-                    ><i>*Please enter the model number*</i></span
+                    ><i class="sp">*Please enter the model number*</i></span
                   >
                   <span
-                    class="sp"
+                    
                     *ngIf="
                       planeRegForm.controls['modelNo'].touched &&
                       planeRegForm.hasError('pattern', 'modelNo')
                     "
-                    ><i>*Invalid Format*</i></span
+                    ><i class="sp">*Invalid Format*</i></span
                   >
                   <span
-                    class="sp"
+                   
                     *ngIf="
                       planeRegForm.controls['modelNo'].touched &&
                       planeRegForm.hasError('minlength', 'modelNo')
                     "
-                    ><i>*model number should be atleast 5 letters*</i></span
+                    ><i  class="sp">*model number should be atleast 5 letters*</i></span
                   >
                   <span
-                    class="sp"
+                    
                     *ngIf="
                       planeRegForm.controls['modelNo'].touched &&
                       planeRegForm.hasError('maxlength', 'modelNo')
                     "
-                    ><i>*model number should be atmost 30 letters*</i></span
+                    ><i class="sp">*model number should be atmost 30 letters*</i></span
                   >
                 </div>
               </div>
@@ -124,28 +124,28 @@
                 <!--Validations-->
                 <div>
                   <span
-                    class="sp"
+                   
                     *ngIf="
                       planeRegForm.controls['totalSeats'].touched &&
                       planeRegForm.hasError('required', 'totalSeats')
                     "
-                    ><i>*Please enter the total seats*</i></span
+                    ><i  class="sp">*Please enter the total seats*</i></span
                   >
                   <span
-                    class="sp"
+                   
                     *ngIf="
                       planeRegForm.controls['totalSeats'].touched &&
                       planeRegForm.hasError('pattern', 'totalSeats')
                     "
-                    ><i>*Invalid Format*</i></span
+                    ><i  class="sp">*Invalid Format*</i></span
                   >
                   <span
-                    class="sp"
+                    
                     *ngIf="
                       planeRegForm.controls['totalSeats'].touched &&
                       planeRegForm.hasError('maxlength', 'totalSeats')
                     "
-                    ><i>*number is too long*</i></span
+                    ><i class="sp">*number is too long*</i></span
                   >
                 </div>
               </div>

@@ -32,13 +32,11 @@
                 />
                 <div>
                   <span
-                    class="sp"
-                    style="color: brown"
                     *ngIf="
                       companyEditForm.controls['fullName'].touched &&
                       companyEditForm.hasError('required', 'fullName')
                     "
-                    ><i>Please enter the company name</i></span
+                    ><i class="sp">Please enter the company name</i></span
                   >
                 </div>
               </div>
@@ -55,13 +53,12 @@
                 />
                 <div>
                   <span
-                    class="sp"
-                    style="color: brown"
                     *ngIf="
                       companyEditForm.controls['phone'].touched &&
                       companyEditForm.hasError('required', 'phone')
                     "
-                    ><i>Please enter the phone number</i></span
+                    class="sp"
+                    ><i >Please enter the phone number</i></span
                   >
                 </div>
               </div>
@@ -77,13 +74,12 @@
                 ></textarea>
                 <div>
                   <span
-                    class="sp"
-                    style="color: brown"
                     *ngIf="
                       companyEditForm.controls['address'].touched &&
                       companyEditForm.hasError('required', 'address')
                     "
-                    ><i>Please enter the address</i></span
+                   
+                    ><i  class="sp" >Please enter the address</i></span
                   >
                 </div>
               </div>
@@ -100,22 +96,20 @@
                 />
                 <div>
                   <span
-                    class="sp"
-                    style="color: brown"
+                    
                     *ngIf="
                       companyEditForm.controls['email'].touched &&
                       companyEditForm.hasError('required', 'email')
                     "
-                    ><i>Please enter your email</i></span
+                    ><i class="sp">Please enter your email</i></span
                   >
                   <span
-                    class="sp"
-                    style="color: brown"
+                    
                     *ngIf="
                       companyEditForm.controls['email'].touched &&
                       companyEditForm.hasError('pattern', 'email')
                     "
-                    ><i>*Invalid Format*</i></span
+                    ><i class="sp">*Invalid Format*</i></span
                   >
                 </div>
               </div>

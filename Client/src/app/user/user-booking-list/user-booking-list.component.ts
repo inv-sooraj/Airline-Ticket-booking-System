@@ -54,7 +54,6 @@ export class UserBookingListComponent {
     this.apiService.getUserBookingList().subscribe({
       next: (response: any) => {
         this.items = response;
-        console.log("user bookings response", this.items);
       },
       error: (err: any) => {
         this.alertservice.showError("Failed to load user booking", "Error");
@@ -70,8 +69,6 @@ export class UserBookingListComponent {
     this.apiService.bookingDetailsById(id).subscribe({
       next: (response: any) => {
         this.item = response;
-        console.log("user booking details response", this.item);
-        console.log("departure", response.departure);
       },
       error: (err: any) => {
         this.alertservice.showError("Failed to load user booking", "Error");
@@ -81,7 +78,6 @@ export class UserBookingListComponent {
   }
   changeStaus() {
     const reason = this.cancellationForm.get("reason")?.value;
-    console.log("Reason = " + reason);
     this.apiService.cancelBooking(this.item.bookingId, reason).subscribe({
       next: (response: any) => {
         this.alertservice.showSuccess(

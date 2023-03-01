@@ -39,12 +39,12 @@
                   </select>
                   <div>
                     <span
-                      class="span1"
+                      
                       *ngIf="
                         FlightEditForm.controls['airplane'].touched &&
                         FlightEditForm.hasError('required', 'airplane')
                       "
-                      ><i>Please select airplane name</i></span
+                      ><i class="span1">Please select airplane name</i></span
                     >
                   </div>
                 </div>
@@ -64,20 +64,20 @@
                 />
                 <div>
                   <span
-                    class="span1"
+                    
                     *ngIf="
                       FlightEditForm.controls['flightno'].touched &&
                       FlightEditForm.hasError('required', 'flightno')
                     "
-                    ><i>Please enter flight number</i></span
+                    ><i class="span1">Please enter flight number</i></span
                   >
                   <span
-                    class="span1"
+                    
                     *ngIf="
                       FlightEditForm.controls['flightno'].touched &&
                       FlightEditForm.hasError('pattern', 'flightno')
                     "
-                    ><i>Invalid format</i></span
+                    ><i class="span1">Invalid format</i></span
                   >
                 </div>
               </div>
@@ -95,20 +95,20 @@
                 />
                 <div>
                   <span
-                    class="span1"
+                    
                     *ngIf="
                       FlightEditForm.controls['departure'].touched &&
                       FlightEditForm.hasError('required', 'departure')
                     "
-                    ><i>Please enter departure city</i></span
+                    ><i class="span1">Please enter departure city</i></span
                   >
                   <span
-                    class="span1"
+                    
                     *ngIf="
                       FlightEditForm.controls['departure'].touched &&
                       FlightEditForm.hasError('pattern', 'departure')
                     "
-                    ><i>Invalid Format</i></span
+                    ><i class="span1">Invalid Format</i></span
                   >
                 </div>
               </div>
@@ -124,15 +124,16 @@
                   formControlName="departureDT"
                   placeholder=""
                   [(ngModel)]="response.depDateTime"
+                  (change)="setDate($event)"
                 />
                 <div>
                   <span
-                    class="span1"
+                   
                     *ngIf="
                       FlightEditForm.controls['departureDT'].touched &&
                       FlightEditForm.hasError('required', 'departureDT')
                     "
-                    ><i>Please enter departing date & time</i></span
+                    ><i  class="span1">Please enter departing date & time</i></span
                   >
                 </div>
               </div>
@@ -150,20 +151,20 @@
                 />
                 <div>
                   <span
-                    class="span1"
+                    
                     *ngIf="
                       FlightEditForm.controls['destination'].touched &&
                       FlightEditForm.hasError('required', 'destination')
                     "
-                    ><i>Please enter destination city</i></span
+                    ><i class="span1">Please enter destination city</i></span
                   >
                   <span
-                    class="span1"
+                   
                     *ngIf="
                       FlightEditForm.controls['destination'].touched &&
                       FlightEditForm.hasError('pattern', 'destination')
                     "
-                    ><i>*Invalid Format*</i></span
+                    ><i  class="span1">*Invalid Format*</i></span
                   >
                 </div>
               </div>
@@ -173,21 +174,22 @@
                 >
                 <input
                   type="datetime-local"
-                  min="{{ response.destDateTime }}"
+                  (mouseover)="arrivalDate()"
                   class="form-control"
                   id="exampleInputPassword"
                   formControlName="ariivalDT"
                   placeholder=""
                   [(ngModel)]="response.destDateTime"
+                  min="{{ ArrivalDate }}"
                 />
                 <div>
                   <span
-                    class="span1"
+                    
                     *ngIf="
                       FlightEditForm.controls['ariivalDT'].touched &&
                       FlightEditForm.hasError('required', 'ariivalDT')
                     "
-                    ><i>Please enter arrival date & time</i></span
+                    ><i class="span1">Please enter arrival date & time</i></span
                   >
                 </div>
               </div>
@@ -263,14 +265,10 @@
                 type="text"
                 class="form-control form-control-lg"
                 [(ngModel)]="seatResponse.seatId"
+                
               />
             </div>
           </div>
-          <!-- <div class="mb-4 pb-2">
-                       <div class="form-outline">
-                          <input  name="seattype" formControlName="seatType"  type="text"  class="form-control form-control-lg" [(ngModel)]="seatResponse.seatType" />
-                       </div>
-                    </div> -->
           <div class="mb-4 pb-2">
             <div class="form-outline">
               <select
@@ -288,7 +286,6 @@
             </div>
           </div>
           <br /><br />
-
           <div class="mb-4 pb-2">
             <div class="form-outline">
               <input
@@ -311,10 +308,6 @@
               />
             </div>
           </div>
-          <!-- <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                 </div> -->
           <div class="modal-footer">
             <button
               type="button"
