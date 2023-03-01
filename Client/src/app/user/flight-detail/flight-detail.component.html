@@ -150,10 +150,11 @@
                                             <div *ngIf="seatsFormArray.controls[i]?.get('quantity')?.errors?.['required']"><span class="errorMsg">Enter No.of Seats</span></div>
                                             <div *ngIf="seatsFormArray.controls[i]?.get('quantity')?.errors?.['pattern']">
                                               <span class="errorMsg">Please enter only numbers</span>
-                                            </div></div>
-                                     
-                                          
-                                        </div>
+                                            </div>
+                                            <div *ngIf="seatsFormArray.controls[i]?.get('quantity')?.errors?.['max']">
+                                              <span class="errorMsg">Greater Than {{selectedSeatQuantity}}</span>
+                                            </div>
+                                          </div></div>
                                       </div>
                                       <div class="col-lg-1 col-md-6">
                                         <label class="submit"></label>
