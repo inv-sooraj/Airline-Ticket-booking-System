@@ -66,6 +66,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(PUT,"/airplane/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_COMPANY')")
                 .antMatchers(DELETE,"/airplane/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_COMPANY')")
                 .antMatchers(POST,"/bookings/**").access("hasRole('ROLE_PASSENGER')")
+                .antMatchers(POST,"/bookings/addBooking").access("hasRole('ROLE_PASSENGER')")
                 .antMatchers(DELETE,"/bookings").access("hasRole('ROLE_PASSENGER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_COMPANY')")
                 .antMatchers(GET,"/bookings/status/**").access("hasRole('ROLE_ADMIN')")
                 .antMatchers(GET,"/bookings/download/**").access("hasRole('ROLE_ADMIN')or hasRole('ROLE_COMPANY')")
@@ -84,10 +85,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(PUT,"/flight/**").access("hasRole('ROLE_ADMIN')or hasRole('ROLE_COMPANY')")
                 .antMatchers(DELETE,"/flight/**").access("hasRole('ROLE_ADMIN')or hasRole('ROLE_COMPANY')")
 
-                
+              
 
 //                .antMatchers("/company/**").permitAll()
                 .antMatchers("/seat/**").permitAll()
+                .antMatchers("/flight/**").permitAll()
                 // .antMatchers(OPTIONS, "/login").anonymous()
 //                .antMatchers("/bookings/**").permitAll()
                 .antMatchers( "/login").permitAll()
