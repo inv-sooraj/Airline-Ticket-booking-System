@@ -17,12 +17,9 @@ export class BookingServiceService {
 
   deletebooking(ids: any) {
     let params = new HttpParams().set("ids", ids);
-    console.log(this.baseUrl + "?" + "ids" + "=" + ids);
     return this.http.delete(this.baseUrl + "?" + "ids" + "=" + ids);
   }
   changeStatus(id: any, status: any) {
-    // return this.http.put(this.baseUrl + '/'+changeStatus+'/'+id + '/' + status);
-    console.log(this.baseUrl + "/changeStatus/" + id + "/" + status, {});
     return this.http.put(
       this.baseUrl + "/changeStatus/" + id + "/" + status,
       {}
@@ -40,10 +37,7 @@ export class BookingServiceService {
   }
 
   download() {
-    console.log("in service");
-    // let token=localStorage.getItem('token')
 
-    console.log(" URL = " + this.DownloadURL);
     this.http.get(this.DownloadURL);
   }
 

@@ -29,8 +29,6 @@ export class ReservationListComponent implements OnInit {
   }
   ngOnInit(): void {
     this.role = localStorage.getItem("Role");
-    console.log("current user role", this.role);
-
     this.getBookings();
   }
 
@@ -44,24 +42,20 @@ export class ReservationListComponent implements OnInit {
       },
       error: (err: any) => {
         this.alertservice.showError("Failed to Change Status!!!", "error");
-        console.log("error message" + err);
       },
       complete: () => {
         this.getBookings();
       },
     });
   }
-  //delete booking details of selected ids
   deleteData() {
     this.bookingService.deletebooking(this.site).subscribe({
       next: (response: any) => {
         this.alertservice.showSuccess("Deleted Successfully!!!", "success");
-        console.log("response = " + response);
         this.getBookings();
       },
       error: (err: any) => {
         this.alertservice.showError("Failed to delete!!!", "error");
-        console.log("error message" + err);
       },
       complete: () => {
         this.getBookings();
@@ -73,23 +67,18 @@ export class ReservationListComponent implements OnInit {
     //store ids of selected booking details
     if (e.target.checked) {
       this.site.push(e.target.value);
-      console.log("ids are : " + this.site);
     } else {
       const index = this.site.indexOf(e.target.value);
       this.site.splice(index, 1);
-      console.log("Array after unchecked", this.site);
     }
   }
 
   getBookings() {
-    console.log("inside get", this.role);
-
     switch (this.role) {
       case "1": //for admin
         this.bookingService.getBooking().subscribe({
           next: (response: any) => {
             this.items = response;
-            console.log(this.items);
           },
           error: (err: any) => {
             this.alertservice.showError(
@@ -104,7 +93,6 @@ export class ReservationListComponent implements OnInit {
         this.bookingService.getBookingByCompany().subscribe({
           next: (response: any) => {
             this.items = response;
-            console.log("Bookngs by  company", this.items);
           },
           error: (err: any) => {
             this.alertservice.showError("Failed to load booking data", "Error");
@@ -121,10 +109,7 @@ export class ReservationListComponent implements OnInit {
 
 
   export() {
-    console.log("Export");
 
-    // console.log("export function");
-    // window.open("http://localhost:9091/bookings/download");
     this.http
       .get("http://localhost:9091/bookings/download", { responseType: "blob" })
       .subscribe((blob) => {

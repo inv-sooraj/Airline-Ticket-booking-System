@@ -38,11 +38,9 @@ export class UserListComponent implements OnInit {
   onCheckboxChange(e: any) {
     if (e.target.checked) {
       this.website.push(e.target.value);
-      console.log("ids are : " + this.website);
     } else {
       const index = this.website.indexOf(e.target.value);
       this.website.splice(index, 1);
-      console.log("Array after unchecked", this.website);
     }
   }
 
@@ -56,7 +54,6 @@ export class UserListComponent implements OnInit {
     this.apiservice.getAllUsers().subscribe({
       next: (response: any) => {
         this.items = response;
-        console.log("All user details", this.items);
       },
       error: (err: any) => {
         this.alertservice.showError("Failed to load user data", "Error");

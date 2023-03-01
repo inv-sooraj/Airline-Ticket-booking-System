@@ -38,7 +38,6 @@ getRandomFlight(){
   this.apiservce.getRandom().subscribe({
     next: (response: any) => {
       this.items = response;
-      console.log("Random Flights are : ", this.items);
     },
     error: (err: any) => {
       this.alertservice.showError("Failed to load random Flights", "Error");

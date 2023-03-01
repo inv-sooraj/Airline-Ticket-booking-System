@@ -7,9 +7,18 @@ import { Router } from "@angular/router";
   styleUrls: ["./company-nav.component.css"],
 })
 export class CompanyNavComponent implements OnInit {
+  userRole:any;
+  status:any=false;
+  adminStatus:any=true;
   constructor(private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userRole=localStorage.getItem("Role")
+    if(this.userRole == 2){
+      this.status=true;
+    }
+    
+  }
   logOut() {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("Role");

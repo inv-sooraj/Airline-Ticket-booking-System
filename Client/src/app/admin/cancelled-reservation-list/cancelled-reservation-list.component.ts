@@ -30,7 +30,6 @@ export class CancelledReservationListComponent {
     });
   }
   Search() {
-    console.log(this.itemName);
     if (this.itemName == "") {
       this.getPendingBookings();
     } else {
@@ -46,7 +45,6 @@ export class CancelledReservationListComponent {
     this.bookingService.getPending(this.userId).subscribe({
       next: (response: any) => {
         this.items = response;
-        console.log(typeof this.items);
       },
       error: (err: any) => {
         this.alertservice.showError(
@@ -60,11 +58,9 @@ export class CancelledReservationListComponent {
   onCheckboxChange(e: any) {//store ids of selected booking details
     if (e.target.checked) {
       this.checkList.push(e.target.value);
-      console.log("ids are : " + this.checkList);
     } else {
       const index = this.checkList.indexOf(e.target.value);
       this.checkList.splice(index, 1);
-      console.log("Array after unchecked", this.checkList);
     }
   }
  
@@ -73,12 +69,10 @@ deleteData() {
   this.bookingService.deletebooking(this.checkList).subscribe({
     next: (response: any) => {
       this.alertservice.showSuccess("Deleted Successfully!!!", "success");
-      console.log("response = " + response);
       this.getPendingBookings();
     },
     error: (err: any) => {
       this.alertservice.showError("Failed to delete!!!", "error");
-      console.log("error message" + err);
     },
     complete: () => {
       this.getPendingBookings();
@@ -87,9 +81,6 @@ deleteData() {
 }
 
   export() {
-    console.log("export function");
-    // this.bookingService.download().subscribe();
-    // window.open("http://localhost:9091/bookings/download/3");
     this.http.get('http://localhost:9091/bookings/download/2/1', { responseType: 'blob' })
       .subscribe(blob => {
         const url = window.URL.createObjectURL(blob);

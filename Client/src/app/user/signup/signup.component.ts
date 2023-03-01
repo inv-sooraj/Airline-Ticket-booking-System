@@ -107,7 +107,6 @@ export class SignupComponent implements OnInit {
     this.getToday();
   }
   changeCountry(e: any) {
-    console.log(e.value);
     this.country.setValue(e.target.value, {
       onlySelf: true,
     });
@@ -133,14 +132,11 @@ export class SignupComponent implements OnInit {
       this.apiservice.createUser(param).subscribe({
         next: (result: any) => {
           this.status = true;
-          console.log(result);
-
           this.alertservice.showSuccess("Signed up successfully", "Success");
           this.router.navigate(["/login"]);
         },
         error: (err: any) => {
           this.status = false;
-          console.log(err);
           if(err.error.errors[0].code == 1015){
 
           this.alertservice.showError("Email already exist!!Please try again with another email id", "Error");

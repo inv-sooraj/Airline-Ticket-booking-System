@@ -72,8 +72,6 @@ export class ChangePasswordComponent implements OnInit {
         },
         error: (err: any) => {
           this.status = false;
-          console.log(err);
-          console.log(err.error.errors[0].code);
           switch (err.error.errors[0].code) {
             case "104":
               this.alertservice.showError(

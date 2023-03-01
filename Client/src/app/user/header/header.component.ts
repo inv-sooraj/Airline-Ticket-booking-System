@@ -65,7 +65,6 @@ export class HeaderComponent implements OnInit {
 
       this.apiService.changePasswd(param).subscribe({
         next: (result: any) => {
-          console.log(result);
 
           this.alertService.showSuccess(
             "password changed successfully",
@@ -75,8 +74,6 @@ export class HeaderComponent implements OnInit {
           this.router.navigate(["/login"]);
         },
         error: (err: any) => {
-          console.log(err);
-          console.log(err.error.errors[0].code);
           switch (err.error.errors[0].code) {
             case "104":
               this.alertService.showError(

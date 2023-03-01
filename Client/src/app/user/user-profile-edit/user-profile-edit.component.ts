@@ -28,8 +28,6 @@ export class UserProfileEditComponent {
     private alertservice: AlertService
   ) {
     this.userid = localStorage.getItem("userid");
-    console.log("current user id", this.userid);
-
     this.profileEditForm = this.formbuilder.group({
       fullname: [
         "",
@@ -109,7 +107,6 @@ export class UserProfileEditComponent {
     this.apiservice.getUserById(this.userid).subscribe({
       next: (response: any) => {
         this.items = response;
-        console.log("user details rsponse", this.items);
       },
       error: (err: any) => {
         this.alertservice.showError("Failed to load user details", "Error");
@@ -118,7 +115,6 @@ export class UserProfileEditComponent {
     });
   }
   changeCountry(e: any) {
-    console.log(e.target.value);
     this.country.setValue(e.target.value, {
       onlySelf: true,
     });
