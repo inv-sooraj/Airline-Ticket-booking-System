@@ -10,7 +10,7 @@ import {
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { AlertService } from "src/app/alert.service";
 import { ApiService } from "src/app/api.service";
-
+import { DatePipe } from '@angular/common';
 @Component({
   selector: "app-flight-edit",
   templateUrl: "./flight-edit.component.html",
@@ -18,7 +18,6 @@ import { ApiService } from "src/app/api.service";
 })
 export class FlightEditComponent implements OnInit {
   FlightEditForm!: FormGroup;
-  // seats: any = ["Economy", "Business", "First Class"];
   status: any = false;
   AirplaneDetails: any;
   userid: any;
@@ -30,12 +29,17 @@ export class FlightEditComponent implements OnInit {
   seatDetails: any[] = [];
   seatResponse: any;
   displayStyle = "none";
+  minDate:any;
+  ArrivalDate:any;
+  deptDate:any;
+  destDate:any;
   constructor(
     private formbuilder: FormBuilder,
     private router: Router,
     private apiservice: ApiService,
     private alertservice: AlertService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private datePipe: DatePipe
   ) {
     this.FlightEditForm = this.formbuilder.group({
       airplane: ["", Validators.required],
@@ -53,11 +57,10 @@ export class FlightEditComponent implements OnInit {
         [Validators.required, Validators.pattern("^[a-zA-Z][a-zA-Z ]+$")],
       ],
       ariivalDT: ["", Validators.required],
-      seatid: ["", Validators.required],
+      seatid: [{disabled: true}, Validators.required],
       seatType: ["", Validators.required],
       number: ["", Validators.required],
       price: ["", Validators.required],
-      // seatDetails: this.formbuilder.array([]),
     });
   }
 
@@ -69,17 +72,8 @@ export class FlightEditComponent implements OnInit {
     this.getPlaneName();
     this.today = new Date().toISOString().slice(0, 16);
     this.getFlightById();
-    // this.seatDetails().push(this.newData());
+    
   }
-  // seatDetails(): FormArray {
-  //   return this.FlightEditForm.get("seatDetails") as FormArray;
-  // }
-  // addCreds() {
-  //   this.seatDetails.push(this.newData());
-  // }
-  // delete(index:any){
-  //   this.seatDetails.removeAt(index);
-  // }
   newData() {
     let data = {
       seatId: this.FlightEditForm.value.seatid,
@@ -94,29 +88,29 @@ export class FlightEditComponent implements OnInit {
 
   //Method to add flight details
   updateFlight() {
-    // this.addCreds();
-    // console.log("new data",this.seatDetails());
+    this.destDate = this.datePipe.transform(this.FlightEditForm.value.ariivalDT,'yyyy-MM-ddTHH:mm');
+    this.deptDate = this.datePipe.transform( this.FlightEditForm.value.departureDT,'yyyy-MM-ddTHH:mm');
     let param = {
       flightNumber: this.FlightEditForm.value.flightno,
       departure: this.FlightEditForm.value.departure,
-      depDateTime: this.FlightEditForm.value.departureDT,
+      depDateTime:this.deptDate,
       destination: this.FlightEditForm.value.destination,
-      destDateTime: this.FlightEditForm.value.ariivalDT,
+      destDateTime: this.destDate,
       airplaneId: JSON.stringify(this.FlightEditForm.value.airplane),
       userId: this.userid,
       seats: this.seatDetails,
-      // deleteFlag: 1,
-      // seats: this.FlightEditForm.value.seatDetails,
     };
-    console.log("parameters", param);
+    console.log("This is parameters",param);
+    
     this.apiservice.sendUpdateflight(param, this.flightId).subscribe({
       next: (response: any) => {
         this.alertservice.showSuccess("Successfully edited", "Success");
         this.router.navigate(["/flight-list"]);
       },
       error: (err: any) => {
-        console.log(err);
 
+        console.log("this is the error",err);
+        
         this.alertservice.showError("Failed", "error");
       },
       complete: () => {},
@@ -132,13 +126,9 @@ export class FlightEditComponent implements OnInit {
     this.apiservice.getPlaneByCompany(this.userid).subscribe({
       next: (response: any) => {
         this.AirplaneDetails = response;
-        // this.FlightEditForm.setValue({
-        //   airplane: this.response.airplane.airplaneId,
-        // });
       },
       error: (err: any) => {
         this.alertservice.showError("Couldnt fetch airplane details", "error");
-        console.log(err);
       },
       complete: () => {},
     });
@@ -147,9 +137,6 @@ export class FlightEditComponent implements OnInit {
     this.apiservice.getPlaneDataById(this.flightId).subscribe({
       next: (responseData: any) => {
         this.response = responseData;
-        // this.seatsArray=response.seats;
-        console.log("response", responseData);
-
         for (let i of responseData.seats) {
           this.seatsArray.push(i);
         }
@@ -162,13 +149,11 @@ export class FlightEditComponent implements OnInit {
       },
       complete: () => {},
     });
-    console.log("seat", this.seatsArray);
   }
   getSeatById() {
     this.apiservice.getSeatById(this.seatId).subscribe({
       next: (responseData: any) => {
         this.seatResponse = responseData;
-        console.log("Data from seat table", this.seatResponse);
       },
       error: (err: any) => {
         this.alertservice.showError("Couldnt fetch flight details", "error");
@@ -180,9 +165,9 @@ export class FlightEditComponent implements OnInit {
     this.displayStyle = "block";
     this.seatId = id;
     this.getSeatById();
-    console.log("seat id", this.seatId);
   }
   closePopup() {
+
     this.displayStyle = "none";
   }
   updateSeat() {
@@ -192,10 +177,19 @@ export class FlightEditComponent implements OnInit {
       number: this.FlightEditForm.value.number,
       price: this.FlightEditForm.value.price,
     };
-    console.log("params of seats", this.FlightEditForm.value.seatid);
-
     this.seatDetails.push(param);
-    console.log("array after editing one row", this.seatDetails);
     this.closePopup();
+  }
+  setDate(event:any){
+    this.minDate=event.target.value;
+    
+  }
+  arrivalDate(){
+    if(this.minDate == null){
+      this.ArrivalDate=this.response.depDateTime;
+    }
+    else{
+      this.ArrivalDate=this.minDate
+    }
   }
 }

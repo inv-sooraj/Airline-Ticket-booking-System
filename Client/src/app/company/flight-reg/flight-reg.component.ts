@@ -3,7 +3,6 @@ import { FormGroup, FormBuilder, Validators, FormArray } from "@angular/forms";
 import { Router } from "@angular/router";
 import { AlertService } from "src/app/alert.service";
 import { ApiService } from "src/app/api.service";
-// import { ApiService } from '../api.service';
 import { DatePipe } from "@angular/common";
 import { LoginComponent } from "src/app/shared/login/login.component";
 @Component({
@@ -18,6 +17,7 @@ export class FlightRegComponent implements OnInit {
   AirplaneDetails: any;
   userid: any;
   today: any;
+  minDate:any;
   constructor(
     private formbuilder: FormBuilder,
     private router: Router,
@@ -49,7 +49,6 @@ export class FlightRegComponent implements OnInit {
     this.getPlaneName();
     this.seatDetails().push(this.newData());
     this.today = new Date().toISOString().slice(0, 16);
-    console.log("currentdate", this.today);
   }
   seatDetails(): FormArray {
     return this.FlightRegForm.get("seatDetails") as FormArray;
@@ -83,7 +82,6 @@ export class FlightRegComponent implements OnInit {
         deleteFlag: 1,
         seats: this.FlightRegForm.value.seatDetails,
       };
-      console.log("seats array", this.seats);
       this.apiservice.createFlight(param).subscribe({
         next: (result: any) => {
           this.alertservice.showSuccess(
@@ -97,7 +95,6 @@ export class FlightRegComponent implements OnInit {
             "Error adding flight details.Please try again",
             "Error"
           );
-          console.log(err);
         },
       });
     } else {
@@ -115,9 +112,12 @@ export class FlightRegComponent implements OnInit {
         this.AirplaneDetails = response;
       },
       error: (err: any) => {
-        this.alertservice.showError("Couldnt fetch airplane details", "error");
       },
       complete: () => {},
     });
+  }
+  setDate(event:any){
+    this.minDate=event.target.value;
+    
   }
 }

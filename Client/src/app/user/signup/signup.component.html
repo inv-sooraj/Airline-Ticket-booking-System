@@ -23,7 +23,6 @@
                       </div>
                       <div>
                         <span
-                          class="sp"
                           *ngIf="
                             signupForm.controls['fullname'].touched &&
                             signupForm.hasError('required', 'fullname')
@@ -31,7 +30,6 @@
                           ><i class="errorMsg">Please enter your fullname</i></span
                         >
                         <span
-                          class="sp"
                           *ngIf="
                             signupForm.controls['fullname'].touched &&
                             signupForm.hasError('pattern', 'fullname')
@@ -39,7 +37,6 @@
                           ><i class="errorMsg">*Name must contain alphabets only*</i></span
                         >
                         <span
-                          class="sp"
                           *ngIf="
                             signupForm.controls['fullname'].touched &&
                             signupForm.hasError('minlength', 'fullname')
@@ -47,7 +44,6 @@
                           ><i class="errorMsg">*Name should be atleast 8 characters*</i></span
                         >
                         <span
-                          class="sp"
                           *ngIf="
                             signupForm.controls['fullname'].touched &&
                             signupForm.hasError('maxlength', 'fullname')
@@ -69,7 +65,6 @@
                       </div>
                       <div>
                         <span
-                          class="sp"
                           *ngIf="
                             signupForm.controls['dob'].touched &&
                             signupForm.hasError('required', 'dob')
@@ -90,7 +85,6 @@
                       </div>
                       <div>
                         <span
-                          class="sp"
                           *ngIf="
                             signupForm.controls['email'].touched &&
                             signupForm.hasError('required', 'email')
@@ -98,7 +92,6 @@
                           ><i class="errorMsg">Please enter your email</i></span
                         >
                         <span
-                          class="sp"
                           *ngIf="
                             signupForm.controls['email'].touched &&
                             signupForm.hasError('pattern', 'email')
@@ -106,7 +99,6 @@
                           ><i class="errorMsg">*Invalid email Format*</i></span
                         >
                         <span
-                          class="sp"
                           *ngIf="
                             signupForm.controls['email'].touched &&
                             signupForm.hasError('maxlength', 'email')
@@ -127,7 +119,6 @@
                       </div>
                       <div>
                         <span
-                          class="sp"
                           *ngIf="
                             signupForm.controls['password'].touched &&
                             signupForm.hasError('required', 'password')
@@ -135,7 +126,6 @@
                           ><i class="errorMsg">Please enter your password</i></span
                         >
                         <span
-                          class="sp"
                           *ngIf="
                             signupForm.controls['password'].touched &&
                             signupForm.hasError('minlength', 'password')
@@ -143,7 +133,6 @@
                           ><i class="errorMsg">*Password is too short*</i></span
                         >
                         <span
-                          class="sp"
                           *ngIf="
                             signupForm.controls['password'].touched &&
                             signupForm.hasError('maxlength', 'password')
@@ -151,7 +140,6 @@
                           ><i class="errorMsg">*Password is too long*</i></span
                         >
                         <span
-                          class="sp"
                           *ngIf="
                             signupForm.controls['password'].touched &&
                             signupForm.hasError('pattern', 'password')
@@ -172,7 +160,6 @@
                       </div>
                       <div>
                         <span
-                          class="sp"
                           *ngIf="
                             signupForm.controls['cPassword'].touched &&
                             signupForm.hasError('required', 'cPassword')
@@ -180,7 +167,6 @@
                           ><i class="errorMsg">*Please re-enter your password*</i></span
                         >
                         <span
-                          class="sp"
                           *ngIf="
                             signupForm.controls['cPassword'].touched &&
                             signupForm.hasError('minlength', 'cPassword')
@@ -188,7 +174,6 @@
                           ><i class="errorMsg">*Password is too short*</i></span
                         >
                         <span
-                          class="sp"
                           *ngIf="
                             signupForm.controls['cPassword'].touched &&
                             signupForm.hasError('maxlength', 'cPassword')
@@ -221,7 +206,6 @@
                       </div>
                       <div>
                         <span
-                          class="sp"
                           *ngIf="
                             signupForm.controls['passportNo'].touched &&
                             signupForm.hasError('required', 'passportNo')
@@ -229,28 +213,27 @@
                           ><i class="errorMsg">Please enter your passport number</i></span
                         >
                         <span
-                          class="sp errorMsg"
                           *ngIf="
                             signupForm.controls['passportNo'].touched &&
                             signupForm.hasError('pattern', 'passportNo')
                           "
-                          >Invalid passport number</span
+                          ><i class="errorMsg">Invalid passport number</i></span
                         >
                         <span
-                          class="sp errorMsg"
+                         
                           *ngIf="
                             signupForm.controls['passportNo'].touched &&
                             signupForm.hasError('minlength', 'passportNo')
                           "
-                          >*Passport number should be 8 characters</span
+                          ><i class="errorMsg">*Passport number should be 8 characters</i></span
                         >
                         <span
-                          class="sp errorMsg"
+                          
                           *ngIf="
                             signupForm.controls['passportNo'].touched &&
                             signupForm.hasError('maxlength', 'passportNo')
                           "
-                          >*Passport number should be 8 characters*</span
+                          ><i class="errorMsg">*Passport number should be 8 characters*</i></span
                         >
                       </div>
                     </div>
@@ -266,7 +249,6 @@
                       </div>
                       <div>
                         <span
-                          class="sp"
                           *ngIf="
                             signupForm.controls['phone'].touched &&
                             signupForm.hasError('required', 'phone')
@@ -274,7 +256,6 @@
                           ><i  class="errorMsg">Please enter your phone number</i></span
                         >
                         <span
-                          class="sp"
                           *ngIf="
                             signupForm.controls['phone'].touched &&
                             signupForm.hasError('minlength', 'phone')
@@ -282,7 +263,6 @@
                           ><i  class="errorMsg">*phone number should be 10 characters*</i></span
                         >
                         <span
-                          class="sp"
                           *ngIf="
                             signupForm.controls['phone'].touched &&
                             signupForm.hasError('maxlength', 'phone')
@@ -290,7 +270,6 @@
                           ><i  class="errorMsg">*phone number should be 10 characters*</i></span
                         >
                         <span
-                          class="sp"
                           *ngIf="
                             signupForm.controls['phone'].touched &&
                             signupForm.hasError('pattern', 'phone')
@@ -314,7 +293,6 @@
                       </div>
                       <div>
                         <span
-                          class="sp"
                           *ngIf="
                             signupForm.controls['address'].touched &&
                             signupForm.hasError('required', 'address')
@@ -335,7 +313,6 @@
                       </div>
                       <div>
                         <span
-                          class="sp"
                           *ngIf="
                             signupForm.controls['city'].touched &&
                             signupForm.hasError('required', 'city')
@@ -361,7 +338,6 @@
                       </select>
                       <div>
                         <span
-                          id="sp"
                           *ngIf="
                             signupForm.controls['country'].touched &&
                             signupForm.hasError('required', 'country')

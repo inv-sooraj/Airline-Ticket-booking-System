@@ -73,17 +73,12 @@ export class LoginComponent implements OnInit {
       };
       this.apiservice.login(param).subscribe({
         next: (result: any) => {
-          console.log(result)
           this.listData = result.values.loginResponse.accessToken.value;
           this.role = result.values.loginResponse.role;
-          console.log(typeof this.role)
           this.userid = result.values.loginResponse.userId;
           localStorage.setItem("accessToken", this.listData);
           localStorage.setItem("Role", this.role);
           localStorage.setItem("userid", this.userid);
-          console.log("Role =", this.role);
-          console.log("access token =" + localStorage.getItem("accessToken"));
-          console.log("user id = "+localStorage.getItem("userid"));
           this.status = true;
           switch (this.role) {
             /**For admin */
@@ -118,6 +113,8 @@ export class LoginComponent implements OnInit {
               this.alertservice.showError("Password Doesn't Match", "Error");
               break;
           }
+
+        
         },
       });
     } else {

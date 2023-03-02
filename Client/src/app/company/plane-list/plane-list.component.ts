@@ -48,11 +48,9 @@ export class PlaneListComponent implements OnInit {
 
     if (e.target.checked) {
       this.website.push(e.target.value);
-      console.log("Arrayyyy " + this.website);
     } else {
       const index = this.website.indexOf(e.target.value);
       this.website.splice(index, 1);
-      console.log("Array after unchecked", this.website);
     }
   }
 
@@ -72,10 +70,6 @@ export class PlaneListComponent implements OnInit {
       });
   }
 
-  /**For fetching airplane details based on  a spacific company id */
-
-  
-
   /**To get company name from the user table */
 
   getCompanyName() {
@@ -84,7 +78,6 @@ export class PlaneListComponent implements OnInit {
         this.Company = response;
       },
       error: (err: any) => {
-        // this.alertservice.showError("Couldnt fetch company details", "error");
       },
       complete: () => {},
     });
@@ -97,10 +90,8 @@ export class PlaneListComponent implements OnInit {
       this.apiservice.getAirPlane().subscribe({
         next: (response: any) => {
           this.items = response;
-          console.log(this.items);
         },
         error: (err: any) => {
-          // this.alertservice.showError("Failed to load airplane data", "Error");
         },
         complete: () => {},
       });
@@ -108,10 +99,8 @@ export class PlaneListComponent implements OnInit {
       this.apiservice.getPlaneByCompany(this.userid).subscribe({
         next: (response: any) => {
           this.items = response;
-          console.log("airplane by  company", this.items);
         },
         error: (err: any) => {
-          // this.alertservice.showError("Failed to load airplane data", "Error");
         },
         complete: () => {},
       });

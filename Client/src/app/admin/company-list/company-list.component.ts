@@ -27,7 +27,6 @@ export class CompanyListComponent implements OnInit {
     this.apiservice.getCompany().subscribe({
       next: (response: any) => {
         this.Company = response;
-        console.log("Company details",this.Company);
         
       },
       error: (err: any) => {
@@ -40,11 +39,9 @@ export class CompanyListComponent implements OnInit {
 
     if (e.target.checked) {
       this.companyIds.push(e.target.value);
-      console.log("Arrayyyy " + this.companyIds);
     } else {
       const index = this.companyIds.indexOf(e.target.value);
       this.companyIds.splice(index, 1);
-      console.log("Array after unchecked", this.companyIds);
     }
   }
   deleteData() {

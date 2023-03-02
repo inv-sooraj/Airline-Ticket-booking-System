@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
-import { AlertService } from 'src/app/alert.service';
-import { ApiService } from 'src/app/api.service';
+import { Component, OnInit } from "@angular/core";
+import { FormGroup, FormBuilder } from "@angular/forms";
+import { AlertService } from "src/app/alert.service";
+import { ApiService } from "src/app/api.service";
 
 @Component({
-  selector: 'app-flight-list-company',
-  templateUrl: './flight-list-company.component.html',
-  styleUrls: ['./flight-list-company.component.css']
+  selector: "app-flight-list-company",
+  templateUrl: "./flight-list-company.component.html",
+  styleUrls: ["./flight-list-company.component.css"],
 })
 export class FlightListCompanyComponent implements OnInit {
-
   FlightListForm!: FormGroup;
   searchText: any;
   itemName: any;
@@ -42,33 +41,30 @@ export class FlightListCompanyComponent implements OnInit {
   /**For storing the id of selected airplanes in formarray */
 
   onCheckboxChange(e: any) {
-
     if (e.target.checked) {
       this.website.push(e.target.value);
-      console.log("Arrayyyy " + this.website);
     } else {
       const index = this.website.indexOf(e.target.value);
       this.website.splice(index, 1);
-      console.log("Array after unchecked", this.website);
     }
   }
 
   /**For selecting company from dropdown list(for admin only) */
 
   changeCompany() {
-    this.apiservice.getFlightByCompany(this.FlightListForm.value.company).subscribe({
-      next: (response: any) => {
-        this.items = response;
-        console.log("flight by  company", this.items);
-      },
-      error: (err: any) => {
-        this.alertservice.showError("Failed to load flight data", "Error");
-      },
-      complete: () => {},
-    });
+    this.apiservice
+      .getFlightByCompany(this.FlightListForm.value.company)
+      .subscribe({
+        next: (response: any) => {
+          this.items = response;
+        },
+        error: (err: any) => {
+          this.alertservice.showError("Failed to load flight data", "Error");
+        },
+        complete: () => {},
+      });
   }
 
-  
   ngOnInit(): void {
     this.getFlight();
     this.getCompanyName();
@@ -82,7 +78,8 @@ export class FlightListCompanyComponent implements OnInit {
         this.Company = response;
       },
       error: (err: any) => {
-        this.alertservice.showError("Couldnt fetch company details", "error");
+        console.log(err);
+        
       },
       complete: () => {},
     });
@@ -96,7 +93,6 @@ export class FlightListCompanyComponent implements OnInit {
       this.apiservice.getAllFlight().subscribe({
         next: (response: any) => {
           this.items = response;
-          console.log(this.items);
         },
         error: (err: any) => {
           this.alertservice.showError("Failed to load flight data", "Error");
@@ -108,7 +104,6 @@ export class FlightListCompanyComponent implements OnInit {
       this.apiservice.getFlightByCompany(this.userid).subscribe({
         next: (response: any) => {
           this.items = response;
-          console.log("flight by  company", this.items);
         },
         error: (err: any) => {
           this.alertservice.showError("Failed to load flight data", "Error");
@@ -136,4 +131,3 @@ export class FlightListCompanyComponent implements OnInit {
     });
   }
 }
-
