@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-header></app-header> 
 <div class="subheader normal-bg section-padding">
   <div class="container">
     <div class="row">
@@ -152,7 +152,7 @@
                                               <span class="errorMsg">Please enter only numbers</span>
                                             </div>
                                             <div *ngIf="seatsFormArray.controls[i]?.get('quantity')?.errors?.['max']">
-                                              <span class="errorMsg">Greater Than {{selectedSeatQuantity}}</span>
+                                              <span class="errorMsg">Only  {{selectedSeatQuantity}} seats available</span>
                                             </div>
                                           </div></div>
                                       </div>

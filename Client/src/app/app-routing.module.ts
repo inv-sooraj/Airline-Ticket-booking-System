@@ -121,7 +121,7 @@ const routes: Routes = [
     data: { allowedRoles: [1, 2] },
   },
   {
-    path: "cancelled-list",
+    path: "pending-list",
     component: CancelledReservationListComponent,
     canActivate: [AuthGuard],
     data: { allowedRoles: [1, 2] },
