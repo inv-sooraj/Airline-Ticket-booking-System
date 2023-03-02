@@ -61,11 +61,11 @@ export class FlightRegComponent implements OnInit {
   }
   newData(): FormGroup {
     return this.formbuilder.group({
-      seatType: ["", Validators.required],
+      seatType: ["", [Validators.required]],
 
-      number: ["", Validators.required],
+      number: ["", [Validators.required]],
 
-      price: ["", Validators.required],
+      price: ["", [Validators.required]],
     });
   }
   //Method to add flight details

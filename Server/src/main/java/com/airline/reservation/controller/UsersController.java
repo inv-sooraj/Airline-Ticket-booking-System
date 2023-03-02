@@ -30,6 +30,9 @@ public class UsersController {
 
     @Autowired
     private UserService userService;
+    
+//    @Autowired(required = false)
+//    private User user;
 
     @PostMapping("/{email}")
     @ResponseBody
@@ -106,5 +109,9 @@ public class UsersController {
     @GetMapping("/getCurrentUserId")
     public Integer getCurrent(){
         return userService.getCurrent();
+    }
+     @PostMapping("/sendemail/{email}/{password}")
+    public void send(@PathVariable("email") String email,@PathVariable("password") String password) {		
+			userService.sendEmail(email,password);		
     }
 }
