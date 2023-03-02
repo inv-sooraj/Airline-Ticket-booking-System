@@ -48,6 +48,10 @@ private SeatService seatService;
     public Integer getPrice(@PathVariable Integer seatId){
         return seatService.getPrice(seatId);
     }
+    @GetMapping("/getQuantity/{seatId}")
+    public Integer getQuantity(@PathVariable Integer seatId){
+        return seatService.getQuantity(seatId);
+    }
     
     @GetMapping("/getSeatById/{seatId}")
     Optional <Seat> getSeatById(@PathVariable Integer seatId){

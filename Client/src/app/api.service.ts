@@ -7,6 +7,9 @@ import { environment } from "src/environments/environment";
   providedIn: "root",
 })
 export class ApiService {
+  getSeatNumber(seatId: any) {
+    return this.httpClient.get(this.baseUrl + "/seat/getQuantity/" + seatId);
+  }
   addBooking(param: any) {
     return this.httpClient.post(this.baseUrl + "/bookings/addBooking", param);
   }

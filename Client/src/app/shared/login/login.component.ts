@@ -102,7 +102,19 @@ export class LoginComponent implements OnInit {
         },
         error: (err: any) => {
           this.status = false;
-          this.alertservice.showError("Login Failed", "Error");
+          switch (err.error.errors[0].code) {
+            case "1020":
+              this.alertservice.showError(
+                "Email Doesn't Exist",
+                "Error"
+              );
+              break;
+            case "1021":
+              this.alertservice.showError("Password Doesn't Match", "Error");
+              break;
+          }
+
+        
         },
       });
     } else {

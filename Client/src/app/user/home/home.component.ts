@@ -26,8 +26,9 @@ baseUrl = environment.baseUrl;
   }
 
   ngOnInit(): void {
-this.getRandomFlight();
+
     this.today = new Date().toISOString().split('T')[0];
+    this.getRandomFlight();
   }
   isBeforeToday() {
     const selectedDate = new Date(this.searchForm.value.myDate);
