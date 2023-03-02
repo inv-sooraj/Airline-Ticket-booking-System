@@ -74,9 +74,13 @@ export class LoginComponent implements OnInit {
       this.apiservice.login(param).subscribe({
         next: (result: any) => {
           this.listData = result.values.loginResponse.accessToken.value;
+          
+          localStorage.setItem("accessToken", this.listData);
+          console.log("ACCESS TOKEN set= ",localStorage.getItem("accessToken"));
           this.role = result.values.loginResponse.role;
           this.userid = result.values.loginResponse.userId;
           localStorage.setItem("accessToken", this.listData);
+          console.log("ACCESS TOKEN AFTER LOGIN =",this.listData)
           localStorage.setItem("Role", this.role);
           localStorage.setItem("userid", this.userid);
           this.status = true;
