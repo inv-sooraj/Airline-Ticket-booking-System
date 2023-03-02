@@ -45,6 +45,7 @@ export class CancelledReservationListComponent {
     this.bookingService.getPending(this.userId).subscribe({
       next: (response: any) => {
         this.items = response;
+        console.log(this.items)
       },
       error: (err: any) => {
         this.alertservice.showError(

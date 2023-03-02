@@ -92,6 +92,12 @@
                           Pending
                         </td>
                         <td
+                          *ngIf="bookings.status == 3"
+                          style="color: orangered"
+                        >
+                          Cancelled
+                        </td>
+                        <td
                           *ngIf="bookings.status == 0"
                           style="color: rgb(126, 19, 19)"
                         >
