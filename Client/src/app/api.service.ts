@@ -95,7 +95,7 @@ export class ApiService {
   /** Method to create plane */
 
   createPlane(userForm: any) {
-    return this.httpClient.post(this.baseUrl + "/" + "airplane", userForm,this.getHeader());
+    return this.httpClient.post(this.baseUrl + "/" + "airplane", userForm);
   }
 
   /** Method to create flight */
