@@ -156,16 +156,20 @@
                                             </div>
                                           </div></div>
                                       </div>
-                                      <div class="col-lg-1 col-md-6">
-                                        <label class="submit"></label>
+                                      <div class="col-lg-1 col-md-3">
+                                      <label class="submit"></label>
                                         <button [disabled]="myForm.invalid" (click)="addOption()" class="btn-first btn-submit full-width btn-height">+</button>
                                       </div>
-                                      <div class="col-lg-1 col-md-6">
+                                      <div class="col-lg-1 col-md-3">
                                         <label class="submit"></label>
                                         <button (click)="removeOption(i)" class="btn-first btn-submit full-width btn-height"  [disabled]="seatsFormArray.length == 1"  >-</button>
                                       </div>
                                     </div>
+                                    <div class="row p-2">
+                                      <div class="col-12">
+                                        <label class="submit"></label>
                                     <button  [disabled]="myForm.invalid" (click)="onSubmit()" type="submit" class="btn-first btn-submit full-width btn-height">Checkout</button>
+                                  </div></div>
                                   </div>
                                 </form>
                                 
