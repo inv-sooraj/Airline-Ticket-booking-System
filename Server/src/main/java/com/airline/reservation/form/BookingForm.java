@@ -8,10 +8,28 @@ public class BookingForm {
     private Integer userId;
 
     private Integer flightId;
+    private Integer price;
+    private Integer quantity;
 
     private Integer seatId;
 
     private String cancellation;
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
 
     private byte status = 1;
     private List<BookingRequest> bookingRequests;
@@ -27,6 +45,20 @@ public class BookingForm {
         private int userId;
         private int flightId;
         private int seatId;
+        private int price;
+        private int quantity;
+        public int getPrice() {
+            return price;
+        }
+        public void setPrice(int price) {
+            this.price = price;
+        }
+        public int getQuantity() {
+            return quantity;
+        }
+        public void setQuantity(int quantity) {
+            this.quantity = quantity;
+        }
         private int status=1;
         public int getUserId() {
             return userId;

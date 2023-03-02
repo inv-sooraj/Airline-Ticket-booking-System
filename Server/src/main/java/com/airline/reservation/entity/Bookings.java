@@ -26,6 +26,10 @@ public class Bookings {
     private Seat seat;
     @Column(nullable = true)
     private String cancellation;
+    @Column(nullable=false)
+    private Integer price;
+    @Column(nullable=false)
+    private Integer quantity;
     @Column(nullable = false)
     private byte status = 2;
     @Column(nullable = false)
@@ -39,6 +43,8 @@ public class Bookings {
     public Bookings(BookingForm form, String cancellation) {
         this.user = new User(form.getUserId());
         this.seat = new Seat(form.getSeatId());
+        this.price=form.getPrice();
+        this.quantity=form.getQuantity();
         this.flight = new Flight(form.getFlightId());
         this.cancellation = cancellation;
         Date dt = new Date();
