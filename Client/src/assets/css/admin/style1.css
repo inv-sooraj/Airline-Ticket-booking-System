@@ -2404,7 +2404,8 @@ p a:hover {
     text-transform: capitalize;
     font-size: 14px;
     font-weight: 400;
-    border-radius: 30px;
+    border-radius: 8px;
+    margin-left: 8px;
     white-space: nowrap;
     -webkit-transition: .5s;
     transition: .5s;
@@ -3744,7 +3745,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child::before {
 .serach_field_2 .search_inner input::placeholder {
     font-size: 13px;
     font-weight: 300;
-    color: #7e7172
+    color: rgb(0, 0, 0)
 }
 
 .serach_field_2 .search_inner input:focus {

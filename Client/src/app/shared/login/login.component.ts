@@ -74,9 +74,13 @@ export class LoginComponent implements OnInit {
       this.apiservice.login(param).subscribe({
         next: (result: any) => {
           this.listData = result.values.loginResponse.accessToken.value;
+          
+          localStorage.setItem("accessToken", this.listData);
+          console.log("ACCESS TOKEN set= ",localStorage.getItem("accessToken"));
           this.role = result.values.loginResponse.role;
           this.userid = result.values.loginResponse.userId;
           localStorage.setItem("accessToken", this.listData);
+          console.log("ACCESS TOKEN AFTER LOGIN =",this.listData)
           localStorage.setItem("Role", this.role);
           localStorage.setItem("userid", this.userid);
           this.status = true;
@@ -102,7 +106,19 @@ export class LoginComponent implements OnInit {
         },
         error: (err: any) => {
           this.status = false;
-          this.alertservice.showError("Login Failed", "Error");
+          switch (err.error.errors[0].code) {
+            case "1020":
+              this.alertservice.showError(
+                "Email Doesn't Exist",
+                "Error"
+              );
+              break;
+            case "1021":
+              this.alertservice.showError("Password Doesn't Match", "Error");
+              break;
+          }
+
+        
         },
       });
     } else {

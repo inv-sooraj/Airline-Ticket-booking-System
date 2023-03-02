@@ -20,5 +20,9 @@ element {
 
 margin-left: 350%;
 
+
 }
+::placeholder {
+    color: #000000;
+  }
 

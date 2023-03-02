@@ -85,7 +85,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body" >
+      <div class="modal-body" *ngIf="item">
         <div class="container">
           <div class="row">
             <div class="col-12">
@@ -129,7 +129,8 @@
                                               >
                                               <br /><span
                                                 class="text-light-dark"
-                                                >Total : 6000
+                                                >₹ PRICE : {{
+                                                  item.seat.price}}
                                               </span>
                                             </h4>
                                           </div>
@@ -232,6 +233,22 @@
                                           Seat Class: </label
                                         >{{
                                           item.seat.seatType}}
+                                      </li>
+                                      <li class="text-light-dark">
+                                        <label
+                                          class="no-margin text-custom-blue"
+                                        >
+                                          Seat Quantity: </label
+                                        >{{
+                                          item.seat.number}}
+                                      </li>
+                                      <li class="text-light-dark">
+                                        <label
+                                          class="no-margin text-custom-blue"
+                                        >
+                                          Price : </label
+                                        >{{
+                                          item.seat.price}}
                                       </li>
                                     </ul>
                                   </div>
