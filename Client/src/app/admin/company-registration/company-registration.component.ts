@@ -16,6 +16,8 @@ export class CompanyRegistrationComponent implements OnInit {
   status: any = false;
   password = "";
   flag: any;
+  CompanyEmail:any;
+  CompanyPassword:any;
   constructor(
     private service: ApiService,
     public router: Router,
@@ -56,14 +58,27 @@ export class CompanyRegistrationComponent implements OnInit {
     });
   }
   public generatePassword() {
-    this.password = Math.random().toString(22).slice(6);
-    this.companyreg.controls["password"].setValue(this.password);
+
+      var length = 10,
+          charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@!#$%^",
+          retVal = "";
+          let charSet="A@10"
+      for (var i = 0, n = charset.length; i < length; ++i) {
+          retVal += charset.charAt(Math.floor(Math.random() * n));
+      }
+        console.log("before concat",retVal);
+          this.password=retVal+charSet;
+          console.log("After concat",this.password);
+     this.companyreg.controls["password"].setValue(this.password);
+
+
   }
   cancel() {
     this.companyreg.reset();
   }
   CompanyReg() {
     if (this.companyreg.valid) {
+      this.generatePassword();
       {
         let param = {
           fullName: this.companyreg.controls["fullName"].value,
@@ -73,16 +88,18 @@ export class CompanyRegistrationComponent implements OnInit {
           password: this.companyreg.controls["password"].value,
           role: 2,
         };
-        this.generatePassword();
+        console.log("Parameters",param);
         this.service.createCompany(param).subscribe({
           next: (result: any) => {
             this.toaster.success("Created successfully", "");
+            this. emailSend();
             this.router.navigate(["/company-list"]);
           },
           error: (err: any) => {
             this.toaster.error(err.error.error);
           },
         });
+
       }
     } else {
       this.alertservice.showError(
@@ -90,5 +107,21 @@ export class CompanyRegistrationComponent implements OnInit {
         "Invalid form"
       );
     }
+// send the generated password to the company mail id
+    
+  }
+  emailSend(){
+   
+      this.CompanyEmail = this.companyreg.controls["email"].value,
+      this.CompanyPassword = this.companyreg.controls["password"].value
+    
+    this.service.sendEmail( this.CompanyEmail, this.CompanyPassword).subscribe({
+      next: (result: any) => {
+        
+      },
+      error: (err: any) => {
+        
+      },
+    });
   }
 }

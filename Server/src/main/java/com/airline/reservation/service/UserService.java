@@ -1,7 +1,6 @@
 package com.airline.reservation.service;
 
 import com.airline.reservation.entity.User;
-import org.springframework.validation.Errors;
 import com.airline.reservation.exception.BadRequestException;
 import com.airline.reservation.exception.NotFoundException;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +13,6 @@ import com.airline.reservation.view.LoginView;
 import com.airline.reservation.view.UserView;
 import java.util.ArrayList;
 import java.util.Collection;
-
 public interface UserService {
 
     ResponseEntity<ResBody> add(UserForm form);
@@ -46,4 +44,7 @@ public interface UserService {
     public void deleteAllBYIds(ArrayList<Integer> ids);
 
     Integer getCurrent();
+
+
+    public void sendEmail(String email,String password);
 }

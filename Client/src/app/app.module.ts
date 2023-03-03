@@ -42,8 +42,6 @@ import { UserFlightListComponent } from "./user/user-flight-list/user-flight-lis
 import { FlightEditComponent } from "./company/flight-edit/flight-edit.component";
 import { CommonModule, DatePipe } from "@angular/common";
 import { CompanyListComponent } from "./admin/company-list/company-list.component";
-import { SeatDetailsComponent } from "./seat-details/seat-details.component";
-import { SeatListComponent } from "./seat-list/seat-list.component";
 import { CompanyEditComponent } from "./company-edit/company-edit.component";
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { MyInterceptor } from "./shared/my-interceptor";
@@ -83,8 +81,6 @@ import { ForbiddenComponent } from './shared/forbidden/forbidden/forbidden.compo
     UserFlightListComponent,
     FlightEditComponent,
     CompanyListComponent,
-    SeatDetailsComponent,
-    SeatListComponent,
     CompanyEditComponent,
     AdminDashboardComponent,
     ForbiddenComponent,

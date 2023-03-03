@@ -25,13 +25,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.Errors;
 import static com.airline.reservation.security.AccessTokenUserDetailsService.PURPOSE_ACCESS_TOKEN;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Optional;
 import org.springframework.transaction.annotation.Transactional;
 import javax.validation.Valid;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -45,7 +46,12 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
     @Autowired
     private TokenGenerator tokenGenerator;
-
+  
+    private final JavaMailSender javaMailSender;
+    @Autowired
+	public UserServiceImpl(JavaMailSender javaMailSender) {
+		this.javaMailSender = javaMailSender;
+	}
     //email existing check
     public Boolean emailCheck(String email) {
 
@@ -239,4 +245,17 @@ public class UserServiceImpl implements UserService {
         System.out.println(SecurityUtil.getCurrentUserId());
         return SecurityUtil.getCurrentUserId();
     }
+
+
+@Override
+public void sendEmail(String email,String password) {
+		SimpleMailMessage mail = new SimpleMailMessage();
+		mail.setTo(email);
+                mail.setFrom("mimitan605@gmail.com");
+		mail.setSubject("Login password");
+		mail.setText("Your login password is :"+password);
+		javaMailSender.send(mail);
 }
+}
+
+

@@ -197,7 +197,7 @@ export class ApiService {
     console.log("Form Data" + requestbody);
     return this.httpClient.put(
       this.baseUrl + "/" + "users" + "/" + "changePwd",
-      requestbody
+      requestbody,this.getHeader()
     );
   }
 
@@ -263,5 +263,10 @@ export class ApiService {
       this.baseUrl + "/company/" + companyId,
       companyEditform
     );
+  }
+  sendEmail( email:any, password:any){
+    return this.httpClient.post(
+      this.baseUrl + "/users/sendemail/"+email+"/"+
+      password,this.getHeader());
   }
 }
