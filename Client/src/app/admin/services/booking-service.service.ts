@@ -6,6 +6,7 @@ import { environment } from "src/environments/environment";
   providedIn: "root",
 })
 export class BookingServiceService {
+
   baseUrl: any;
   constructor(private http: HttpClient) {
     this.DownloadURL = "http://localhost:9091/bookings/download";
@@ -57,9 +58,12 @@ export class BookingServiceService {
     return this.http.get(this.baseUrl + "/getByCompany/1");
   }
   getPending(userId:any) {
-
+console.log(this.http.get(this.baseUrl + '/getCancelled/2/1/'+userId))
     return this.http.get(this.baseUrl + '/getCancelled/2/1/'+userId);
-     
-     
      }
+     getAllPending() {
+      
+      
+      return this.http.get(this.baseUrl + '/getAllCancelled/2/1');
+    }
 }

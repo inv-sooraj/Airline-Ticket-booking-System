@@ -19,9 +19,10 @@ public class CSVHelper {
             ) {
               csvPrinter.printRecord("Booking ID"	,"Flight Number"	,"Departing From	","Destination",	"Status"	);
               for (Bookings tutorial : tutorials) {
-                String statusStr = (tutorial.getStatus() == 1) ? "approved" :
-                                   (tutorial.getStatus() == 2) ? "pending" :
-                                   (tutorial.getStatus() == 3) ? "cancelled" : "";
+                String statusStr = (tutorial.getStatus() == 0) ? "Rejected" :
+                                   (tutorial.getStatus() == 1) ? "Approved" :
+                                   (tutorial.getStatus() == 2) ? "Pending" :
+                                   (tutorial.getStatus() == 3) ? "Cancelled" : "";
                 List<String> data = Arrays.asList(   
                     String.valueOf(tutorial.getUser().getUserId()),
                     tutorial.getFlight().getFlightNumber(),

@@ -1,87 +1,153 @@
 <nav class="sidebar dark_sidebar">
-    <div class="logo d-flex justify-content-between">
-      <div class="sidebar_close_icon d-lg-none">
-        <i class="ti-close"></i>
-      </div>
-    </div>
-    <ul id="sidebar_menu">
-      <li class="">
-        <a class="has-arrow" aria-expanded="false">
-          <div class="nav_icon_small">
-            <img src="/assets/img/menu-icon/map.svg" alt="" />
-          </div>
-          <div class="nav_title">
-            <span id="navtitle">Airplane</span>
-          </div>
-        </a>
-        <ul>
-          <li><a [routerLink]="['/plane-reg']">Registration</a></li>
-          <li><a [routerLink]="['/plane-list']">Airplane Details</a></li>
-        </ul>
-      </li>
-    </ul>
-    <ul id="sidebar_menu">
-      <li class="">
-        <a class="has-arrow" href="#" aria-expanded="false">
-          <div class="nav_icon_small">
-            <img src="/assets/img/menu-icon/18.svg" alt="" />
-          </div>
-          <div class="nav_title">
-            <span id="navtitle">Flights</span>
-          </div>
-        </a>
-        <ul>
-          <li><a [routerLink]="['/flight-reg']">Register</a></li>
-          <li><a [routerLink]="['/flight-list']">Flight Details</a></li>
-        </ul>
-      </li>
-    </ul>
-    <ul id="sidebar_menu">
-      <li class="">
-        <a class="has-arrow" href="#" aria-expanded="false">
-          <div class="nav_icon_small">
-            <img src="/assets/img/menu-icon/16.svg" alt="" />
-          </div>
-          <div class="nav_title">
-            <span id="navtitle" [routerLink]="['/reservation-list']"
-              >Reservation Details</span
-            >
-          </div>
-        </a>
-      </li>
-    </ul>
-  </nav>
-  <div class="container-fluid g-0">
-    <div class="row">
-      <div class="col-lg-12 p-0">
-        <div
-          class="header_iner d-flex justify-content-between align-items-center"
-        >
-          <div class="sidebar_icon d-lg-none">
-            <i class="ti-menu"></i>
-          </div>
-          <div
-            class="header_right d-flex justify-content-between align-items-center"
-          >
-            <div class="header_notification_warp d-flex align-items-center"></div>
-          </div>
-          <div class="profile_info d-flex align-items-center">
-            <div class="profile_thumb mr_20"></div>
-            <div class="author_name">
-              <button class="btn"><i class="fa fa-bars"></i></button>
-            </div>
-            <div class="profile_info_iner">
-              <div class="profile_author_name">
-                <h5>Settings<i class="bi bi-gear"></i></h5>
-              </div>
-              <div class="profile_info_details">
-                <a [routerLink]="['/profile']">My Profile </a>
-                <a [routerLink]="['/change-pass']">Change Password</a>
-                <a (click)="logOut()">Log Out </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+  <div class="logo d-flex justify-content-between">
+    <a class="large_logo">
+      <h4 [routerLink]="['/admin-dashboard']" style="color: antiquewhite">Airline Ticket Booking</h4>
+    </a>
+    <a class="small_logo"
+      ><img src="/assets/img/mini_logo.png" alt=""
+    /></a>
+    <div class="sidebar_close_icon d-lg-none">
+      <i class="ti-close"></i>
     </div>
   </div>
+  <ul id="sidebar_menu"  >
+    <li class="" *ngIf="userRole==2">
+      <a [routerLink]="['/plane-reg']" aria-expanded="false">
+        <div class="nav_icon_small">
+          <i class="fa fa-plane" style="font-size: 24px"></i>
+        </div>
+        <div class="nav_title">
+          <span>Airplane Registration</span>
+        </div>
+      </a>
+    </li>
+    <li class="" *ngIf="userRole==2">
+      <a [routerLink]="['/flight-reg']" aria-expanded="false">
+        <div class="nav_icon_small">
+          <i class="fa fa-plane" style="font-size: 24px"></i>
+        </div>
+        <div class="nav_title">
+          <span>Flight Registration</span>
+        </div>
+      </a>
+    </li>
+    <li class="" *ngIf="userRole==2 ||userRole==1">
+      <a [routerLink]="['/plane-list']" aria-expanded="false">
+        <div class="nav_icon_small">
+          <i class="fa fa-plane" style="font-size: 24px"></i>
+        </div>
+        <div class="nav_title">
+          <span>Airplane List</span>
+        </div>
+      </a>
+    </li>
+    <li class="" *ngIf="userRole==1">
+      <a [routerLink]="['/companyreg']" aria-expanded="false">
+        <div class="nav_icon_small">
+          <i class="fas fa-building" style="font-size: 24px"></i>
+        </div>
+        <div class="nav_title">
+          <span>Company Registration</span>
+        </div>
+      </a>
+    </li>
+    <li class="" *ngIf="userRole==1">
+      <a [routerLink]="['/company-list']" aria-expanded="false">
+        <div class="nav_icon_small">
+          <i class="fas fa-city" style="font-size: 24px"></i>
+        </div>
+        <div class="nav_title">
+          <span>Company List</span>
+        </div>
+      </a>
+    </li>
+    <li class="" *ngIf="userRole==1">
+      <a [routerLink]="['/user-list']" aria-expanded="false">
+        <div class="nav_icon_small">
+          <i class="fas fa-chalkboard-teacher" style="font-size: 24px"></i>
+        </div>
+        <div class="nav_title">
+          <span>Registered Users</span>
+        </div>
+      </a>
+    </li>
+    <li class="" *ngIf="userRole==1 ||userRole==2 ">
+      <a [routerLink]="['/pending-list']" aria-expanded="false">
+        <div class="nav_icon_small">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/2140/2140667.png"
+            alt=""
+            style="background-color: white; font-size: 24px"
+          />
+        </div>
+        <div class="nav_title">
+          <span>Pending Reservation List</span>
+        </div>
+      </a>
+    </li>
+    <li *ngIf="userRole==1 ||userRole==2 " class="">
+      <a  [routerLink]="['/reservation-list']" aria-expanded="false">
+        <div class="nav_icon_small">
+          <i class="far fa-list-alt" style="font-size: 24px"></i>
+        </div>
+        <div class="nav_title">
+          <span>Reservation List</span>
+        </div>
+      </a>
+    </li>
+    <li class=""  *ngIf="userRole==1">
+      <a [routerLink]="['/plane-list']" aria-expanded="false">
+        <div class="nav_icon_small">
+          <i class="fa fa-plane" style="font-size: 24px"></i>
+        </div>
+        <div class="nav_title">
+          <span>Aeroplane List</span>
+        </div>
+      </a>
+    </li>
+    <li class=""  *ngIf="userRole==1 ||userRole==2 "  >
+      <a [routerLink]="['/flight-list']" aria-expanded="false">
+        <div class="nav_icon_small">
+          <i class="fas fa-fighter-jet" style="font-size: 24px"></i>
+        </div>
+        <div class="nav_title">
+          <span>Flight List</span>
+        </div>
+      </a>
+    </li>
+  </ul>
+</nav><div class="container-fluid g-0">
+    <div class="row">
+        <div class="col-lg-12 p-0">
+            <div class="header_iner d-flex justify-content-between align-items-center">
+                <div class="sidebar_icon d-lg-none">
+                    <i class="ti-menu"></i>
+                </div>
+                <div class="line_icon open_miniSide d-none d-lg-block">
+                    <img src="/assets/img/line_img.png" alt="" />
+                </div>
+                <div class="header_right d-flex justify-content-between align-items-center">
+                    <div class="profile_info d-flex align-items-center">
+                        <div class="profile_thumb mr_20">
+                            <img src="/assets/img/transfer/4.png" alt="#" />
+                        </div>
+                        <div class="author_name">
+                            <p class="f_s_12 f_w_400" *ngIf="userRole==1">Admin</p>
+                            <p class="f_s_12 f_w_400" *ngIf="userRole==2">Company</p>
+                        </div>
+                        <div class="profile_info_iner">
+                            <div class="profile_author_name">
+                                <p *ngIf="userRole==1">Admin</p>
+                                <p *ngIf="userRole==2">Company</p>
+                            </div>
+                            <div class="profile_info_details">
+                                
+                                <a (click)="logOut()">Log Out </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
