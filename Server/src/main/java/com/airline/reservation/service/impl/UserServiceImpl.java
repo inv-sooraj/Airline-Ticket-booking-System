@@ -234,7 +234,7 @@ public class UserServiceImpl implements UserService {
         body.getValues().put("108", "Deleted  user Successfully");
         return new ResponseEntity<>(body, HttpStatus.OK);
     }
-
+//multi delete all spacified user ids
     @Override
     public void deleteAllBYIds(ArrayList<Integer> ids) {
         userRepository.softDeleteAllIds(ids);
@@ -246,7 +246,7 @@ public class UserServiceImpl implements UserService {
         return SecurityUtil.getCurrentUserId();
     }
 
-
+//Method to send email to the spacified email id
 @Override
 public void sendEmail(String email,String password) {
 		SimpleMailMessage mail = new SimpleMailMessage();

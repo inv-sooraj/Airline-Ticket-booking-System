@@ -23,9 +23,9 @@
                                 <h5>Jiue Anderson</h5>
                             </div>
                             <div class="profile_info_details">
-                                <a href="#">My Profile </a>
-                                <a href="#">Settings</a>
-                                <a href="#">Log Out </a>
+                                <a [routerLink]="['/profile']">My Profile </a>
+                                <a [routerLink]="['/change-pass']">Change Password</a>
+                                <a (click)="logOut()">Log Out </a>
                             </div>
                         </div>
                     </div>

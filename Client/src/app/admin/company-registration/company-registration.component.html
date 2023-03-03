@@ -29,24 +29,12 @@
                 />
                 <div>
                   <span
-                    class="sp"
-                    style="color: brown"
                     *ngIf="
                       companyreg.controls['fullName'].touched &&
                       companyreg.hasError('required', 'fullName')
                     "
-                    ><i>Company name is mandatory*</i></span
+                    ><i class="sp">Please enter the company name</i></span
                   >
-                  <div *ngIf="flag == true">
-                    <span
-                      class="text-danger"
-                      *ngIf="
-                        companyreg.controls['fullName'].invalid ||
-                        companyreg.hasError('required', 'fullName')
-                      "
-                      ><i>Name required</i></span
-                    >
-                  </div>
                 </div>
               </div>
               <div class="mb-3">
@@ -61,24 +49,12 @@
                 />
                 <div>
                   <span
-                    class="sp"
-                    style="color: brown"
                     *ngIf="
                       companyreg.controls['phone'].touched &&
                       companyreg.hasError('required', 'phone')
                     "
-                    ><i>Phone number is mandatory*</i></span
+                    ><i class="sp">Please enter the phone number</i></span
                   >
-                  <div *ngIf="flag == true">
-                    <span
-                      class="text-danger"
-                      *ngIf="
-                        companyreg.controls['phone'].invalid ||
-                        companyreg.hasError('required', 'phone')
-                      "
-                      ><i>Contact Number required</i></span
-                    >
-                  </div>
                 </div>
               </div>
               <div class="mb-3">
@@ -92,24 +68,12 @@
                 ></textarea>
                 <div>
                   <span
-                    class="sp"
-                    style="color: brown"
                     *ngIf="
                       companyreg.controls['address'].touched &&
                       companyreg.hasError('required', 'address')
                     "
-                    ><i>Address field is mondatory*</i></span
+                    ><i class="sp">Please enter the address</i></span
                   >
-                  <div *ngIf="flag == true">
-                    <span
-                      class="text-danger"
-                      *ngIf="
-                        companyreg.controls['address'].invalid ||
-                        companyreg.hasError('required', 'address')
-                      "
-                      ><i>Company Address required</i></span
-                    >
-                  </div>
                 </div>
               </div>
               <div class="mb-3">
@@ -124,33 +88,19 @@
                 />
                 <div>
                   <span
-                    class="sp"
-                    style="color: brown"
                     *ngIf="
                       companyreg.controls['email'].touched &&
                       companyreg.hasError('required', 'email')
                     "
-                    ><i>Email field is mandatory*</i></span
+                    ><i class="sp">Please enter the email id</i></span
                   >
                   <span
-                    class="sp"
-                    style="color: brown"
                     *ngIf="
                       companyreg.controls['email'].touched &&
                       companyreg.hasError('pattern', 'email')
                     "
-                    ><i>*Invalid Format*</i></span
+                    ><i class="sp">*Invalid Email Format*</i></span
                   >
-                  <div *ngIf="flag == true">
-                    <span
-                      class="text-danger"
-                      *ngIf="
-                        companyreg.controls['email'].invalid ||
-                        companyreg.hasError('required', 'email')
-                      "
-                      ><i>Email required</i></span
-                    >
-                  </div>
                 </div>
               </div>
               <div class="mb-3">
