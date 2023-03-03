@@ -108,11 +108,17 @@ public ResponseEntity<Resource> getByStatus(@PathVariable byte status,@PathVaria
         return bookingService.findByUserUserIdAndDeleteFlag(flag);
     }
     
-    //To get cancelled booking details
+    //To get cancelled booking details by company
     
     @GetMapping("/getCancelled/{status}/{deleteFlag}/{flightId}")
     public List<Bookings> getCancelled(@PathVariable("status") Byte status,@PathVariable("deleteFlag") Byte deleteFlag,@PathVariable("flightId")Integer flightId) {
         return bookingService.findByStatus(status,deleteFlag,flightId);
+    }
+    //To get all cancelled booking 
+    
+    @GetMapping("/getAllCancelled/{status}/{deleteFlag}")
+    public List<Bookings> getAllCancelled(@PathVariable("status") Byte status,@PathVariable("deleteFlag") Byte deleteFlag) {
+        return bookingService.findByAllCancelled(status,deleteFlag);
     }
     
     //Get booking details of an id

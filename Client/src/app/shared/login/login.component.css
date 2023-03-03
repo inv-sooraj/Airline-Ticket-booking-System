@@ -1,5 +1,5 @@
 .sp{
-    color: rgb(216, 65, 65) !important;
+    color: rgb(183, 102, 102) !important;
 }
 button:disabled,
 button[disabled]{
@@ -7,4 +7,8 @@ button[disabled]{
   background-color: #cccccc;
   color: #666666;
   cursor: not-allowed! important;
+}
+a{
+  color: #ffffff ! important;
+  text-decoration: none! important;
 }

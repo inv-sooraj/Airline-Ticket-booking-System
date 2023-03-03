@@ -12,6 +12,7 @@ export class FlightListCompanyComponent implements OnInit {
   FlightListForm!: FormGroup;
   searchText: any;
   itemName: any;
+  Role:any
   website: any[] = [];
   items: any[] = [];
   Company: any;
@@ -31,7 +32,7 @@ export class FlightListCompanyComponent implements OnInit {
       company: [""],
       sel: this.formbuilder.array([]),
     });
-    this.role = localStorage.getItem("Role");
+    this.Role = localStorage.getItem("Role");
     this.userid = localStorage.getItem("userid");
     if (this.role == "1") {
       this.status = true;
@@ -66,6 +67,7 @@ export class FlightListCompanyComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  this.role=localStorage.getItem("Role");
     this.getFlight();
     this.getCompanyName();
   }

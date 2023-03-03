@@ -37,4 +37,6 @@ public interface BookingService {
     ResponseEntity<ResBody> cancelBooking(Integer bookingId, String reason,Byte status);
 
     void bookSeats(List<BookingForm> bookingForms);
+
+    List<Bookings> findByAllCancelled(Byte status, Byte deleteFlag);
 }
