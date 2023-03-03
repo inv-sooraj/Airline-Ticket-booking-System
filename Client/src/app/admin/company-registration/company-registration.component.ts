@@ -16,8 +16,8 @@ export class CompanyRegistrationComponent implements OnInit {
   status: any = false;
   password = "";
   flag: any;
-  CompanyEmail:any;
-  CompanyPassword:any;
+  CompanyEmail: any;
+  CompanyPassword: any;
   constructor(
     private service: ApiService,
     public router: Router,
@@ -57,28 +57,29 @@ export class CompanyRegistrationComponent implements OnInit {
       ]),
     });
   }
+
+  //method to generate random password
   public generatePassword() {
-
-      var length = 10,
-          charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@!#$%^",
-          retVal = "";
-          let charSet="A@10"
-      for (var i = 0, n = charset.length; i < length; ++i) {
-          retVal += charset.charAt(Math.floor(Math.random() * n));
-      }
-        console.log("before concat",retVal);
-          this.password=retVal+charSet;
-          console.log("After concat",this.password);
-     this.companyreg.controls["password"].setValue(this.password);
-
-
+    var length = 10,
+      charset =
+        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@!#$%^",
+      retVal = "";
+    let charSet = "A@10";
+    for (var i = 0, n = charset.length; i < length; ++i) {
+      retVal += charset.charAt(Math.floor(Math.random() * n));
+    }
+    console.log("before concat", retVal);
+    this.password = retVal + charSet;
+    console.log("After concat", this.password);
+    this.companyreg.controls["password"].setValue(this.password);
   }
   cancel() {
     this.companyreg.reset();
   }
+
+  //Method to save company details to db
   CompanyReg() {
     if (this.companyreg.valid) {
-      this.generatePassword();
       {
         let param = {
           fullName: this.companyreg.controls["fullName"].value,
@@ -88,18 +89,24 @@ export class CompanyRegistrationComponent implements OnInit {
           password: this.companyreg.controls["password"].value,
           role: 2,
         };
-        console.log("Parameters",param);
+        console.log("Parameters", param);
         this.service.createCompany(param).subscribe({
           next: (result: any) => {
             this.toaster.success("Created successfully", "");
-            this. emailSend();
+            this.emailSend();
             this.router.navigate(["/company-list"]);
           },
           error: (err: any) => {
-            this.toaster.error(err.error.error);
+            console.log("error", err);
+
+            if (err.error.errors[0].code == 1015) {
+              this.alertservice.showError(
+                "Email already exist!!Please try again with another email id",
+                "Error"
+              );
+            }
           },
         });
-
       }
     } else {
       this.alertservice.showError(
@@ -107,21 +114,15 @@ export class CompanyRegistrationComponent implements OnInit {
         "Invalid form"
       );
     }
-// send the generated password to the company mail id
-    
+    // send the generated password to the company mail id
   }
-  emailSend(){
-   
-      this.CompanyEmail = this.companyreg.controls["email"].value,
-      this.CompanyPassword = this.companyreg.controls["password"].value
-    
-    this.service.sendEmail( this.CompanyEmail, this.CompanyPassword).subscribe({
-      next: (result: any) => {
-        
-      },
-      error: (err: any) => {
-        
-      },
+  emailSend() {
+    (this.CompanyEmail = this.companyreg.controls["email"].value),
+      (this.CompanyPassword = this.companyreg.controls["password"].value);
+
+    this.service.sendEmail(this.CompanyEmail, this.CompanyPassword).subscribe({
+      next: (result: any) => {},
+      error: (err: any) => {},
     });
   }
 }
