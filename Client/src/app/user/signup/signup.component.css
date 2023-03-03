@@ -17,3 +17,7 @@ button{
 .errorMsg{
     color: rgb(179, 54, 54);
 }
+a{
+
+    text-decoration: none;
+}

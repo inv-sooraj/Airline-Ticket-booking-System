@@ -1,18 +1,48 @@
 <nav class="sidebar dark_sidebar">
   <div class="logo d-flex justify-content-between">
-    <a class="large_logo" href="index-2.html">
-      <h4 style="color: antiquewhite">Airline Ticket Booking</h4>
+    <a class="large_logo">
+      <h4 [routerLink]="['/admin-dashboard']" style="color: antiquewhite">Airline Ticket Booking</h4>
     </a>
-    <a class="small_logo" href="index-2.html"
+    <a class="small_logo"
       ><img src="/assets/img/mini_logo.png" alt=""
     /></a>
     <div class="sidebar_close_icon d-lg-none">
       <i class="ti-close"></i>
     </div>
   </div>
-  <ul id="sidebar_menu">
-    <li class="">
-      <a href="crypto_wallet.html" aria-expanded="false">
+  <ul id="sidebar_menu"  >
+    <li class="" *ngIf="userRole==2">
+      <a [routerLink]="['/plane-reg']" aria-expanded="false">
+        <div class="nav_icon_small">
+          <i class="fa fa-plane" style="font-size: 24px"></i>
+        </div>
+        <div class="nav_title">
+          <span>Airplane Registration</span>
+        </div>
+      </a>
+    </li>
+    <li class="" *ngIf="userRole==2">
+      <a [routerLink]="['/flight-reg']" aria-expanded="false">
+        <div class="nav_icon_small">
+          <i class="fa fa-plane" style="font-size: 24px"></i>
+        </div>
+        <div class="nav_title">
+          <span>Flight Registration</span>
+        </div>
+      </a>
+    </li>
+    <li class="" *ngIf="userRole==2 ||userRole==1">
+      <a [routerLink]="['/plane-list']" aria-expanded="false">
+        <div class="nav_icon_small">
+          <i class="fa fa-plane" style="font-size: 24px"></i>
+        </div>
+        <div class="nav_title">
+          <span>Airplane List</span>
+        </div>
+      </a>
+    </li>
+    <li class="" *ngIf="userRole==1">
+      <a [routerLink]="['/companyreg']" aria-expanded="false">
         <div class="nav_icon_small">
           <i class="fas fa-building" style="font-size: 24px"></i>
         </div>
@@ -21,8 +51,8 @@
         </div>
       </a>
     </li>
-    <li class="">
-      <a href="buy_sell.html" aria-expanded="false">
+    <li class="" *ngIf="userRole==1">
+      <a [routerLink]="['/company-list']" aria-expanded="false">
         <div class="nav_icon_small">
           <i class="fas fa-city" style="font-size: 24px"></i>
         </div>
@@ -31,8 +61,8 @@
         </div>
       </a>
     </li>
-    <li class="">
-      <a href="crypto_stats.html" aria-expanded="false">
+    <li class="" *ngIf="userRole==1">
+      <a [routerLink]="['/user-list']" aria-expanded="false">
         <div class="nav_icon_small">
           <i class="fas fa-chalkboard-teacher" style="font-size: 24px"></i>
         </div>
@@ -41,8 +71,8 @@
         </div>
       </a>
     </li>
-    <li class="">
-      <a href="#" aria-expanded="false">
+    <li class="" *ngIf="userRole==1 ||userRole==2 ">
+      <a [routerLink]="['/pending-list']" aria-expanded="false">
         <div class="nav_icon_small">
           <img
             src="https://cdn-icons-png.flaticon.com/512/2140/2140667.png"
@@ -51,12 +81,12 @@
           />
         </div>
         <div class="nav_title">
-          <span>Cancel Reservation List</span>
+          <span>Pending Reservation List</span>
         </div>
       </a>
     </li>
-    <li class="">
-      <a href="#" aria-expanded="false">
+    <li *ngIf="userRole==1 ||userRole==2 " class="">
+      <a  [routerLink]="['/reservation-list']" aria-expanded="false">
         <div class="nav_icon_small">
           <i class="far fa-list-alt" style="font-size: 24px"></i>
         </div>
@@ -65,8 +95,8 @@
         </div>
       </a>
     </li>
-    <li class="">
-      <a href="#" aria-expanded="false">
+    <li class=""  *ngIf="userRole==1">
+      <a [routerLink]="['/plane-list']" aria-expanded="false">
         <div class="nav_icon_small">
           <i class="fa fa-plane" style="font-size: 24px"></i>
         </div>
@@ -75,8 +105,8 @@
         </div>
       </a>
     </li>
-    <li class="">
-      <a href="#" aria-expanded="false">
+    <li class=""  *ngIf="userRole==1 ||userRole==2 "  >
+      <a [routerLink]="['/flight-list']" aria-expanded="false">
         <div class="nav_icon_small">
           <i class="fas fa-fighter-jet" style="font-size: 24px"></i>
         </div>
@@ -102,17 +132,17 @@
                             <img src="/assets/img/transfer/4.png" alt="#" />
                         </div>
                         <div class="author_name">
-                            <p class="f_s_12 f_w_400">Admin/Company</p>
+                            <p class="f_s_12 f_w_400" *ngIf="userRole==1">Admin</p>
+                            <p class="f_s_12 f_w_400" *ngIf="userRole==2">Company</p>
                         </div>
                         <div class="profile_info_iner">
                             <div class="profile_author_name">
-                                <p>Manager</p>
-                                <h5>Jiue Anderson</h5>
+                                <p *ngIf="userRole==1">Admin</p>
+                                <p *ngIf="userRole==2">Company</p>
                             </div>
                             <div class="profile_info_details">
-                                <a href="#">My Profile </a>
-                                <a href="#">Settings</a>
-                                <a (click)="logOut()">Logout </a>
+                                
+                                <a (click)="logOut()">Log Out </a>
                             </div>
                         </div>
                     </div>

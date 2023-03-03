@@ -15,7 +15,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 @NotNull(message = "1008")
 @Size(min = 4, max = 20)
-@Pattern (message = "1009",regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$")
+@Pattern (message = "1009",regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&`~])[A-Za-z\\d@$!%*?&`~]{8,}$")
 @Target({ANNOTATION_TYPE, FIELD, METHOD, PARAMETER, TYPE_USE})
 @Retention(RUNTIME)
 @Constraint(validatedBy = {})

@@ -6,11 +6,9 @@
         <h1 class="text-custom-white">Flight Detail</h1>
         <ul class="custom-flex justify-content-center">
           <li class="fw-500">
-            <a href="index.html" class="text-custom-white">Home</a>
+            <a [routerLink]="['/']" class="text-custom-white">Home</a>
           </li>
-          <li class="fw-500">
-            <a href="flights.html" class="text-custom-white">Flights</a>
-          </li>
+          
           <li class="active fw-500">Flight Detail</li>
         </ul>
       </div>
@@ -165,7 +163,7 @@
                                         <button (click)="removeOption(i)" class="btn-first btn-submit full-width btn-height"  [disabled]="seatsFormArray.length == 1"  >-</button>
                                       </div>
                                     </div>
-                                    <div class="row p-2">
+                                    <div class="row">
                                       <div class="col-12">
                                         <label class="submit"></label>
                                     <button  [disabled]="myForm.invalid" (click)="onSubmit()" type="submit" class="btn-first btn-submit full-width btn-height">Checkout</button>

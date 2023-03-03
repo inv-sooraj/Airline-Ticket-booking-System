@@ -173,5 +173,10 @@ public class BookingServiceImpl implements BookingService {
 
         bookingRepository.saveAll(bookingsList);
     }
+
+    @Override
+    public List<Bookings> findByAllCancelled(Byte status, Byte deleteFlag) {
+        return bookingRepository.findByStatusAndDeleteFlag(status,deleteFlag);
+     }
     
 }

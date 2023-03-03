@@ -8,3 +8,7 @@ button[disabled]{
   color: #666666;
   cursor: not-allowed! important;
 }
+a{
+  color: #ffffff ! important;
+  text-decoration: none! important;
+}

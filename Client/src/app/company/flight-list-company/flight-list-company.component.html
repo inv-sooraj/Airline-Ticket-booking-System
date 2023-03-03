@@ -16,7 +16,7 @@
               </div>
 
               <div class="white_card_body">
-                <h4>Flight Details</h4>
+                <h4>Flight List</h4>
                 <div class="QA_section">
                   <!-- <div class="white_box_tittle list_header">
                     <div class="box_right d-flex lms_block">
@@ -65,7 +65,7 @@
                   <div class="container p-3">
                     <form [formGroup]="FlightListForm">
                        <div class="row  align-items-center">
-                      <div class="col-lg-4  col-md-4 col-12 p-2">
+                      <div  *ngIf="Role==1" class="col-lg-4  col-md-4 col-12 p-2">
                         <!-- <select 
                         class="w-100 form-control"
                         (change)="changeCompany()"
@@ -80,7 +80,7 @@
                           {{ name.fullName }}
                         </option>
                       </select> -->
-                      <select  class="form-control  w-100"  (change)="changeCompany()"  formControlName="company" >
+                      <select class="form-control  w-100"  (change)="changeCompany()"  formControlName="company" >
                         <option value="">Select Company</option>
                         <option  
                           *ngFor="let name of Company"
@@ -100,7 +100,7 @@
                                 autocomplete="off"
                       />
                       </div>
-                      <div class="col-lg-4 col-md-4 col-12 p-2">
+                      <div class="col-lg-4 col-md-4 col-12 p-2" *ngIf="Role==2">
                         <button  [routerLink]="['/flight-reg']" type="button" class="w-100 btn btn-dark w-100">Add New</button>
                          </div>
                     </div></form></div>

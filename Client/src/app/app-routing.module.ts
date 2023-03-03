@@ -142,7 +142,7 @@ const routes: Routes = [
     path: "flight-edit/:flightId",
     component: FlightEditComponent,
     canActivate: [AuthGuard],
-    data: { allowedRoles: [2] },
+    data: { allowedRoles: [1,2] },
   },
   {
     path: "company-list",

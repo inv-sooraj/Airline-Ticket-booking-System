@@ -12,6 +12,7 @@ import { BookingServiceService } from "../services/booking-service.service";
 export class CancelledReservationListComponent {
   items: any;
   userId:any;
+  role:any;
   itemName: any;
   cancelledListForm!: FormGroup;
   public searchData: any[] = [];
@@ -42,6 +43,22 @@ export class CancelledReservationListComponent {
   }
   getPendingBookings() {
     this.userId=localStorage.getItem("userid")
+    this.role=localStorage.getItem("Role")
+    if(this.role==1){
+      this.bookingService.getAllPending().subscribe({
+        next: (response: any) => {
+          this.items = response;
+          console.log(this.items)
+        },
+        error: (err: any) => {
+          this.alertservice.showError(
+            "Failed to load cancelled bookings",
+            "Error"
+          );
+        },
+        complete: () => {},
+      });
+    }
     this.bookingService.getPending(this.userId).subscribe({
       next: (response: any) => {
         this.items = response;
