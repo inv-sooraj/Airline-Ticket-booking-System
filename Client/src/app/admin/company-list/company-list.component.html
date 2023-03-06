@@ -60,8 +60,11 @@
                       <table class="table">
                         <thead>
                           <tr>
-                            <th>
-                              <i (click)="deleteData()" class="material-icons">&#xE872;</i></th>
+                            <th><button
+                              class="fa fa-trash deleteButton"
+                              (click)="deleteData()"
+                              [disabled]="companyIds.length == 0 ? true : false"
+                            ></button></th>
                             <th scope="col">Company Id</th>
                             <th scope="col">Company Name</th>
                             <th scope="col">Email</th>
