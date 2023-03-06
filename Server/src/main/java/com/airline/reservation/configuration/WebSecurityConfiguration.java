@@ -30,7 +30,6 @@ import org.springframework.security.web.authentication.preauth.PreAuthenticatedA
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.NegatedRequestMatcher;
 
- 
 @Configuration
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
@@ -40,9 +39,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-       
+
         http.cors()
-        .and()
+                .and()
                 .requestMatcher(new NegatedRequestMatcher(new AntPathRequestMatcher("/error")))
                 .addFilter(accessTokenProcessingFilter())
                 .authenticationProvider(preAuthenticatedAuthenticationProvider())
@@ -52,86 +51,81 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .securityContext().and()
                 .anonymous().and()
                 .authorizeRequests()
-//                .antMatchers("/**").permitAll()
-                .antMatchers(GET,"/users/GetUsers").access("hasRole('ROLE_ADMIN')")
-                .antMatchers(PUT,"/users/changeStatus/**").access("hasRole('ROLE_ADMIN')")
-                .antMatchers(GET,"/users/GetCompany").access("hasRole('ROLE_ADMIN')")
-                .antMatchers(PUT,"/users").access("hasRole('ROLE_PASSENGER')")
-                .antMatchers(PUT,"/users/changePwd").access("hasRole('ROLE_PASSENGER')or hasRole('ROLE_ADMIN')or hasRole('ROLE_COMPANY')")
-                .antMatchers(GET,"/users/**").access("hasRole('ROLE_PASSENGER')or hasRole('ROLE_ADMIN')or hasRole('ROLE_COMPANY')")
+                .antMatchers(GET, "/users/GetUsers").access("hasRole('ROLE_ADMIN')")
+                .antMatchers(PUT, "/users/changeStatus/**").access("hasRole('ROLE_ADMIN')")
+                .antMatchers(GET, "/users/GetCompany").access("hasRole('ROLE_ADMIN')")
+                .antMatchers(PUT, "/users").access("hasRole('ROLE_PASSENGER')")
+                .antMatchers(PUT, "/users/changePwd").access("hasRole('ROLE_PASSENGER')or hasRole('ROLE_ADMIN')or hasRole('ROLE_COMPANY')")
+                .antMatchers(GET, "/users/**").access("hasRole('ROLE_PASSENGER')or hasRole('ROLE_ADMIN')or hasRole('ROLE_COMPANY')")
                 .antMatchers("/users/signup").anonymous()
-                .antMatchers(POST,"/airplane").access("hasRole('ROLE_COMPANY')")
-                .antMatchers(GET,"/airplane").access("hasRole('ROLE_ADMIN')")
-                .antMatchers(GET,"/airplane/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_COMPANY')")
-                .antMatchers(PUT,"/airplane/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_COMPANY')")
-                .antMatchers(DELETE,"/airplane/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_COMPANY')")
-                .antMatchers(POST,"/bookings/**").access("hasRole('ROLE_PASSENGER')")
-                .antMatchers(POST,"/bookings/addBooking").access("hasRole('ROLE_PASSENGER')")
-                .antMatchers(DELETE,"/bookings").access("hasRole('ROLE_PASSENGER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_COMPANY')")
-                .antMatchers(GET,"/bookings/status/**").access("hasRole('ROLE_ADMIN')")
-                .antMatchers(GET,"/bookings/download/**").access("hasRole('ROLE_ADMIN')or hasRole('ROLE_COMPANY')")
-                .antMatchers(DELETE,"/bookings").access("hasRole('ROLE_ADMIN')or hasRole('ROLE_COMPANY')")
-                .antMatchers(PUT,"/bookings/changeStatus/**/**").access("hasRole('ROLE_ADMIN')or hasRole('ROLE_COMPANY')")
-                .antMatchers(PUT,"/bookings/cancelBooking/**").access("hasRole('ROLE_PASSENGER')")
-                .antMatchers(GET,"/bookings/cancelBooking/**").access("hasRole('ROLE_PASSENGER')")
-                .antMatchers(GET,"/bookings/getById/**").access("hasRole('ROLE_PASSENGER')")
-                .antMatchers(GET,"/bookings/getByCompany/**").access("hasRole('ROLE_COMPANY')")
-                .antMatchers(POST,"/company/**").access("hasRole('ROLE_ADMIN')")
-                .antMatchers(GET,"/company/**").access("hasRole('ROLE_ADMIN')")
-                .antMatchers(PUT,"/company/**").access("hasRole('ROLE_ADMIN')")
-                .antMatchers(GET,"/company/export").access("hasRole('ROLE_ADMIN')")
-                .antMatchers(POST,"/flight").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_COMPANY')")
-                .antMatchers(GET,"/flight/findAll").access("hasRole('ROLE_ADMIN')")
-                .antMatchers(GET,"/flight/findAll/**").access("hasRole('ROLE_ADMIN')or hasRole('ROLE_COMPANY')")
-                .antMatchers(GET,"/flight/**").access("hasRole('ROLE_ADMIN')or hasRole('ROLE_COMPANY') or hasRole('ROLE_PASSENGER')")
-                .antMatchers(GET,"/flight/getRandom").permitAll()
-                .antMatchers(GET,"/flight/getTwoRandom").permitAll()
-                .antMatchers(PUT,"/flight/**").access("hasRole('ROLE_ADMIN')or hasRole('ROLE_COMPANY')")
-                .antMatchers(DELETE,"/flight/**").access("hasRole('ROLE_ADMIN')or hasRole('ROLE_COMPANY')")
-
-              
-
-//                .antMatchers("/company/**").permitAll()
+                .antMatchers(POST, "/airplane").access("hasRole('ROLE_COMPANY')")
+                .antMatchers(GET, "/airplane").access("hasRole('ROLE_ADMIN')")
+                .antMatchers(GET, "/airplane/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_COMPANY')")
+                .antMatchers(PUT, "/airplane/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_COMPANY')")
+                .antMatchers(DELETE, "/airplane/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_COMPANY')")
+                .antMatchers(POST, "/bookings/**").access("hasRole('ROLE_PASSENGER')")
+                .antMatchers(POST, "/bookings/addBooking").access("hasRole('ROLE_PASSENGER')")
+                .antMatchers(DELETE, "/bookings").access("hasRole('ROLE_PASSENGER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_COMPANY')")
+                .antMatchers(GET, "/bookings/status/**").access("hasRole('ROLE_ADMIN')")
+                .antMatchers(GET, "/bookings/download/**").access("hasRole('ROLE_ADMIN')or hasRole('ROLE_COMPANY')")
+                .antMatchers(DELETE, "/bookings").access("hasRole('ROLE_ADMIN')or hasRole('ROLE_COMPANY')")
+                .antMatchers(PUT, "/bookings/changeStatus/**/**").access("hasRole('ROLE_ADMIN')or hasRole('ROLE_COMPANY')")
+                .antMatchers(PUT, "/bookings/cancelBooking/**").access("hasRole('ROLE_PASSENGER')")
+                .antMatchers(GET, "/bookings/cancelBooking/**").access("hasRole('ROLE_PASSENGER')")
+                .antMatchers(GET, "/bookings/getById/**").access("hasRole('ROLE_PASSENGER')")
+                .antMatchers(GET, "/bookings/getByCompany/**").access("hasRole('ROLE_COMPANY')")
+                .antMatchers(POST, "/company/**").access("hasRole('ROLE_ADMIN')")
+                .antMatchers(GET, "/company/**").access("hasRole('ROLE_ADMIN')")
+                .antMatchers(PUT, "/company/**").access("hasRole('ROLE_ADMIN')")
+                .antMatchers(GET, "/company/export").access("hasRole('ROLE_ADMIN')")
+                .antMatchers(POST, "/flight").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_COMPANY')")
+                .antMatchers(GET, "/flight/findAll").access("hasRole('ROLE_ADMIN')")
+                .antMatchers(GET, "/flight/findAll/**").access("hasRole('ROLE_ADMIN')or hasRole('ROLE_COMPANY')")
+                .antMatchers(GET, "/flight/**").access("hasRole('ROLE_ADMIN')or hasRole('ROLE_COMPANY') or hasRole('ROLE_PASSENGER')")
+                .antMatchers(GET, "/flight/getRandom").permitAll()
+                .antMatchers(GET, "/flight/getTwoRandom").permitAll()
+                .antMatchers(PUT, "/flight/**").access("hasRole('ROLE_ADMIN')or hasRole('ROLE_COMPANY')")
+                .antMatchers(DELETE, "/flight/**").access("hasRole('ROLE_ADMIN')or hasRole('ROLE_COMPANY')")
                 .antMatchers("/seat/**").permitAll()
                 .antMatchers("/flight/**").permitAll()
-                // .antMatchers(OPTIONS, "/login").anonymous()
-//                .antMatchers("/bookings/**").permitAll()
-                .antMatchers( "/login").permitAll()
-//                .antMatchers(POST, "/airplane").permitAll()
-//                .antMatchers(POST, "/airplane").permitAll()
-                .antMatchers(OPTIONS, "/**").anonymous() 
-       
+                .antMatchers("/login").permitAll()
+                .antMatchers(OPTIONS, "/**").anonymous()
                 .anyRequest().authenticated();
     }
+
     @Bean
     protected AccessTokenUserDetailsService accessTokenUserDetailsService() {
         return new AccessTokenUserDetailsService();
     }
+
     @Bean
     protected PreAuthenticatedAuthenticationProvider preAuthenticatedAuthenticationProvider() {
         PreAuthenticatedAuthenticationProvider authProvider = new PreAuthenticatedAuthenticationProvider();
         authProvider.setPreAuthenticatedUserDetailsService(accessTokenUserDetailsService());
         return authProvider;
     }
+
     @Bean
     protected AccessTokenProcessingFilter accessTokenProcessingFilter() throws Exception {
         AccessTokenProcessingFilter filter = new AccessTokenProcessingFilter();
         filter.setAuthenticationManager(authenticationManager());
         return filter;
     }
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
+
     @Bean
     @ConfigurationProperties("app.security")
     public SecurityConfig securityConfig() {
         return new SecurityConfig();
     }
+
     @Bean
     @ConfigurationProperties("app.security.configuration")
     public TokenGenerator tokenGenerator(SecurityConfig securityConfig) {
         return new TokenGenerator(securityConfig.getTokenGeneratorPassword(), securityConfig.getTokenGeneratorSalt());
     }
 }
-

@@ -46,23 +46,24 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
     @Autowired
     private TokenGenerator tokenGenerator;
-  
+
     private final JavaMailSender javaMailSender;
+
     @Autowired
-	public UserServiceImpl(JavaMailSender javaMailSender) {
-		this.javaMailSender = javaMailSender;
-	}
+    public UserServiceImpl(JavaMailSender javaMailSender) {
+        this.javaMailSender = javaMailSender;
+    }
+
     //email existing check
     public Boolean emailCheck(String email) {
 
         return userRepository.existsByEmail(email);
     }
 
-    
     public ResponseEntity<ResBody> login(LoginForm form) {
         ResBody body = new ResBody();
         Optional<User> emailEntry = userRepository.findByEmail(form.getEmail());
-        if(emailEntry.isEmpty()){
+        if (emailEntry.isEmpty()) {
             body.getErrors().add(new ApplicationError("1020", "Email doesn't exist"));
             return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
         }
@@ -76,10 +77,10 @@ public class UserServiceImpl implements UserService {
         String id = String.format("%010d", user.getUserId());
         Token accessToken = tokenGenerator.create(PURPOSE_ACCESS_TOKEN, id, securityConfig.getAccessTokenExpiry());
         Token refreshToken = tokenGenerator.create(PURPOSE_REFRESH_TOKEN, id + user.getPassword(), securityConfig.getRefreshTokenExpiry());
-        LoginView lView=new LoginView(user, accessToken, refreshToken);
-        body.getValues().put("loginResponse",lView);
+        LoginView lView = new LoginView(user, accessToken, refreshToken);
+        body.getValues().put("loginResponse", lView);
         return new ResponseEntity<ResBody>(body, HttpStatus.OK);
-        
+
     }
 
     @Override
@@ -108,11 +109,12 @@ public class UserServiceImpl implements UserService {
                 new LoginView.TokenView(refreshToken, status.expiry)
         );
     }
+
     @Override
     public ResponseEntity<ResBody> add(@Valid UserForm form) {
         ResBody body = new ResBody();
         Optional<User> usernameEntry = userRepository.findByEmail(form.getEmail());
-    
+
         if (!usernameEntry.isEmpty()) {
             body.getErrors().add(new ApplicationError("1015", "User already exist"));
             return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
@@ -132,6 +134,7 @@ public class UserServiceImpl implements UserService {
         body.getValues().put("user", uview);
         return new ResponseEntity<ResBody>(body, HttpStatus.OK);
     }
+
     private static BadRequestException badRequestException() {
         return new BadRequestException("Invalid credentials");
     }
@@ -150,7 +153,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public Collection<User> getCompany() {
 
-        return userRepository.findAllByRoleAndStatus(2,1);
+        return userRepository.findAllByRoleAndStatus(2, 1);
     }
 
     @Override
@@ -225,6 +228,7 @@ public class UserServiceImpl implements UserService {
         return new ResponseEntity<>(body, HttpStatus.OK);
     }
 //multi delete all spacified user ids
+
     @Override
     public void deleteAllBYIds(ArrayList<Integer> ids) {
         userRepository.softDeleteAllIds(ids);
@@ -237,15 +241,13 @@ public class UserServiceImpl implements UserService {
     }
 
 //Method to send email to the spacified email id
-@Override
-public void sendEmail(String email,String password) {
-		SimpleMailMessage mail = new SimpleMailMessage();
-		mail.setTo(email);
-                mail.setFrom("mimitan605@gmail.com");
-		mail.setSubject("Login password");
-		mail.setText("Your login password is :"+password);
-		javaMailSender.send(mail);
+    @Override
+    public void sendEmail(String email, String password) {
+        SimpleMailMessage mail = new SimpleMailMessage();
+        mail.setTo(email);
+        mail.setFrom("mimitan605@gmail.com");
+        mail.setSubject("Login password");
+        mail.setText("Your login password is :" + password);
+        javaMailSender.send(mail);
+    }
 }
-}
-
-

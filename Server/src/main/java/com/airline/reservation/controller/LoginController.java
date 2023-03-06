@@ -3,7 +3,6 @@ package com.airline.reservation.controller;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,6 +12,7 @@ import com.airline.reservation.form.LoginForm;
 import com.airline.reservation.json.ResBody;
 import com.airline.reservation.service.UserService;
 import com.airline.reservation.view.LoginView;
+
 @RestController
 @RequestMapping("/login")
 public class LoginController {

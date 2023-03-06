@@ -64,19 +64,6 @@ public class BookingServiceImpl implements BookingService {
             return new ResponseEntity<>(body, HttpStatus.OK);
         }
     }
-    //list by search results
-    // public List<Bookings> getByFlightNumber(Integer pageNo, Integer pageSize, String sortBy, String sortDir,String flightNumber) {
-    //     // TODO Auto-generated method stub
-    //     Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortBy).ascending(): Sort.by(sortBy).descending();
-    //     Pageable paging = PageRequest.of(pageNo, pageSize, sort);
-    //     Page<Bookings> pagedResult = bookingRepository.findByFlightFlightNumber(paging,"rere");
-    //     if(pagedResult.hasContent()) {
-    //     return pagedResult.getContent();
-    //     } 
-    //     else {
-    //         return new ArrayList<Bookings>();
-    //     }  
-    // }
 
     @Override
     @Transactional
@@ -120,14 +107,14 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public List<Bookings> findByStatus(Byte status,Byte deleteFlag,Integer flightId) {
-        return bookingRepository.findByStatusAndDeleteFlagAndFlightFlightId(status,deleteFlag,flightId);
+    public List<Bookings> findByStatus(Byte status, Byte deleteFlag, Integer flightId) {
+        return bookingRepository.findByStatusAndDeleteFlagAndFlightFlightId(status, deleteFlag, flightId);
     }
 
     @Override
-    public List<Bookings> findByCompany( Byte flag) {
-        
-                return bookingRepository.findByFlightUserUserIdAndDeleteFlag(SecurityUtil.getCurrentUserId(),flag);
+    public List<Bookings> findByCompany(Byte flag) {
+
+        return bookingRepository.findByFlightUserUserIdAndDeleteFlag(SecurityUtil.getCurrentUserId(), flag);
 
     }
 
@@ -143,7 +130,7 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public ResponseEntity<ResBody> cancelBooking(Integer bookingId, String reason,Byte status) {
+    public ResponseEntity<ResBody> cancelBooking(Integer bookingId, String reason, Byte status) {
         // TODO Auto-generated method stub
         ResBody body = new ResBody();
         //Finds Booking by id
@@ -161,7 +148,6 @@ public class BookingServiceImpl implements BookingService {
         }
     }
 
-   
     @Override
     public void bookSeats(List<BookingForm> bookingForms) {
         List<Bookings> bookingsList = new ArrayList<>();
@@ -176,7 +162,7 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public List<Bookings> findByAllCancelled(Byte status, Byte deleteFlag) {
-        return bookingRepository.findByStatusAndDeleteFlag(status,deleteFlag);
-     }
-    
+        return bookingRepository.findByStatusAndDeleteFlag(status, deleteFlag);
+    }
+
 }

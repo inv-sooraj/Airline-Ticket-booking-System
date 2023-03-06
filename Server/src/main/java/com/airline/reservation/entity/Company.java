@@ -5,9 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import com.airline.reservation.form.CompanyForm;
-import com.airline.reservation.form.CompanyUpdateForm;
 import javax.persistence.GeneratedValue;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -73,16 +71,6 @@ public class Company {
         this.createDate = dt;
         this.updateDate = dt;
     }
-
-//    public Company updateCompany(CompanyUpdateForm form) {
-//        this.fullName = form.getFullName();
-//        this.email = form.getEmail();
-//        this.phone = form.getPhone();
-//        this.address = form.getAddress();
-//        Date dt = new Date();
-//        this.updateDate = dt;
-//        return this;
-//    }
 
     public Integer getUserId() {
         return userId;

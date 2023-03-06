@@ -13,6 +13,7 @@ import com.airline.reservation.view.LoginView;
 import com.airline.reservation.view.UserView;
 import java.util.ArrayList;
 import java.util.Collection;
+
 public interface UserService {
 
     ResponseEntity<ResBody> add(UserForm form);
@@ -45,6 +46,5 @@ public interface UserService {
 
     Integer getCurrent();
 
-
-    public void sendEmail(String email,String password);
+    public void sendEmail(String email, String password);
 }

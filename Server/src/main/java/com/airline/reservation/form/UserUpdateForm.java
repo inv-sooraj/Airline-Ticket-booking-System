@@ -26,7 +26,7 @@ public class UserUpdateForm {
 
     private Date dob;
 
-    @Size(min = 8, max = 8,message = "1005")
+    @Size(min = 8, max = 8, message = "1005")
     private String passportNumber;
 
     private String address;
@@ -36,10 +36,10 @@ public class UserUpdateForm {
     @Size(max = 11, message = "1004")
     private String phone;
 
-    @Size(max = 18,message = "1006")
+    @Size(max = 18, message = "1006")
     private String city;
 
-    @Size(max = 18,message = "1007")
+    @Size(max = 18, message = "1007")
     private String country;
 
     public String getFullName() {

@@ -38,14 +38,15 @@ public class BookingsController {
     public ResponseEntity<Void> bookSeats(@RequestBody List<BookingForm> bookingForms) {
         bookingService.bookSeats(bookingForms);
         return ResponseEntity.ok().build();
-      }
-    
+    }
+
     //list all booking details(for admin)
     @GetMapping("/status/{flag}")
     public List<Bookings> list(@RequestBody @PathVariable Byte flag) {
 
         return bookingService.findByDeleteFlag(flag);
     }
+
     @GetMapping("/download")
     public ResponseEntity<Resource> getFile() {
         String filename = "bookings.csv";
@@ -57,15 +58,16 @@ public class BookingsController {
     }
 //downloadCancelled
 
-@GetMapping("/download/{status}/{deleteFlag}")
-public ResponseEntity<Resource> getByStatus(@PathVariable byte status,@PathVariable byte deleteFlag) {
-    String filename = "cancelled_Bookings.csv";
-    InputStreamResource file = new InputStreamResource(fileService.loadCancelledBookings(status,deleteFlag));
-    return ResponseEntity.ok()
-            .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + filename)
-            .contentType(MediaType.parseMediaType("application/csv"))
-            .body(file);
-}
+    @GetMapping("/download/{status}/{deleteFlag}")
+    public ResponseEntity<Resource> getByStatus(@PathVariable byte status, @PathVariable byte deleteFlag) {
+        String filename = "cancelled_Bookings.csv";
+        InputStreamResource file = new InputStreamResource(fileService.loadCancelledBookings(status, deleteFlag));
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + filename)
+                .contentType(MediaType.parseMediaType("application/csv"))
+                .body(file);
+    }
+
     //delete Bookings 
     @DeleteMapping
     public void delete(@RequestParam("ids") ArrayList<Integer> ids) {
@@ -93,43 +95,41 @@ public ResponseEntity<Resource> getByStatus(@PathVariable byte status,@PathVaria
         return bookingService.changeStatus(bookingId, status);
 
     }
+
     //cancellation from passenger side
     @PutMapping("/cancelBooking/{bookingId}/{reason}/{status}")
-    public ResponseEntity<ResBody> cancelBooking(@PathVariable Integer bookingId, @PathVariable String reason,@PathVariable Byte status) {
+    public ResponseEntity<ResBody> cancelBooking(@PathVariable Integer bookingId, @PathVariable String reason, @PathVariable Byte status) {
         System.out.println("reason=" + reason);
         System.out.println("booking id=" + bookingId);
-        return bookingService.cancelBooking(bookingId, reason,status);
+        return bookingService.cancelBooking(bookingId, reason, status);
 
     }
     //get bookings done by individual user(for passenger)
-    
+
     @GetMapping("/getById/{flag}")
     public List<Bookings> userBookings(@PathVariable("flag") Byte flag) {
         return bookingService.findByUserUserIdAndDeleteFlag(flag);
     }
-    
+
     //To get cancelled booking details by company
-    
     @GetMapping("/getCancelled/{status}/{deleteFlag}/{flightId}")
-    public List<Bookings> getCancelled(@PathVariable("status") Byte status,@PathVariable("deleteFlag") Byte deleteFlag,@PathVariable("flightId")Integer flightId) {
-        return bookingService.findByStatus(status,deleteFlag,flightId);
+    public List<Bookings> getCancelled(@PathVariable("status") Byte status, @PathVariable("deleteFlag") Byte deleteFlag, @PathVariable("flightId") Integer flightId) {
+        return bookingService.findByStatus(status, deleteFlag, flightId);
     }
     //To get all cancelled booking 
-    
+
     @GetMapping("/getAllCancelled/{status}/{deleteFlag}")
-    public List<Bookings> getAllCancelled(@PathVariable("status") Byte status,@PathVariable("deleteFlag") Byte deleteFlag) {
-        return bookingService.findByAllCancelled(status,deleteFlag);
+    public List<Bookings> getAllCancelled(@PathVariable("status") Byte status, @PathVariable("deleteFlag") Byte deleteFlag) {
+        return bookingService.findByAllCancelled(status, deleteFlag);
     }
-    
+
     //Get booking details of an id
-    
     @GetMapping("/{bookingId}/{flag}")
     public BookingListView get(@PathVariable("bookingId") Integer bookingId, @PathVariable("flag") Byte flag) {
         return bookingService.getBooking(bookingId, flag);
     }
-    
+
     /*To get booking deatils of a particular company(for company)*/
-    
     @GetMapping("/getByCompany/{flag}")
     public List<Bookings> userBookingsByCompany(@PathVariable("flag") Byte flag) {
         return bookingService.findByCompany(flag);

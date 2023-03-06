@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.airline.reservation.service.impl;
+
 import com.airline.reservation.entity.Airplane;
 import com.airline.reservation.exception.NotFoundException;
 import com.airline.reservation.form.AirplaneForm;

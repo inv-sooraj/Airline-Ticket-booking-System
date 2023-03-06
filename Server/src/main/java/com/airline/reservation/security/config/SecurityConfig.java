@@ -1,15 +1,15 @@
 package com.airline.reservation.security.config;
 
 import java.time.Duration;
- 
+
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
- 
+
 @Validated
 public class SecurityConfig {
-    
+
     /**
      * Password for the token generator - cannot be null and must be exactly 16
      * ASCII characters

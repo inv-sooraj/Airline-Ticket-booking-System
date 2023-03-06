@@ -9,7 +9,7 @@ public class CompanyView {
     private String email;
     private String phone;
     private String address;
-    
+
     private Integer role;
 
     public CompanyView(Company company) {
@@ -18,7 +18,7 @@ public class CompanyView {
         this.email = company.getEmail();
         this.phone = company.getPhone();
         this.address = company.getAddress();
-        
+
         this.role = company.getRole();
     }
 
@@ -54,7 +54,6 @@ public class CompanyView {
         this.address = address;
     }
 
-    
     public String getPhone() {
         return phone;
     }

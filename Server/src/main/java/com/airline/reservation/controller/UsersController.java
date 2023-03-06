@@ -30,9 +30,6 @@ public class UsersController {
 
     @Autowired
     private UserService userService;
-    
-//    @Autowired(required = false)
-//    private User user;
 
     @PostMapping("/{email}")
     @ResponseBody
@@ -41,20 +38,17 @@ public class UsersController {
     }
 
     //METHOD TO GET ALL USERS(FOR ADMIN)
-    
     @GetMapping("/GetUsers")
     public Collection<User> list() {
         return userService.list();
     }
 
-    
     @GetMapping("/search/{userName}")
     public Collection<User> get(@PathVariable String userName) {
         return userService.Search(userName);
     }
 
     //Method to get all users with role 2(company)
-    
     @GetMapping("/GetCompany")
     public Collection<User> getByRole(Principal p) {
         return userService.getCompany();
@@ -67,9 +61,7 @@ public class UsersController {
         return userService.update(form);
     }
 
-    
     //Update details of the spacified userid
-    
     @PutMapping("/{userId}")
     public UserView updateById(@PathVariable("userId") Integer userId, @RequestBody UserForm form) {
 
@@ -106,12 +98,14 @@ public class UsersController {
         System.out.println("deleting");
         userService.deleteAllBYIds(ids);
     }
+
     @GetMapping("/getCurrentUserId")
-    public Integer getCurrent(){
+    public Integer getCurrent() {
         return userService.getCurrent();
     }
-     @PostMapping("/sendemail/{email}/{password}")
-    public void send(@PathVariable("email") String email,@PathVariable("password") String password) {		
-			userService.sendEmail(email,password);		
+
+    @PostMapping("/sendemail/{email}/{password}")
+    public void send(@PathVariable("email") String email, @PathVariable("password") String password) {
+        userService.sendEmail(email, password);
     }
 }
