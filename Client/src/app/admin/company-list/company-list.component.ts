@@ -1,3 +1,4 @@
+import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { AlertService } from "src/app/alert.service";
@@ -13,7 +14,7 @@ export class CompanyListComponent implements OnInit {
   companyIds: any[] = [];
   searchText: any;
   companyListForm !: FormGroup;
-  constructor(private apiservice:ApiService,private alertservice:AlertService,private formbuilder:FormBuilder ){
+  constructor(private apiservice:ApiService,private http: HttpClient,private alertservice:AlertService,private formbuilder:FormBuilder ){
 
     this.companyListForm = this.formbuilder.group({
       search: [""]
@@ -35,6 +36,20 @@ export class CompanyListComponent implements OnInit {
       complete: () => {},
     });
   }
+  exportCsv(){
+    this.http.get('http://localhost:9091/company/export', { responseType: 'blob' })
+    .subscribe(blob => {
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'Company-list.csv';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);
+    });
+  }
+  
   onCheckboxChange(e: any) {
 
     if (e.target.checked) {

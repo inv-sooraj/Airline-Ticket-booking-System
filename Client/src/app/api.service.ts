@@ -1,5 +1,6 @@
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { faLaptopHouse } from "@fortawesome/free-solid-svg-icons";
 import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
 
@@ -7,6 +8,10 @@ import { environment } from "src/environments/environment";
   providedIn: "root",
 })
 export class ApiService {
+  companyListExport() {
+    console.log(this.baseUrl + "/company/export");
+    return this.httpClient.get(this.baseUrl + "/company/export");
+  }
   getSeatNumber(seatId: any) {
     return this.httpClient.get(this.baseUrl + "/seat/getQuantity/" + seatId);
   }
