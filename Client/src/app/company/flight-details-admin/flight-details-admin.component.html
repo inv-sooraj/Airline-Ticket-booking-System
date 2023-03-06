@@ -1,0 +1,270 @@
+<app-company-nav></app-company-nav>
+<form [formGroup]="FlightRegForm">
+  <div class="main_content_iner">
+    <div class="container-fluid p-0 sm_padding_15px">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <div class="white_card card_height_100 mb_30">
+            <div class="white_card_header">
+              <div class="box_header m-0">
+                <div class="main-title">
+                  <h3 class="m-0">Flight Registration</h3>
+                  <br />
+                </div>
+              </div>
+            </div>
+            <div class="white_card_body">
+              <label class="form-label" for="exampleInputEmail1"
+                >Airplane Name</label
+              >
+              <div class="dropdown">
+                <div class="mb-4 pb-2">
+                  <select
+                    class="form-control"
+                    (change)="changePlane($event)"
+                    formControlName="airplane"
+                  >
+                    <option value="">Select Airplane</option>
+                    <option *ngFor="let airplane of plane" [value]="airplane">
+                      {{ airplane }}
+                    </option>
+                  </select>
+                  <div>
+                    <span
+                      
+                      *ngIf="
+                        FlightRegForm.controls['airplane'].touched &&
+                        FlightRegForm.hasError('required', 'airplane')
+                      "
+                      ><i class="sp">*required*</i></span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="exampleInputEmail1"
+                  >Flight Number</label
+                >
+                <input
+                  type="email"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  formControlName="flightno"
+                  aria-describedby="emailHelp"
+                  placeholder=""
+                />
+                <div>
+                  <span
+                    
+                    *ngIf="
+                      FlightRegForm.controls['flightno'].touched &&
+                      FlightRegForm.hasError('required', 'flightno')
+                    "
+                    ><i class="sp">*required*</i></span
+                  >
+                  <span
+                    
+                    *ngIf="
+                      FlightRegForm.controls['flightno'].touched &&
+                      FlightRegForm.hasError('pattern', 'flightno')
+                    "
+                    ><i class="sp">*Invalid Format*</i></span
+                  >
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="exampleInputPassword1"
+                  >Departure</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="exampleInputPassword"
+                  formControlName="departure"
+                  placeholder=""
+                />
+                <div>
+                  <span
+                    
+                    *ngIf="
+                      FlightRegForm.controls['departure'].touched &&
+                      FlightRegForm.hasError('required', 'departure')
+                    "
+                    ><i class="sp">*required*</i></span
+                  >
+                  <span
+                    
+                    *ngIf="
+                      FlightRegForm.controls['departure'].touched &&
+                      FlightRegForm.hasError('pattern', 'departure')
+                    "
+                    ><i class="sp">*Invalid Format*</i></span
+                  >
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="exampleInputPassword1"
+                  >Departure date&time</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="exampleInputPassword"
+                  formControlName="departureDT"
+                  placeholder=""
+                />
+                <div>
+                  <span
+                    
+                    *ngIf="
+                      FlightRegForm.controls['departureDT'].touched &&
+                      FlightRegForm.hasError('required', 'departureDT')
+                    "
+                    ><i class="sp">*required*</i></span
+                  >
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="exampleInputPassword1"
+                  >Destination</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="exampleInputPassword"
+                  formControlName="destination"
+                  placeholder=""
+                />
+                <div>
+                  <span
+                    
+                    *ngIf="
+                      FlightRegForm.controls['destination'].touched &&
+                      FlightRegForm.hasError('required', 'destination')
+                    "
+                    ><i class="sp">*required*</i></span
+                  >
+                  <span
+                    
+                    *ngIf="
+                      FlightRegForm.controls['destination'].touched &&
+                      FlightRegForm.hasError('pattern', 'destination')
+                    "
+                    ><i class="sp">*Invalid Format*</i></span
+                  >
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="exampleInputPassword1"
+                  >Arrival date&time</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="exampleInputPassword"
+                  formControlName="ariivalDT"
+                  placeholder=""
+                />
+                <div>
+                  <span
+                   
+                    *ngIf="
+                      FlightRegForm.controls['ariivalDT'].touched &&
+                      FlightRegForm.hasError('required', 'ariivalDT')
+                    "
+                    ><i  class="sp">*required*</i></span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="white_card_body">
+              <button class="btn btn-dark" (click)="addCreds()" id="btnadd">
+                Click here to add seat details</button
+              ><br />
+              <div class="mb-4">
+                <div
+                  formArrayName="seatDetails"
+                  *ngFor="
+                    let seatDetail of seatDetails().controls;
+                    let i = index
+                  "
+                  [formGroupName]="i"
+                >
+                  <br /><ng-container [formGroupName]="i">
+                    <div class="mb-4 pb-2">
+                      <select
+                        class="form-control"
+                        (change)="changeSeat($event)"
+                        formControlName="seat"
+                        id="dropdownMenuButton1"
+                      >
+                        <option value="">Seat Type</option>
+                        <option *ngFor="let seat of seats" [value]="seat">
+                          {{ seat }}
+                        </option>
+                      </select>
+                      <input
+                        class="form-control"
+                        placeholder="No of seats"
+                        formControlName="seatNo"
+                        id="exampleInputPassword1"
+                      />
+                      <div>
+                        <span
+                          
+                          *ngIf="
+                            FlightRegForm.controls['seatNo'].touched &&
+                            FlightRegForm.hasError('required', 'seatNo')
+                          "
+                          ><i class="sp">*required*</i></span
+                        >
+                      </div>
+                      <input
+                        class="form-control"
+                        placeholder="Price"
+                        formControlName="price"
+                        id="exampleInputPassword2"
+                      />
+                      <span
+                        
+                        *ngIf="
+                          FlightRegForm.controls['price'].touched &&
+                          FlightRegForm.hasError('required', 'price')
+                        "
+                        ><i class="sp">*required*</i></span
+                      >
+                    </div>
+                  </ng-container>
+                </div>
+                <br />
+                <div>
+                  <span  *ngIf="status"
+                    ><i class="sp">*Please fill the form correctly*</i></span
+                  >
+                </div>
+                <div>
+                  <br />
+                  <button
+                    type="submit"
+                    class="btn btn-secondary"
+                    id="btn1"
+                    (click)="cancel()"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    class="btn btn-success"
+                    (click)="addFlight()"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

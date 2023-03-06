@@ -1,0 +1,110 @@
+
+
+  <section class="h-100 h-custom gradient-custom-2">
+    <div class="container py-5 h-100">
+      <h3 class="text-center">Login</h3>
+      <form [formGroup]="loginForm" autocomplete="off">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12 col-lg-6">
+            <div class="card-body p-0">
+              <div class="row g-0">
+                <div class="col-12 bg-indigo text-white">
+                  <div class="p-5">
+                    <div class="mb-4 pb-2">
+                      <div class="form-outline">
+                        <input
+                          placeholder="Enter Email"
+                          type="text"
+                          id="form3Examplev4"
+                          class="form-control form-control-lg"
+                          formControlName="email"
+                        />
+                      </div>
+                      <div>
+                        <span
+                          class="sp"
+                          *ngIf="
+                            loginForm.controls['email'].touched &&
+                            loginForm.hasError('required', 'email')
+                          "
+                          >* Please enter you email</span
+                        >
+                        <span
+                          class="sp"
+                          *ngIf="
+                            loginForm.controls['email'].touched &&
+                            loginForm.hasError('pattern', 'email')
+                          "
+                          >* Invalid Email Format
+                        </span>
+                      </div>
+                    </div>
+                    <div class="mb-4 pb-2">
+                      <div class="form-outline">
+                        <input
+                          placeholder="Enter Password"
+                          type="password"
+                          id="form3Examplev4"
+                          formControlName="password"
+                          class="form-control form-control-lg"
+                        />
+                      </div>
+                      <div>
+                        <span
+                          class="sp"
+                          *ngIf="
+                            loginForm.controls['password'].touched &&
+                            loginForm.hasError('required', 'password')
+                          "
+                          >*Please enter your password</span
+                        >
+                        <span
+                          class="sp"
+                          *ngIf="
+                            loginForm.controls['password'].touched &&
+                            loginForm.hasError('minlength', 'password')
+                          "
+                          >* password should be atleast 8 characters</span
+                        >
+                        <span
+                          class="sp"
+                          *ngIf="
+                            loginForm.controls['password'].touched &&
+                            loginForm.hasError('maxlength', 'password')
+                          "
+                          >* password should be atmost 25 characters</span
+                        >
+                        <span
+                          class="sp"
+                          *ngIf="
+                            loginForm.controls['password'].touched &&
+                            loginForm.hasError('pattern', 'password')
+                          "
+                          >* Invalid password Format</span
+                        >
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      (click)="onSubmit()"
+                      class="btn2"
+                      [disabled]="loginForm.invalid"
+                    >
+                      Login
+                    </button>
+                    <p class="text-center text-white">
+                      Not yet Registered ?
+                      <a [routerLink]="['/signup']" class="text-light"
+                        >Signup</a
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+

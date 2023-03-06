@@ -1,0 +1,229 @@
+<app-header></app-header> 
+<div class="subheader normal-bg section-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="text-custom-white">Flight Detail</h1>
+        <ul class="custom-flex justify-content-center">
+          <li class="fw-500">
+            <a [routerLink]="['/']" class="text-custom-white">Home</a>
+          </li>
+          
+          <li class="active fw-500">Flight Detail</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="section-padding bg-light-white listing-details">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div
+          class="listing-details-inner bx-wrapper bg-custom-white padding-20"
+        >
+          <div class="row" >
+            <div class="col-lg-8">
+              <hr />
+              <div class="listing-meta-sec mb-md-80">
+                <div class="tabs">
+                  <div class="tab-content">
+                    <div class="tab-pane fade active show" id="overview">
+                      <div class="tab-inner">
+                        <div class="row">
+                          <div class="col-md-7">
+                            <div class="flights-grid mb-xl-30">
+                              <div class="flights-grid-wrapper bx-wrapper">
+                                <div class="image-sec animate-img">
+                                  <a href="#">
+                                    <img
+                                      src="/assets/img/user/flights/1.jpg"
+                                      class="full-width"
+                                      alt="img"
+                                    />
+                                  </a>
+                                </div>
+                                <div
+                                  class="flights-grid-caption padding-20 bg-custom-white p-relative"
+                                >
+                                  <div class="heading-sec">
+                                    <div class="title">
+                                      <h4 class="fs-16">
+                                        <a href="#" class="text-custom-black">{{items.departure}}
+                                          <i class="fa fa-plane"></i> {{items.destination}}</a
+                                        >
+                                      </h4>
+                                    </div>
+                                     
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-5">
+                            <div
+                              class="hotel-type mb-xl-20 bg-light-white padding-10"
+                            >
+                              <ul class="custom">
+                                <li class="text-light-dark">
+                                  <label class="no-margin text-custom-blue">
+                                    Flight Name : </label
+                                  >{{items.flightNumber}}
+                                </li>
+                                <li class="text-light-dark">
+                                  <label class="no-margin text-custom-blue">
+                                    Company: </label
+                                  >{{items.user.fullName}}
+                                </li>
+                                <li class="text-light-dark">
+                                  <label class="no-margin text-custom-blue">
+                                    Flight Number: </label
+                                  >{{items.flightNumber}}
+                                </li>
+                               
+                                <li class="text-light-dark">
+                                  <label class="no-margin text-custom-blue">
+                                    Departing From : </label
+                                  >{{items.departure}}
+                                </li>
+                                <li class="text-light-dark">
+                                  <label class="no-margin text-custom-blue">
+                                    Destination: </label
+                                  >{{items.destination}}
+                                </li>
+                                <li class="text-light-dark">
+                                  <label class="no-margin text-custom-blue">
+                                    Date of Departing: </label
+                                  >{{depDateTime}}
+                                </li>
+                                <li class="text-light-dark">
+                                  <label class="no-margin text-custom-blue">
+                                    Time of Departing: </label
+                                  >{{depTime}}
+                                </li>
+                                <li class="text-light-dark">
+                                  <label class="no-margin text-custom-blue">
+                                    Dateof Arrival: </label
+                                  >{{destDateTime}}
+                                </li>
+                                <li class="text-light-dark">
+                                  <label class="no-margin text-custom-blue">
+                                    Time of Arrival: </label
+                                  >{{destTime}}
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-12">
+                             <div class="quick-quote bx-wrapper padding-20 mb-xl-30">
+                                <h5 class="text-custom-black">Checkout</h5>
+                                <form [formGroup]="myForm">
+                                  <div formArrayName="seats">
+                                    <div class="row" *ngFor="let seat of seatsFormArray.controls; let i = index" [formGroupName]="i">
+                                      <div class="col-lg-3 col-md-6">
+                                        <div class="form-group">
+                                          <label>Select Class</label>
+                                          <select (change)="onChange(i,mySelect.value)" #mySelect id="mySelect" class="form-control form-control-custom" name="seatId" formControlName="seatId">
+                                            <option value="" disabled selected>Seat Type</option>
+                                            <option *ngFor="let seat of seats" [value]="seat.seatId">{{ seat.seatType }}</option>
+                                          </select>
+                                          <div *ngIf="seatsFormArray.controls[i]?.get('seatId')?.invalid && (seatsFormArray.controls[i]?.get('seatId')?.dirty || seatsFormArray.controls[i]?.get('seatId')?.touched)" class="text-danger">
+                                            <div *ngIf="seatsFormArray.controls[i]?.get('seatId')?.errors?.['required']"><span class="errorMsg">Select Seat Type</span></div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-lg-3 col-md-6">
+                                        <div class="form-group">
+                                          <label>Seat Price</label>
+                                          <input type="text" [value]="seat?.get('price')?.value" name="price" formControlName="price" [value]="seat?.get('price')?.value" [readonly]="true" class="form-control form-control-custom" placeholder="Price">
+                                        </div>
+                                      </div>
+                                      <div class="col-lg-3 col-md-6">
+                                        <div class="form-group">
+                                          <label>Seat Quantity</label>
+                                          <input type="text" pattern="[0-9]*" placeholder="No.of Seats"  formControlName="quantity" name="quantity" class="form-control form-control-custom">
+                                          <div *ngIf="seatsFormArray.controls[i]?.get('quantity')?.invalid && (seatsFormArray.controls[i]?.get('quantity')?.dirty || seatsFormArray.controls[i]?.get('quantity')?.touched)" class="text-danger">
+                                            <div *ngIf="seatsFormArray.controls[i]?.get('quantity')?.errors?.['required']"><span class="errorMsg">Enter No.of Seats</span></div>
+                                            <div *ngIf="seatsFormArray.controls[i]?.get('quantity')?.errors?.['pattern']">
+                                              <span class="errorMsg">Please enter only numbers</span>
+                                            </div>
+                                            <div *ngIf="seatsFormArray.controls[i]?.get('quantity')?.errors?.['max']">
+                                              <span class="errorMsg">Only  {{selectedSeatQuantity}} seats available</span>
+                                            </div>
+                                          </div></div>
+                                      </div>
+                                      <div class="col-lg-1 col-md-3">
+                                      <label class="submit"></label>
+                                        <button [disabled]="myForm.invalid" (click)="addOption()" class="btn-first btn-submit full-width btn-height">+</button>
+                                      </div>
+                                      <div class="col-lg-1 col-md-3">
+                                        <label class="submit"></label>
+                                        <button (click)="removeOption(i)" class="btn-first btn-submit full-width btn-height"  [disabled]="seatsFormArray.length == 1"  >-</button>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-12">
+                                        <label class="submit"></label>
+                                    <button  [disabled]="myForm.invalid" (click)="onSubmit()" type="submit" class="btn-first btn-submit full-width btn-height">Checkout</button>
+                                  </div></div>
+                                  </div>
+                                </form>
+                                
+                              </div>
+                  </div>
+                       </div>
+                      </div>
+                    </div>
+                   
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="flights-grid mb-xl-30" >
+                <h4 class="text-center">Recommended Flights</h4>
+                <div class="flights-grid-wrapper bx-wrapper" *ngFor="let flights of randomFlights" >
+                  <div class="image-sec animate-img">
+                    <a href="#">
+                      <img
+                        src="/assets/img/user/flights/1.jpg"
+                        class="full-width"
+                        alt="img"
+                      />
+                    </a>
+                  </div>
+                  <div
+                    class="flights-grid-caption padding-20 bg-custom-white p-relative"
+                  >
+                    <div class="heading-sec">
+                      <div class="left-side">
+                        <i class="fa fa-plane text-yellow"></i>
+                        <div class="title">
+                          <h4 class="fs-16">
+                            <a href="#" class="text-custom-black"
+                              >{{flights.departure}} to {{flights.destination}}</a
+                            >
+                            <span class="text-light-dark">Oneway Flight</span>
+                          </h4>
+                        </div>
+                      </div>
+                      <div class="right-side">
+                        <span class="price"><small>From</small>₹{{flights.min_price}}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<app-footer></app-footer>

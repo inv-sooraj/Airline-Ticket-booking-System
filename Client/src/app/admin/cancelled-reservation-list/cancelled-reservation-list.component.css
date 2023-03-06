@@ -1,0 +1,8 @@
+.deleteButton[disabled]{
+    color: grey;
+}
+.white_card .white_card_header {
+    padding: 0px !important;
+      padding-top: 0px !important;
+    padding-top: 61px !important;
+  }

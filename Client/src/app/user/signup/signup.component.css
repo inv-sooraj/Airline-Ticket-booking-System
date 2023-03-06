@@ -1,0 +1,23 @@
+.sp{
+    color: red!important;
+}
+.cpass{
+    color: red!important;
+}
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed! important;
+}
+button{
+    cursor: pointer;    
+}
+.errorMsg{
+    color: rgb(179, 54, 54);
+}
+a{
+
+    text-decoration: none;
+}

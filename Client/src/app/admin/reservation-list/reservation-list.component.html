@@ -1,0 +1,128 @@
+<app-company-nav></app-company-nav>
+<section class="main_content dashboard_part large_header_bg">
+  <div class="main_content_iner">
+    <div class="container-fluid p-0">
+      <div class="row justify-content-center">
+        <div class="col-lg-12">
+          <div class="white_card card_height_100 mb_30">
+            
+            <div class="white_card_body">
+              <h4 class="d-flex justify-content-center p-4">Reservation List</h4>
+              <div class="QA_section">
+                <div class="white_box_tittle list_header">
+                
+                  <div class="box_right d-flex lms_block">
+                    <div class="serach_field_2">
+                      <div class="search_inner">
+                        <form [formGroup]="bookingListForm">
+                          <div class="search_field pr-3 pb-0">
+                            <input
+                              type="text"
+                              formControlName="search"
+                              placeholder="Search details here..."
+                              [(ngModel)]="searchText"
+                              autocomplete="off"
+                            />
+                          </div>
+                          <button type="submit">
+                            <i class="ti-search"></i>
+                          </button>
+                        </form>
+                      </div>
+                    </div>
+                    <div>
+                      <button
+                        (click)="export()"
+                        [disabled]="items.length == 0 ? true : false"
+                        class="btn btn-primary"
+                      >
+                        CSV Export
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="QA_table mb_30">
+                  <table class="table lms_table_active3">
+                    <thead>
+                      <tr>
+                        <th><button
+                          class="fa fa-trash"
+                          (click)="deleteData()"
+                          [disabled]="site.length == 0 ? true : false"
+                        ></button></th>
+                        <th scope="col">Booking ID</th>
+                        <th scope="col">Flight Number</th>
+                        <th scope="col">Departing From</th>
+                        <th scope="col">Destination</th>
+                        <th scope="col">Status</th>
+                        <th scope="col" style="text-align: center">
+                        View
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                        *ngFor="
+                          let bookings of items | filter : searchText;
+                          let i = index
+                        "
+                      >
+                        <th scope="row">
+                          <label for="sel"></label>
+                          <input
+                            type="checkbox"
+                            [value]="bookings.bookingId"
+                            (change)="onCheckboxChange($event)"
+                          />
+                        </th>
+                        <td>{{ bookings.bookingId }}</td>
+                        <td>{{ bookings.flight.flightNumber }}</td>
+                        <td>{{ bookings.flight.departure }}</td>
+                        <td>{{ bookings.flight.destination }}</td>
+                        <td
+                          *ngIf="bookings.status == 2"
+                          style="color: orangered"
+                        >
+                          Pending
+                        </td>
+                        <td
+                          *ngIf="bookings.status == 3"
+                          style="color: orangered"
+                        >
+                          Cancelled
+                        </td>
+                        <td
+                          *ngIf="bookings.status == 0"
+                          style="color: rgb(126, 19, 19)"
+                        >
+                          Rejected
+                        </td>
+                        <td
+                          *ngIf="bookings.status == 1"
+                          style="color: rgb(68, 109, 68)"
+                        >
+                          Approved
+                        </td>
+                        <td>
+                          <a
+                            class="status_btn"
+                            [routerLink]="[
+                              '/reservation-details',
+                              bookings.bookingId
+                            ]"
+                            >More</a
+                          >
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

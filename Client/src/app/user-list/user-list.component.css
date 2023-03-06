@@ -1,0 +1,28 @@
+element {
+    z-index: 0 !important;
+  }
+.material-icons {
+   margin-left: 5%;
+}
+.mb-4{
+    width: 20%;
+}
+.search_field{
+    width:50%;
+    margin-left: 50%;
+}
+
+.search-hero{
+   width: 60%;
+   margin-left: 150%;
+}
+.btn_1{
+
+margin-left: 350%;
+
+
+}
+::placeholder {
+    color: #000000;
+  }
+

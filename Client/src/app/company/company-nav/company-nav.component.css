@@ -1,0 +1,13 @@
+
+#navtitle{
+    color: white;
+}
+span{
+    color:aliceblue
+}
+a{
+    text-decoration: none !important;
+}
+ol, ul {
+    padding-left: 0;
+  }

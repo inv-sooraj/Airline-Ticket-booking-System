@@ -1,0 +1,147 @@
+.main_content_iner {
+    margin-left: 25%;
+}
+.sp{
+    color: red;
+}
+.white_card{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+    /* .btn{
+  display: inline-block;
+  vertical-align: top;
+  width: 80px;
+  height: 30px;
+  line-height: 30px;
+ 
+  margin: 0 4px;
+  text-align: center;
+    
+} */
+/* @media only screen and (max-width: 700px) and (min-width: 400px) {
+    .btn{
+        display: inline-block;
+        /* vertical-align: top; */
+        /* width: 80px;
+        height: 40px;
+        line-height: 30px;
+        margin: 0 4px;
+        text-align: center;
+          
+      }
+      .white_card{
+        margin-left: 10%;
+        width: 80%;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+    .buttons{
+        display:flex;
+    }
+    #btnADD{
+        margin-left: 40%;
+    }
+}
+@media only screen and (max-width: 900px) and (min-width: 701px){
+    .btn{
+        display: inline-block;  */
+        /* vertical-align: top; */
+        /* width: 80px;
+        height: 40px;
+        line-height: 30px;
+        margin: 0 4px;
+        text-align: center;
+          
+      }
+      .white_card{
+        margin-left: 10%;
+        width: 80%;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+    #btnADD{
+        margin-left: 70%;
+    }
+    .buttons{
+        display:flex;
+    } */
+    /* .m-0 {
+        padding-left: 30%;
+    } */
+    /* .main-title{
+        margin:0px auto 
+       
+    }
+}
+@media only screen and (max-width: 991px) and (min-width: 901px){
+    .btn{
+        display: inline-block;
+        vertical-align: top;
+        width: 80px;
+        height: 40px;
+        line-height: 30px;
+        margin: 0 4px;
+        text-align: center;
+          
+      }
+      .white_card{
+        margin-left: 10%;
+        width: 80%;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+    #btnADD{
+        margin-left: 70%;
+    }
+    .buttons{
+        display:flex;
+    }
+}
+@media only screen and (max-width: 1000px) and (min-width: 992px){
+    .btn{
+        display: inline-block;
+        vertical-align: top;
+        width: 80px;
+        height: 40px;
+        line-height: 30px;
+        margin: 0 4px;
+        text-align: center;
+        
+          
+      }
+      .white_card{
+        margin-left: 5%;
+        margin-top: 20%;
+        width: 130%;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+    #btnADD{
+        margin-left: 70%;
+    }
+    .buttons{
+        display:flex;
+    }
+} */
+/* @media only screen and (min-width: 1001px){
+    .btn{
+        display: inline-block;
+        vertical-align: top;
+        width: 80px;
+        height: 40px;
+        line-height: 30px;
+        margin: 0 4px;
+        text-align: center;
+        
+          
+      }
+      .white_card{
+        margin-left: 5%;
+        margin-top: 20%;
+        width: 130%;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+    #btnADD{
+        margin-left: 70%;
+    }
+    .buttons{
+        display:flex;
+    }
+} */
