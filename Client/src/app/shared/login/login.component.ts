@@ -91,19 +91,18 @@ export class LoginComponent implements OnInit {
             case 1:
               this.alertservice.showSuccess("Login Successful", "Success");
               this.router.navigate(["/admin-dashboard"]);
-              window.location.reload()
+              
               break;
             /**For Company */
             case 2:
               this.alertservice.showSuccess("Login Successful", "Success");
               this.router.navigate(["/plane-list"]);
-              window.location.reload()
+              
               break;
             /**For passenger */
             case 3:
               this.alertservice.showSuccess("Login Successful", "Success");
-              window.location.reload()
-              this.router.navigate(["/home"]);
+                this.router.navigate(["/home"]);
               break;
             default:
               this.alertservice.showError("Login Failed", "Login Error");
