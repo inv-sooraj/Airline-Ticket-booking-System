@@ -66,10 +66,6 @@ public class UserServiceImpl implements UserService {
             body.getErrors().add(new ApplicationError("1020", "Email doesn't exist"));
             return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
         }
-        // if (errors.hasErrors()) {
-        //     body.getErrors().add(new ApplicationError("1021", "Password Doesn't Match"));
-        //     return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
-        // }
         User user = userRepository.findByEmail(form.getEmail()).orElseThrow(UserServiceImpl::badRequestException);
 
         if (!passwordEncoder.matches(form.getPassword(), user.getPassword())) {
@@ -80,8 +76,6 @@ public class UserServiceImpl implements UserService {
         String id = String.format("%010d", user.getUserId());
         Token accessToken = tokenGenerator.create(PURPOSE_ACCESS_TOKEN, id, securityConfig.getAccessTokenExpiry());
         Token refreshToken = tokenGenerator.create(PURPOSE_REFRESH_TOKEN, id + user.getPassword(), securityConfig.getRefreshTokenExpiry());
-        // return new LoginView(user, accessToken, refreshToken);
-        // body.getErrors().add(new ApplicationError("1021", "Password Doesn't Match"));
         LoginView lView=new LoginView(user, accessToken, refreshToken);
         body.getValues().put("loginResponse",lView);
         return new ResponseEntity<ResBody>(body, HttpStatus.OK);
@@ -114,7 +108,6 @@ public class UserServiceImpl implements UserService {
                 new LoginView.TokenView(refreshToken, status.expiry)
         );
     }
-
     @Override
     public ResponseEntity<ResBody> add(@Valid UserForm form) {
         ResBody body = new ResBody();
@@ -139,7 +132,6 @@ public class UserServiceImpl implements UserService {
         body.getValues().put("user", uview);
         return new ResponseEntity<ResBody>(body, HttpStatus.OK);
     }
-
     private static BadRequestException badRequestException() {
         return new BadRequestException("Invalid credentials");
     }
@@ -172,7 +164,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserView currentUser() {
-        // System.out.println(SecurityUtil.getCurrentUserId());
         return new UserView(
                 userRepository.findById(SecurityUtil.getCurrentUserId()).orElseThrow(NotFoundException::new)
         );
@@ -212,7 +203,6 @@ public class UserServiceImpl implements UserService {
     }
 
     public UserView updateById(Integer userId, UserForm form) {
-        // TODO Auto-generated method stub
         User user = userRepository.findByUserId(userId).orElseThrow(UserServiceImpl::badRequestException);
         user.setFullName(form.getFullName());
         user.setEmail(form.getEmail());
