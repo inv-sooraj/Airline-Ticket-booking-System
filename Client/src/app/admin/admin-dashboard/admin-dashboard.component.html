@@ -1,6 +1,6 @@
 <app-company-nav></app-company-nav>
 <section class="main_content dashboard_part large_header_bg">
-<div class="main_content_iner overly_inner">
+<!-- <div class="main_content_iner overly_inner">
   <div class="container-fluid p-0">
     <div class="row">
       <div class="col-12">
@@ -114,5 +114,74 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
+<div class="container">
+  <div class="row">
+    <div
+    class="row Dashicons col-md-12"
+    style="
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 500px;
+    "
+  >
+    <div class="col-sm-4" [routerLink]="['/companyreg']">
+      <div class="card text-center">
+        <div class="card-body">
+          <i class=" 	fas fa-address-card fa-3x mb-2"></i>
+          <h5 class="card-title"> Company Registration</h5>
+          <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4"  [routerLink]="['/company-list']">
+      <div class="card text-center">
+        <div class="card-body">
+          <i class="fas fa-list fa-3x mb-2"></i>
+          <h5 class="card-title">Company List</h5>
+          <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4" [routerLink]="['/user-list']">
+      <div class="card text-center">
+        <div class="card-body">
+          <i class="fas fa-list fa-3x mb-2"></i>
+          <h5 class="card-title">User List</h5>
+          <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4" [routerLink]="['/pending-list']">
+      <div class="card text-center">
+        <div class="card-body">
+          <i class="fas fa-folder-open fa-3x mb-2"></i>
+          <h5 class="card-title"> Pending  Reservations</h5>
+          <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4"  [routerLink]="['/plane-list']">
+      <div class="card text-center">
+        <div class="card-body">
+          <i class="fas fa-plane fa-3x mb-2"></i>
+          <h5 class="card-title">Airplane List</h5>
+          <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4" [routerLink]="['/flight-list']">
+      <div class="card text-center">
+        <div class="card-body">
+          <i class="fas fa-plane-departure fa-3x mb-2"></i>
+          <h5 class="card-title">Flight List</h5>
+          <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
+        </div>
+      </div>
+    </div>
+  </div>
+   </div></div> 
 </section>
