@@ -5,7 +5,6 @@ import { Injectable } from "@angular/core";
 })
 export class AuthService {
     constructor() { }
-  
     getRole(): number | null {
       const roleStr = localStorage.getItem("Role");
       if (roleStr) {
