@@ -28,12 +28,7 @@ export class AuthGuard implements CanActivate {
       return this.router.parseUrl('/forbidden');
     }
 
-    // if (userRole === 3) {
-    //   // If the user's role is 3, redirect to the home page
-    //   return this.router.parseUrl('/home');
-    // }
-
-    // If the user's role is 1 or 2, allow them to access the page
+    
     return true;
   }
 }
