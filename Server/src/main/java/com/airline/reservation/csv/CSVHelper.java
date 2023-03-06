@@ -54,7 +54,6 @@ public class CSVHelper {
                   tutorial.getFlight().getFlightNumber(),
                   tutorial.getFlight().getDeparture(),
                   tutorial.getFlight().getDestination(),
-                  // String.valueOf(tutorial.getFlight().getDepDateTime()));
               String.valueOf(tutorial.getFlight().getDepDateTime()));
             csvPrinter.printRecord(data);
           }

@@ -13,33 +13,27 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 @Service
 public class SeatServiceImpl implements SeatService {
-    
-     @Autowired
+
+    @Autowired
     private SeatRepository seatRepository;
+
     @Override
     public SeatView updateSeat(Integer seatId, SeatForm form) {
-        
+
         return seatRepository.findBySeatId(seatId)
                 .map((Seat) -> {
                     return new SeatView(seatRepository.save(Seat.update(form)));
                 }).orElseThrow(NotFoundException::new);
     }
 
-    
-   
-
-
     @Override
     public List<Seat> getSeatInfo(Integer flightId) {
-        
-       return seatRepository.findByFlightId(flightId);
+
+        return seatRepository.findByFlightId(flightId);
     }
-
-
-
-
 
     @Override
     public Integer getPrice(Integer seatId) {
@@ -48,45 +42,18 @@ public class SeatServiceImpl implements SeatService {
 
     @Override
     public Optional<Seat> getSeatById(Integer seatId) {
-        
+
         return seatRepository.findBySeatId(seatId);
     }
 
     @Override
     public List<Integer> getId(Integer flightId) {
         return seatRepository.getseatId(flightId);
-     }
-
-
-
-
+    }
 
     @Override
     public Integer getQuantity(Integer seatId) {
         return seatRepository.getQuantity(seatId);
     }
 
-
-
-
-
-   
-
-
-
-
- 
-    }
-
-    // @Autowired
-    // private SeatRepository seatRepository;
-
-    // public void addSeat(SeatForm form) {
-    //     seatRepository.save(new Seat(form, form.getFlightId(), form.getSeatType(), form.getNumber(), form.getDeleteFlag()));
-    // }
-
-    // @Override
-    // public List<Seat> list() {
-    //     return seatRepository.findAll();
-    // }
-
+}

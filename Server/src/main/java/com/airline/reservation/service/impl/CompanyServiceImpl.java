@@ -2,7 +2,6 @@ package com.airline.reservation.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -33,7 +32,7 @@ public class CompanyServiceImpl implements CompanyService {
     private PasswordEncoder passwordEncoder;
     @Autowired
     private CompanyRepository companyRepository;
-     @Autowired
+    @Autowired
     private UserRepository userRepository;
 
     @Override

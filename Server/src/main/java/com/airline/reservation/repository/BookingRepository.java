@@ -20,15 +20,14 @@ public interface BookingRepository extends JpaRepository<Bookings, Integer> {
     @Query("update  Bookings p set p.deleteFlag = 0 where p.bookingId in(:integers)")
     void softDeleteAllIds(List<Integer> integers);
 
-    List<Bookings> findByStatusAndDeleteFlag(Byte status,Byte deleteFlag);
+    List<Bookings> findByStatusAndDeleteFlag(Byte status, Byte deleteFlag);
 
     List<Bookings> findByUserUserIdAndDeleteFlag(Integer integer, Byte flag);
 
     Bookings findByBookingIdAndDeleteFlag(Integer bookingId, Byte flag);
-    
-        List<Bookings> findByFlightUserUserIdAndDeleteFlag(Integer userId, Byte flag);
 
-        List<Bookings> findByStatusAndDeleteFlagAndFlightFlightId(Byte status, Byte deleteFlag, Integer flightId);
+    List<Bookings> findByFlightUserUserIdAndDeleteFlag(Integer userId, Byte flag);
 
-     
+    List<Bookings> findByStatusAndDeleteFlagAndFlightFlightId(Byte status, Byte deleteFlag, Integer flightId);
+
 }

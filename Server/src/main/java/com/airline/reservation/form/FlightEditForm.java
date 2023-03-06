@@ -11,14 +11,15 @@ import java.util.Date;
  * @author lakshmimohan
  */
 public class FlightEditForm {
-     private Integer flightId;
+
+    private Integer flightId;
     private String flightNumber;
     private Integer airplaneId;
     private Integer userId;
     private String departure;
     private Date depDateTime;
-     private String destination;
-      private Date destDateTime;
+    private String destination;
+    private Date destDateTime;
 
     public Integer getFlightId() {
         return flightId;
@@ -83,6 +84,5 @@ public class FlightEditForm {
     public void setDestDateTime(Date destDateTime) {
         this.destDateTime = destDateTime;
     }
-      
-      
+
 }

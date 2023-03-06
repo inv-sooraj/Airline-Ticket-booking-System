@@ -16,6 +16,7 @@ public class BookingListView {
     private Seat seat;
     private String destination;
     private User user;
+
     public void setBookingId(Integer bookingId) {
         this.bookingId = bookingId;
     }
@@ -81,7 +82,7 @@ public class BookingListView {
     public BookingListView(Bookings bookings) {
         this.userId = bookings.getUser().getUserId();
         this.user = bookings.getUser();
-        this.seat=bookings.getSeat();
+        this.seat = bookings.getSeat();
         this.flight = bookings.getFlight();
         this.flightNumber = bookings.getFlight().getFlightNumber();
         this.departure = bookings.getFlight().getDeparture();

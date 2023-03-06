@@ -1,41 +1,38 @@
 package com.airline.reservation.view;
 
-
 import com.airline.reservation.entity.Flight;
 import com.airline.reservation.entity.Seat;
 import com.airline.reservation.entity.User;
 import com.airline.reservation.form.FlightForm;
 import com.airline.reservation.json.Json;
 
- 
- 
 import java.util.Date;
 import java.util.List;
 
 public class FlightView {
 
-    private  Integer flightId;
+    private Integer flightId;
     private String flightNumber;
     private String departure;
-     @Json.DateTimeFormat
-    private  Date depDateTime;
+    @Json.DateTimeFormat
+    private Date depDateTime;
     private String destination;
     @Json.DateTimeFormat
     private Date destDateTime;
     private User user;
     private List<Seat> seats;
-   
+
     public FlightView(Flight flight) {
-        
-        this.flightId=flight.getFlightId();
-        this.flightNumber=flight.getFlightNumber();
-        this.departure=flight.getDeparture();
-        this.depDateTime=flight.getDepDateTime();
-        this.destination=flight.getDestination();
-        this.destDateTime=flight.getDestDateTime();
-        this.user=flight.getUser();
-        this.seats=flight.getSeats();
-        
+
+        this.flightId = flight.getFlightId();
+        this.flightNumber = flight.getFlightNumber();
+        this.departure = flight.getDeparture();
+        this.depDateTime = flight.getDepDateTime();
+        this.destination = flight.getDestination();
+        this.destDateTime = flight.getDestDateTime();
+        this.user = flight.getUser();
+        this.seats = flight.getSeats();
+
     }
 
     public FlightView(FlightForm flightForm) {
@@ -53,7 +50,7 @@ public class FlightView {
         return departure;
     }
 
-    public  Date getDepDateTime() {
+    public Date getDepDateTime() {
         return depDateTime;
     }
 
@@ -65,14 +62,8 @@ public class FlightView {
         return destDateTime;
     }
 
-//    public User getUser() {
-//        return user;
-//    }
-
     public List<Seat> getSeats() {
         return seats;
     }
 
-    
-    
 }

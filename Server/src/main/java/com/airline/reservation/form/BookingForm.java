@@ -3,6 +3,7 @@ package com.airline.reservation.form;
 import java.util.List;
 
 public class BookingForm {
+
     private Integer bookingId;
 
     private Integer userId;
@@ -41,53 +42,66 @@ public class BookingForm {
     public void setBookingRequests(List<BookingRequest> bookingRequests) {
         this.bookingRequests = bookingRequests;
     }
+
     public static class BookingRequest {
+
         private int userId;
         private int flightId;
         private int seatId;
         private int price;
         private int quantity;
+
         public int getPrice() {
             return price;
         }
+
         public void setPrice(int price) {
             this.price = price;
         }
+
         public int getQuantity() {
             return quantity;
         }
+
         public void setQuantity(int quantity) {
             this.quantity = quantity;
         }
-        private int status=1;
+        private int status = 1;
+
         public int getUserId() {
             return userId;
         }
+
         public void setUserId(int userId) {
             this.userId = userId;
         }
+
         public int getFlightId() {
             return flightId;
         }
+
         public void setFlightId(int flightId) {
             this.flightId = flightId;
         }
+
         public int getSeatId() {
             return seatId;
         }
+
         public void setSeatId(int seatId) {
             this.seatId = seatId;
         }
+
         public int getStatus() {
             return status;
         }
+
         public void setStatus(int status) {
             this.status = status;
         }
 
         // Constructor, getters and setters
-    }   
-    
+    }
 
     public Integer getBookingId() {
         return bookingId;

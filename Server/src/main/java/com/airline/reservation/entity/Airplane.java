@@ -17,9 +17,8 @@ import javax.persistence.ManyToOne;
  *
  * @author lakshmimohan
  */
-
- @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
- @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@Entity
 public class Airplane {
 
     public static enum Status {

@@ -1,4 +1,5 @@
 package com.airline.reservation.security.util;
+
 import java.security.SecureRandom;
 import java.time.Duration;
 import java.util.Base64;
@@ -6,11 +7,14 @@ import java.util.regex.Pattern;
 import org.springframework.security.crypto.encrypt.Encryptors;
 import org.springframework.security.crypto.encrypt.TextEncryptor;
 import org.springframework.util.Assert;
+
 public class TokenGenerator {
+
     /**
      * Class used for returning the generated token.
      */
     public static final class Token {
+
         /**
          * The generated token.
          */
@@ -59,6 +63,7 @@ public class TokenGenerator {
     private static final Pattern PURPOSE_PATTERN = Pattern.compile("[a-zA-Z0-9_]+");
     private static final Base64.Encoder ENCODER = Base64.getEncoder();
     private static final Base64.Decoder DECODER = Base64.getDecoder();
+
     private static String encode(String input) {
         return ENCODER.encodeToString(input.getBytes());
     }
@@ -106,8 +111,8 @@ public class TokenGenerator {
      *
      * @return the generated token and its related information
      *
-     *  IllegalArgumentException if there is a problem with the given
-     * purpose or data
+     * IllegalArgumentException if there is a problem with the given purpose or
+     * data
      */
     public Token create(String purpose, String data, Duration expiry) throws IllegalArgumentException {
         Assert.notNull(purpose, "purpose cannot be null");

@@ -11,10 +11,10 @@ import javax.validation.constraints.Size;
 public class AirplaneForm {
 
     @NotBlank(message = "1010")
-    @Size(min = 5, max = 30,message = "1011")
+    @Size(min = 5, max = 30, message = "1011")
     private String airplaneName;
     @NotBlank(message = "1012")
-    @Size(min = 5, max = 30,message = "1013")
+    @Size(min = 5, max = 30, message = "1013")
     private String modelNo;
     @NotNull(message = "1014")
     private Integer totalSeats;

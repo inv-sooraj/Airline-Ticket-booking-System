@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class EmailUtil {
-    
+
     @Autowired
     private JavaMailSender mailSender;
 
@@ -43,4 +43,3 @@ public class EmailUtil {
     }
 
 }
-

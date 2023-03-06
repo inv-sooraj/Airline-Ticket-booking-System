@@ -11,7 +11,7 @@ import com.airline.reservation.entity.Seat;
  * @author lakshmimohan
  */
 public class SeatView {
-    
+
     private final Integer seatId;
     private final String seatType;
     private final Integer number;
@@ -19,12 +19,12 @@ public class SeatView {
     private final byte deleteFlag;
 
     public SeatView(Seat seat) {
-         this.seatId=seat.getSeatId();
-        this.seatType=seat.getSeatType();
-        this.number=seat.getNumber();
-        this.price=seat.getPrice();
-        this.deleteFlag=seat.getDeleteFlag();
-        
+        this.seatId = seat.getSeatId();
+        this.seatType = seat.getSeatType();
+        this.number = seat.getNumber();
+        this.price = seat.getPrice();
+        this.deleteFlag = seat.getDeleteFlag();
+
     }
 
     public Integer getSeatId() {
@@ -46,6 +46,5 @@ public class SeatView {
     public byte getDeleteFlag() {
         return deleteFlag;
     }
-    
-    
+
 }

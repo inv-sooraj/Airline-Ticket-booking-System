@@ -15,6 +15,7 @@ public class CompanyForm {
     private String address;
     private String password;
     private Integer role;
+
     public String getFullName() {
         return fullName;
     }

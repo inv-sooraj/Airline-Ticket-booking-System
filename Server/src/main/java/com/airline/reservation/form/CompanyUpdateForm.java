@@ -12,6 +12,7 @@ import javax.validation.constraints.Size;
  * @author lakshmimohan
  */
 public class CompanyUpdateForm {
+
     @Size(min = 5, max = 50)
     private String fullName;
     @Email
@@ -20,6 +21,7 @@ public class CompanyUpdateForm {
     @Size(min = 10, max = 11)
     private String phone;
     private String address;
+
     public String getFullName() {
         return fullName;
     }
@@ -43,6 +45,7 @@ public class CompanyUpdateForm {
     public void setAddress(String address) {
         this.address = address;
     }
+
     public String getPhone() {
         return phone;
     }
@@ -50,7 +53,5 @@ public class CompanyUpdateForm {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-
-    
 
 }
