@@ -136,7 +136,7 @@ export class ApiService {
     );
   }
 
-  /** Method to call the putmapping api for aiplane edit */
+  /** Method to call the put  mapping api for aiplane edit */
 
   sendUpdatePlane(responseBody: any, airplaneId: any) {
     return this.httpClient.put(
