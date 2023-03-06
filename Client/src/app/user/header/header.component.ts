@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from "@angular/core";
 import {
   AbstractControlOptions,
@@ -91,9 +92,11 @@ export class HeaderComponent implements OnInit {
   }
   
   logout(){
-
+  
     localStorage.removeItem("accessToken");
     localStorage.removeItem("Role");
-    this.router.navigate(["/login"])
+    
+    this.router.navigate(["/login"]);
+ 
   }
 }

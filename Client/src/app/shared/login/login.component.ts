@@ -1,3 +1,4 @@
+import { Location } from "@angular/common";
 import { ThisReceiver } from "@angular/compiler";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
@@ -15,8 +16,7 @@ export class LoginComponent implements OnInit {
   listData: any;
   role: any;
   userid: any;
-  constructor(
-    private formbuilder: FormBuilder,
+  constructor(private formbuilder: FormBuilder,
     private router: Router,
     private apiservice: ApiService,
     private alertservice: AlertService
@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
     if(Number(localStorage.getItem('Role'))){
      
       if(Number(localStorage.getItem('Role'))===1){
@@ -55,8 +56,9 @@ export class LoginComponent implements OnInit {
         this.router.navigate(["/plane-list"]);
       }
       else if(Number(localStorage.getItem('Role'))===3){
-        
+       
         this.router.navigate(["/home"]);
+        
       }
     }
     else{
@@ -89,15 +91,18 @@ export class LoginComponent implements OnInit {
             case 1:
               this.alertservice.showSuccess("Login Successful", "Success");
               this.router.navigate(["/admin-dashboard"]);
+              window.location.reload()
               break;
             /**For Company */
             case 2:
               this.alertservice.showSuccess("Login Successful", "Success");
               this.router.navigate(["/plane-list"]);
+              window.location.reload()
               break;
             /**For passenger */
             case 3:
               this.alertservice.showSuccess("Login Successful", "Success");
+              window.location.reload()
               this.router.navigate(["/home"]);
               break;
             default:
