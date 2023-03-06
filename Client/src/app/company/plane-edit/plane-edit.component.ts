@@ -79,7 +79,7 @@ export class PlaneEditComponent implements OnInit {
       .sendUpdatePlane(this.planeEditForm.value, this.airplaneId)
       .subscribe((confirmation: any) => {
         if (confirmation.alert === "Sucess") {
-          location.reload();
+         
         }
         this.alertservice.showSuccess("Updated successfully!!!", "Success");
         this.router.navigate(["/plane-list"]);

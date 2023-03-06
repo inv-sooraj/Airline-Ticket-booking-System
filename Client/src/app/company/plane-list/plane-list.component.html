@@ -12,14 +12,14 @@
                 </div>
               </div>
               <div class="white_card_body">
-                <h4 class="d-flex justify-content-center">Airplane Details</h4>
+                <h4 class="p-3">Airplane Details</h4>
                 <div class="QA_section">
                   
-                  <div class="container p-3">
+                  <div class="container-fluid p-3">
                     <form [formGroup]="planeListForm">
-                       <div class="row  align-items-center">
-                      <div class="col-lg-4  col-md-4 col-12 p-2">
-                        <select  class="form-control  w-100"  (change)="changeCompany()"  formControlName="company" >
+                       <div class="row">
+                      <div class="col-lg-4  col-md-4 col-12 p-2" *sngIf="role=='1'" >
+                        <select  class="form-control  w-100"  (change)="changeCompany()" formControlName="company" >
                         <option value="">Select Company</option>
                         <option  
                           *ngFor="let name of Company"

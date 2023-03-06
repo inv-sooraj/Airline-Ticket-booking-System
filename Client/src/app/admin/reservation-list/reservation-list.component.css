@@ -110,7 +110,6 @@ a:hover {
 h1,
 h2,
 h3,
-h4,
 h5,
 h6 {
   color: #302d43;
@@ -124,9 +123,7 @@ h2 {
 h3 {
   font-size: 26px;
 }
-h4 {
-  font-size: 20px;
-}
+
 h5 {
   font-size: 16px;
   font-weight: 500;
