@@ -18,7 +18,7 @@
                 </div>
 
                 <div class="white_card_body">
-                  <h4>Company Details</h4>
+                  <h4>Company List</h4>
                   <div class="QA_section">
                     <div class="white_box_tittle list_header">
                       <div class="box_right d-flex lms_block">
@@ -29,7 +29,7 @@
                                   <input
                                     type="text"
                                     formControlName="search"
-                                    placeholder="Search company details..."
+                                    placeholder="Search company "
                                     [(ngModel)]="searchText"
                                     autocomplete="off"
                                   />
@@ -44,6 +44,12 @@
                             data-bs-target="#addcategory"
                             class="btn_1"
                             >Add New</a
+                          >
+                        </div> <div class="add_button "><!--ms-2-->
+                          <a
+                            (click)="exportCsv()"
+                           class="btn_1 text-light"
+                            >Export Csv</a
                           >
                         </div>
                       </div>
