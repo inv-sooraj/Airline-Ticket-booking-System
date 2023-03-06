@@ -1,6 +1,14 @@
 
-<!-- <app-header></app-header> -->
+<!--  -->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
-
+<ng-container *ngIf="role === '3'">
+    <app-header></app-header>
+  </ng-container>
+  <ng-container *ngIf="role === '1' ||role === '2'">
+    <app-company-nav></app-company-nav>
+  </ng-container>
+  <ng-container *ngIf="role !== '3' && role !== '1' && role !== '2'">
+ 
+  </ng-container>
 <router-outlet></router-outlet>
 <!-- <app-footer></app-footer> -->
