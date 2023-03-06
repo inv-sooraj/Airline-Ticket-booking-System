@@ -79,6 +79,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(POST,"/company/**").access("hasRole('ROLE_ADMIN')")
                 .antMatchers(GET,"/company/**").access("hasRole('ROLE_ADMIN')")
                 .antMatchers(PUT,"/company/**").access("hasRole('ROLE_ADMIN')")
+                .antMatchers(GET,"/company/export").access("hasRole('ROLE_ADMIN')")
                 .antMatchers(POST,"/flight").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_COMPANY')")
                 .antMatchers(GET,"/flight/findAll").access("hasRole('ROLE_ADMIN')")
                 .antMatchers(GET,"/flight/findAll/**").access("hasRole('ROLE_ADMIN')or hasRole('ROLE_COMPANY')")
