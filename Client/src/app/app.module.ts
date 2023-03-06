@@ -73,7 +73,6 @@ import { CompanyComponentComponent } from './company/company-component/company-c
     AdminNavComponent,
     UserDetailComponent,
     FlightDetailsAdminComponent,
-    // HeaderCompanyComponent,
     FlightListCompanyComponent,
     CompanyNavComponent,
     UserProfileEditComponent,

@@ -36,9 +36,6 @@ export class ApiService {
     return this.httpClient.get(this.baseUrl + "/flight/search", { params });
   }
 
-  // getSeatIdAndTypeId(flightId:any){
-  //   return this.httpClient.get(this.baseUrl+'/seat/'+flightId);
-  // }
   getSeatId(flightId: any) {
     return this.httpClient.get(this.baseUrl + "/seat/getId/" + flightId);
   }
@@ -85,9 +82,7 @@ export class ApiService {
   }
 
   deleteUser(id: any) {
-    // return this.httpClient.put(
-    //   this.baseUrl + "/" + "users/changeStatus/" + id
-    // );
+    
     console.log(this.baseUrl + '/users/changeStatus/'+id,);
     return this.httpClient.put(this.baseUrl + '/users/changeStatus/'+id,"");
   }

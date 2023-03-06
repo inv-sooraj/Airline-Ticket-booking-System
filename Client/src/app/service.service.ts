@@ -9,10 +9,4 @@ import { environment } from 'src/environments/environment';
 export class ServiceService {
 
   constructor(private http:HttpClient) { }
-
-  // addcompany(data:any):Observable<any>{
-  //   let tocken=localStorage.getItem('')
-  //   let  head_obj=new HttpHeaders({"Authorization":"" + tocken})
-  //   return this.http.post(environment.baseUrl + '',data,{headers:head_obj});
-  // }
 }
