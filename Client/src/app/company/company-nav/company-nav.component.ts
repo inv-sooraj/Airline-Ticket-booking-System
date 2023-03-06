@@ -23,7 +23,7 @@ export class CompanyNavComponent implements OnInit {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("Role");
     localStorage.clear();
-    window.location.reload();
+    ;
     this.router.navigate(["/login"]);
   }
 }

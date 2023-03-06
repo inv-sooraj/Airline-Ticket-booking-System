@@ -29,149 +29,193 @@ import { CompanyEditComponent } from "./company-edit/company-edit.component";
 import { AdminDashboardComponent } from "./admin/admin-dashboard/admin-dashboard.component";
 import { ForbiddenComponent } from "./shared/forbidden/forbidden/forbidden.component";
 import { AuthGuard } from "./shared/auth-guard";
+import { PassengerComponentComponent } from "./user/passenger-component/passenger-component.component";
+import { AdminComponentComponent } from "./admin/admin-component/admin-component.component";
+import { CompanyComponentComponent } from "./company/company-component/company-component.component";
 const routes: Routes = [
   { path: "", component: LoginComponent },
-  { path: "companyreg", component: CompanyRegistrationComponent, canActivate: [AuthGuard],
-  data: { allowedRoles: [1] } },
   { path: "signup", component: SignupComponent },
   { path: "login", component: LoginComponent },
-  {
-    path: "plane-reg",
-    component: AirplaneRegComponent,
-    canActivate: [AuthGuard],
-    data: { allowedRoles: [2] },
-  },
-  {
-    path: "flight-reg",
-    component: FlightRegComponent,
-    canActivate: [AuthGuard],
-    data: { allowedRoles: [2] },
-  },
-  {
-    path: "plane-list",
-    component: PlaneListComponent,
-    canActivate: [AuthGuard],
-    data: { allowedRoles: [1, 2] },
-  },
-  {
-    path: "change-pass",
-    component: ChangePasswordComponent,
-    canActivate: [AuthGuard],
-    data: { allowedRoles: [1, 2] },
-  },
-  {
-    path: "plane-edit/:airplaneId",
-    component: PlaneEditComponent,
-    canActivate: [AuthGuard],
-    data: { allowedRoles: [1, 2] },
-  },
-  {
-    path: "home",
-    component: HomeComponent,
-    canActivate: [AuthGuard],
-    data: { allowedRoles: [3] },
-  }, // example protected route with allowed roles [2]
-  {
-    path: "header",
-    component: HeaderComponent,
-    canActivate: [AuthGuard],
-    data: { allowedRoles: [3] },
-  },
-  { path: "user-booking-list", component: UserBookingListComponent },
-  {
-    path: "flight-detail/:flightId",
-    component: FlightDetailComponent,
-    canActivate: [AuthGuard],
-    data: { allowedRoles: [3] },
-  },
-  {
-    path: "reservation-list",
-    component: ReservationListComponent,
-    canActivate: [AuthGuard],
-    data: { allowedRoles: [1,2] },
-  },
-  {
-    path: "user-detail/:userId",
-    component: UserDetailComponent,
-    canActivate: [AuthGuard],
-    data: { allowedRoles: [1] },
-  },
-  {
-    path: "flight-details",
-    component: FlightDetailsAdminComponent,
-    canActivate: [AuthGuard],
-    data: { allowedRoles: [1, 2] },
-  },
-  {
-    path: "flight-list",
-    component: FlightListCompanyComponent,
-    canActivate: [AuthGuard],
-    data: { allowedRoles: [1, 2] },
-  },
-  {
-    path: "profile-edit",
-    component: UserProfileEditComponent,
-    canActivate: [AuthGuard],
-    data: { allowedRoles: [3] },
-  },
-  {
-    path: "profile",
-    component: AdminProfileComponent,
-    canActivate: [AuthGuard],
-    data: { allowedRoles: [1, 2] },
-  },
-  {
-    path: "pending-list",
-    component: CancelledReservationListComponent,
-    canActivate: [AuthGuard],
-    data: { allowedRoles: [1, 2] },
-  },
-  {
-    path: "user-list",
-    component: UserListComponent,
-    canActivate: [AuthGuard],
-    data: { allowedRoles: [1] },
-  },
-  {
-    path: "reservation-details/:bookingId",
-    component: ReservationDetailsComponent,
-    canActivate: [AuthGuard],
-    data: { allowedRoles: [1, 2] },
-  },
-  {
-    path: "flight-edit/:flightId",
-    component: FlightEditComponent,
-    canActivate: [AuthGuard],
-    data: { allowedRoles: [1,2] },
-  },
-  {
-    path: "company-list",
-    component: CompanyListComponent,
-    canActivate: [AuthGuard],
-    data: { allowedRoles: [1] },
-  },
-  {
-    path: "user-flight-list",
-    component: UserFlightListComponent,
-    canActivate: [AuthGuard],
-    data: { allowedRoles: [3] },
-  },
-  {
-    path: "company-edit/:userId",
-    component: CompanyEditComponent,
-    canActivate: [AuthGuard],
-    data: { allowedRoles: [1] },
-  },
-  {
-    path: "admin-dashboard",
-    component: AdminDashboardComponent,
-    canActivate: [AuthGuard],
-    data: { allowedRoles: [1] },
-  },
   { path: "forbidden", component: ForbiddenComponent },
 ];
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes),RouterModule.forChild([
+    {
+      path: '',
+      component: PassengerComponentComponent,
+      children: [
+        { path: 'home', component: HomeComponent,
+        canActivate: [AuthGuard],
+        data: { allowedRoles: [3]} },
+        {
+          path: "header",
+          component: HeaderComponent,
+          canActivate: [AuthGuard],
+          data: { allowedRoles: [3] },
+        },
+        { path: "user-booking-list", component: UserBookingListComponent },
+        {
+          path: "flight-detail/:flightId",
+          component: FlightDetailComponent,
+          canActivate: [AuthGuard],
+          data: { allowedRoles: [3] },
+        }, {
+          path: "user-flight-list",
+          component: UserFlightListComponent,
+          canActivate: [AuthGuard],
+          data: { allowedRoles: [3] },
+        },
+        {
+          path: "profile-edit",
+          component: UserProfileEditComponent,
+          canActivate: [AuthGuard],
+          data: { allowedRoles: [3] },
+        },
+      ]
+    },
+    {
+      path: '',
+      component: AdminComponentComponent,
+      children: [
+        {
+          path: "admin-dashboard",
+          component: AdminDashboardComponent,
+          canActivate: [AuthGuard],
+          data: { allowedRoles: [1] },
+        },
+        {
+          path: "flight-list",
+          component: FlightListCompanyComponent,
+          canActivate: [AuthGuard],
+          data: { allowedRoles: [1,2] },
+        },
+        {
+          path: "company-edit/:userId",
+          component: CompanyEditComponent,
+          canActivate: [AuthGuard],
+          data: { allowedRoles: [1] },
+        }, 
+        { path: "companyreg", component: CompanyRegistrationComponent, canActivate: [AuthGuard],
+        data: { allowedRoles: [1] } },
+        {
+          path: "plane-reg",
+          component: AirplaneRegComponent,
+          canActivate: [AuthGuard],
+          data: { allowedRoles: [2] },
+        },
+        {
+          path: "flight-reg",
+          component: FlightRegComponent,
+          canActivate: [AuthGuard],
+          data: { allowedRoles: [2] },
+        },
+        {
+          path: "plane-list",
+          component: PlaneListComponent,
+          canActivate: [AuthGuard],
+          data: { allowedRoles: [1, 2] },
+        },{
+          path: "plane-edit/:airplaneId",
+          component: PlaneEditComponent,
+          canActivate: [AuthGuard],
+          data: { allowedRoles: [1, 2] },
+        },{
+          path: "reservation-list",
+          component: ReservationListComponent,
+          canActivate: [AuthGuard],
+          data: { allowedRoles: [1,2] },
+        },
+        {
+          path: "user-detail/:userId",
+          component: UserDetailComponent,
+          canActivate: [AuthGuard],
+          data: { allowedRoles: [1] },
+        },
+        {
+          path: "flight-details",
+          component: FlightDetailsAdminComponent,
+          canActivate: [AuthGuard],
+          data: { allowedRoles: [1, 2] },
+        }, {
+          path: "profile",
+          component: AdminProfileComponent,
+          canActivate: [AuthGuard],
+          data: { allowedRoles: [1, 2] },
+        },
+        {
+          path: "pending-list",
+          component: CancelledReservationListComponent,
+          canActivate: [AuthGuard],
+          data: { allowedRoles: [1, 2] },
+        },
+        {
+          path: "user-list",
+          component: UserListComponent,
+          canActivate: [AuthGuard],
+          data: { allowedRoles: [1] },
+        },
+        {
+          path: "reservation-details/:bookingId",
+          component: ReservationDetailsComponent,
+          canActivate: [AuthGuard],
+          data: { allowedRoles: [1, 2] },
+        },
+        {
+          path: "flight-edit/:flightId",
+          component: FlightEditComponent,
+          canActivate: [AuthGuard],
+          data: { allowedRoles: [1,2] },
+        },
+        {
+          path: "company-list",
+          component: CompanyListComponent,
+          canActivate: [AuthGuard],
+          data: { allowedRoles: [1] },
+        }, {
+          path: "profile",
+          component: AdminProfileComponent,
+          canActivate: [AuthGuard],
+          data: { allowedRoles: [1, 2] },
+        },{
+            path: "change-pass",
+            component: ChangePasswordComponent,
+            canActivate: [AuthGuard],
+            data: { allowedRoles: [1, 2] },
+          },
+        {
+          path: "pending-list",
+          component: CancelledReservationListComponent,
+          canActivate: [AuthGuard],
+          data: { allowedRoles: [1, 2] },
+        },
+        {
+          path: "user-list",
+          component: UserListComponent,
+          canActivate: [AuthGuard],
+          data: { allowedRoles: [1] },
+        },
+        {
+          path: "reservation-details/:bookingId",
+          component: ReservationDetailsComponent,
+          canActivate: [AuthGuard],
+          data: { allowedRoles: [1, 2] },
+        },
+        {
+          path: "flight-edit/:flightId",
+          component: FlightEditComponent,
+          canActivate: [AuthGuard],
+          data: { allowedRoles: [1,2] },
+        },
+        {
+          path: "company-list",
+          component: CompanyListComponent,
+          canActivate: [AuthGuard],
+          data: { allowedRoles: [1] },
+        }
+      ]
+    }
+  ])
+],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

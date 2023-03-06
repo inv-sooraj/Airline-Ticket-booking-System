@@ -46,6 +46,9 @@ import { CompanyEditComponent } from "./company-edit/company-edit.component";
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { MyInterceptor } from "./shared/my-interceptor";
 import { ForbiddenComponent } from './shared/forbidden/forbidden/forbidden.component';
+import { PassengerComponentComponent } from './user/passenger-component/passenger-component.component';
+import { AdminComponentComponent } from './admin/admin-component/admin-component.component';
+import { CompanyComponentComponent } from './company/company-component/company-component.component';
 @NgModule({
   declarations: [
     AdminHomeComponent,
@@ -84,6 +87,9 @@ import { ForbiddenComponent } from './shared/forbidden/forbidden/forbidden.compo
     CompanyEditComponent,
     AdminDashboardComponent,
     ForbiddenComponent,
+    PassengerComponentComponent,
+    AdminComponentComponent,
+    CompanyComponentComponent,
   ],
   imports: [
     BrowserModule,
